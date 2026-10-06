@@ -1,0 +1,949 @@
+<!doctype html>
+<html class="no-js" lang="en-LK">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- SEO Meta Tags for Sri Lanka -->
+    <title>IB Business Consultants | Top SME & Manufacturing Business Consulting in Sri Lanka</title>
+    <meta name="description"
+        content="IB Business Consultants provides practical business consulting, profitability improvement, and market development for SMEs and manufacturing businesses in Sri Lanka.">
+    <meta name="keywords"
+        content="Business Consultant Sri Lanka, SME Consulting, Profit Improvement, Manufacturing Consulting, IB Business Consultants Horana">
+
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/fav.png">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome-pro.min.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/bexon-icons.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/swiper.min.css">
+    <link rel="stylesheet" href="assets/css/venobox.min.css">
+    <link rel="stylesheet" href="assets/css/odometer-theme-default.css">
+    <link rel="stylesheet" href="assets/css/meanmenu.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <!-- Custom Brand Colors for IB Business Consultants -->
+    <style>
+    :root {
+    --primary-navy: #0A1F44;
+    --accent-gold: #D4AF37;
+    --text-black: #111111;
+    --bg-white: #ffffff;
+    }
+
+    body {
+    color: var(--text-black);
+    background-color: var(--bg-white);
+    }
+
+    h1, h2, h3, h4, h5, h6, .sec-title, .title {
+    color: var(--primary-navy) !important;
+    }
+
+    .sec-title span, .slider-title span {
+    color: var(--accent-gold) !important;
+    }
+
+    .tj-primary-btn {
+    background-color: var(--accent-gold) !important;
+    color: var(--primary-navy) !important;
+    border: 2px solid var(--accent-gold) !important;
+    font-weight: 700;
+    }
+
+    .tj-primary-btn:hover {
+    background-color: var(--primary-navy) !important;
+    color: var(--accent-gold) !important;
+    border-color: var(--primary-navy) !important;
+    }
+
+    .sub-title {
+    color: var(--accent-gold) !important;
+    }
+
+    .service-icon i, .count-icon i, .tji-arrow-right-long, .tji-arrow-right-big, .tji-quote {
+    color: var(--accent-gold) !important;
+    }
+
+    .tj-service-section, .tj-working-process {
+    background-color: var(--primary-navy) !important;
+    }
+
+    .tj-service-section h2, .tj-working-process h2, .tj-service-section .sub-title, .tj-working-process .sub-title,
+    .tj-service-section p, .tj-working-process p {
+    color: var(--bg-white) !important;
+    }
+
+    .tj-service-section h2 span, .tj-working-process h2 span {
+    color: var(--accent-gold) !important;
+    }
+
+    .service-item, .process-item, .contact-box {
+    background-color: var(--bg-white) !important;
+    border: 1px solid var(--accent-gold) !important;
+    color: var(--text-black) !important;
+    }
+
+    .service-item h4, .process-item h4, .contact-box h4 {
+    color: var(--primary-navy) !important;
+    }
+
+    .service-item p, .process-item p, .contact-box p {
+    color: var(--text-black) !important;
+    }
+
+    /* Hero Slider Base & Sizing */
+    .tj-slider-section {
+    position: relative;
+    width: 98%;
+    margin: 10px auto;
+    height: 85vh;
+    overflow: hidden;
+    background-color: var(--primary-navy);
+
+    border-radius: 25px !important;
+    overflow: hidden !important;
+    }
+
+    .swiper.hero-slider {
+    height: 100%;
+    border-radius: 30px !important;
+    overflow: hidden !important;
+    }
+
+    .tj-slider-item {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    }
+
+    /* Image Positioning - Focused on the Right */
+    .slider-bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: right center;
+    background-repeat: no-repeat;
+    z-index: 1;
+    }
+
+    /* Gradient Overlay */
+    .slider-bg-image::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, var(--primary-navy) 10%, rgba(10, 31, 68, 0.8) 55%, rgba(10, 31, 68, 0) 100%);
+    z-index: 2;
+    }
+
+    /* Content Container */
+    .container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+    }
+
+    .slider-wrapper {
+    max-width: 60%;
+    }
+
+    .slider-title {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    }
+
+    .slider-desc {
+    font-size: 1.125rem;
+    margin-bottom: 30px;
+    }
+
+    @media (min-width: 992px) {
+        .mt-lg-custom {
+            margin-top: 80px !important;
+        }
+    }
+
+    /* =========================================
+    Tablet Responsiveness
+    ========================================= */
+    @media (max-width: 991px) {
+    .slider-wrapper {
+    max-width: 85%;
+    }
+    .slider-title {
+    font-size: 2.8rem;
+    }
+    .mt-lg-custom {
+            margin-top: 80px !important;
+        }
+    }
+
+    /* =========================================
+    Mobile Responsiveness
+    ========================================= */
+    @media (max-width: 767px) {
+    .tj-slider-section,
+    .tj-slider-item {
+    height: 70vh;
+    }
+
+    .slider-wrapper {
+    max-width: 100%;
+    text-align: center;
+    padding: 0 10px;
+    }
+
+    .slider-title {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    }
+
+    .slider-desc {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    }
+
+    .slider-bg-image {
+    background-position: center center;
+    }
+
+    .tj-slider-section .slider-bg-image::after {
+    background: rgba(10, 31, 68, 0.85);
+    }
+
+    .slider-btn {
+    display: flex;
+    justify-content: center;
+    }
+    .mt-lg-custom {
+            margin-top: 80px !important;
+        }
+    }
+
+    /* =========================================
+    Small Mobile Devices
+    ========================================= */
+    @media (max-width: 480px) {
+    .slider-title {
+    font-size: 1.8rem;
+    }
+    .mt-lg-custom {
+            margin-top: 180px !important;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div class="body-overlay"></div>
+
+    <!-- Preloader Start -->
+    <div class="tj-preloader is-loading">
+        <div class="tj-preloader-inner">
+            <div class="tj-preloader-ball-wrap">
+                <div class="tj-preloader-ball-inner-wrap">
+                    <div class="tj-preloader-ball-inner">
+                        <div class="tj-preloader-ball" style="background-color: #D4AF37;"></div>
+                    </div>
+                    <div class="tj-preloader-ball-shadow"></div>
+                </div>
+                <div id="tj-weave-anim" class="tj-preloader-text" style="color: #0A1F44;">Loading...</div>
+            </div>
+        </div>
+        <div class="tj-preloader-overlay" style="background-color: #ffffff;"></div>
+    </div>
+    <!-- Preloader end -->
+
+    <div id="nav-placeholder"></div>
+
+    <!-- back to top start -->
+    <div id="tj-back-to-top" style="background-color: #0A1F44;"><span id="tj-back-to-top-percentage"
+            style="color: #D4AF37;"></span></div>
+    <!-- back to top end -->
+
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+            <main id="primary" class="site-main">
+                <div class="top-space-15"></div>
+
+                <!-- start: Hero Banner Slider -->
+                <section class="tj-slider-section rounded-4 overflow-hidden">
+                    <div class="swiper hero-slider h-100">
+                        <div class="swiper-wrapper h-100">
+
+                            <!-- Slide 1 -->
+                            <div class="swiper-slide tj-slider-item">
+                                <div class="slider-bg-image"
+                                    style="background-image: url('assets/images/hero/slider-1.jpg');"></div>
+                                <div class="container relative z-3 mt-lg-custom">
+                                    <div class="row">
+                                        <!-- Mobile එකේදී full width (col-12), Desktop එකේදී 60% ක් වගේ (col-lg-7) -->
+                                        <div class="col-12 col-md-9 col-lg-7">
+                                            <!-- Mobile එකේදී මැදට (text-center), Desktop එකේදී වමට (text-lg-start) -->
+                                            <div class="slider-wrapper text-center text-lg-start">
+                                                <div class="slider-content">
+                                                    <h1 class="slider-title text-white">Expertise&nbsp;For&nbsp;Your
+                                                        <span>Growth.</span></h1>
+                                                    <div class="slider-desc text-white">Practical Business & Profit
+                                                        Improvement Consulting for Sri Lankan SMEs and Manufacturing
+                                                        Businesses.</div>
+                                                    <!-- Mobile එකේදී button එක මැදට (justify-content-center), Desktop එකේදී වමට (justify-content-lg-start) -->
+                                                    <div
+                                                        class="slider-btn d-flex justify-content-center justify-content-lg-start mt-4">
+                                                        <a class="tj-primary-btn" href="contact.html">
+                                                            <span class="btn-text"><span>Get a
+                                                                    Consultation</span></span>
+                                                            <span class="btn-icon"><i
+                                                                    class="tji-arrow-right-long"></i></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 2 -->
+                            <div class="swiper-slide tj-slider-item">
+                                <div class="slider-bg-image"
+                                    style="background-image: url('assets/images/hero/slider-2.jpg');"></div>
+                                <div class="container relative z-3 mt-lg-custom">
+                                    <div class="row">
+                                        <div class="col-12 col-md-9 col-lg-7">
+                                            <div class="slider-wrapper text-center text-lg-start">
+                                                <div class="slider-content">
+                                                    <h1 class="slider-title text-white">
+                                                        Challenges&nbsp;Into<br><span>Growth.</span></h1>
+                                                    <div class="slider-desc text-white">Empowering businesses to achieve
+                                                        sustainable growth, stronger profitability, and long-term
+                                                        success.</div>
+                                                    <div
+                                                        class="slider-btn d-flex justify-content-center justify-content-lg-start mt-4">
+                                                        <a class="tj-primary-btn" href="services.html">
+                                                            <span class="btn-text"><span>Explore Services</span></span>
+                                                            <span class="btn-icon"><i
+                                                                    class="tji-arrow-right-long"></i></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 3 -->
+                            <div class="swiper-slide tj-slider-item">
+                                <div class="slider-bg-image"
+                                    style="background-image: url('assets/images/hero/slider-3.jpg');"></div>
+                                <div class="container relative z-3 mt-lg-custom">
+                                    <div class="row">
+                                        <div class="col-12 col-md-9 col-lg-7">
+                                            <div class="slider-wrapper text-center text-lg-start">
+                                                <div class="slider-content">
+                                                    <h1 class="slider-title text-white">Maximize&nbsp;Your<br><span>Profitability.</span></h1>
+                                                    <div class="slider-desc text-white">Identify profit leakage and
+                                                        implement practical initiatives to improve overall
+                                                        profitability.</div>
+                                                    <div
+                                                        class="slider-btn d-flex justify-content-center justify-content-lg-start mt-4">
+                                                        <a class="tj-primary-btn" href="services.html">
+                                                            <span class="btn-text"><span>Our Services</span></span>
+                                                            <span class="btn-icon"><i
+                                                                    class="tji-arrow-right-long"></i></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 4 -->
+                            <div class="swiper-slide tj-slider-item">
+                                <div class="slider-bg-image"
+                                    style="background-image: url('assets/images/hero/slider-4.jpg');"></div>
+                                <div class="container relative z-3 mt-lg-custom">
+                                    <div class="row">
+                                        <div class="col-12 col-md-9 col-lg-7">
+                                            <div class="slider-wrapper text-center text-lg-start">
+                                                <div class="slider-content ">
+                                                    <h1 class="slider-title text-white">Expand&nbsp;Market<br><span>Reach.</span></h1>
+                                                    <div class="slider-desc text-white">Develop stronger domestic and
+                                                        export sales channels and build a structured distributor
+                                                        network.</div>
+                                                    <div
+                                                        class="slider-btn d-flex justify-content-center justify-content-lg-start mt-4">
+                                                        <a class="tj-primary-btn" href="contact.html">
+                                                            <span class="btn-text"><span>Let's Talk</span></span>
+                                                            <span class="btn-icon"><i
+                                                                    class="tji-arrow-right-long"></i></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Navigation Arrows -->
+                        <div class="hero-navigation d-inline-flex wow fadeIn" data-wow-delay="1.5s">
+                            <div class="slider-prev">
+                                <span class="anim-icon">
+                                    <i class="tji-arrow-left"></i>
+                                    <i class="tji-arrow-left"></i>
+                                </span>
+                            </div>
+                            <div class="slider-next">
+                                <span class="anim-icon">
+                                    <i class="tji-arrow-right"></i>
+                                    <i class="tji-arrow-right"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- end: Hero Banner Slider -->
+
+                <!-- start: About Summary Section -->
+                <section class="tj-about-section section-gap">
+                    <div class="container">
+                        <div class="row row-gap-4">
+                            <div class="col-lg-4 col-md-6 order-lg-1 order-3">
+                                <div class="countup-item style-2 wow fadeInUp" data-wow-delay=".1s">
+                                    <span class="count-icon"><i class="tji-complete"></i></span>
+                                    <span class="steps" style="color: var(--primary-navy);">01.</span>
+                                    <div class="count-inner">
+                                        <span class="count-text">Understand & Analyse</span>
+                                        <div class="inline-content">
+                                            <p
+                                                style="color: var(--text-black); font-size: 14px; margin-top: 5px; letter-spacing: 0.3px;">
+                                                We begin by understanding the current situation and analyzing risks.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-sm-12 order-lg-2 order-1">
+                                <div class="about-content-area-2 wow fadeInUp" data-wow-delay=".3s">
+                                    <div class="about-content">
+                                        <div class="sec-heading style-2">
+                                            <span class="sub-title">Company Overview</span>
+                                            <h2 class="sec-title title-highlight">Your Trusted Partner for
+                                                Sustainable Business Success in Sri Lanka.
+                                            </h2>
+                                        </div>
+                                        <p>Established in 2024, IB Consultants is built around a simple philosophy:
+                                            effective consulting must begin with understanding the business. We provide
+                                            practical, result-oriented business consulting solutions that help
+                                            businesses improve profitability, strengthen operations, develop markets,
+                                            increase sales, and achieve sustainable growth.</p>
+                                        <div class="wow fadeInUp" data-wow-delay=".3s">
+                                            <a class="tj-primary-btn mt-3" href="about.html">
+                                                <span class="btn-text"><span>Learn More About Us</span></span>
+                                                <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 order-lg-3 order-2">
+                                <div class="countup-item style-2 wow fadeInUp" data-wow-delay=".5s">
+                                    <span class="count-icon"><i class="tji-worldwide"></i></span>
+                                    <span class="steps" style="color: var(--primary-navy);">02.</span>
+                                    <div class="count-inner">
+                                        <span class="count-text">Strategize & Implement</span>
+                                        <div class="inline-content">
+                                            <p
+                                                style="color: var(--text-black); font-size: 14px; margin-top: 5px; letter-spacing: 0.3px;">
+                                                We develop practical strategies and support implementation.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 order-lg-4 order-4">
+                                <div class="countup-item style-2 wow fadeInUp" data-wow-delay=".7s">
+                                    <span class="count-icon"><i class="tji-growth"></i></span>
+                                    <span class="steps" style="color: var(--primary-navy);">03.</span>
+                                    <div class="count-inner">
+                                        <span class="count-text">Measure & Improve</span>
+                                        <div class="inline-content">
+                                            <p
+                                                style="color: var(--text-black); font-size: 14px; margin-top: 5px; letter-spacing: 0.3px;">
+                                                We review results to identify further continuous improvements.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- end: About Section -->
+
+                <!-- start: Featured Services Section -->
+                <section class="tj-service-section service-2 section-gap section-gap-x slidebar-stickiy-container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="content-wrap slidebar-stickiy">
+                                    <div class="sec-heading style-2">
+                                        <span class="sub-title wow fadeInUp" data-wow-delay=".3s">Featured
+                                            Services</span>
+                                        <h2 class="sec-title text-white text-anim">Practical Solutions for
+                                            <span>SMEs & Manufacturers.</span>
+                                        </h2>
+                                    </div>
+                                    <div class="wow fadeInUp" data-wow-delay=".6s">
+                                        <a class="tj-primary-btn" href="services.html">
+                                            <span class="btn-text"><span>All Core Services</span></span>
+                                            <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="service-wrapper-2">
+
+                                    <div class="service-item-wrapper tj-fadein-right-on-scroll">
+                                        <div class="service-item style-2 ">
+                                            <div class="title-area">
+                                                <div class="service-icon">
+                                                    <i class="tji-service-1"></i>
+                                                </div>
+                                                <h4 class="title"><a href="service-details.html">Business Health
+                                                        Check</a></h4>
+                                            </div>
+                                            <div class="service-content">
+                                                <p class="desc">Diagnose the current condition of the business, identify
+                                                    critical issues and prioritize high-impact improvement
+                                                    opportunities.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="service-item-wrapper tj-fadein-right-on-scroll">
+                                        <div class="service-item style-2">
+                                            <div class="title-area">
+                                                <div class="service-icon">
+                                                    <i class="tji-service-2"></i>
+                                                </div>
+                                                <h4 class="title"><a href="service-details.html">Profit & Cost
+                                                        Management</a></h4>
+                                            </div>
+                                            <div class="service-content">
+                                                <p class="desc">Identify profit leakage and implement practical
+                                                    initiatives to improve gross margin, contribution and overall
+                                                    profitability.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="service-item-wrapper tj-fadein-right-on-scroll">
+                                        <div class="service-item style-2">
+                                            <div class="title-area">
+                                                <div class="service-icon">
+                                                    <i class="tji-service-3"></i>
+                                                </div>
+                                                <h4 class="title"><a href="service-details.html">Manufacturing Process
+                                                        Dev.</a></h4>
+                                            </div>
+                                            <div class="service-content">
+                                                <p class="desc">Improve manufacturing productivity, process capability
+                                                    and cost competitiveness through practical operational improvement.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="service-item-wrapper tj-fadein-right-on-scroll">
+                                        <div class="service-item style-2">
+                                            <div class="title-area">
+                                                <div class="service-icon">
+                                                    <i class="tji-service-4"></i>
+                                                </div>
+                                                <h4 class="title"><a href="service-details.html">Market Development</a>
+                                                </h4>
+                                            </div>
+                                            <div class="service-content">
+                                                <p class="desc">Develop stronger domestic and export sales channels and
+                                                    build a structured, performance-driven distributor network.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- end: Service Section -->
+
+                <!-- start: Training & Programs Section -->
+                <section class="tj-project-section-2 section-gap">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="sec-heading style-2 text-center">
+                                    <span class="sub-title wow fadeInUp" data-wow-delay=".3s">Training & Programs</span>
+                                    <h2 class="sec-title text-anim">Practical Business <span>Workshops.</span></h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="project-wrapper wow fadeInUp" data-wow-delay=".5s">
+                                    <div class="swiper project-slider">
+                                        <div class="swiper-wrapper">
+
+                                            <div class="swiper-slide">
+                                                <div class="project-item">
+                                                    <div class="project-img"
+                                                        data-bg-image="assets/images/project/project-1.webp"></div>
+                                                    <div class="project-content">
+                                                        <span class="categories"><a href="#">Management</a></span>
+                                                        <div class="project-text">
+                                                            <h3 class="title"><a href="#">Cert. in Business Management &
+                                                                    Entrepreneurship</a></h3>
+                                                            <a class="project-btn" href="#"
+                                                                style="background-color: var(--primary-navy); color: var(--accent-gold);">
+                                                                <i class="tji-arrow-right-big"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="swiper-slide">
+                                                <div class="project-item">
+                                                    <div class="project-img"
+                                                        data-bg-image="assets/images/project/project-4.webp"></div>
+                                                    <div class="project-content">
+                                                        <span class="categories"><a href="#">Sales</a></span>
+                                                        <div class="project-text">
+                                                            <h3 class="title"><a href="#">Cert. in Sales & Marketing
+                                                                    Management</a></h3>
+                                                            <a class="project-btn" href="#"
+                                                                style="background-color: var(--primary-navy); color: var(--accent-gold);">
+                                                                <i class="tji-arrow-right-big"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="swiper-slide">
+                                                <div class="project-item">
+                                                    <div class="project-img"
+                                                        data-bg-image="assets/images/project/project-5.webp"></div>
+                                                    <div class="project-content">
+                                                        <span class="categories"><a href="#">Finance</a></span>
+                                                        <div class="project-text">
+                                                            <h3 class="title"><a href="#">Cert. in Business Costing,
+                                                                    Pricing & Profitability</a></h3>
+                                                            <a class="project-btn" href="#"
+                                                                style="background-color: var(--primary-navy); color: var(--accent-gold);">
+                                                                <i class="tji-arrow-right-big"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="swiper-pagination-area"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- end: Training & Programs Section -->
+
+                <!-- start: Working process Section -->
+                <div class="tj-working-process section-gap section-gap-x">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="sec-heading-wrap">
+                                    <span class="sub-title wow fadeInUp" data-wow-delay=".3s">Our Approach</span>
+                                    <div class="heading-wrap-content">
+                                        <div class="sec-heading style-2">
+                                            <h2 class="sec-title text-anim">Diagnose, Plan, Implement, <span>Measure,
+                                                    Improve.</span></h2>
+                                        </div>
+                                        <p class="desc wow fadeInUp" data-wow-delay=".5s">We do not focus only on
+                                            recommendations. Our approach is designed to move from diagnosis to
+                                            practical implementation, KPI measurement and continuous improvement.</p>
+                                        <div class="btn-wrap wow fadeInUp" data-wow-delay=".6s">
+                                            <a class="tj-primary-btn" href="contact.html">
+                                                <span class="btn-text"><span>Request a Call</span></span>
+                                                <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="working-process-area">
+                                    <div class="process-item wow fadeInLeft" data-wow-delay=".5s">
+                                        <div class="process-step">
+                                            <span style="color: var(--primary-navy);">01</span>
+                                        </div>
+                                        <div class="process-content">
+                                            <h4 class="title">Diagnose & Plan</h4>
+                                            <p class="desc">Diagnose the current condition of the business and create a
+                                                prioritized 90-day improvement roadmap.</p>
+                                        </div>
+                                    </div>
+                                    <div class="process-item wow fadeInLeft" data-wow-delay=".7s">
+                                        <div class="process-step">
+                                            <span style="color: var(--primary-navy);">02</span>
+                                        </div>
+                                        <div class="process-content">
+                                            <h4 class="title">Implement</h4>
+                                            <p class="desc">Turn analysis into practical action. We support
+                                                implementation and review progress with management teams.</p>
+                                        </div>
+                                    </div>
+                                    <div class="process-item wow fadeInLeft" data-wow-delay=".9s">
+                                        <div class="process-step">
+                                            <span style="color: var(--primary-navy);">03</span>
+                                        </div>
+                                        <div class="process-content">
+                                            <h4 class="title">Measure & Improve</h4>
+                                            <p class="desc">Establish a practical improvement culture with measurable
+                                                KPIs, management reviews and ongoing support.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end: Working process Section -->
+
+                <!-- start: Testimonial Section -->
+                <section class="tj-testimonial-section-2 section-gap">
+                    <div class="container">
+                        <div class="row row-gap-3">
+                            <div class="col-lg-6">
+                                <div class="testimonial-img-area wow fadeInUp" data-wow-delay=".3s">
+                                    <div class="testimonial-img">
+                                        <img data-speed=".8" src="assets/images/testimonial/testimonial-img.webp"
+                                            alt="Client Testimonial">
+                                        <div class="sec-heading style-2">
+                                            <h2 class="sec-title text-anim">Hear from Our <span>Clients.</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="box-area">
+                                        <div class="rating-box wow fadeInUp" data-wow-delay=".3s"
+                                            style="background-color: var(--primary-navy); border-radius: 10px;">
+                                            <h2 class="title" style="color: var(--accent-gold) !important;">5.0</h2>
+                                            <div class="rating-area">
+                                                <div class="star-ratings">
+                                                    <div class="fill-ratings"
+                                                        style="width: 100%; color: var(--accent-gold);">
+                                                        <span>★★★★★</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <span class="rating-text" style="color: #ffffff;">(Trusted by Local
+                                                SMEs)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="testimonial-wrapper wow fadeInUp" data-wow-delay=".5s">
+                                    <div class="swiper testimonial-slider-2">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <div class="testimonial-item"
+                                                    style="border: 1px solid var(--accent-gold); box-shadow: 0px 5px 20px rgba(0,0,0,0.05);">
+                                                    <span class="quote-icon"><i class="tji-quote"></i></span>
+                                                    <div class="desc">
+                                                        <p>Working with IB Consultants has been a game-changer for our
+                                                            manufacturing business. Their practical solutions have
+                                                            helped us streamline operations, reduce waste, and achieve
+                                                            our growth goals faster than we imagined.</p>
+                                                    </div>
+                                                    <div class="testimonial-author">
+                                                        <div class="author-inner">
+                                                            <div class="author-header">
+                                                                <h4 class="title">Sri Lankan SME Client</h4>
+                                                                <span class="designation">Managing Director</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-pagination-area"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- end: Testimonial Section -->
+
+                <!-- start: Team Section -->
+                <section class="tj-team-section section-separator">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="sec-heading text-center style-2">
+                                    <span class="sub-title wow fadeInUp" data-wow-delay=".3s">Our Team</span>
+                                    <h2 class="sec-title text-anim">People Behind <span>IB Consultants.</span></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center leftSwipeWrap">
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="team-item left-swipe"
+                                    style="border: 1px solid #eaeaea; border-radius: 10px; overflow: hidden;">
+                                    <div class="team-img">
+                                        <div class="team-img-inner">
+                                            <img src="assets/images/team/team-1.webp" alt="T.M.Dhammika Sanath Bandara">
+                                        </div>
+                                        <div class="social-links">
+                                            <ul>
+                                                <li><a href="https://www.linkedin.com/" target="_blank"
+                                                        style="background-color: var(--primary-navy); color: var(--accent-gold);"><i
+                                                            class="fa-brands fa-linkedin-in"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="team-content" style="background-color: var(--bg-white);">
+                                        <h4 class="title"><a href="team-details.html">T.M.Dhammika Sanath Bandara</a>
+                                        </h4>
+                                        <span class="designation"
+                                            style="color: var(--accent-gold); font-weight: 600;">Founder & Lead Business
+                                            Consultant</span>
+                                        <p style="font-size: 14px; margin-top: 10px; color: var(--text-black);">
+                                            Expertise in sales, marketing, international business development, and
+                                            manufacturing environments.</p>
+                                        <a class="mail-at" href="mailto:dammikasbandara86@gmail.com"
+                                            style="background-color: var(--accent-gold); color: var(--primary-navy);"><i
+                                                class="tji-at"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- end: Team Section -->
+
+                <!-- start: Contact Us Section -->
+                <section class="tj-contact-section section-gap">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="sec-heading text-center style-2">
+                                    <span class="sub-title wow fadeInUp" data-wow-delay=".3s">Contact Us</span>
+                                    <h2 class="sec-title text-anim">Get in <span>Touch.</span></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-gap-4 mt-4">
+                            <div class="col-xl-4 col-md-6">
+                                <div class="contact-box wow fadeInUp text-center"
+                                    style="padding: 30px; border-radius: 8px;" data-wow-delay=".5s">
+                                    <h4 class="title" style="margin-bottom: 15px;">Head Office</h4>
+                                    <p>93/1/B, Aggonawatte,<br>Isipathana Mawatha, Horana, Sri Lanka</p>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-md-6">
+                                <div class="contact-box wow fadeInUp text-center"
+                                    style="padding: 30px; border-radius: 8px;" data-wow-delay=".7s">
+                                    <h4 class="title" style="margin-bottom: 15px;">Call Us</h4>
+                                    <p>071 125 5610<br>074 211 2767</p>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-md-6">
+                                <div class="contact-box wow fadeInUp text-center"
+                                    style="padding: 30px; border-radius: 8px;" data-wow-delay=".9s">
+                                    <h4 class="title" style="margin-bottom: 15px;">Working Hours</h4>
+                                    <p>Mon - Fri: 8.30 a.m. – 5.00 p.m<br>Sat: 8.30 a.m. – 2.00 p.m</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-4 text-center">
+                            <div class="col-12">
+                                <a class="tj-primary-btn" href="mailto:dammikasbandara86@gmail.com">
+                                    <span class="btn-text"><span>Email Us: dammikasbandara86@gmail.com</span></span>
+                                    <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- end: Contact Us Section -->
+
+            </main>
+
+            <div id="footer-placeholder"></div>
+        </div>
+    </div>
+
+    <!-- JS here -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/gsap.min.js"></script>
+    <script src="assets/js/ScrollSmoother.js"></script>
+    <script src="assets/js/gsap-scroll-to-plugin.min.js"></script>
+    <script src="assets/js/gsap-scroll-trigger.min.js"></script>
+    <script src="assets/js/gsap-split-text.min.js"></script>
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <script src="assets/js/swiper.min.js"></script>
+    <script src="assets/js/odometer.min.js"></script>
+    <script src="assets/js/venobox.min.js"></script>
+    <script src="assets/js/appear.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/meanmenu.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        $(function () {
+            // පළමුව Nav එක load කරන්න
+            $("#nav-placeholder").load("nav.html", function() {
+                // ඉන්පසු Footer එක load කරන්න
+                $("#footer-placeholder").load("footer.html", function() {
+                    // ඒ දෙකම load වුනාට පස්සේ Menu එකට අදාල JS files run කරන්න
+                    $.getScript("assets/js/meanmenu.js", function() {
+                        $.getScript("assets/js/main.js");
+                    });
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>
