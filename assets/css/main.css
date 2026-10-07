@@ -89,7 +89,7 @@ START: Theme Default CSS
   --tj-color-text-body-3: #67787a;
   --tj-color-text-body-4: #18292c;
   --tj-color-text-body-5: rgba(255, 255, 255, 0.8);
-  --tj-color-theme-primary: #1e8a8a;
+  --tj-color-theme-primary: #0A1F44;
   --tj-color-theme-bg: #d8e5e5;
   --tj-color-theme-bg-2: #cee0e0;
   --tj-color-theme-bg-3: #202e30;
@@ -1617,11 +1617,11 @@ START: Theme Header CSS
   width: 50px;
   height: 50px;
   padding: 12px;
-  background: var(--tj-color-theme-primary);
+  background: #0A1F44;
   border-radius: 7px;
 }
 .menu_bar.mobile_menu_bar span {
-  background-color: var(--tj-color-common-white);
+  background-color: #0A1F44;
 }
 .menu_bar:hover span {
   width: 100%;
@@ -3767,7 +3767,7 @@ START: Theme Search CSS
   }
 }
 .hamburger_bg {
-  background-color: var(--tj-color-theme-dark);
+  background-color: var(--primary-navy);
   height: 100%;
   width: 100%;
   position: absolute;
@@ -4029,7 +4029,7 @@ START: Theme Search CSS
 }
 
 .hamburger-title {
-  color: var(--tj-color-common-white);
+  color: var(--accent-gold);
   font-size: 22px;
   line-height: 1;
   margin-bottom: 25px;
@@ -11786,7 +11786,7 @@ START: Testimonial CSS
 .swiper-pagination-bullet {
   width: 12px;
   height: 8px;
-  background-color: var(--tj-color-theme-primary);
+  background-color: #0A1F44;
   border-radius: 30px;
   opacity: 0.15;
   position: relative;
@@ -29756,3 +29756,5 @@ START: Coming soon CSS
 }
 
 /* !END: Coming soon CSS *//*# sourceMappingURL=main.css.map */
+
+

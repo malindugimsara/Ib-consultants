@@ -1,0 +1,1018 @@
+:root {
+  --primary-navy: #0a1f44;
+  --accent-gold: #d4af37;
+  --text-black: #111111;
+  --bg-white: #ffffff;
+}
+
+body {
+  color: var(--text-black);
+  background-color: var(--bg-white);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.sec-title,
+.title {
+  color: var(--accent-gold) !important;
+}
+
+.sec-title span,
+.slider-title span {
+  color: var(--accent-gold) !important;
+}
+
+.tj-primary-btn {
+  background-color: var(--accent-gold) !important;
+  color: var(--primary-navy) !important;
+  border: 2px solid var(--accent-gold) !important;
+  font-weight: 700;
+}
+
+.tj-primary-btn:hover {
+  background-color: var(--primary-navy) !important;
+  color: var(--accent-gold) !important;
+  border-color: var(--primary-navy) !important;
+}
+
+.sub-title {
+  color: var(--accent-gold) !important;
+}
+
+.service-icon i,
+.count-icon i,
+.tji-arrow-right-long,
+.tji-arrow-right-big,
+.tji-quote {
+  color: var(--accent-gold) !important;
+}
+
+.tj-service-section,
+.tj-working-process {
+  background-color: var(--primary-navy) !important;
+}
+
+.tj-service-section h2,
+.tj-working-process h2,
+.tj-service-section .sub-title,
+.tj-working-process .sub-title,
+.tj-service-section p,
+.tj-working-process p {
+  color: var(--bg-white) !important;
+}
+
+.tj-service-section h2 span,
+.tj-working-process h2 span {
+  color: var(--accent-gold) !important;
+}
+
+.service-item,
+.process-item,
+.contact-box {
+  background-color: var(--bg-white) !important;
+  border: 1px solid var(--accent-gold) !important;
+  color: var(--text-black) !important;
+}
+
+.service-item h4,
+.process-item h4,
+.contact-box h4 {
+  color: var(--primary-navy) !important;
+}
+
+.service-item p,
+.process-item p,
+.contact-box p {
+  color: var(--text-black) !important;
+}
+
+/* Hero Slider Base & Sizing */
+.tj-slider-section {
+  position: relative;
+  width: 98%;
+  margin: 10px auto;
+  height: 85vh;
+  overflow: hidden;
+  background-color: var(--primary-navy);
+
+  border-radius: 25px !important;
+  overflow: hidden !important;
+}
+
+.swiper.hero-slider {
+  height: 100%;
+  border-radius: 30px !important;
+  overflow: hidden !important;
+}
+
+.tj-slider-item {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Image Positioning - Focused on the Right */
+.slider-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+/* Gradient Overlay */
+.slider-bg-image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    var(--primary-navy) 10%,
+    rgba(10, 31, 68, 0.8) 55%,
+    rgba(10, 31, 68, 0) 100%
+  );
+  z-index: 2;
+}
+
+/* Content Container */
+.container {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.slider-wrapper {
+  max-width: 60%;
+}
+
+.slider-title {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.slider-desc {
+  font-size: 1.125rem;
+  margin-bottom: 30px;
+}
+
+@media (min-width: 992px) {
+  .mt-lg-custom {
+    margin-top: 80px !important;
+  }
+}
+
+/* =========================================
+    Tablet Responsiveness
+    ========================================= */
+@media (max-width: 991px) {
+  .slider-wrapper {
+    max-width: 85%;
+  }
+
+  .slider-title {
+    font-size: 2.8rem;
+  }
+
+  .mt-lg-custom {
+    margin-top: 80px !important;
+  }
+}
+
+/* =========================================
+    Mobile Responsiveness
+    ========================================= */
+@media (max-width: 767px) {
+  .tj-slider-section,
+  .tj-slider-item {
+    height: 70vh;
+  }
+
+  .slider-wrapper {
+    max-width: 100%;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  .slider-title {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+  }
+
+  .slider-desc {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+
+  .slider-bg-image {
+    background-position: center center;
+  }
+
+  .tj-slider-section .slider-bg-image::after {
+    background: rgba(10, 31, 68, 0.85);
+  }
+
+  .slider-btn {
+    display: flex;
+    justify-content: center;
+  }
+
+  .mt-lg-custom {
+    margin-top: 80px !important;
+  }
+}
+
+/* =========================================
+    Small Mobile Devices
+    ========================================= */
+@media (max-width: 480px) {
+  .slider-title {
+    font-size: 1.8rem;
+  }
+
+  .mt-lg-custom {
+    margin-top: 120px !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .header-area {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+
+  .header-wrapper {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    min-height: auto !important;
+  }
+
+  .site_logo img {
+    max-height: 50px !important;
+    width: auto !important;
+  }
+
+  .mobile_menu_bar {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+/* About Section - Custom Feature Cards (Card Highlight & Justify Text) */
+.custom-feature-card {
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.06); /* පින්තූරයේ මෙන් ලස්සන Shadow එකක් */
+  padding: 30px;
+  border: 1px solid #f4f4f4;
+  transition: all 0.3s ease;
+}
+
+.custom-feature-card:hover {
+  box-shadow: 0px 10px 35px rgba(0, 0, 0, 0.12);
+  transform: translateY(-5px); /* Mouse එක ගෙනගිය විට උඩට එන ලෙස */
+}
+
+.custom-feature-card .icon-box-rounded {
+  width: 65px;
+  height: 65px;
+  background-color: #f4f6f9; /* Icon එක වටා ඇති ලා පැහැති රවුම */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: var(--accent-gold);
+}
+
+.custom-feature-card .step-num {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary-navy);
+}
+
+.custom-feature-card .feature-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-navy);
+  margin-bottom: 15px;
+}
+
+.custom-feature-card .feature-text {
+  color: var(--text-black);
+  font-size: 14px;
+  line-height: 1.7;
+  text-align: justify !important; /* අකුරු Justify කිරීම */
+  margin: 0;
+}
+
+.overview-text-justify {
+  text-align: justify !important; /* ප්‍රධාන ඡේදය Justify කිරීම */
+}
+
+
+
+/* =========================================
+   About Section & Core Benefits (SEO Optimized)
+========================================= */
+
+/* Core Benefits Box Styling */
+.core-benefits-box {
+    background: var(--bg-white);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    border-left: 5px solid var(--accent-gold);
+    height: 100%;
+}
+
+.benefits-title {
+    color: var(--primary-navy);
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* --- අලුත් Hover Animation සහිත Benefits List CSS --- */
+
+.benefits-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background-color: transparent;
+    cursor: default;
+}
+
+.benefits-list li:last-child {
+    margin-bottom: 0;
+}
+
+/* Mouse එක ගෙන ගිය විට Card එකක් ලෙස මතු වීම */
+.benefits-list li:hover {
+    background-color: var(--bg-white);
+    border-color: rgba(212, 175, 55, 0.4); /* Gold Border */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    transform: translateY(-5px); /* මදක් ඉහළට එසවීම */
+}
+
+.benefits-list .icon-wrap {
+    background-color: rgba(212, 175, 55, 0.15);
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.4s ease;
+}
+
+.benefits-list .icon-wrap i {
+    color: var(--accent-gold);
+    font-size: 22px;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smooth Icon Animation */
+}
+
+/* Mouse එක ගෙන ගිය විට Icon එක ලොකු වී හැරීම */
+.benefits-list li:hover .icon-wrap {
+    background-color: var(--accent-gold);
+}
+
+.benefits-list li:hover .icon-wrap i {
+    color: var(--primary-navy);
+    transform: scale(1.2) rotate(15deg);
+}
+
+.benefits-list .content-wrap .benefit-heading {
+    color: var(--primary-navy);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    transition: color 0.3s ease;
+}
+
+.benefits-list .content-wrap p {
+    color: var(--text-black);
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.benefits-list .icon-wrap {
+    background-color: rgba(212, 175, 55, 0.15); /* Light Gold background */
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.benefits-list .icon-wrap i {
+    color: var(--accent-gold);
+    font-size: 22px;
+}
+
+.benefits-list .content-wrap .benefit-heading {
+    color: var(--primary-navy);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.benefits-list .content-wrap p {
+    color: var(--text-black);
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Custom Feature Cards Styling */
+.custom-feature-card {
+    background-color: var(--bg-white);
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 12px;
+    padding: 35px 30px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+    transition: all 0.3s ease;
+}
+
+.custom-feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+    border-color: var(--accent-gold);
+}
+
+.icon-box-rounded {
+    width: 65px;
+    height: 65px;
+    background-color: var(--primary-navy);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-box-rounded i {
+    color: var(--accent-gold);
+    font-size: 30px;
+}
+
+.step-num {
+    font-size: 28px;
+    font-weight: 800;
+    color: rgba(10, 31, 68, 0.15); /* Faded Primary Navy */
+}
+
+.feature-title {
+    color: var(--primary-navy);
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.feature-text {
+    color: var(--text-black);
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+
+/* Custom Tabs for Services Section */
+    .custom-nav-pills {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 40px;
+    }
+    
+    .custom-nav-pills .nav-link {
+      background-color: #f4f6f9;
+      color: var(--primary-navy);
+      border: 2px solid #e0e0e0;
+      border-radius: 30px;
+      padding: 12px 35px;
+      font-weight: 700;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .custom-nav-pills .nav-link:hover {
+      border-color: var(--accent-gold);
+    }
+    
+    .custom-nav-pills .nav-link.active {
+      background-color: var(--accent-gold) !important;
+      color: var(--primary-navy) !important;
+      border-color: var(--accent-gold) !important;
+      box-shadow: 0px 5px 15px rgba(212, 175, 55, 0.3);
+    }
+
+    .tab-intro-box {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-left: 4px solid var(--accent-gold);
+      padding: 20px 25px;
+      margin-bottom: 40px;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .tab-intro-text {
+      color: #f8f9fa;
+      font-size: 16px;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* Adjust Service Card inside Navy Blue Section */
+    .service-item.style-2 {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    @media (max-width: 768px) {
+      .custom-nav-pills {
+        flex-direction: column;
+        padding: 0 15px;
+      }
+      .custom-nav-pills .nav-link {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+
+/* Main Card Styling */
+.main-service-card {
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid transparent;
+}
+
+.main-service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.main-service-card.active-card {
+    border-color: var(--tj-primary-color, #ff5e14); 
+    background-color: rgba(255, 255, 255, 0.05);
+    transform: translateY(-5px);
+}
+
+.main-service-card.active-card .title {
+    color: var(--tj-primary-color, #ff5e14);
+}
+
+/* Animations for Dynamic Sections */
+.dynamic-header, .dynamic-content {
+    animation: fadeInFade 0.6s ease-in-out forwards;
+}
+
+@keyframes fadeInFade {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fix for Sticky Sidebar on Mobile */
+@media (max-width: 991px) {
+    .slidebar-stickiy {
+        position: relative !important;
+        top: 0 !important;
+        margin-bottom: 40px;
+    }
+    .main-service-card {
+        margin-bottom: 20px;
+    }
+}
+
+/* =========================================
+   100% Isolated Dark Card Design
+========================================= */
+
+.custom-dark-card {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important; /* මේ පේළිය පමණක් center වෙනුවට flex-start කරන්න */
+    background-color: #0a1f44 !important; 
+    border: 1px dashed rgba(255, 255, 255, 0.15) !important;
+    border-radius: 15px !important;
+    padding: 40px !important;
+    gap: 40px !important;
+    margin-bottom: 30px !important;
+    box-shadow: none !important;
+}
+
+
+/* --- Left Side --- */
+.custom-dark-card .card-left {
+    flex: 0 0 35% !important; /* Left width */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important; /* Align to left */
+    text-align: left !important;
+}
+
+.custom-dark-card .card-icon {
+    width: 75px !important;
+    height: 75px !important;
+    background-color: #102426 !important; 
+    border: 1px solid #D4AF37 !important;
+    box-shadow: 0 0 25px rgba(0, 166, 141, 0.15) !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-bottom: 20px !important;
+}
+
+.custom-dark-card .card-icon i {
+    font-size: 32px !important;
+    color: #D4AF37 !important;
+}
+
+.custom-dark-card .card-title {
+    color: #ffffff !important;
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    line-height: 1.3 !important;
+    margin: 0 !important;
+    font-family: inherit !important;
+}
+
+/* --- Right Side --- */
+.custom-dark-card .card-right {
+    flex: 1 !important;
+    text-align: left !important;
+}
+
+.custom-dark-card .card-desc {
+    color: #a0a8ab !important;
+    font-size: 16px !important;
+    line-height: 1.7 !important;
+    margin-bottom: 20px !important;
+    margin-top: 0 !important;
+}
+
+.custom-dark-card .card-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.custom-dark-card .card-list li {
+    color: #c0c6c8 !important;
+    font-size: 16px !important;
+    margin-bottom: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+.custom-dark-card .card-list li i {
+    color: #D4AF37 !important;
+    font-size: 14px !important;
+}
+
+/* --- Mobile View Settings --- */
+@media (max-width: 768px) {
+    .custom-dark-card {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        padding: 25px !important;
+        gap: 20px !important;
+    }
+    .custom-dark-card .card-left {
+        width: 100% !important;
+        flex: auto !important;
+    }
+}
+
+
+/* 1. Card එකේ Background Color එක අයින් කරලා Image එක පේන්න ඉඩ හැරීම */
+.tj-service-section .service-item.style-1 {
+    background-color: transparent !important; 
+    overflow: hidden !important;
+}
+
+/* 2. Image එක හැමවෙලේම 100% ක් පෙනෙන සේ සැකසීම (හැංගිලා තියෙන සියලුම ක්‍රම ඉවත් කිරීම) */
+.tj-service-section .service-item.style-1 .service-img {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    clip-path: none !important; /* Template එකෙන් කපලා අයින් කරලා නම් ඒක හදයි */
+    z-index: 0 !important;
+    display: block !important;
+}
+
+/* Image එක පැහැදිලිව පේන්න Cover කිරීම */
+.tj-service-section .service-item.style-1 .service-img img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+/* 3. Image එක උඩින් යන අඳුරු ගතිය (Overlay) එකක් දැමීම - Text එක පේන්න */
+.tj-service-section .service-item.style-1::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(13, 33, 43, 0.7) !important; /* පළමු පින්තුරයේ වගේ අඳුරු පාටක් */
+    z-index: 1 !important;
+}
+
+/* 4. Text සහ Icon එක Image එකට උඩින් පෙන්වීම */
+.tj-service-section .service-item.style-1 .service-icon,
+.tj-service-section .service-item.style-1 .service-content {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* 5. Description එක සහ Button එක සාමාන්‍ය වෙලාවට සම්පූර්ණයෙන්ම Hide කිරීම */
+.tj-service-section .service-item.style-1 .service-content .desc,
+.tj-service-section .service-item.style-1 .service-content .text-btn {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    transition: all 0.4s ease !important;
+}
+
+/* 6. Mouse එක ගෙනිච්චම (Hover) විතරක් Text එක පෙන්වීම */
+.tj-service-section .service-item.style-1:hover .service-content .desc,
+.tj-service-section .service-item.style-1:hover .service-content .text-btn {
+    opacity: 1 !important;
+    visibility: visible !important;
+    height: auto !important; /* අවශ්‍ය ඉඩ ප්‍රමාණය ලබා දීම */
+    margin-top: 15px !important;
+}
+
+.cta-area {
+    background-color: #0A1F44 !important;
+}
+
+/* --- Mobile View (Phones) --- */
+@media (max-width: 767px) {
+  .custom-time-flex {
+    display: flex !important;
+    align-items: center !important; /* Icon එක text එකට සාපේක්ෂව මැදින් තබයි */
+    justify-content: center !important; /* සම්පූර්ණ කොටසම තිරයේ මැදට ගනී */
+    gap: 12px !important; /* Icon එක සහ අකුරු අතර පරතරය */
+  }
+  .custom-time-flex i {
+    position: static !important; /* Theme එකෙන් දාලා තියෙන absolute අවුල මෙයින් මකා දමයි */
+    margin: 0 !important;
+    transform: none !important;
+  }
+  .custom-time-flex span {
+    text-align: center !important; /* පේළි 2ක වෙලාව මැදට ගනී */
+  }
+
+  .tj-footer-section {
+    padding-top: 120px !important; /* ඉහළින් ඇති ඉඩ ප්‍රමාණය */
+    margin-top: 100px !important;   
+    position: relative;
+    z-index: 1;
+
+    /* Logo එක හරියටම මැදට ගැනීම සඳහා */
+  .custom-logo-wrap {
+    text-align: center !important; /* Wrapper එක ඇතුලේ දේවල් මැදට ගනී */
+    display: block !important; 
+    width: 100% !important;
+  }
+
+  .custom-logo-wrap a {
+    display: inline-block !important; /* link එක text එකක් සේ සලකා මැදට ගනී */
+  }
+
+  .custom-logo-wrap img {
+    margin-top:30px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+    width: 150px !important; 
+    height: auto !important;
+  }
+}
+
+/* අවශ්‍ය නම් අකුරු තියෙන කොටස පහළට තල්ලු කිරීමට */
+.tj-footer-section .footer-main-area {
+    padding-top: 80px !important; 
+}
+}
+
+/* --- Desktop View (PCs/Tablets) --- */
+@media (min-width: 768px) {
+  .custom-time-flex {
+    display: flex !important;
+    align-items: flex-start !important; /* පරිගණකයේදී සාමාන්‍ය පරිදි වම් පසට තබයි */
+    justify-content: flex-start !important;
+    gap: 15px !important;
+  }
+  .custom-time-flex i {
+    position: static !important;
+    margin-top: 5px !important; /* Icon එක පළමු පේළියට සමාන්තරව තබයි */
+  }
+  .custom-time-flex span {
+    text-align: left !important;
+  }
+}
+
+/* --- Fix Footer Overlap Issue --- */
+.tj-footer-section {
+    padding-top: 120px !important; /* ඉහළින් ඇති ඉඩ ප්‍රමාණය */
+    margin-top: 50px !important;   
+    position: relative;
+    z-index: 1;
+}
+
+/* අවශ්‍ය නම් අකුරු තියෙන කොටස පහළට තල්ලු කිරීමට */
+.tj-footer-section .footer-main-area {
+    padding-top: 80px !important; 
+}
+
+/* --- Desktop View (සාමාන්‍ය තිර සඳහා) --- */
+.custom-about-text {
+    font-size: 16px; 
+    line-height: 1.8; 
+    color: var(--text-black);
+    text-align: justify; /* Desktop එකට justify තිබ්බට කමක් නෑ */
+}
+
+/* --- Mobile View (ෆෝන් සඳහා පමණක්) --- */
+@media (max-width: 767px) {
+    /* Title එකේ සයිස් එක ටිකක් ගානට හැදීම */
+    .custom-mobile-title {
+        font-size: 28px !important;
+        line-height: 1.3 !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* ඡේදය (Paragraph) එක ලස්සන කිරීම */
+    .custom-about-text {
+        text-align: left !important; /* වචන අතර ලොකු හිස්තැන් මැකී යයි */
+        font-size: 15px !important;  /* අකුරු ටිකක් කුඩා කර ඇත */
+        line-height: 1.6 !important; /* පේළි අතර පරතරය මදක් අඩු කර ඇත */
+        margin-bottom: 25px !important;
+    }
+}
+
+/* --- Mobile View Settings for Services Section --- */
+@media (max-width: 767px) {
+    /* Section එකේ ඉහළ සහ පහළ පරතරය Mobile වලට ගැලපෙන සේ අඩු කිරීම */
+    .custom-mobile-padding {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+    }
+
+    /* ප්‍රධාන මාතෘකාව Mobile එකට ගැලපෙන සේ කුඩා කිරීම */
+    .custom-service-title {
+        font-size: 28px !important;
+        line-height: 1.3 !important;
+    }
+
+    /* Service Cards වල අන්තර්ගතය ලස්සන කිරීම */
+    .custom-mobile-card .service-content {
+        padding: 25px 20px !important; /* Card එක ඇතුලේ ඉඩ හදයි */
+        text-align: center !important; /* අකුරු මැදට ගනී */
+    }
+
+    /* Card එකේ මාතෘකාව */
+    .custom-mobile-card .title {
+        font-size: 22px !important;
+        margin-bottom: 12px !important;
+    }
+
+    /* Card එකේ විස්තරය */
+    .custom-mobile-card .desc {
+        font-size: 15px !important;
+        line-height: 1.6 !important;
+        margin-bottom: 20px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    /* Explore Button එක මැදට ගැනීම */
+    .custom-mobile-card .text-btn {
+        justify-content: center !important;
+        display: flex !important;
+    }
+}
+
+/* --- Mobile Responsive for Sub-Services Section --- */
+@media (max-width: 767px) {
+    /* Main Section Padding කුඩා කිරීම */
+    .custom-sub-service-sec {
+        padding-top: 50px !important;
+        padding-bottom: 50px !important;
+    }
+
+    /* Main Header එකේ අකුරු කුඩා කිරීම */
+    .custom-sub-service-sec .sec-title {
+        font-size: 26px !important;
+        line-height: 1.3 !important;
+    }
+    .custom-sub-service-sec .slidebar-stickiy p {
+        font-size: 15px !important;
+        margin-bottom: 20px !important;
+    }
+
+    /* --- Cards වල Layout එක වෙනස් කිරීම --- */
+    .custom-sub-service-sec .custom-dark-card {
+        display: flex !important;
+        flex-direction: column !important; /* වම් සහ දකුණු කොටස් එක මත එක තබයි */
+        padding: 20px 15px !important; /* Card එක ඇතුලේ ඉඩ කුඩා කරයි */
+        gap: 15px !important;
+    }
+
+    /* Left Side (Icon & Title) එක පෙළගැස්වීම */
+    .custom-sub-service-sec .card-left {
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 15px !important;
+        border-right: none !important; /* Desktop වල ඉරි කෑලි තිබ්බොත් අයින් කරයි */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* යටින් ලා ඉරක් අඳියි */
+        padding-bottom: 15px !important;
+        padding-right: 0 !important;
+    }
+
+    .custom-sub-service-sec .card-icon {
+        width: 45px !important;
+        height: 45px !important;
+    }
+    .custom-sub-service-sec .card-icon i {
+        font-size: 26px !important; /* Icon එක කුඩා කරයි */
+    }
+
+    .custom-sub-service-sec .card-title {
+        font-size: 18px !important; /* මාතෘකාව කුඩා කරයි */
+        margin-bottom: 0 !important;
+    }
+
+    /* Right Side (Description & List) */
+    .custom-sub-service-sec .card-right {
+        width: 100% !important;
+        padding-left: 0 !important;
+    }
+
+    .custom-sub-service-sec .card-desc {
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+        margin-bottom: 15px !important;
+    }
+
+    .custom-sub-service-sec .card-list {
+        display: grid !important;
+        gap: 8px !important;
+    }
+    .custom-sub-service-sec .card-list li {
+        font-size: 13px !important; /* List එකේ අකුරු කුඩා කරයි */
+    }
+}
