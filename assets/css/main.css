@@ -8668,21 +8668,21 @@ START: Choose CSS
           justify-content: flex-start;
 }
 .choose-box:hover {
-  background-color: var(--tj-color-theme-primary);
+ transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(10, 31, 68, 0.12);
+  border-bottom: 4px solid var(--accent-gold);
+  transform: scale(1.25);
 }
 .choose-box:hover .choose-icon {
-  color: var(--tj-color-common-white);
   -webkit-animation: gelatine 0.6s;
           animation: gelatine 0.6s;
 }
 .choose-box:hover .btn-icon {
   background-color: var(--tj-color-theme-dark);
+    transform: scale(1.25);
+
 }
-.choose-box:hover .btn-text,
-.choose-box:hover .desc,
-.choose-box:hover .title {
-  color: var(--tj-color-common-white);
-}
+
 @media only screen and (min-width: 1200px) and (max-width: 1399px), only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px) {
   .choose-box {
     padding: 40px 20px;

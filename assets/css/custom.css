@@ -202,21 +202,6 @@ h6,
 /* =========================================
    About Section & Feature Cards
 ========================================= */
-.custom-feature-card {
-  background-color: var(--bg-white);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: 12px;
-  padding: 35px 30px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
-  transition: all 0.3s ease;
-}
-
-.custom-feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
-  border-color: var(--accent-gold);
-}
-
 .icon-box-rounded {
   width: 65px;
   height: 65px;
