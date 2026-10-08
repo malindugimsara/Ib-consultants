@@ -942,7 +942,6 @@ h6,
        ========================================= */
 
 .custom-page-header {
-  background-image: url("../images/bg/pheader-bg.jpg"); /* ඔබගේ පින්තූරයේ නම .webp හෝ .png නම් මෙතන වෙනස් කරන්න */
   background-size: cover;
   background-position: center;
   position: relative;
@@ -1002,160 +1001,205 @@ h6,
   padding-bottom: 10px !important;
 }
 
-.test{
+.test {
   margin: 10px !important;
 }
 /* =========================================
    Contact Cards Pop-up Hover Animation
    ========================================= */
 .custom-feature-card {
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important; /* Smooth bounce effect */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important; /* Smooth bounce effect */
 }
 
 .custom-feature-card:hover {
-    transform: translateY(-15px) scale(1.03) !important;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08) !important;
-    z-index: 2;
+  transform: translateY(-15px) scale(1.03) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08) !important;
+  z-index: 2;
 }
 
 /* =========================================
    Contact Page Social Media Icons (Centered & Responsive)
    ========================================= */
 .tj-contact-social {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Idrindha center nalli baruttade */
-    gap: 15px;
-    margin-top: 40px; /* Submit button mathu icons madhye jaga (margin) */
-    margin-bottom: 20px;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Idrindha center nalli baruttade */
+  gap: 15px;
+  margin-top: 40px; /* Submit button mathu icons madhye jaga (margin) */
+  margin-bottom: 20px;
+  width: 100%;
 }
 
 .tj-contact-social .social-title {
-    font-size: 16px;
-    font-weight: 600;
-    color: #0a1f44; 
+  font-size: 16px;
+  font-weight: 600;
+  color: #0a1f44;
 }
 
 .tj-contact-social .social-icons {
-    display: flex;
-    gap: 12px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  display: flex;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .tj-contact-social .social-icons li a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 42px;
-    height: 42px;
-    background-color: #f4f5f8;
-    color: #0a1f44;
-    border-radius: 50%;
-    text-decoration: none;
-    font-size: 16px;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background-color: #f4f5f8;
+  color: #0a1f44;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 16px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .tj-contact-social .social-icons li a:hover {
-    background-color: var(--accent-gold, #d4af37);
-    color: #ffffff;
-    transform: translateY(-4px);
-    box-shadow: 0 8px 15px rgba(212, 175, 55, 0.3);
+  background-color: var(--accent-gold, #d4af37);
+  color: #ffffff;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 15px rgba(212, 175, 55, 0.3);
 }
 
 /* Mobile Responsive Code */
 @media (max-width: 575px) {
-    .tj-contact-social {
-        flex-direction: column; /* Mobile nalli text mela mathu icons kelage baralu */
-        gap: 12px;
-        margin-top: 30px;
-    }
-    
-    .tj-contact-social .social-icons {
-        gap: 15px;
-    }
-    
-    .tj-contact-social .social-icons li a {
-        width: 40px;
-        height: 40px;
-    }
+  .tj-contact-social {
+    flex-direction: column; /* Mobile nalli text mela mathu icons kelage baralu */
+    gap: 12px;
+    margin-top: 30px;
+  }
+
+  .tj-contact-social .social-icons {
+    gap: 15px;
+  }
+
+  .tj-contact-social .social-icons li a {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 /* =========================================
    Service Details - 3 Cards in a Row Fix
    ========================================= */
 .details-content-box {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important; /* පේළියකට කාඩ්පත් 3ක් බෙදීම */
-    gap: 20px !important; /* කාඩ්පත් අතර පරතරය */
-    align-items: stretch !important; /* කාඩ්පත් 3ම එකම උසින් (Height) තබා ගැනීම */
+  display: grid !important;
+  grid-template-columns: repeat(
+    3,
+    1fr
+  ) !important; /* පේළියකට කාඩ්පත් 3ක් බෙදීම */
+  gap: 20px !important; /* කාඩ්පත් අතර පරතරය */
+  align-items: stretch !important; /* කාඩ්පත් 3ම එකම උසින් (Height) තබා ගැනීම */
 }
 
 /* Template එකේ කලින් තිබූ Width සහ Margins ඉවත් කිරීම */
 .details-content-box .service-details-item {
-    width: 100% !important; 
-    margin: 0 !important;
-    height: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  height: 100% !important;
 }
 
 /* iPad / Tablet Responsive (පේළියකට කාඩ්පත් 2යි) */
 @media (max-width: 991px) {
-    .details-content-box {
-        grid-template-columns: repeat(2, 1fr) !important;
-    }
+  .details-content-box {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
 }
 
 /* Mobile Responsive (පේළියකට 1 කාඩ්පත බැගින් එකක් යට එකක්) */
 @media (max-width: 767px) {
-    .details-content-box {
-        grid-template-columns: 1fr !important;
-    }
+  .details-content-box {
+    grid-template-columns: 1fr !important;
+  }
 }
 
-.test2{
+.test2 {
   margin: 40px !important;
+  border-radius: 25px !important;
 }
 
 .mainmenu ul li.current-menu-ancestor > a {
-    color: #ff6600 !important; /* මේක ඔයාගේ website එකේ theme පාටට වෙනස් කරන්න */
-    font-weight: 700 !important;
+  color: #ff6600 !important; /* මේක ඔයාගේ website එකේ theme පාටට වෙනස් කරන්න */
+  font-weight: 700 !important;
 }
 
 /* Custom CSS for Gold Hover Effect on Workshop Cards */
 .h5-service-section .service-item.style-6 {
-    transition: all 0.4s ease;
+  transition: all 0.4s ease;
 }
 
 /* Change background to Gold and move slightly up on hover */
 .h5-service-section .service-item.style-6:hover {
-    background-color: #d4af37 !important; /* Gold Color */
-    border-color: #d4af37 !important;
-    transform: translateY(-2px);
+  background-color: #d4af37 !important; /* Gold Color */
+  border-color: #d4af37 !important;
+  transform: translateY(-2px);
 }
 
 /* Change text and icon colors to white on hover for better visibility */
 .h5-service-section .service-item.style-6:hover .title a,
 .h5-service-section .service-item.style-6:hover .desc,
 .h5-service-section .service-item.style-6:hover .service-icon i {
-    color: #ffffff !important;
+  color: #ffffff !important;
 }
 
 /* Ensure the learn more button is completely hidden just in case */
 .h5-service-section .service-item.style-6 .text-btn {
-    display: none !important;
+  display: none !important;
 }
-.desc:hover{
-   color: #ffffff !important;
+.desc:hover {
+  color: #ffffff !important;
 }
 
 .h5-service-section .service-item.style-6:hover .service-content p,
 .h5-service-section .service-item.style-6:hover .desc {
-    opacity: 1 !important;
-    visibility: visible !important;
-    display: block !important;
-    height: auto !important;
-    transform: translateY(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  height: auto !important;
+  transform: translateY(0) !important;
+}
+
+.client-logo-custom img {
+  filter: none !important;
+  -webkit-filter: none !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+}
+.client-logo-custom:hover img {
+  filter: none !important;
+  -webkit-filter: none !important;
+  opacity: 1 !important;
+}
+.mission-vision-box{
+  background-color: var(--primary-navy);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+.mission-vision-box:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+.desc{
+  color: var(--bg-white) !important;
+}
+.swiper-slide .desc{
+  color: var(--primary-navy) !important;
+}
+
+.choose-content .desc{
+  color: var(--text-black) !important;
+} 
+
+.custom-feature-card .desc{
+  color: var(--text-black) !important;
+}
+
+.tj-page-header-content .tj-page-title{
+  color: var(--accent-gold) !important;
+
 }
