@@ -45,7 +45,7 @@ h6,
   border-color: var(--primary-navy) !important;
 }
 
-.sub-title {
+.sub-title, .tji-box {
   color: var(--accent-gold) !important;
 }
 
@@ -62,16 +62,17 @@ h6,
 ========================================= */
 .tj-service-section,
 .tj-working-process {
-  background-color: var(--primary-navy) !important;
+    background-color: var(--tj-color-theme-bg);
+    border-radius: 12px ;
+    position: relative !important;
+    z-index: 1 !important;
 }
 
 .tj-service-section h2,
 .tj-working-process h2,
-.tj-service-section .sub-title,
-.tj-working-process .sub-title,
 .tj-service-section p,
 .tj-working-process p {
-  color: var(--bg-white) !important;
+  color: var(--bg-black) !important;
 }
 
 .tj-service-section h2 span,
@@ -580,7 +581,6 @@ h6,
 /* Client Logo Section */
 .client-section-custom {
   padding: 80px 0;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 .client-content-custom {
   max-width: 900px !important;
@@ -961,3 +961,43 @@ h6,
 .custom-breadcrumb-active {
   color: var(--accent-gold) !important;
 }
+
+/* =========================================
+   Testimonial Cards Equal Height Styles
+   ========================================= */
+
+.testimonial-slider .swiper-wrapper {
+    align-items: stretch;
+}
+
+.testimonial-slider .swiper-slide {
+    height: auto; 
+}
+
+.testimonial-item {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-item .desc {
+    flex-grow: 1;
+}
+
+.testimonial-item .testimonial-author {
+    margin-top: auto; 
+}
+
+/* =========================================
+   Countup Section - Height Adjustment
+   ========================================= */
+.tj-countup-section {
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
+}
+
+.countup-wrap {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+

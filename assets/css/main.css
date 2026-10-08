@@ -7539,6 +7539,7 @@ START: Heading CSS
 @media only screen and (min-width: 768px) and (max-width: 991px), only screen and (min-width: 576px) and (max-width: 767px), (max-width: 575px) {
   .sec-heading .sub-title {
     font-size: 13px;
+    margin-top: 40px;
   }
 }
 .sec-heading.style-2 .sec-title span {
@@ -12591,7 +12592,7 @@ START: Countup CSS
 }
 @media only screen and (min-width: 1200px) and (max-width: 1399px), only screen and (min-width: 992px) and (max-width: 1199px) {
   .countup-item {
-    padding: 55px 30px 60px 30px;
+    padding: 30px 30px 30px 30px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px), only screen and (min-width: 576px) and (max-width: 767px) {
@@ -20295,6 +20296,7 @@ START: Theme Marquee CSS
   position: relative;
   overflow: hidden;
   padding: 70px 0;
+  margin-bottom: 100px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .h5-maquee {
@@ -20308,7 +20310,7 @@ START: Theme Marquee CSS
 }
 .h5-maquee-inner {
   position: relative;
-  background: var(--tj-color-theme-primary);
+  background: var(--accent-gold);
   padding: 31px 0;
   rotate: 2deg;
   z-index: 3;
@@ -20369,6 +20371,15 @@ START: Theme Marquee CSS
   white-space: nowrap;
   color: var(--tj-color-common-white);
 }
+/* අකුරු තියෙන .title class එක කෙලින්ම target කිරීම */
+.marquee-title .title {
+    color: var(--tj-color-theme-primary) !important;
+}
+
+/* ඔබ අකුරු වලට Outline එකක් (Border එකක්) එපා නම් මෙයත් එකතු කරන්න */
+.marquee-title .title {
+    -webkit-text-stroke: 0px !important; 
+}
 @media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px) {
   .h5-maquee-inner .h5-maquee-slider-item .marquee-box {
     gap: 35px;
@@ -20386,7 +20397,7 @@ START: Theme Marquee CSS
   }
 }
 .h5-maquee-inner-rtl {
-  background: var(--tj-color-common-white);
+  background: #C9C9C9;
   rotate: -4deg;
   position: absolute;
   inset-inline-start: 0;
