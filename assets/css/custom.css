@@ -1118,3 +1118,8 @@ h6,
 .test2{
   margin: 40px !important;
 }
+
+.mainmenu ul li.current-menu-ancestor > a {
+    color: #ff6600 !important; /* මේක ඔයාගේ website එකේ theme පාටට වෙනස් කරන්න */
+    font-weight: 700 !important;
+}

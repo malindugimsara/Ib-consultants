@@ -10030,9 +10030,9 @@ START: Services CSS
     margin-bottom: 16px;
   }
 }
-.service-item.style-2 .list-items li {
+/* .service-item.style-2 .list-items li {
   color: var(--tj-color-text-body-2);
-}
+} */
 .service-item.style-2:hover {
   background-color: var(--tj-color-theme-dark-2);
   border-color: var(--tj-color-theme-dark-2);

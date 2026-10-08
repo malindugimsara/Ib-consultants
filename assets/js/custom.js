@@ -29,3 +29,39 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
+function setActiveMenu() {
+    // දැනට ඉන්න පිටුවේ URL එක ගන්නවා
+    let currentUrl = window.location.href.split('#')[0].split('?')[0]; 
+    
+    // Menu එකේ තියෙන links ඔක්කොම ගන්නවා
+    let navLinks = document.querySelectorAll(".mainmenu ul li a");
+    
+    // මුලින්ම තියෙන active classes ඔක්කොම අයින් කරනවා
+    document.querySelectorAll(".mainmenu ul li").forEach(li => {
+        li.classList.remove("current-menu-ancestor", "active");
+    });
+
+    let isMatched = false;
+
+    navLinks.forEach(link => {
+        // බ්‍රව්සර් එකේ URL එකයි, link එකේ URL එකයි සමානද බලනවා
+        if (link.href === currentUrl) {
+            link.parentElement.classList.add("current-menu-ancestor");
+            isMatched = true;
+        }
+    });
+
+    // Home page (index.html) එක නමක් නැතුව (උදා: www.site.com/) load වුණොත්
+    if (!isMatched && (currentUrl.endsWith('/') || currentUrl.endsWith('.com') || currentUrl.endsWith('.lk') || currentUrl.includes('localhost'))) {
+        navLinks.forEach(link => {
+            if (link.getAttribute("href") === "index.html") {
+                link.parentElement.classList.add("current-menu-ancestor");
+            }
+        });
+    }
+}
+
+// පිටුව load වුණාට පස්සේ කේතය run කරන්න
+document.addEventListener("DOMContentLoaded", setActiveMenu);
+// Nav bar එක වෙනම load වෙනවා නම් (dynamic) කෙලින්ම run වෙන්න
+setTimeout(setActiveMenu, 10);
