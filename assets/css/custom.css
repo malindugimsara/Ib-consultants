@@ -84,7 +84,7 @@ h6,
 .service-item,
 .process-item,
 .contact-box {
-  background-color: var(--bg-white) !important;
+  background-color: var(--bg-white);
   border: 1px solid var(--accent-gold) !important;
   color: var(--text-black) !important;
 }
@@ -98,7 +98,7 @@ h6,
 .service-item p,
 .process-item p,
 .contact-box p {
-  color: var(--text-black) !important;
+  color: var(--text-black);
 }
 
 /* =========================================
@@ -1122,4 +1122,40 @@ h6,
 .mainmenu ul li.current-menu-ancestor > a {
     color: #ff6600 !important; /* මේක ඔයාගේ website එකේ theme පාටට වෙනස් කරන්න */
     font-weight: 700 !important;
+}
+
+/* Custom CSS for Gold Hover Effect on Workshop Cards */
+.h5-service-section .service-item.style-6 {
+    transition: all 0.4s ease;
+}
+
+/* Change background to Gold and move slightly up on hover */
+.h5-service-section .service-item.style-6:hover {
+    background-color: #d4af37 !important; /* Gold Color */
+    border-color: #d4af37 !important;
+    transform: translateY(-2px);
+}
+
+/* Change text and icon colors to white on hover for better visibility */
+.h5-service-section .service-item.style-6:hover .title a,
+.h5-service-section .service-item.style-6:hover .desc,
+.h5-service-section .service-item.style-6:hover .service-icon i {
+    color: #ffffff !important;
+}
+
+/* Ensure the learn more button is completely hidden just in case */
+.h5-service-section .service-item.style-6 .text-btn {
+    display: none !important;
+}
+.desc:hover{
+   color: #ffffff !important;
+}
+
+.h5-service-section .service-item.style-6:hover .service-content p,
+.h5-service-section .service-item.style-6:hover .desc {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+    height: auto !important;
+    transform: translateY(0) !important;
 }
