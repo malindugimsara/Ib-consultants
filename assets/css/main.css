@@ -13377,7 +13377,6 @@ START: Contact CSS
 
 .contact-item.style-2 {
   padding: 30px 25px 40px;
-  background-color: var(--tj-color-common-white);
   text-align: center;
   border-radius: 12px;
 }
@@ -14916,7 +14915,6 @@ START: Breadcrumb CSS
   display: inline-flex;
   line-height: 1;
   font-size: 16px;
-  color: var(--tj-color-theme-primary);
 }
 .tj-page-link span:not(:first-child) i {
   font-size: 18px;
@@ -29764,6 +29762,17 @@ START: Coming soon CSS
     gap: 10px;
     margin-top: 40px;
   }
+}
+
+.tj-contact-section-2 {
+  background-color: var(--tj-color-theme-bg);
+  border-radius: 12px;
+  position: relative;
+  z-index: 1;
+  padding-top: 100px !important;
+  overflow: hidden !important;
+  
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 /* !END: Coming soon CSS *//*# sourceMappingURL=main.css.map */

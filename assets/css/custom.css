@@ -45,7 +45,8 @@ h6,
   border-color: var(--primary-navy) !important;
 }
 
-.sub-title, .tji-box {
+.sub-title,
+.tji-box {
   color: var(--accent-gold) !important;
 }
 
@@ -62,10 +63,10 @@ h6,
 ========================================= */
 .tj-service-section,
 .tj-working-process {
-    background-color: var(--tj-color-theme-bg);
-    border-radius: 12px ;
-    position: relative !important;
-    z-index: 1 !important;
+  background-color: var(--tj-color-theme-bg);
+  border-radius: 12px;
+  position: relative !important;
+  z-index: 1 !important;
 }
 
 .tj-service-section h2,
@@ -967,37 +968,153 @@ h6,
    ========================================= */
 
 .testimonial-slider .swiper-wrapper {
-    align-items: stretch;
+  align-items: stretch;
 }
 
 .testimonial-slider .swiper-slide {
-    height: auto; 
+  height: auto;
 }
 
 .testimonial-item {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .testimonial-item .desc {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .testimonial-item .testimonial-author {
-    margin-top: auto; 
+  margin-top: auto;
 }
 
 /* =========================================
    Countup Section - Height Adjustment
    ========================================= */
 .tj-countup-section {
-    padding-top: 30px !important;
-    padding-bottom: 30px !important;
+  padding-top: 30px !important;
+  padding-bottom: 30px !important;
 }
 
 .countup-wrap {
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
 }
 
+.test{
+  margin: 10px !important;
+}
+/* =========================================
+   Contact Cards Pop-up Hover Animation
+   ========================================= */
+.custom-feature-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important; /* Smooth bounce effect */
+}
+
+.custom-feature-card:hover {
+    transform: translateY(-15px) scale(1.03) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08) !important;
+    z-index: 2;
+}
+
+/* =========================================
+   Contact Page Social Media Icons (Centered & Responsive)
+   ========================================= */
+.tj-contact-social {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Idrindha center nalli baruttade */
+    gap: 15px;
+    margin-top: 40px; /* Submit button mathu icons madhye jaga (margin) */
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.tj-contact-social .social-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #0a1f44; 
+}
+
+.tj-contact-social .social-icons {
+    display: flex;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tj-contact-social .social-icons li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background-color: #f4f5f8;
+    color: #0a1f44;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.tj-contact-social .social-icons li a:hover {
+    background-color: var(--accent-gold, #d4af37);
+    color: #ffffff;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px rgba(212, 175, 55, 0.3);
+}
+
+/* Mobile Responsive Code */
+@media (max-width: 575px) {
+    .tj-contact-social {
+        flex-direction: column; /* Mobile nalli text mela mathu icons kelage baralu */
+        gap: 12px;
+        margin-top: 30px;
+    }
+    
+    .tj-contact-social .social-icons {
+        gap: 15px;
+    }
+    
+    .tj-contact-social .social-icons li a {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* =========================================
+   Service Details - 3 Cards in a Row Fix
+   ========================================= */
+.details-content-box {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; /* පේළියකට කාඩ්පත් 3ක් බෙදීම */
+    gap: 20px !important; /* කාඩ්පත් අතර පරතරය */
+    align-items: stretch !important; /* කාඩ්පත් 3ම එකම උසින් (Height) තබා ගැනීම */
+}
+
+/* Template එකේ කලින් තිබූ Width සහ Margins ඉවත් කිරීම */
+.details-content-box .service-details-item {
+    width: 100% !important; 
+    margin: 0 !important;
+    height: 100% !important;
+}
+
+/* iPad / Tablet Responsive (පේළියකට කාඩ්පත් 2යි) */
+@media (max-width: 991px) {
+    .details-content-box {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* Mobile Responsive (පේළියකට 1 කාඩ්පත බැගින් එකක් යට එකක්) */
+@media (max-width: 767px) {
+    .details-content-box {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+.test2{
+  margin: 40px !important;
+}
