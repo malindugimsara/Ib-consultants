@@ -206,172 +206,445 @@
 
                 <!-- start: 10 Practical Business Workshops (Slider Section) -->
                 <section id="services" class="h5-service-section overflow-hidden section-gap bg-light">
+
+                    <style>
+                        .workshop-card {
+                            display: flex;
+                            flex-direction: column;
+                            border-top: 4px solid #091a32;
+                            transition: transform 0.3s ease, box-shadow 0.3s ease;
+                        }
+
+                        .workshop-card:hover {
+                            transform: translateY(-5px);
+                            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
+                        }
+
+                        .workshop-card ul li {
+                            position: relative;
+                            padding-left: 25px;
+                            margin-bottom: 8px;
+                            font-size: 15px;
+                            color: #555;
+                        }
+
+                        .workshop-card ul li i {
+                            position: absolute;
+                            left: 0;
+                            top: 4px;
+                            color: #c5a47c;
+                            font-size: 14px;
+                        }
+                    </style>
+
                     <div class="container">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="sec-heading-wrap style-3">
+                        <!-- Section Header -->
+                        <div class="row mb-5">
+                            <div class="col-12 text-center">
+                                <div class="sec-heading style-3">
                                     <span class="sub-title wow fadeInUp" data-wow-delay=".3s"><i
                                             class="tji-box"></i>Corporate & Public Workshops</span>
-                                    <div class="heading-wrap-content">
-                                        <div class="sec-heading style-3">
-                                            <h2 class="sec-title text-anim">10 Practical Business Workshops.</h2>
-                                        </div>
-                                        <div class="btn-area wow fadeInUp" data-wow-delay=".8s">
-                                            <a class="tj-primary-btn" href="contact.html">
-                                                <span class="btn-text"><span>Request a Workshop</span></span>
-                                                <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
-                                            </a>
-                                        </div>
-                                    </div>
+                                    <h2 class="sec-title text-anim">10 Practical Business Workshops.</h2>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="service-wrapper wow fadeInUp" data-wow-delay=".4s">
-                                    <div class="swiper service-slider-2">
-                                        <div class="swiper-wrapper">
 
-                                            <!-- Workshop 1 -->
-                                            <div class="swiper-slide">
-                                                <div class="service-item style-6">
-                                                    <h4 class="title"><a href="contact.html">Business Health Check &
-                                                            Performance Improvement</a></h4>
-                                                    <div class="service-icon"><i class="tji-service-1"></i></div>
-                                                    <div class="service-content">
-                                                        <p class="desc">Diagnose business problems and create a
-                                                            prioritized 90-day improvement plan.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                        <!-- 10 Workshops Grid -->
+                        <div class="row wow fadeInUp" data-wow-delay=".4s">
 
-                                            <!-- Workshop 2 -->
-                                            <div class="swiper-slide">
-                                                <div class="service-item style-6">
-                                                    <h4 class="title"><a href="contact.html">Profit Improvement & Cost
-                                                            Reduction</a></h4>
-                                                    <div class="service-icon"><i class="tji-service-2"></i></div>
-                                                    <div class="service-content">
-                                                        <p class="desc">Identify cost savings and measurable
-                                                            profit-improvement opportunities for SMEs.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Workshop 3 -->
-                                            <div class="swiper-slide">
-                                                <div class="service-item style-6">
-                                                    <h4 class="title"><a href="contact.html">Manufacturing Costing &
-                                                            Process Improvement</a></h4>
-                                                    <div class="service-icon"><i class="tji-service-3"></i></div>
-                                                    <div class="service-content">
-                                                        <p class="desc">Calculate realistic manufacturing costs and
-                                                            identify factory productivity opportunities.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Workshop 4 -->
-                                            <div class="swiper-slide">
-                                                <div class="service-item style-6">
-                                                    <h4 class="title"><a href="contact.html">Sales Excellence & Customer
-                                                            Development</a></h4>
-                                                    <div class="service-icon"><i class="tji-service-4"></i></div>
-                                                    <div class="service-content">
-                                                        <p class="desc">A structured sales process designed to improve
-                                                            customer acquisition and conversion.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Workshop 5 -->
-                                            <div class="swiper-slide">
-                                                <div class="service-item style-6">
-                                                    <h4 class="title"><a href="contact.html">Domestic Market Dev. &
-                                                            Distributor Mgt.</a></h4>
-                                                    <div class="service-icon"><i class="tji-service-1"></i></div>
-                                                    <div class="service-content">
-                                                        <p class="desc">Learn how to build, manage and improve a
-                                                            performance-driven distribution network.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Workshop 6 -->
-                                            <div class="swiper-slide">
-                                                <div class="service-item style-6">
-                                                    <h4 class="title"><a href="contact.html">Export Market Dev. &
-                                                            International Sales</a></h4>
-                                                    <div class="service-icon"><i class="tji-service-2"></i></div>
-                                                    <div class="service-content">
-                                                        <p class="desc">A practical framework for identifying
-                                                            international opportunities and export sales.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Workshop 7 -->
-                                            <div class="swiper-slide">
-                                                <div class="service-item style-6">
-                                                    <h4 class="title"><a href="contact.html">Digital Marketing & Social
-                                                            Media Growth</a></h4>
-                                                    <div class="service-icon"><i class="tji-service-3"></i></div>
-                                                    <div class="service-content">
-                                                        <p class="desc">Build a practical digital marketing system that
-                                                            attracts and converts prospects.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Workshop 8 -->
-                                            <div class="swiper-slide">
-                                                <div class="service-item style-6">
-                                                    <h4 class="title"><a href="contact.html">AI for Business, Marketing
-                                                            & Productivity</a></h4>
-                                                    <div class="service-icon"><i class="tji-service-4"></i></div>
-                                                    <div class="service-content">
-                                                        <p class="desc">Use AI to improve research, marketing, sales,
-                                                            analysis, and daily productivity.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Workshop 9 -->
-                                            <div class="swiper-slide">
-                                                <div class="service-item style-6">
-                                                    <h4 class="title"><a href="contact.html">Business Planning, Strategy
-                                                            & KPI Mgt.</a></h4>
-                                                    <div class="service-icon"><i class="tji-service-1"></i></div>
-                                                    <div class="service-content">
-                                                        <p class="desc">Develop a structured approach to strategy,
-                                                            planning, KPI management and execution.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Workshop 10 -->
-                                            <div class="swiper-slide">
-                                                <div class="service-item style-6">
-                                                    <h4 class="title"><a href="contact.html">SME Financial Management &
-                                                            Pricing</a></h4>
-                                                    <div class="service-icon"><i class="tji-service-2"></i></div>
-                                                    <div class="service-content">
-                                                        <p class="desc">Gain practical financial-management skills to
-                                                            make better pricing and cash-flow decisions.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <div class="swiper-pagination-area"></div>
+                            <!-- Workshop 01 -->
+                            <div class="col-lg-6 col-md-12 mb-4">
+                                <div class="workshop-card h-100 p-4 bg-white rounded shadow-sm">
+                                    <h4 style="color: #091a32; font-size: 20px; font-weight: 700; margin-bottom: 10px;">
+                                        01. Business Health Check & Performance Improvement Workshop</h4>
+                                    <!--[cite: 19] -->
+                                    <p style="color: #c5a47c; font-size: 14px; font-weight: 600; margin-bottom: 20px;">
+                                        <i class="fa-solid fa-users" style="margin-right: 8px;"></i>Ideal for: Business
+                                        owners, directors and managers<!--[cite: 19] -->
+                                    </p>
+                                    <h6 style="color: #091a32; font-size: 16px; font-weight: 600; margin-bottom: 15px;">
+                                        Key Topics:</h6>
+                                    <ul style="list-style: none; padding-left: 0; margin-bottom: 20px;">
+                                        <li><i></i>Business performance assessment<!--[cite: 19] --></li>
+                                        <li><i></i>Sales, gross profit and net profit analysis<!--[cite: 19] --></li>
+                                        <li><i></i>Cash-flow and cost-structure review<!--[cite: 19] --></li>
+                                        <li><i></i>Customer and competitor analysis<!--[cite: 19] --></li>
+                                        <li><i></i>KPI assessment<!--[cite: 19] --></li>
+                                        <li><i></i>Identifying critical business problems<!--[cite: 19] --></li>
+                                        <li><i></i>90-day improvement planning<!--[cite: 19] --></li>
+                                    </ul>
+                                    <div class="outcome-box mt-auto p-3"
+                                        style="background-color: #f4f6f9; border-left: 3px solid #c5a47c; border-radius: 4px;">
+                                        <p class="m-0" style="font-size: 14.5px; color: #333;"><strong>Outcome:</strong>
+                                            Participants learn a practical framework to diagnose business problems and
+                                            create a prioritized improvement plan.<!--[cite: 19] --></p>
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Workshop 02 -->
+                            <div class="col-lg-6 col-md-12 mb-4">
+                                <div class="workshop-card h-100 p-4 bg-white rounded shadow-sm">
+                                    <h4 style="color: #091a32; font-size: 20px; font-weight: 700; margin-bottom: 10px;">
+                                        02. Profit Improvement & Cost Reduction Workshop</h4><!--[cite: 19] -->
+                                    <p style="color: #c5a47c; font-size: 14px; font-weight: 600; margin-bottom: 20px;">
+                                        <i class="fa-solid fa-users" style="margin-right: 8px;"></i>Ideal for: SME
+                                        owners, finance managers, operations managers and management
+                                        teams<!--[cite: 19] -->
+                                    </p>
+                                    <h6 style="color: #091a32; font-size: 16px; font-weight: 600; margin-bottom: 15px;">
+                                        Key Topics:</h6>
+                                    <ul style="list-style: none; padding-left: 0; margin-bottom: 20px;">
+                                        <li><i class="fa-solid fa-check"></i>Gross margin and contribution
+                                            analysis<!--[cite: 19] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Product and customer
+                                            profitability<!--[cite: 19] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Cost leakage
+                                            identification<!--[cite: 19] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Pricing and margin
+                                            improvement<!--[cite: 19] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Break-even analysis<!--[cite: 19] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Waste and unnecessary-cost
+                                            reduction<!--[cite: 19] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Profit improvement action
+                                            planning<!--[cite: 19] --></li>
+                                    </ul>
+                                    <div class="outcome-box mt-auto p-3"
+                                        style="background-color: #f4f6f9; border-left: 3px solid #c5a47c; border-radius: 4px;">
+                                        <p class="m-0" style="font-size: 14.5px; color: #333;"><strong>Outcome:</strong>
+                                            A practical framework for identifying cost savings and measurable
+                                            profit-improvement opportunities.<!--[cite: 19] --></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Workshop 03 -->
+                            <div class="col-lg-6 col-md-12 mb-4">
+                                <div class="workshop-card h-100 p-4 bg-white rounded shadow-sm">
+                                    <h4 style="color: #091a32; font-size: 20px; font-weight: 700; margin-bottom: 10px;">
+                                        03. Manufacturing Costing, Productivity & Process Improvement Workshop</h4>
+                                    <!--[cite: 19] -->
+                                    <p style="color: #c5a47c; font-size: 14px; font-weight: 600; margin-bottom: 20px;">
+                                        <i class="fa-solid fa-users" style="margin-right: 8px;"></i>Ideal for: Factory
+                                        owners, production managers, costing/finance teams and
+                                        supervisors<!--[cite: 19] -->
+                                    </p>
+                                    <h6 style="color: #091a32; font-size: 16px; font-weight: 600; margin-bottom: 15px;">
+                                        Key Topics:</h6>
+                                    <ul style="list-style: none; padding-left: 0; margin-bottom: 20px;">
+                                        <li><i class="fa-solid fa-check"></i>BOM and material costing<!--[cite: 19] -->
+                                        </li>
+                                        <li><i class="fa-solid fa-check"></i>Labour and machine-hour
+                                            costing<!--[cite: 19] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Factory overhead
+                                            allocation<!--[cite: 19] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Standard costing and cost per
+                                            unit<!--[cite: 19] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Capacity and machine
+                                            utilization<!--[cite: 19] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Labour productivity<!--[cite: 19] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Scrap, rejection and wastage
+                                            reduction<!--[cite: 19] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Process improvement and manufacturing
+                                            KPIs<!--[cite: 19] --></li>
+                                    </ul>
+                                    <div class="outcome-box mt-auto p-3"
+                                        style="background-color: #f4f6f9; border-left: 3px solid #c5a47c; border-radius: 4px;">
+                                        <p class="m-0" style="font-size: 14.5px; color: #333;"><strong>Outcome:</strong>
+                                            Participants learn how to calculate realistic manufacturing costs and
+                                            identify productivity and cost-reduction opportunities.<!--[cite: 19] -->
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Workshop 04 -->
+                            <div class="col-lg-6 col-md-12 mb-4">
+                                <div class="workshop-card h-100 p-4 bg-white rounded shadow-sm">
+                                    <h4 style="color: #091a32; font-size: 20px; font-weight: 700; margin-bottom: 10px;">
+                                        04. Sales Excellence & Customer Development Workshop</h4><!--[cite: 20] -->
+                                    <p style="color: #c5a47c; font-size: 14px; font-weight: 600; margin-bottom: 20px;">
+                                        <i class="fa-solid fa-users" style="margin-right: 8px;"></i>Ideal for: Sales
+                                        managers, sales executives, business owners and customer-facing
+                                        teams<!--[cite: 20] -->
+                                    </p>
+                                    <h6 style="color: #091a32; font-size: 16px; font-weight: 600; margin-bottom: 15px;">
+                                        Key Topics:</h6>
+                                    <ul style="list-style: none; padding-left: 0; margin-bottom: 20px;">
+                                        <li><i class="fa-solid fa-check"></i>Sales planning and target
+                                            setting<!--[cite: 20] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Customer segmentation<!--[cite: 20] -->
+                                        </li>
+                                        <li><i class="fa-solid fa-check"></i>Lead generation and
+                                            prospecting<!--[cite: 20] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Sales pipeline management<!--[cite: 20] -->
+                                        </li>
+                                        <li><i class="fa-solid fa-check"></i>Sales conversion
+                                            techniques<!--[cite: 20] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Negotiation and objection
+                                            handling<!--[cite: 20] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Key-account management<!--[cite: 20] -->
+                                        </li>
+                                        <li><i class="fa-solid fa-check"></i>Sales KPIs and performance
+                                            reviews<!--[cite: 20] --></li>
+                                    </ul>
+                                    <div class="outcome-box mt-auto p-3"
+                                        style="background-color: #f4f6f9; border-left: 3px solid #c5a47c; border-radius: 4px;">
+                                        <p class="m-0" style="font-size: 14.5px; color: #333;"><strong>Outcome:</strong>
+                                            A structured sales process designed to improve customer acquisition,
+                                            conversion and sales productivity.<!--[cite: 20] --></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Workshop 05 -->
+                            <div class="col-lg-6 col-md-12 mb-4">
+                                <div class="workshop-card h-100 p-4 bg-white rounded shadow-sm">
+                                    <h4 style="color: #091a32; font-size: 20px; font-weight: 700; margin-bottom: 10px;">
+                                        05. Domestic Market Development & Distributor Management Workshop</h4>
+                                    <!--[cite: 20] -->
+                                    <p style="color: #c5a47c; font-size: 14px; font-weight: 600; margin-bottom: 20px;">
+                                        <i class="fa-solid fa-users" style="margin-right: 8px;"></i>Ideal for: Business
+                                        owners, sales managers, distributors and channel managers<!--[cite: 20] -->
+                                    </p>
+                                    <h6 style="color: #091a32; font-size: 16px; font-weight: 600; margin-bottom: 15px;">
+                                        Key Topics:</h6>
+                                    <ul style="list-style: none; padding-left: 0; margin-bottom: 20px;">
+                                        <li><i class="fa-solid fa-check"></i>Domestic market
+                                            assessment<!--[cite: 20] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Territory and channel
+                                            strategy<!--[cite: 20] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Distributor selection<!--[cite: 20] -->
+                                        </li>
+                                        <li><i class="fa-solid fa-check"></i>Distributor appointment and commercial
+                                            structures<!--[cite: 20] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Territory targets and sales
+                                            planning<!--[cite: 20] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Distributor margins and
+                                            incentives<!--[cite: 20] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Stock and secondary-sales
+                                            monitoring<!--[cite: 20] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Distributor performance
+                                            reviews<!--[cite: 20] --></li>
+                                    </ul>
+                                    <div class="outcome-box mt-auto p-3"
+                                        style="background-color: #f4f6f9; border-left: 3px solid #c5a47c; border-radius: 4px;">
+                                        <p class="m-0" style="font-size: 14.5px; color: #333;"><strong>Outcome:</strong>
+                                            Participants learn how to build, manage and improve a performance-driven
+                                            domestic distribution network.<!--[cite: 20] --></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Workshop 06 -->
+                            <div class="col-lg-6 col-md-12 mb-4">
+                                <div class="workshop-card h-100 p-4 bg-white rounded shadow-sm">
+                                    <h4 style="color: #091a32; font-size: 20px; font-weight: 700; margin-bottom: 10px;">
+                                        06. Export Market Development & International Sales Workshop</h4>
+                                    <!--[cite: 20] -->
+                                    <p style="color: #c5a47c; font-size: 14px; font-weight: 600; margin-bottom: 20px;">
+                                        <i class="fa-solid fa-users" style="margin-right: 8px;"></i>Ideal for:
+                                        Exporters, manufacturers, business owners and international sales
+                                        teams<!--[cite: 20] -->
+                                    </p>
+                                    <h6 style="color: #091a32; font-size: 16px; font-weight: 600; margin-bottom: 15px;">
+                                        Key Topics:</h6>
+                                    <ul style="list-style: none; padding-left: 0; margin-bottom: 20px;">
+                                        <li><i class="fa-solid fa-check"></i>Export-readiness
+                                            assessment<!--[cite: 20] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Target-market selection<!--[cite: 20] -->
+                                        </li>
+                                        <li><i class="fa-solid fa-check"></i>International market
+                                            research<!--[cite: 20] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Buyer, importer and distributor
+                                            identification<!--[cite: 20] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Export pricing and
+                                            positioning<!--[cite: 20] --></li>
+                                        <li><i class="fa-solid fa-check"></i>International lead
+                                            generation<!--[cite: 20] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Sales pipeline
+                                            development<!--[cite: 20] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Export market-entry
+                                            planning<!--[cite: 20] --></li>
+                                    </ul>
+                                    <div class="outcome-box mt-auto p-3"
+                                        style="background-color: #f4f6f9; border-left: 3px solid #c5a47c; border-radius: 4px;">
+                                        <p class="m-0" style="font-size: 14.5px; color: #333;"><strong>Outcome:</strong>
+                                            A practical framework for identifying international opportunities and
+                                            developing a structured export sales pipeline.<!--[cite: 20] --></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Workshop 07 -->
+                            <div class="col-lg-6 col-md-12 mb-4">
+                                <div class="workshop-card h-100 p-4 bg-white rounded shadow-sm">
+                                    <h4 style="color: #091a32; font-size: 20px; font-weight: 700; margin-bottom: 10px;">
+                                        07. Digital Marketing, Lead Generation & Social Media Growth Workshop</h4>
+                                    <!--[cite: 21] -->
+                                    <p style="color: #c5a47c; font-size: 14px; font-weight: 600; margin-bottom: 20px;">
+                                        <i class="fa-solid fa-users" style="margin-right: 8px;"></i>Ideal for: SME
+                                        owners, marketing teams, sales teams and entrepreneurs<!--[cite: 21] -->
+                                    </p>
+                                    <h6 style="color: #091a32; font-size: 16px; font-weight: 600; margin-bottom: 15px;">
+                                        Key Topics:</h6>
+                                    <ul style="list-style: none; padding-left: 0; margin-bottom: 20px;">
+                                        <li><i class="fa-solid fa-check"></i>Digital marketing
+                                            strategy<!--[cite: 21] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Customer personas and online
+                                            positioning<!--[cite: 21] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Facebook and Instagram
+                                            marketing<!--[cite: 21] --></li>
+                                        <li><i class="fa-solid fa-check"></i>LinkedIn for B2B lead
+                                            generation<!--[cite: 21] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Content strategy and content
+                                            planning<!--[cite: 21] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Paid advertising
+                                            fundamentals<!--[cite: 21] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Website and landing-page
+                                            conversion<!--[cite: 21] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Lead-generation funnels<!--[cite: 21] -->
+                                        </li>
+                                        <li><i class="fa-solid fa-check"></i>Digital marketing KPIs<!--[cite: 21] -->
+                                        </li>
+                                    </ul>
+                                    <div class="outcome-box mt-auto p-3"
+                                        style="background-color: #f4f6f9; border-left: 3px solid #c5a47c; border-radius: 4px;">
+                                        <p class="m-0" style="font-size: 14.5px; color: #333;"><strong>Outcome:</strong>
+                                            Participants learn how to build a practical digital marketing system that
+                                            attracts, captures and converts prospects.<!--[cite: 21] --></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Workshop 08 -->
+                            <div class="col-lg-6 col-md-12 mb-4">
+                                <div class="workshop-card h-100 p-4 bg-white rounded shadow-sm">
+                                    <h4 style="color: #091a32; font-size: 20px; font-weight: 700; margin-bottom: 10px;">
+                                        08. AI for Business, Marketing & Productivity Workshop</h4><!--[cite: 21] -->
+                                    <p style="color: #c5a47c; font-size: 14px; font-weight: 600; margin-bottom: 20px;">
+                                        <i class="fa-solid fa-users" style="margin-right: 8px;"></i>Ideal for: Business
+                                        owners, managers, sales and marketing teams<!--[cite: 21] -->
+                                    </p>
+                                    <h6 style="color: #091a32; font-size: 16px; font-weight: 600; margin-bottom: 15px;">
+                                        Key Topics:</h6>
+                                    <ul style="list-style: none; padding-left: 0; margin-bottom: 20px;">
+                                        <li><i class="fa-solid fa-check"></i>AI fundamentals for
+                                            business<!--[cite: 21] --></li>
+                                        <li><i class="fa-solid fa-check"></i>AI-assisted market and competitor
+                                            research<!--[cite: 21] --></li>
+                                        <li><i class="fa-solid fa-check"></i>AI for content creation and
+                                            marketing<!--[cite: 21] --></li>
+                                        <li><i class="fa-solid fa-check"></i>AI for sales prospecting and customer
+                                            communication<!--[cite: 21] --></li>
+                                        <li><i class="fa-solid fa-check"></i>AI-assisted business analysis and
+                                            reporting<!--[cite: 21] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Prompting techniques for business
+                                            tasks<!--[cite: 21] --></li>
+                                        <li><i class="fa-solid fa-check"></i>AI workflow and productivity
+                                            applications<!--[cite: 21] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Responsible and practical use of
+                                            AI<!--[cite: 21] --></li>
+                                    </ul>
+                                    <div class="outcome-box mt-auto p-3"
+                                        style="background-color: #f4f6f9; border-left: 3px solid #c5a47c; border-radius: 4px;">
+                                        <p class="m-0" style="font-size: 14.5px; color: #333;"><strong>Outcome:</strong>
+                                            Participants learn practical ways to use AI to improve research, marketing,
+                                            sales, analysis, communication and daily productivity.<!--[cite: 21] --></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Workshop 09 -->
+                            <div class="col-lg-6 col-md-12 mb-4">
+                                <div class="workshop-card h-100 p-4 bg-white rounded shadow-sm">
+                                    <h4 style="color: #091a32; font-size: 20px; font-weight: 700; margin-bottom: 10px;">
+                                        09. Business Planning, Strategy & KPI Management Workshop</h4><!--[cite: 21] -->
+                                    <p style="color: #c5a47c; font-size: 14px; font-weight: 600; margin-bottom: 20px;">
+                                        <i class="fa-solid fa-users" style="margin-right: 8px;"></i>Ideal for: Business
+                                        owners, directors, GMs and department managers<!--[cite: 21] -->
+                                    </p>
+                                    <h6 style="color: #091a32; font-size: 16px; font-weight: 600; margin-bottom: 15px;">
+                                        Key Topics:</h6>
+                                    <ul style="list-style: none; padding-left: 0; margin-bottom: 20px;">
+                                        <li><i class="fa-solid fa-check"></i>Vision, mission and business
+                                            objectives<!--[cite: 21] --></li>
+                                        <li><i class="fa-solid fa-check"></i>SWOT and strategic
+                                            analysis<!--[cite: 21] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Market opportunities and competitive
+                                            strategy<!--[cite: 21] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Annual business planning<!--[cite: 21] -->
+                                        </li>
+                                        <li><i class="fa-solid fa-check"></i>Department and company
+                                            KPIs<!--[cite: 21] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Performance dashboards<!--[cite: 21] -->
+                                        </li>
+                                        <li><i class="fa-solid fa-check"></i>Management review
+                                            meetings<!--[cite: 21] --></li>
+                                        <li><i class="fa-solid fa-check"></i>90-day and 12-month action
+                                            planning<!--[cite: 21] --></li>
+                                    </ul>
+                                    <div class="outcome-box mt-auto p-3"
+                                        style="background-color: #f4f6f9; border-left: 3px solid #c5a47c; border-radius: 4px;">
+                                        <p class="m-0" style="font-size: 14.5px; color: #333;"><strong>Outcome:</strong>
+                                            Participants develop a structured approach to strategy, planning, KPI
+                                            management and execution.<!--[cite: 21] --></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Workshop 10 -->
+                            <div class="col-lg-6 col-md-12 mb-4">
+                                <div class="workshop-card h-100 p-4 bg-white rounded shadow-sm">
+                                    <h4 style="color: #091a32; font-size: 20px; font-weight: 700; margin-bottom: 10px;">
+                                        10. SME Financial Management, Pricing & Working Capital Workshop</h4>
+                                    <!--[cite: 22] -->
+                                    <p style="color: #c5a47c; font-size: 14px; font-weight: 600; margin-bottom: 20px;">
+                                        <i class="fa-solid fa-users" style="margin-right: 8px;"></i>Ideal for: Business
+                                        owners, non-finance managers, finance teams and entrepreneurs<!--[cite: 22] -->
+                                    </p>
+                                    <h6 style="color: #091a32; font-size: 16px; font-weight: 600; margin-bottom: 15px;">
+                                        Key Topics:</h6>
+                                    <ul style="list-style: none; padding-left: 0; margin-bottom: 20px;">
+                                        <li><i class="fa-solid fa-check"></i>Understanding financial
+                                            statements<!--[cite: 22] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Gross margin and net
+                                            profit<!--[cite: 22] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Product and customer
+                                            profitability<!--[cite: 22] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Pricing strategy<!--[cite: 22] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Break-even and contribution
+                                            analysis<!--[cite: 22] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Inventory and working capital
+                                            management<!--[cite: 22] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Receivables and cash-flow
+                                            improvement<!--[cite: 22] --></li>
+                                        <li><i class="fa-solid fa-check"></i>Financial KPIs for management
+                                            decisions<!--[cite: 22] --></li>
+                                    </ul>
+                                    <div class="outcome-box mt-auto p-3"
+                                        style="background-color: #f4f6f9; border-left: 3px solid #c5a47c; border-radius: 4px;">
+                                        <p class="m-0" style="font-size: 14.5px; color: #333;"><strong>Outcome:</strong>
+                                            Participants gain practical financial-management skills to make better
+                                            pricing, cost, inventory and cash-flow decisions.<!--[cite: 22] --></p>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
+
+                        <div class="row mt-4">
+                            <div class="col-12 text-center wow fadeInUp" data-wow-delay=".6s">
+                                <a class="tj-primary-btn" href="contact.html">
+                                    <span class="btn-text"><span>Request a Workshop</span></span>
+                                    <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
                 </section>
+                <!-- end: 10 Practical Business Workshops -->
                 <!-- end: 10 Practical Business Workshops -->
 
                 <!-- start: Advanced Diploma-Level Programmes (Award Section) -->
@@ -606,7 +879,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </section>
                 <!-- end: FAQs / Delivery Model -->
 
@@ -671,7 +944,7 @@
             });
         });
     </script>
-    
+
 </body>
 
 </html>

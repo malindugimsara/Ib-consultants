@@ -50,6 +50,13 @@ h6,
   color: var(--accent-gold) !important;
 }
 
+.sub-title {
+  border: 2px !important;
+  border-radius: 18px !important;
+  background-color: var(--primary-navy) !important;
+  padding: 10px 20px !important;
+}
+
 .service-icon i,
 .count-icon i,
 .tji-arrow-right-long,
@@ -106,40 +113,57 @@ h6,
 ========================================= */
 .tj-slider-section {
   position: relative;
-  width: 98%;
-  margin: 10px auto;
+  width: 100% !important;
+  max-width: 100% !important;
   height: 85vh;
   background-color: var(--primary-navy);
-  border-radius: 25px !important;
+  border-radius: 0 !important;
   overflow: hidden !important;
+  margin: 180px 0 0 0 !important;
+  padding: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+@media (max-width: 991px) {
+  .tj-slider-section {
+    margin: 1px 0 0 0 !important;
+    width: 100% !important;
+  }
 }
 
 .swiper.hero-slider {
   height: 100%;
-  border-radius: 30px !important;
+  width: 100% !important;
+  border-radius: 0 !important;
   overflow: hidden !important;
 }
 
 .tj-slider-item {
   position: relative;
   height: 100%;
-  width: 100%;
+  width: 100% !important;
   display: flex;
-  align-items: center; /* මේ මගින් ඉතිරි උස ප්‍රමාණයේ හරි මැදට content එක ගෙන එයි */
-  padding-top: 100px; /* මෙතනට ඔබේ nav bar එකේ උස දෙන්න (උදා: 90px හෝ 100px) */
+  align-items: center;
+  padding-top: 100px;
   box-sizing: border-box;
   overflow: hidden;
+}
+
+/* Remove default template overlay to let the background image display across the entire page */
+.tj-slider-item::after {
+  display: none !important;
 }
 
 .slider-bg-image {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: right center;
-  background-repeat: no-repeat;
+  width: 100% !important;
+  height: 100% !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
   z-index: 1;
 }
 
@@ -147,12 +171,15 @@ h6,
 .slider-bg-1 {
   background-image: url("../images/hero/slider-1.jpg");
 }
+
 .slider-bg-2 {
   background-image: url("../images/hero/slider-2.jpg");
 }
+
 .slider-bg-3 {
   background-image: url("../images/hero/slider-3.jpg");
 }
+
 .slider-bg-4 {
   background-image: url("../images/hero/slider-4.jpg");
 }
@@ -164,12 +191,10 @@ h6,
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    to right,
-    var(--primary-navy) 10%,
-    rgba(10, 31, 68, 0.8) 55%,
-    rgba(10, 31, 68, 0) 100%
-  );
+  background: linear-gradient(to right,
+      rgba(10, 31, 68, 0.82) 0%,
+      rgba(10, 31, 68, 0.6) 45%,
+      rgba(10, 31, 68, 0.35) 100%);
   z-index: 2;
 }
 
@@ -256,7 +281,8 @@ h6,
 }
 
 .benefits-title {
-  color: var(--bg-white); /* මාතෘකාව සුදු පැහැ ගැන්වීම */
+  color: var(--bg-white);
+  /* මාතෘකාව සුදු පැහැ ගැන්වීම */
   font-size: 26px;
   font-weight: 700;
   margin-bottom: 30px;
@@ -287,9 +313,11 @@ h6,
 
 /* Mouse එක ගෙන ගිය විට Box එක Highlight වීම */
 .benefits-list li:hover {
-  border-color: var(--accent-gold); /* Gold Border එකක් මතු වීම */
+  border-color: var(--accent-gold);
+  /* Gold Border එකක් මතු වීම */
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  transform: translateY(-5px); /* මදක් ඉහළට එසවීම */
+  transform: translateY(-5px);
+  /* මදක් ඉහළට එසවීම */
 }
 
 /* Icons wrap එකේ Design එක */
@@ -538,6 +566,7 @@ h6,
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -557,24 +586,31 @@ h6,
 .preloader-bg-gold {
   background-color: var(--accent-gold);
 }
+
 .preloader-bg-white {
   background-color: var(--bg-white);
 }
+
 .back-to-top-bg {
   background-color: var(--primary-navy);
 }
+
 .back-to-top-text {
   color: var(--accent-gold);
 }
+
 .text-white-custom {
   color: var(--bg-white) !important;
 }
+
 .desc-text-white {
   color: var(--bg-white) !important;
 }
+
 .no-text-decoration {
   text-decoration: none !important;
 }
+
 .text-justify-custom {
   text-align: justify;
 }
@@ -583,24 +619,28 @@ h6,
 .client-section-custom {
   padding: 80px 0;
 }
+
 .client-content-custom {
   max-width: 900px !important;
   width: 100%;
   margin: 0 auto 60px auto;
   padding: 20px 15px;
 }
+
 .client-title-custom {
   color: var(--bg-white);
   font-size: 32px;
   font-weight: 700;
   line-height: 1.4;
 }
+
 .client-numbers-custom {
   color: var(--accent-gold, #0a1f44);
   font-weight: 900;
   font-size: 52px;
   padding: 0 10px;
 }
+
 .client-subtitle-custom {
   display: block;
   font-size: 18px;
@@ -609,9 +649,11 @@ h6,
   color: #cccccc;
   letter-spacing: 1px;
 }
+
 .client-swiper-custom {
   align-items: center;
 }
+
 .client-logo-custom {
   background-color: var(--bg-white);
   padding: 25px 20px;
@@ -619,14 +661,17 @@ h6,
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
 }
+
 .client-logo-custom:hover {
   transform: translateY(-5px);
 }
+
 .client-logo-custom img {
   filter: grayscale(100%);
   opacity: 0.7;
   transition: all 0.3s ease;
 }
+
 .client-logo-custom:hover img {
   filter: grayscale(0%);
   opacity: 1;
@@ -645,17 +690,20 @@ h6,
   padding: 25px 30px;
   box-shadow: 0px 15px 35px rgba(10, 31, 68, 0.4);
 }
+
 .rating-title-custom {
   color: var(--accent-gold) !important;
   font-size: 52px;
   font-weight: 800;
   line-height: 1;
 }
+
 .rating-stars-custom {
   color: var(--accent-gold);
   font-size: 24px;
   letter-spacing: 3px;
 }
+
 .rating-text-custom {
   color: var(--bg-white);
   font-size: 15px;
@@ -663,6 +711,7 @@ h6,
   letter-spacing: 0.5px;
   opacity: 0.9;
 }
+
 .testimonial-item-custom {
   border: 1px solid var(--accent-gold);
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
@@ -672,13 +721,16 @@ h6,
 .footer-z-index {
   z-index: 1;
 }
+
 .text-center-custom {
   text-align: center;
 }
+
 .footer-address-custom {
   color: #d1d1d1;
   line-height: 1.8;
 }
+
 .footer-clock-custom {
   color: #f7a70a;
   font-size: 20px;
@@ -714,15 +766,14 @@ h6,
     justify-content: flex-start !important;
     gap: 15px !important;
   }
+
   .custom-time-flex i {
     position: static !important;
     margin-top: 5px !important;
   }
+
   .custom-time-flex span {
     text-align: left !important;
-  }
-  .mt-lg-custom {
-    margin-top: 25px !important;
   }
 }
 
@@ -731,22 +782,27 @@ h6,
   .slider-wrapper {
     max-width: 85%;
   }
+
   .slider-title {
     font-size: 2.8rem;
   }
+
   .header-area {
     padding-top: 10px !important;
     padding-bottom: 10px !important;
   }
+
   .header-wrapper {
     padding-top: 5px !important;
     padding-bottom: 5px !important;
     min-height: auto !important;
   }
+
   .site_logo img {
-    max-height: 50px !important;
+    max-height: 65px !important;
     width: auto !important;
   }
+
   .mobile_menu_bar {
     margin-top: 0 !important;
     margin-bottom: 0 !important;
@@ -757,9 +813,11 @@ h6,
     top: 0 !important;
     margin-bottom: 40px;
   }
+
   .main-service-card {
     margin-bottom: 20px;
   }
+
   .tj-slider-item {
     padding-top: 80px;
   }
@@ -767,29 +825,36 @@ h6,
 
 /* Mobile view */
 @media (max-width: 767px) {
+
   .tj-slider-section,
   .tj-slider-item {
     padding-top: 70px;
   }
+
   .slider-wrapper {
     max-width: 100%;
     text-align: center;
     padding: 0 10px;
   }
+
   .slider-title {
     font-size: 2.2rem;
     margin-bottom: 15px;
   }
+
   .slider-desc {
     font-size: 1rem;
     margin-bottom: 20px;
   }
+
   .slider-bg-image {
     background-position: center center;
   }
+
   .tj-slider-section .slider-bg-image::after {
     background: rgba(10, 31, 68, 0.85);
   }
+
   .slider-btn {
     display: flex;
     justify-content: center;
@@ -801,11 +866,13 @@ h6,
     justify-content: center !important;
     gap: 12px !important;
   }
+
   .custom-time-flex i {
     position: static !important;
     margin: 0 !important;
     transform: none !important;
   }
+
   .custom-time-flex span {
     text-align: center !important;
   }
@@ -816,14 +883,17 @@ h6,
     position: relative;
     z-index: 1;
   }
+
   .custom-logo-wrap {
     text-align: center !important;
     display: block !important;
     width: 100% !important;
   }
+
   .custom-logo-wrap a {
     display: inline-block !important;
   }
+
   .custom-logo-wrap img {
     margin-top: 30px;
     margin-left: auto !important;
@@ -832,33 +902,40 @@ h6,
     width: 150px !important;
     height: auto !important;
   }
+
   .custom-mobile-title {
     font-size: 28px !important;
     line-height: 1.3 !important;
     margin-bottom: 15px !important;
   }
+
   .custom-about-text {
     text-align: left !important;
     font-size: 15px !important;
     line-height: 1.6 !important;
     margin-bottom: 25px !important;
   }
+
   .custom-mobile-padding {
     padding-top: 60px !important;
     padding-bottom: 60px !important;
   }
+
   .custom-service-title {
     font-size: 28px !important;
     line-height: 1.3 !important;
   }
+
   .custom-mobile-card .service-content {
     padding: 25px 20px !important;
     text-align: center !important;
   }
+
   .custom-mobile-card .title {
     font-size: 22px !important;
     margin-bottom: 12px !important;
   }
+
   .custom-mobile-card .desc {
     font-size: 15px !important;
     line-height: 1.6 !important;
@@ -866,6 +943,7 @@ h6,
     margin-left: auto !important;
     margin-right: auto !important;
   }
+
   .custom-mobile-card .text-btn {
     justify-content: center !important;
     display: flex !important;
@@ -878,6 +956,7 @@ h6,
     font-size: 2.8rem !important;
     line-height: 1.2 !important;
   }
+
   .mt-lg-custom {
     margin-top: 0 !important;
   }
@@ -892,18 +971,21 @@ h6,
 
 .developer-credit a:hover {
   opacity: 0.8;
-  transform: translateY(-2px); /* Mouse එක ගෙන ගිය විට මදක් ඉහළට එසවීම */
+  transform: translateY(-2px);
+  /* Mouse එක ගෙන ගිය විට මදක් ඉහළට එසවීම */
 }
 
 .credit-text {
-  color: #ffffff; /* අකුරු වල වර්ණය (සුදු) */
+  color: #ffffff;
+  /* අකුරු වල වර්ණය (සුදු) */
   font-size: 15px;
   font-weight: 500;
   letter-spacing: 0.5px;
 }
 
 .developer-logo {
-  height: 35px; /* Logo එකේ උස - ඔබේ පින්තූරයේ ප්‍රමාණයට ගැලපෙන සේ මෙය අඩු/වැඩි කරන්න */
+  height: 35px;
+  /* Logo එකේ උස - ඔබේ පින්තූරයේ ප්‍රමාණයට ගැලපෙන සේ මෙය අඩු/වැඩි කරන්න */
   width: auto;
   object-fit: contain;
 }
@@ -913,9 +995,11 @@ h6,
   .developer-credit a {
     margin-top: 15px;
   }
+
   .credit-text {
     font-size: 14px;
   }
+
   .developer-logo {
     height: 30px;
   }
@@ -949,7 +1033,8 @@ h6,
 }
 
 .custom-page-overlay {
-  background-color: rgba(10, 31, 68, 0.75); /* Navy Blue අඳුරු ආවරණය */
+  background-color: rgba(10, 31, 68, 0.75);
+  /* Navy Blue අඳුරු ආවරණය */
   position: absolute;
   top: 0;
   left: 0;
@@ -1004,11 +1089,13 @@ h6,
 .test {
   margin: 10px !important;
 }
+
 /* =========================================
    Contact Cards Pop-up Hover Animation
    ========================================= */
 .custom-feature-card {
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important; /* Smooth bounce effect */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  /* Smooth bounce effect */
 }
 
 .custom-feature-card:hover {
@@ -1023,9 +1110,11 @@ h6,
 .tj-contact-social {
   display: flex;
   align-items: center;
-  justify-content: center; /* Idrindha center nalli baruttade */
+  justify-content: center;
+  /* Idrindha center nalli baruttade */
   gap: 15px;
-  margin-top: 40px; /* Submit button mathu icons madhye jaga (margin) */
+  margin-top: 40px;
+  /* Submit button mathu icons madhye jaga (margin) */
   margin-bottom: 20px;
   width: 100%;
 }
@@ -1068,7 +1157,8 @@ h6,
 /* Mobile Responsive Code */
 @media (max-width: 575px) {
   .tj-contact-social {
-    flex-direction: column; /* Mobile nalli text mela mathu icons kelage baralu */
+    flex-direction: column;
+    /* Mobile nalli text mela mathu icons kelage baralu */
     gap: 12px;
     margin-top: 30px;
   }
@@ -1088,12 +1178,13 @@ h6,
    ========================================= */
 .details-content-box {
   display: grid !important;
-  grid-template-columns: repeat(
-    3,
-    1fr
-  ) !important; /* පේළියකට කාඩ්පත් 3ක් බෙදීම */
-  gap: 20px !important; /* කාඩ්පත් අතර පරතරය */
-  align-items: stretch !important; /* කාඩ්පත් 3ම එකම උසින් (Height) තබා ගැනීම */
+  grid-template-columns: repeat(3,
+      1fr) !important;
+  /* පේළියකට කාඩ්පත් 3ක් බෙදීම */
+  gap: 20px !important;
+  /* කාඩ්පත් අතර පරතරය */
+  align-items: stretch !important;
+  /* කාඩ්පත් 3ම එකම උසින් (Height) තබා ගැනීම */
 }
 
 /* Template එකේ කලින් තිබූ Width සහ Margins ඉවත් කිරීම */
@@ -1122,8 +1213,9 @@ h6,
   border-radius: 25px !important;
 }
 
-.mainmenu ul li.current-menu-ancestor > a {
-  color: #ff6600 !important; /* මේක ඔයාගේ website එකේ theme පාටට වෙනස් කරන්න */
+.mainmenu ul li.current-menu-ancestor>a {
+  color: #ff6600 !important;
+  /* මේක ඔයාගේ website එකේ theme පාටට වෙනස් කරන්න */
   font-weight: 700 !important;
 }
 
@@ -1134,7 +1226,8 @@ h6,
 
 /* Change background to Gold and move slightly up on hover */
 .h5-service-section .service-item.style-6:hover {
-  background-color: #d4af37 !important; /* Gold Color */
+  background-color: #d4af37 !important;
+  /* Gold Color */
   border-color: #d4af37 !important;
   transform: translateY(-2px);
 }
@@ -1150,6 +1243,7 @@ h6,
 .h5-service-section .service-item.style-6 .text-btn {
   display: none !important;
 }
+
 .desc:hover {
   color: #ffffff !important;
 }
@@ -1169,37 +1263,430 @@ h6,
   opacity: 1 !important;
   mix-blend-mode: normal !important;
 }
+
 .client-logo-custom:hover img {
   filter: none !important;
   -webkit-filter: none !important;
   opacity: 1 !important;
 }
-.mission-vision-box{
+
+.mission-vision-box {
   background-color: var(--primary-navy);
   border-radius: 12px;
   padding: 30px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
-.mission-vision-box:hover{
+
+.mission-vision-box:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
-.desc{
+
+.desc {
   color: var(--bg-white) !important;
 }
-.swiper-slide .desc{
+
+.swiper-slide .desc {
   color: var(--primary-navy) !important;
 }
 
-.choose-content .desc{
-  color: var(--text-black) !important;
-} 
-
-.custom-feature-card .desc{
+.choose-content .desc {
   color: var(--text-black) !important;
 }
 
-.tj-page-header-content .tj-page-title{
-  color: var(--accent-gold) !important;
+.custom-feature-card .desc {
+  color: var(--text-black) !important;
+}
 
+.tj-page-header-content .tj-page-title {
+  color: var(--accent-gold) !important;
+}
+
+.custom-cta-area {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  background: #091a32;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.custom-cta-content {
+  flex: 1 1 50%;
+  min-width: 300px;
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.custom-cta-img {
+  flex: 1 1 50%;
+  min-height: 350px;
+  position: relative;
+}
+
+.custom-cta-img img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+}
+
+@media (max-width: 991px) {
+  .custom-cta-area {
+    flex-direction: column;
+  }
+
+  .custom-cta-content {
+    flex: 1 1 100%;
+    max-width: 100%;
+    padding: 40px 25px;
+  }
+
+  .custom-cta-img {
+    flex: 1 1 100%;
+    height: 300px;
+    min-height: 250px;
+  }
+
+  .custom-cta-img img {
+    position: relative;
+  }
+}
+
+.footer-top a:hover {
+  color: var(--accent-gold) !important;
+}
+
+
+/* --- Custom 3-Tier Header Styles (Desktop) --- */
+header.header-area.ib-desktop-header {
+  background-color: transparent !important;
+  border-radius: 0 !important;
+}
+
+/* --- Mobile Header Styles (Mobile & Tablet) --- */
+.ib-mobile-header {
+  background-color: #ffffff !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  margin-top: 15px;
+  position: relative;
+  z-index: 99;
+}
+
+.ib-mobile-header .header-wrapper {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 12px 18px !important;
+  background-color: #ffffff !important;
+  border-radius: 12px !important;
+}
+
+.ib-mobile-header .site_logo {
+  flex-shrink: 0 !important;
+}
+
+.ib-mobile-header .site_logo img {
+  max-height: 65px !important;
+  width: auto !important;
+  display: block;
+}
+
+/* --- Mobile Header Social Media Links --- */
+.ib-mobile-socials {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  margin: 0 auto !important;
+  flex-shrink: 0 !important;
+}
+
+.ib-mobile-socials a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 50% !important;
+  background-color: #f2f5f9 !important;
+  color: #091a32 !important;
+  font-size: 14px !important;
+  text-decoration: none !important;
+  transition: all 0.25s ease !important;
+  border: 1px solid rgba(9, 26, 50, 0.08) !important;
+}
+
+.ib-mobile-socials a:hover,
+.ib-mobile-socials a:active {
+  background-color: #c5a47c !important;
+  color: #ffffff !important;
+  border-color: #c5a47c !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 10px rgba(197, 164, 124, 0.35) !important;
+}
+
+.ib-mobile-header .header-right-item {
+  flex-shrink: 0 !important;
+}
+
+@media (max-width: 480px) {
+  .ib-mobile-header .header-wrapper {
+    padding: 8px 14px !important;
+  }
+  .ib-mobile-header .site_logo img {
+    max-height: 60px !important;
+  }
+  .ib-mobile-socials {
+    gap: 6px !important;
+    margin: 0 6px !important;
+  }
+  .ib-mobile-socials a {
+    width: 31px !important;
+    height: 31px !important;
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 375px) {
+  .ib-mobile-header .header-wrapper {
+    padding: 6px 10px !important;
+  }
+  .ib-mobile-header .site_logo img {
+    max-height: 52px !important;
+  }
+  .ib-mobile-socials {
+    gap: 4px !important;
+    margin: 0 4px !important;
+  }
+  .ib-mobile-socials a {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 12px !important;
+  }
+  .menu_bar.mobile_menu_bar {
+    width: 38px !important;
+    height: 38px !important;
+    padding: 9px 8px !important;
+  }
+}
+
+.menu_bar.mobile_menu_bar {
+  width: 45px !important;
+  height: 40px !important;
+  padding: 9px 9px !important;
+  background: #091a32 !important; /* Navy Blue */
+  border-radius: 8px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  cursor: pointer !important;
+  border: none !important;
+}
+
+.menu_bar.mobile_menu_bar span {
+  display: block !important;
+  background-color: #ffffff !important; /* White lines */
+  border-radius: 2px !important;
+  transition: all 0.3s ease !important;
+}
+
+/* 1. Top Bar (White) */
+.ib-top-bar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #eaeaea;
+  padding: 8px 0;
+  font-size: 13px;
+  color: #555555;
+}
+
+.ib-top-bar .social-icons {
+  margin-right: 50px;
+  /* Shift left from right edge */
+}
+
+.ib-top-bar .social-icons a {
+  color: #333333;
+  margin-left: 15px;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.ib-top-bar .social-icons a:hover {
+  color: #c5a47c;
+  /* Gold */
+}
+
+/* 2. Middle Bar (Navy Blue) */
+.ib-middle-bar {
+  background-color: #091a32;
+  /* Navy Blue */
+  padding: 20px 0 60px 0;
+}
+
+.ib-middle-bar .site_logo img {
+  max-height: 80px;
+  width: auto;
+  object-fit: contain;
+  transition: max-height 0.3s ease;
+}
+
+/* Contact Widgets Layout Fix */
+.ib-contact-widgets {
+  display: flex;
+  gap: 25px;
+  /* අයිකන අතර පරතරය තරමක් අඩු කර ඇත */
+  align-items: center;
+}
+
+.ib-widget {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.ib-widget:hover {
+  text-decoration: none;
+}
+
+.ib-widget:hover .ib-widget-info strong {
+  color: var(--accent-gold, #c5a47c);
+  transition: color 0.3s ease;
+}
+
+.ib-widget:hover i {
+  color: var(--accent-gold, #c5a47c) !important;
+  transition: color 0.3s ease;
+}
+
+.ib-widget-info {
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+}
+
+.ib-widget-info span {
+  font-size: 13px;
+  color: #a0aabf;
+  margin-bottom: 2px;
+}
+
+.ib-widget-info strong {
+  font-size: 14px;
+  font-weight: 600;
+  display: block;
+  max-width: 250px;
+  white-space: normal !important;
+  word-wrap: break-word;
+  line-height: 1.3;
+  margin-right: 40px;
+}
+
+/* 3. Bottom Floating Nav Bar (White Box) */
+.ib-bottom-nav {
+  position: relative;
+  z-index: 99;
+  background-color: transparent !important;
+}
+
+.ib-nav-wrapper {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: -35px;
+  min-height: 55px;
+  margin-right: 30px;
+}
+
+.ib-nav-wrapper .mainmenu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  padding: 0 20px;
+}
+
+.ib-nav-wrapper .mainmenu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 35px;
+}
+
+.ib-nav-wrapper .mainmenu ul li a {
+  color: #091a32;
+  font-weight: 600;
+  font-size: 15px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.3s;
+  white-space: nowrap;
+  padding: 24px 0 !important;
+}
+
+.ib-nav-wrapper .mainmenu ul li a:hover,
+.ib-nav-wrapper .mainmenu ul li.current-menu-ancestor a,
+.ib-nav-wrapper .mainmenu ul li.active a {
+  color: #c5a47c;
+}
+
+@media (min-width: 1200px) {
+  .ib-nav-wrapper .mainmenu ul {
+    gap: 40px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .ib-nav-wrapper .mainmenu ul {
+    gap: 50px;
+  }
+}
+
+/* Let's Talk Button - Attached to the right */
+.ib-nav-cta {
+  background-color: #c5a47c;
+  /* Gold */
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 8px 8px 0;
+  /* දකුණු පස පමණක් රවුම් කිරීම */
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 0.3s;
+}
+
+.ib-nav-cta:hover {
+  background-color: #b08f65;
+  color: #ffffff;
+}
+
+.header-button{
+    margin-right: 30px;
+}
+
+.ib-widget i{
+  color: #fff;
 }
