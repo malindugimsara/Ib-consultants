@@ -1427,9 +1427,9 @@ header.header-area.ib-desktop-header {
 
 .ib-mobile-socials a:hover,
 .ib-mobile-socials a:active {
-  background-color: #c5a47c !important;
+  background-color: #d4af37 !important;
   color: #ffffff !important;
-  border-color: #c5a47c !important;
+  border-color: #d4af37 !important;
   transform: translateY(-2px) !important;
   box-shadow: 0 4px 10px rgba(197, 164, 124, 0.35) !important;
 }
@@ -1442,13 +1442,16 @@ header.header-area.ib-desktop-header {
   .ib-mobile-header .header-wrapper {
     padding: 8px 14px !important;
   }
+
   .ib-mobile-header .site_logo img {
     max-height: 60px !important;
   }
+
   .ib-mobile-socials {
     gap: 6px !important;
     margin: 0 6px !important;
   }
+
   .ib-mobile-socials a {
     width: 31px !important;
     height: 31px !important;
@@ -1460,18 +1463,22 @@ header.header-area.ib-desktop-header {
   .ib-mobile-header .header-wrapper {
     padding: 6px 10px !important;
   }
+
   .ib-mobile-header .site_logo img {
     max-height: 52px !important;
   }
+
   .ib-mobile-socials {
     gap: 4px !important;
     margin: 0 4px !important;
   }
+
   .ib-mobile-socials a {
     width: 28px !important;
     height: 28px !important;
     font-size: 12px !important;
   }
+
   .menu_bar.mobile_menu_bar {
     width: 38px !important;
     height: 38px !important;
@@ -1483,7 +1490,8 @@ header.header-area.ib-desktop-header {
   width: 45px !important;
   height: 40px !important;
   padding: 9px 9px !important;
-  background: #091a32 !important; /* Navy Blue */
+  background: #091a32 !important;
+  /* Navy Blue */
   border-radius: 8px !important;
   display: flex !important;
   flex-direction: column !important;
@@ -1495,7 +1503,8 @@ header.header-area.ib-desktop-header {
 
 .menu_bar.mobile_menu_bar span {
   display: block !important;
-  background-color: #ffffff !important; /* White lines */
+  background-color: #ffffff !important;
+  /* White lines */
   border-radius: 2px !important;
   transition: all 0.3s ease !important;
 }
@@ -1522,7 +1531,7 @@ header.header-area.ib-desktop-header {
 }
 
 .ib-top-bar .social-icons a:hover {
-  color: #c5a47c;
+  color: #d4af37;
   /* Gold */
 }
 
@@ -1562,12 +1571,12 @@ header.header-area.ib-desktop-header {
 }
 
 .ib-widget:hover .ib-widget-info strong {
-  color: var(--accent-gold, #c5a47c);
+  color: var(--accent-gold, #d4af37);
   transition: color 0.3s ease;
 }
 
 .ib-widget:hover i {
-  color: var(--accent-gold, #c5a47c) !important;
+  color: var(--accent-gold, #d4af37) !important;
   transition: color 0.3s ease;
 }
 
@@ -1645,7 +1654,7 @@ header.header-area.ib-desktop-header {
 .ib-nav-wrapper .mainmenu ul li a:hover,
 .ib-nav-wrapper .mainmenu ul li.current-menu-ancestor a,
 .ib-nav-wrapper .mainmenu ul li.active a {
-  color: #c5a47c;
+  color: #d4af37;
 }
 
 @media (min-width: 1200px) {
@@ -1662,7 +1671,7 @@ header.header-area.ib-desktop-header {
 
 /* Let's Talk Button - Attached to the right */
 .ib-nav-cta {
-  background-color: #c5a47c;
+  background-color: #d4af37;
   /* Gold */
   color: #ffffff;
   font-weight: 700;
@@ -1683,10 +1692,296 @@ header.header-area.ib-desktop-header {
   color: #ffffff;
 }
 
-.header-button{
-    margin-right: 30px;
+.header-button {
+  margin-right: 30px;
 }
 
-.ib-widget i{
+.ib-widget i {
   color: #fff;
+}
+
+/* =========================================
+   Workshop Cards (Training Programs)
+========================================= */
+.workshop-card {
+  display: flex !important;
+  flex-direction: column !important;
+  border-top: 4px solid #d4af37 !important;
+  border-bottom: 4px solid #d4af37 !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  background-color: var(--primary-navy) !important;
+}
+
+.workshop-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2) !important;
+}
+
+.workshop-card h4 {
+  color: #d4af37 !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  margin-bottom: 10px !important;
+}
+
+.workshop-card .workshop-ideal {
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  margin-bottom: 20px !important;
+}
+
+.workshop-card .workshop-ideal i {
+  margin-right: 8px !important;
+  color: #d4af37 !important;
+}
+
+.workshop-card h6 {
+  color: #ffffff !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  margin-bottom: 15px !important;
+}
+
+.workshop-card ul {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin-bottom: 20px !important;
+}
+
+.workshop-card ul li {
+  position: relative !important;
+  padding-left: 25px !important;
+  margin-bottom: 8px !important;
+  font-size: 15px !important;
+  color: #ffffff !important;
+}
+
+.workshop-card ul li i {
+  position: absolute !important;
+  left: 0 !important;
+  top: 4px !important;
+  color: #d4af37 !important;
+  font-size: 14px !important;
+}
+
+.workshop-card .outcome-box {
+  background-color: #f4f6f9 !important;
+  border-left: 3px solid #d4af37 !important;
+  border-radius: 4px !important;
+}
+
+.workshop-card .outcome-box p {
+  font-size: 14.5px !important;
+  color: #333333 !important;
+  margin: 0 !important;
+}
+
+.workshop-card .outcome-box strong {
+  color: #091a32 !important;
+}
+
+/* =========================================
+   Header Area (Sticky) Styling
+========================================= */
+.header-area.header-sticky {
+  background-color: #ffffff !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+.header-area.header-sticky .header-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 8px 15px !important;
+}
+
+.header-area.header-sticky .site_logo {
+  flex-shrink: 0 !important;
+}
+
+.header-area.header-sticky .site_logo img {
+  max-height: 52px !important;
+  width: auto !important;
+  display: block;
+}
+
+/* Center Navigation Links */
+.header-area.header-sticky .menu-area {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-grow: 1 !important;
+  margin: 0 auto !important;
+}
+
+.header-area.header-sticky .menu-area .mainmenu {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.header-area.header-sticky .menu-area .mainmenu ul {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 30px !important;
+}
+
+.header-area.header-sticky .menu-area .mainmenu ul li a {
+  color: #091a32 !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  padding: 18px 0 !important;
+  transition: color 0.3s ease !important;
+  white-space: nowrap !important;
+}
+
+.header-area.header-sticky .menu-area .mainmenu ul li a:hover,
+.header-area.header-sticky .menu-area .mainmenu ul li.current-menu-ancestor a,
+.header-area.header-sticky .menu-area .mainmenu ul li.active a {
+  color: #d4af37 !important;
+}
+
+/* Header Right Item & Sticky Social Icons */
+.header-area.header-sticky .header-right-item {
+  display: flex !important;
+  align-items: center !important;
+  flex-shrink: 0 !important;
+  gap: 15px !important;
+}
+
+.header-area.header-sticky .header-button {
+  margin-right: 0 !important;
+}
+
+.ib-sticky-socials {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.ib-sticky-socials a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 50% !important;
+  background-color: #f2f5f9 !important;
+  color: #091a32 !important;
+  font-size: 14px !important;
+  text-decoration: none !important;
+  transition: all 0.25s ease !important;
+  border: 1px solid rgba(9, 26, 50, 0.08) !important;
+}
+
+.ib-sticky-socials a:hover,
+.ib-sticky-socials a:active {
+  background-color: #d4af37 !important;
+  color: #ffffff !important;
+  border-color: #d4af37 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 10px rgba(197, 164, 124, 0.35) !important;
+}
+
+@media (max-width: 1280px) {
+  .header-area.header-sticky .menu-area .mainmenu ul {
+    gap: 18px !important;
+  }
+
+  .header-area.header-sticky .menu-area .mainmenu ul li a {
+    font-size: 13.5px !important;
+  }
+
+  .ib-sticky-socials {
+    gap: 5px !important;
+  }
+
+  .ib-sticky-socials a {
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 12px !important;
+  }
+}
+
+
+.workshop-card {
+  display: flex;
+  flex-direction: column;
+  border-top: 4px solid #091a32;
+  border-bottom: 4px solid #d4af37;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.workshop-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
+}
+
+.workshop-card h4 {
+  color: #091a32;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.workshop-card .workshop-meta {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.workshop-card .workshop-meta i {
+  margin-right: 8px;
+}
+
+.workshop-card h6 {
+  color: #d4af37 !important;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.workshop-card ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+
+.workshop-card ul li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 8px;
+  font-size: 15px;
+  color: #555;
+}
+
+.workshop-card ul li i {
+  position: absolute;
+  left: 0;
+  top: 4px;
+  color: #d4af37;
+  font-size: 14px;
+}
+
+.workshop-card .outcome-box {
+  background-color: #ffdf76 !important;
+  border-radius: 4px !important;
+}
+
+.workshop-card .outcome-box p {
+  font-size: 14.5px;
+  color: #333;
+  margin: 0;
+}
+
+.topic-color{
+  color: #111111 !important;
 }
