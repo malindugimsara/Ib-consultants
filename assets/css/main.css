@@ -13751,6 +13751,7 @@ START: Theme Slider CSS
 @media only screen and (min-width: 576px) and (max-width: 767px), (max-width: 575px) {
   .tj-slider-item .slider-content .slider-title img {
     max-width: 105px;
+   
   }
 }
 @media only screen and (min-width: 1200px) and (max-width: 1399px), only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -13766,6 +13767,7 @@ START: Theme Slider CSS
 @media only screen and (min-width: 576px) and (max-width: 767px), (max-width: 575px) {
   .tj-slider-item .slider-content .slider-title {
     font-size: 50px;
+     margin-top: 200px;
   }
 }
 .tj-slider-item .slider-content .slider-desc {
