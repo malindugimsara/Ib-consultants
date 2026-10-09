@@ -1972,7 +1972,7 @@ header.header-area.ib-desktop-header {
 }
 
 .workshop-card .outcome-box {
-  background-color: #ffdf76 !important;
+  background-color: #d0d1d1 !important;
   border-radius: 4px !important;
 }
 
@@ -1985,3 +1985,27 @@ header.header-area.ib-desktop-header {
 .topic-color{
   color: #111111 !important;
 }
+
+.tj-award-item-inner{
+  background-color: var(--primary-navy) !important;
+  border: 2px solid #d4af37 !important;
+  border-radius: 10px !important;
+}
+
+.tj-award-item-inner:hover{
+  border-color: #d4af37 !important;
+  box-shadow: none !important;
+  background-color: #d4af37 !important;
+}
+
+.tj-award-item-inner:hover h6,
+.tj-award-item-inner:hover p,
+.tj-award-item-inner:hover i,
+.tj-award-item-inner:hover .tj-award-text,
+.tj-award-item-inner:hover .tj-award-number,
+.tj-award-item-inner:hover .tj-award-year,
+.tj-award-item-inner:hover .tj-award-title,
+.tj-award-item-inner:hover .tj-award-description {
+    color: #111111 !important;
+}
+
