@@ -160,6 +160,20 @@
               style="max-height: 80px;"></a>
         </div>
 
+        <!-- Center Animated Brand Title -->
+        <div class="ib-middle-brand">
+          <a href="index.html" class="ib-brand-link" title="IB Consultants">
+            <div class="ib-brand-title-wrap">
+              <span class="ib-brand-title">IB CONSULTANTS</span>
+            </div>
+            <div class="ib-brand-tagline">
+              <span class="ib-tagline-line left"></span>
+              <span class="ib-tagline-text">Business &amp; Management Consultants</span>
+              <span class="ib-tagline-line right"></span>
+            </div>
+          </a>
+        </div>
+
         <!-- Contact Widgets -->
         <div class="ib-contact-widgets">
           <!-- Email -->
@@ -227,25 +241,22 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
-        <div class="header-wrapper">
+        <div class="header-wrapper d-flex align-items-center justify-content-between">
+          
           <!-- site logo -->
           <div class="site_logo">
             <a class="logo" href="index.html"><img src="assets/images/logos/logo-2.webp" alt="IB Consultants"></a>
           </div>
 
           <!-- Mobile Social Icons in the Middle -->
-          <div class="ib-mobile-socials">
-            <a href="https://wa.me/94711255610" target="_blank" aria-label="WhatsApp"><i
-                class="fa-brands fa-whatsapp"></i></a>
-            <a href="https://www.facebook.com/share/1Mi3aEoRHH/?mibextid=wwXIfr" target="_blank"
-              aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="https://www.linkedin.com/company/ibconsultants/" target="_blank" aria-label="LinkedIn"><i
-                class="fa-brands fa-linkedin-in"></i></a>
-            <a href="https://www.instagram.com/ibbusinessconsultants" target="_blank" aria-label="Instagram"><i
-                class="fa-brands fa-instagram"></i></a>
+          <div class="ib-mobile-socials d-none d-sm-flex">
+            <a href="https://wa.me/94711255610" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/share/1Mi3aEoRHH/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/company/ibconsultants/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/ibbusinessconsultants" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
           </div>
 
-          <!-- navigation (for MeanMenu mobile drawer) -->
+          <!-- මඟහැරී තිබුණු Navigation (Mobile Menu Drawer එක සෑදීමට අවශ්‍ය මූලික කේතය) -->
           <div class="menu-area d-none">
             <nav id="mobile-menu" class="mainmenu">
               <ul>
@@ -274,6 +285,7 @@
               <span></span>
             </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -286,13 +298,17 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
-        <div class="header-wrapper">
-          <!-- site logo -->
+        <!-- d-flex සහ justify-content-between මගින් Logo එක වමටත්, Menu එක දකුණටත් තබයි -->
+        <div class="header-wrapper d-flex align-items-center justify-content-between">
+          
+          <!-- Site Logo -->
           <div class="site_logo">
-            <a class="logo" href="index.html"><img src="assets/images/logos/logo-2.webp" alt="IB Consultants"></a>
+            <a class="logo" href="index.html">
+              <img src="assets/images/logos/logo-2.webp" alt="IB Consultants" style="max-height: 55px;">
+            </a>
           </div>
 
-          <!-- navigation -->
+          <!-- Desktop Navigation (Mobile වලදී d-none මගින් සඟවා ඇත) -->
           <div class="menu-area d-none d-lg-inline-flex align-items-center">
             <nav class="mainmenu">
               <ul>
@@ -304,32 +320,30 @@
               </ul>
             </nav>
           </div>
-          <!-- header right info -->
-          <div class="header-right-item d-none d-lg-inline-flex align-items-center">
-            <!-- Social Media Icons beside Let's Talk button -->
-            <div class="ib-sticky-socials d-flex align-items-center">
-              <a href="https://wa.me/94711255610" target="_blank" aria-label="WhatsApp"><i
-                  class="fa-brands fa-whatsapp"></i></a>
-              <a href="https://www.facebook.com/share/1Mi3aEoRHH/?mibextid=wwXIfr" target="_blank"
-                aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-              <a href="https://www.linkedin.com/company/ibconsultants/" target="_blank" aria-label="LinkedIn"><i
-                  class="fa-brands fa-linkedin-in"></i></a>
-              <a href="https://www.instagram.com/ibbusinessconsultants" target="_blank" aria-label="Instagram"><i
-                  class="fa-brands fa-instagram"></i></a>
-            </div>
 
+          <!-- Desktop Header Right Info (Mobile වලදී d-none මගින් සඟවා ඇත) -->
+          <div class="header-right-item d-none d-lg-inline-flex align-items-center">
+            <div class="ib-sticky-socials d-flex align-items-center me-4" style="gap: 15px;">
+              <a href="https://wa.me/94711255610" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+              <a href="https://www.facebook.com/share/1Mi3aEoRHH/?mibextid=wwXIfr" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="https://www.linkedin.com/company/ibconsultants/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="https://www.instagram.com/ibbusinessconsultants" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            </div>
             <div class="header-button">
               <a class="tj-primary-btn" href="contact.html">
                 <span class="btn-text"><span>Let’s Talk</span></span>
                 <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
               </a>
             </div>
-            <div class="menu_bar menu_offcanvas d-none d-lg-inline-flex">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
           </div>
+
+          <!-- Mobile Hamburger Menu Icon (Mobile වලදී පමණක් දර්ශනය වේ) -->
+          <div class="menu_bar mobile_menu_bar d-lg-none">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
         </div>
       </div>
     </div>

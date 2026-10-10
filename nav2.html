@@ -126,69 +126,180 @@
 </div>
 <!-- end: Hamburger Menu -->
 
-<!-- start: Header Area -->
-<header class="header-area header-1 section-gap-x">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="header-wrapper">
-                    <!-- site logo -->
-                    <div class="site_logo">
-                        <a class="logo" href="index.html"><img src="assets/images/logos/logo-2.webp"
-                                alt="IB Consultants"></a>
-                    </div>
+<!-- start: Custom 3-Tier Header Area (Desktop Only) -->
+<header class="header-area ib-desktop-header d-none d-lg-block">
 
-                    <!-- navigation -->
-                    <div class="menu-area d-none d-lg-inline-flex align-items-center">
-                        <nav id="mobile-menu" class="mainmenu">
-                            <ul>
-                                <li class="current-menu-ancestor"><a href="index.html">Home</a></li>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="consultancy-service.html">Consultancy Services</a></li>
-                                <li><a href="training-programs.html">Training & Programs</a></li>
-                                <li><a href="contact.html">Contact Us</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-
-                    
-
-                    <!-- header right info -->
-                    <div class="header-right-item d-none d-lg-inline-flex">
-                        <div class="header-button">
-                            <a class="tj-primary-btn" href="contact.html">
-                                <span class="btn-text"><span>Let’s Talk</span></span>
-                                <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
-                            </a>
-                        </div>
-                        <div class="menu_bar menu_offcanvas d-none d-lg-inline-flex">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-
-                    <!-- Mobile Social Icons in the Middle -->
-                    
-
-                    <!-- menu bar -->
-                   
-                </div>
-            </div>
+  <!-- 1. Top Bar -->
+  <div class="ib-top-bar">
+    <div class="container-fluid section-gap-x">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="open-hours">
+          <i class="fa-regular fa-clock" style="color: #d4af37; margin-right: 5px;"></i>
+          <strong>Open Hours:</strong> Mon — Fri: 08.00 am — 05.00 pm, Sat: 8.30a.m. – 2.00p.m
         </div>
+        <div class="social-icons">
+          <a href="https://wa.me/94711255610" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://www.facebook.com/share/1Mi3aEoRHH/?mibextid=wwXIfr" target="_blank"><i
+              class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.linkedin.com/company/ibconsultants/" target="_blank"><i
+              class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://www.instagram.com/ibbusinessconsultants" target="_blank"><i
+              class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <!-- 2. Middle Bar -->
+  <div class="ib-middle-bar">
+    <div class="container-fluid section-gap-x">
+      <div class="d-flex justify-content-between align-items-center">
+        <!-- Logo -->
+        <div class="site_logo">
+          <a href="index.html"><img src="assets/images/logos/logo-2.webp" alt="IB Consultants"
+              style="max-height: 80px;"></a>
+        </div>
+
+        <!-- Center Animated Brand Title -->
+        <div class="ib-middle-brand">
+          <a href="index.html" class="ib-brand-link" title="IB Consultants">
+            <div class="ib-brand-title-wrap">
+              <span class="ib-brand-title">IB CONSULTANTS</span>
+            </div>
+            <div class="ib-brand-tagline">
+              <span class="ib-tagline-line left"></span>
+              <span class="ib-tagline-text">Business &amp; Management Consultants</span>
+              <span class="ib-tagline-line right"></span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Contact Widgets -->
+        <div class="ib-contact-widgets">
+          <!-- Email -->
+          <a href="mailto:dammikasbandara86@gmail.com" class="ib-widget">
+            <i class="fa-solid fa-envelope"></i>
+            <div class="ib-widget-info">
+              <span>Drop a mail</span>
+              <strong>dammikasbandara86@gmail.com</strong>
+            </div>
+          </a>
+          <!-- Phone -->
+          <a href="tel:+94711255610" class="ib-widget">
+            <i class="fa-solid fa-phone-volume"></i>
+            <div class="ib-widget-info">
+              <span>Get support</span>
+              <strong>+94 71 125 5610</strong>
+            </div>
+          </a>
+          <!-- Location -->
+          <a href="https://maps.google.com/?q=93/1/B,+Aggonawatte,+Isipathana+Mawatha,+Horana" target="_blank"
+            rel="noopener noreferrer" class="ib-widget">
+            <i class="fa-solid fa-location-dot"></i>
+            <div class="ib-widget-info">
+              <span>Office Location</span>
+              <strong>93/1/B, Isipathana Mawatha, Horana</strong>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Bottom Floating Nav Bar -->
+  <div class="ib-bottom-nav">
+    <div class="container-fluid section-gap-x">
+      <div class="ib-nav-wrapper">
+        <!-- Navigation Links -->
+        <nav class="mainmenu">
+          <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT US</a></li>
+            <li><a href="consultancy-service.html">CONSULTANCY SERVICES</a></li>
+            <li><a href="training-programs.html">TRAINING & PROGRAMS</a></li>
+            <li><a href="contact.html">CONTACT US</a></li>
+          </ul>
+        </nav>
+        <!-- CTA Button -->
+        <div class="header-right-item d-none d-lg-inline-flex">
+          <div class="header-button">
+            <a class="tj-primary-btn" href="contact.html">
+              <span class="btn-text"><span>Let’s Talk</span></span>
+              <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>
-<!-- end: Header Area -->
+<!-- end: Custom 3-Tier Header Area -->
 
+<!-- start: Header Area (Mobile & Tablet Only) -->
+<header class="header-area header-1 section-gap-x d-lg-none ib-mobile-header">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="header-wrapper d-flex align-items-center justify-content-between">
+          <!-- site logo -->
+          <div class="site_logo">
+            <a class="logo" href="index.html"><img src="assets/images/logos/logo-2.webp" alt="IB Consultants"></a>
+          </div>
 
+          <!-- Mobile Social Icons in the Middle -->
+          <div class="ib-mobile-socials d-none d-sm-flex">
+            <a href="https://wa.me/94711255610" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/share/1Mi3aEoRHH/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/company/ibconsultants/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/ibbusinessconsultants" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+
+          <!-- menu area for mobile meanmenu to pick up -->
+          <div class="menu-area d-none">
+            <nav id="mobile-menu" class="mainmenu">
+              <ul>
+                <li class="current-menu-ancestor"><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="consultancy-service.html">Consultancy Services</a></li>
+                <li><a href="training-programs.html">Training & Programs</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          <!-- header right info -->
+          <div class="header-right-item d-flex align-items-center">
+            <div class="header-button d-none d-sm-inline-flex me-3">
+              <a class="tj-primary-btn" href="contact.html">
+                <span class="btn-text"><span>Let’s Talk</span></span>
+                <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
+              </a>
+            </div>
+
+            <!-- hamburger menu toggle -->
+            <div class="menu_bar mobile_menu_bar">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- end: Header Area (Mobile & Tablet Only) -->
+
+<!-- start: Header Area (Sticky) -->
 <header class="header-area header-2 header-duplicate header-sticky section-gap-x">
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
-        <div class="header-wrapper">
+        <div class="header-wrapper d-flex align-items-center justify-content-between">
           <!-- site logo -->
           <div class="site_logo">
-            <a class="logo" href="index.html"><img src="assets/images/logos/logo-2.webp" alt="IB Consultants"></a>
+            <a class="logo" href="index.html"><img src="assets/images/logos/logo-2.webp" alt="IB Consultants" style="max-height: 55px;"></a>
           </div>
 
           <!-- navigation -->
@@ -206,7 +317,7 @@
           <!-- header right info -->
           <div class="header-right-item d-none d-lg-inline-flex align-items-center">
             <!-- Social Media Icons beside Let's Talk button -->
-            <div class="ib-sticky-socials d-flex align-items-center">
+            <div class="ib-sticky-socials d-flex align-items-center me-4" style="gap: 15px;">
               <a href="https://wa.me/94711255610" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
               <a href="https://www.facebook.com/share/1Mi3aEoRHH/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
               <a href="https://www.linkedin.com/company/ibconsultants/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -219,18 +330,20 @@
                 <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
               </a>
             </div>
-            <div class="menu_bar menu_offcanvas d-none d-lg-inline-flex">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
           </div>
+          
+          <!-- Mobile Hamburger Menu Icon for Sticky Header -->
+          <div class="menu_bar mobile_menu_bar d-lg-none">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
         </div>
       </div>
     </div>
   </div>
 </header>
-
+<!-- end: Header Area (Sticky) -->
 
 <script src="assets/js/custom.js"></script>
-<!-- end: Header Area -->

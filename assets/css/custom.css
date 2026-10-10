@@ -109,8 +109,14 @@ h6,
 }
 
 /* =========================================
-   Hero Slider Section
+   Smooth Content BFC & Hero Slider Section
 ========================================= */
+/* Fix margin collapse so top margins on slider stay inside #smooth-content and do not push footer past max scroll */
+#smooth-content,
+.site-main {
+  display: flow-root;
+}
+
 .tj-slider-section {
   position: relative;
   width: 100% !important;
@@ -119,7 +125,7 @@ h6,
   background-color: var(--primary-navy);
   border-radius: 0 !important;
   overflow: hidden !important;
-  margin: 180px 0 0 0 !important;
+  margin: 133px 0 0 0 !important;
   padding: 0 !important;
   left: 0 !important;
   right: 0 !important;
@@ -750,9 +756,16 @@ h6,
 
 .tj-footer-section {
   padding-top: 120px !important;
+  padding-bottom: 25px !important;
   margin-top: 50px !important;
   position: relative;
   z-index: 1;
+}
+
+.tj-copyright-area-2 {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .tj-footer-section .footer-main-area {
@@ -1298,6 +1311,12 @@ h6,
   color: var(--text-black) !important;
 }
 
+.tj-page-header {
+  border-radius: 0 !important;
+  margin: 50px 0 0 0 !important;
+
+}
+
 .tj-page-header-content .tj-page-title {
   color: var(--accent-gold) !important;
 }
@@ -1539,7 +1558,13 @@ header.header-area.ib-desktop-header {
 .ib-middle-bar {
   background-color: #091a32;
   /* Navy Blue */
-  padding: 20px 0 60px 0;
+  padding: 8px 0 32px 0;
+  min-height: 95px;
+  width: auto;
+}
+
+.ib-middle-bar .site_logo {
+  flex-shrink: 0;
 }
 
 .ib-middle-bar .site_logo img {
@@ -1549,12 +1574,248 @@ header.header-area.ib-desktop-header {
   transition: max-height 0.3s ease;
 }
 
+/* =========================================
+   Middle Bar: Animated Brand Title
+========================================= */
+.ib-middle-brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 0 25px;
+  text-align: center;
+}
+
+.ib-brand-link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none !important;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.ib-brand-link:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.ib-brand-title-wrap {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* Light beam sweep flare across the text */
+.ib-brand-title-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(115deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0) 20%,
+      rgba(255, 255, 255, 0.7) 50%,
+      rgba(255, 255, 255, 0) 80%,
+      transparent 100%);
+  transform: skewX(-25deg);
+  animation: ibSweepFlare 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.ib-brand-title {
+  font-family: var(--tj-ff-heading, 'Mona Sans', sans-serif);
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  line-height: 1.1;
+  display: inline-block;
+
+  /* Liquid Gold Metallic Gradient */
+  background: linear-gradient(110deg,
+      #bf953f 0%,
+      #fcf6ba 22%,
+      #b38728 42%,
+      #fbf5b7 58%,
+      #d4af37 78%,
+      #aa771c 100%);
+  background-size: 240% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Continuous liquid shimmer + golden aura glow */
+  animation: ibGoldFlow 5s ease-in-out infinite, ibGoldAura 3s ease-in-out infinite alternate;
+  transition: filter 0.3s ease;
+}
+
+.ib-brand-link:hover .ib-brand-title {
+  animation: ibGoldFlowFast 2s linear infinite, ibGoldAuraHover 1.5s ease-in-out infinite alternate;
+}
+
+/* Tagline with Flanking Luxury Lines */
+.ib-brand-tagline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.ib-tagline-text {
+  font-family: var(--tj-ff-heading, 'Mona Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: #dfbe6f;
+  white-space: nowrap;
+  opacity: 0.92;
+  transition: all 0.3s ease;
+}
+
+.ib-brand-link:hover .ib-tagline-text {
+  color: #ffffff;
+  letter-spacing: 4.2px;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.85);
+}
+
+.ib-tagline-line {
+  height: 1.5px;
+  width: 28px;
+  background: linear-gradient(90deg, transparent, #d4af37);
+  animation: ibLinePulse 3s ease-in-out infinite alternate;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+.ib-tagline-line.right {
+  background: linear-gradient(90deg, #d4af37, transparent);
+}
+
+.ib-brand-link:hover .ib-tagline-line {
+  width: 42px;
+  background: linear-gradient(90deg, transparent, #ffffff);
+}
+
+.ib-brand-link:hover .ib-tagline-line.right {
+  background: linear-gradient(90deg, #ffffff, transparent);
+}
+
+/* Keyframe Animations */
+@keyframes ibGoldFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes ibGoldFlowFast {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes ibGoldAura {
+  0% {
+    filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.35)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+  }
+
+  100% {
+    filter: drop-shadow(0 0 16px rgba(212, 175, 55, 0.75)) drop-shadow(0 0 28px rgba(245, 218, 122, 0.35)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
+  }
+}
+
+@keyframes ibGoldAuraHover {
+  0% {
+    filter: drop-shadow(0 0 16px rgba(212, 175, 55, 0.85)) drop-shadow(0 0 26px rgba(255, 255, 255, 0.4));
+  }
+
+  100% {
+    filter: drop-shadow(0 0 26px rgba(212, 175, 55, 1)) drop-shadow(0 0 42px rgba(255, 215, 0, 0.6));
+  }
+}
+
+@keyframes ibSweepFlare {
+
+  0%,
+  25% {
+    left: -120%;
+  }
+
+  65%,
+  100% {
+    left: 200%;
+  }
+}
+
+@keyframes ibLinePulse {
+  0% {
+    width: 20px;
+    opacity: 0.5;
+  }
+
+  100% {
+    width: 36px;
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments for desktop header */
+@media (max-width: 1399px) {
+  .ib-brand-title {
+    font-size: 24px;
+    letter-spacing: 4px;
+  }
+
+  .ib-tagline-text {
+    font-size: 10px;
+    letter-spacing: 2.8px;
+  }
+
+  .ib-tagline-line {
+    width: 22px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .ib-brand-title {
+    font-size: 19px;
+    letter-spacing: 2.2px;
+  }
+
+  .ib-brand-tagline {
+    display: none;
+  }
+
+  .ib-middle-brand {
+    padding: 0 15px;
+  }
+}
+
 /* Contact Widgets Layout Fix */
 .ib-contact-widgets {
   display: flex;
   gap: 25px;
   /* අයිකන අතර පරතරය තරමක් අඩු කර ඇත */
   align-items: center;
+  flex-shrink: 0;
 }
 
 .ib-widget {
@@ -1583,7 +1844,7 @@ header.header-area.ib-desktop-header {
 .ib-widget-info {
   display: flex;
   flex-direction: column;
-  color: #ffffff;
+  color: #b1b1b1;
 }
 
 .ib-widget-info span {
@@ -1600,7 +1861,7 @@ header.header-area.ib-desktop-header {
   white-space: normal !important;
   word-wrap: break-word;
   line-height: 1.3;
-  margin-right: 40px;
+  margin-right: 15px;
 }
 
 /* 3. Bottom Floating Nav Bar (White Box) */
@@ -1617,7 +1878,7 @@ header.header-area.ib-desktop-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: -35px;
+  margin-top: -32px;
   min-height: 55px;
   margin-right: 30px;
 }
@@ -1982,17 +2243,17 @@ header.header-area.ib-desktop-header {
   margin: 0;
 }
 
-.topic-color{
+.topic-color {
   color: #111111 !important;
 }
 
-.tj-award-item-inner{
+.tj-award-item-inner {
   background-color: var(--primary-navy) !important;
   border: 2px solid #d4af37 !important;
   border-radius: 10px !important;
 }
 
-.tj-award-item-inner:hover{
+.tj-award-item-inner:hover {
   border-color: #d4af37 !important;
   box-shadow: none !important;
   background-color: #d4af37 !important;
@@ -2006,6 +2267,214 @@ header.header-area.ib-desktop-header {
 .tj-award-item-inner:hover .tj-award-year,
 .tj-award-item-inner:hover .tj-award-title,
 .tj-award-item-inner:hover .tj-award-description {
-    color: #111111 !important;
+  color: #111111 !important;
 }
 
+/* --- Hero Slider Zoom-In Animation --- */
+@keyframes zoomInBg {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.15);
+    /* 15% කින් සෙමින් විශාල වේ */
+  }
+}
+
+.slider-bg-image {
+  /* රූපය පිටතට යාම වැළැක්වීමට */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Slide එක Active වී ඇති විට සහ ඊළඟ එකට මාරු වන අතරතුර (Prev) Animation එක සුමටව දිගටම ක්‍රියාත්මක වීමට */
+.swiper-slide-active .slider-bg-image,
+.swiper-slide-duplicate-active .slider-bg-image,
+.swiper-slide-prev .slider-bg-image,
+.swiper-slide-duplicate-prev .slider-bg-image {
+  animation: zoomInBg 12s linear forwards;
+}
+
+/* --- Text Highlight Fade (Gradient Overlay) --- */
+.slider-bg-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(7, 23, 47, 0.95) 0%, rgba(9, 26, 50, 0.7) 50%, rgba(0, 0, 0, 0) 100%);
+  z-index: 1;
+}
+
+/* Mobile Screens සඳහා පහළින් ඉහළට යන Fade එකක් (අකුරු සාමාන්‍යයෙන් මැදට/පහළට එන බැවින්) */
+@media (max-width: 991px) {
+  .slider-bg-image::before {
+    background: linear-gradient(to top, rgba(9, 26, 50, 0.95) 0%, rgba(9, 26, 50, 0.7) 50%, rgba(0, 0, 0, 0.2) 100%);
+  }
+}
+
+/* --- Mobile Header Responsive Styles --- */
+.ib-mobile-header {
+  padding: 12px 0;
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.ib-mobile-header .header-wrapper {
+  width: 100%;
+}
+
+.ib-mobile-header .site_logo img {
+  max-height: 55px;
+  /* ජංගම දුරකථන සඳහා ලෝගෝවේ ප්‍රමාණය */
+  width: auto;
+}
+
+.ib-mobile-socials {
+  gap: 15px;
+}
+
+.ib-mobile-socials a {
+  color: #091a32;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.ib-mobile-socials a:hover {
+  color: #c5a47c;
+}
+
+/* ==========================================================================
+   Mobile Responsive Styles (Consolidated & Cleaned)
+   ========================================================================== */
+
+@media (max-width: 991px) {
+
+  .ib-mobile-header,
+  .header-area.header-sticky {
+    padding: 1px 0 !important;
+  }
+
+  .ib-mobile-header .header-wrapper,
+  .header-area.header-sticky .header-wrapper {
+    position: relative !important;
+  }
+
+  .ib-mobile-header .site_logo img,
+  .header-area.header-sticky .site_logo img {
+    max-height: 52px !important;
+  }
+
+  /* සාමාන්‍ය Mobile Header එකේ Social අයිකන මැදට ගැනීම */
+  .ib-mobile-socials {
+    display: flex !important;
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    gap: 12px !important;
+  }
+
+  .ib-mobile-socials a {
+    font-size: 15px !important;
+  }
+
+  /* Sticky Header එකේ අනවශ්‍ය දේවල් සැඟවීම */
+  .header-area.header-sticky .menu-area,
+  .header-area.header-sticky .mainmenu,
+  .header-area.header-sticky .header-button {
+    display: none !important;
+  }
+
+  /* Sticky Header Wrapper එකේ පෙළගැස්ම */
+  .header-area.header-sticky .header-wrapper {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 10px 15px !important;
+  }
+
+  /* Sticky Header එකේ Social අයිකන පෙන්වීම සහ මැදට ගැනීම */
+  .header-area.header-sticky .header-right-item {
+    display: flex !important;
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    margin: 0 !important;
+  }
+
+  .header-area.header-sticky .ib-sticky-socials {
+    display: flex !important;
+    gap: 12px !important;
+    margin-right: 0 !important;
+  }
+
+  .header-area.header-sticky .ib-sticky-socials a {
+    font-size: 15px !important;
+    color: #091a32 !important;
+    transition: all 0.3s ease;
+  }
+
+  .header-area.header-sticky .ib-sticky-socials a:hover {
+    color: #c5a47c !important;
+  }
+
+  /* Sticky Header එකේ Hamburger මෙනු අයිකනය පෙන්වීම */
+  .header-area.header-sticky .mobile_menu_bar {
+    display: flex !important;
+    margin: 0 !important;
+  }
+
+  /* Mobile Menu Hover සහ Active වර්ණ (Gold - #d4af37) */
+  .hamburger_menu ul li a:hover,
+  .mobile_menu ul li a:hover,
+  .mean-container .mean-nav ul li a:hover,
+  .hamburger_menu ul li.current-menu-ancestor>a,
+  .hamburger_menu ul li.current-menu-item>a,
+  .mobile_menu ul li.current-menu-ancestor>a,
+  .mobile_menu ul li.current-menu-item>a,
+  .mean-container .mean-nav ul li.current-menu-ancestor>a {
+    color: #d4af37 !important;
+  }
+}
+
+/* --- 2. මධ්‍යම ප්‍රමාණයේ Mobile තිර සඳහා (Smartphones - 575px ට අඩු) --- */
+@media (max-width: 575px) {
+  .ib-mobile-header .site_logo img {
+    max-height: 45px !important;
+  }
+
+  /* ඉඩ මදිවීම වැළැක්වීමට Social icons සහ Let's talk බොත්තම සැඟවීම */
+  .ib-mobile-socials,
+  .header-right-item .tj-primary-btn {
+    display: none !important;
+  }
+}
+
+/* --- 3. ඉතා කුඩා තිර සඳහා (Small Mobile Screens - 380px ට අඩු) --- */
+@media (max-width: 380px) {
+
+  .ib-mobile-socials,
+  .header-area.header-sticky .ib-sticky-socials {
+    gap: 8px !important;
+  }
+
+  .ib-mobile-socials a,
+  .header-area.header-sticky .ib-sticky-socials a {
+    font-size: 14px !important;
+  }
+
+  /* ඉතා කුඩා තිරවලදී ලෝගෝව තවත් කුඩා කිරීම */
+  .ib-mobile-header .site_logo img,
+  .header-area.header-sticky .site_logo img {
+    max-height: 40px !important;
+  }
+}

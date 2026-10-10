@@ -1351,8 +1351,7 @@ Progressbar js
 							start: `top-=${startOffset} top`,
 							endTrigger: container,
 							end: () =>
-								`bottom top+=${
-									lastPanel.offsetHeight + startOffset + paddingBottom
+								`bottom top+=${lastPanel.offsetHeight + startOffset + paddingBottom
 								}`,
 							pin: true,
 							pinSpacing: false,
@@ -1456,8 +1455,7 @@ Progressbar js
 										start: `top-=${startOffset} top`,
 										endTrigger: container,
 										end: () =>
-											`bottom top+=${
-												lastPanel.offsetHeight + startOffset + paddingBottom
+											`bottom top+=${lastPanel.offsetHeight + startOffset + paddingBottom
 											}`,
 										pin: true,
 										pinSpacing: false,
@@ -1548,9 +1546,8 @@ Progressbar js
 								scrollTrigger: {
 									trigger: panel,
 									start: `top bottom`,
-									end: `${
-										i === 0 || i === 2 ? "bottom+=200" : "bottom+=300"
-									} bottom`,
+									end: `${i === 0 || i === 2 ? "bottom+=200" : "bottom+=300"
+										} bottom`,
 									pin: false,
 									pinSpacing: false,
 									scrub: true,
