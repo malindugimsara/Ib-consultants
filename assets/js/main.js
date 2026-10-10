@@ -182,19 +182,22 @@ Progressbar js
 	////////////////////////////////////////////////////
 	// Client-slider Js
 	if ($(".client-slider").length > 0) {
-		var client = new Swiper(".client-slider", {
-			slidesPerView: "auto",
-			spaceBetween: 0,
-			freemode: true,
-			centeredSlides: true,
-			loop: true,
-			speed: 5000,
-			allowTouchMove: false,
-			autoplay: {
-				delay: 1,
-				disableOnInteraction: false,
-			},
-		});
+		var clientSliderEl = document.querySelector(".client-slider");
+		if (!clientSliderEl || !clientSliderEl.swiper) {
+			var client = new Swiper(".client-slider", {
+				slidesPerView: "auto",
+				spaceBetween: 0,
+				freemode: true,
+				centeredSlides: true,
+				loop: true,
+				speed: 9000,
+				allowTouchMove: false,
+				autoplay: {
+					delay: 1,
+					disableOnInteraction: false,
+				},
+			});
+		}
 	}
 
 	////////////////////////////////////////////////////

@@ -2247,27 +2247,19 @@ header.header-area.ib-desktop-header {
   color: #111111 !important;
 }
 
+/* අකුරු වල මූලික වර්ණය (අඳුරු නිල්) */
+.topic-color2 {
+    color: #0a1f44 !important;
+    transition: color 0.3s ease; /* වර්ණය මාරුවීම සුමටව සිදුවීමට */
+}
+
+/* ප්‍රධාන බොත්තම (Button) මතින් Hover වන විට ඇතුළත ඇති අකුරු සුදු පැහැ වීම */
+.tj-primary-btn:hover .topic-color2 {
+    color: #ffffff !important;
+}
+
 .tj-award-item-inner {
-  background-color: var(--primary-navy) !important;
-  border: 2px solid #d4af37 !important;
-  border-radius: 10px !important;
-}
-
-.tj-award-item-inner:hover {
-  border-color: #d4af37 !important;
-  box-shadow: none !important;
-  background-color: #d4af37 !important;
-}
-
-.tj-award-item-inner:hover h6,
-.tj-award-item-inner:hover p,
-.tj-award-item-inner:hover i,
-.tj-award-item-inner:hover .tj-award-text,
-.tj-award-item-inner:hover .tj-award-number,
-.tj-award-item-inner:hover .tj-award-year,
-.tj-award-item-inner:hover .tj-award-title,
-.tj-award-item-inner:hover .tj-award-description {
-  color: #111111 !important;
+  color: #091a32 !important;
 }
 
 /* --- Hero Slider Zoom-In Animation --- */
@@ -2477,4 +2469,315 @@ header.header-area.ib-desktop-header {
   .header-area.header-sticky .site_logo img {
     max-height: 40px !important;
   }
+}
+
+
+/* --- Main Services Card Image Fade & Text Highlight --- */
+
+/* රූපයට උඩින් යොදන මූලික Gradient Fade එක (අකුරු පැහැදිලිව පෙනීමට) */
+.main-service-card .service-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.main-service-card .service-img::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* පහළ සිට ඉහළට විහිදෙන අඳුරු නිල් (Navy Blue) පැහැති Fade එකක් */
+  background: linear-gradient(to top, rgba(9, 26, 50, 0.95) 0%, rgba(9, 26, 50, 0.3) 50%, rgba(0, 0, 0, 0) 100%);
+  transition: all 0.4s ease-in-out;
+  z-index: 1;
+}
+
+/* අකුරු සහ අයිකනය රූපයට (Fade එකට) ඉහළින් පෙනීම සඳහා z-index සැකසීම */
+.main-service-card .service-content,
+.main-service-card .service-icon {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.4s ease-in-out;
+}
+
+/* --- Hover වීමේදී සිදුවන වෙනස්කම් --- */
+
+/* 1. මවුසය ගෙන ගිය විට සම්පූර්ණ රූපයම අඳුරු වීම (Solid Fade) */
+.main-service-card:hover .service-img::after {
+  background: rgba(9, 26, 50, 0.85);
+  /* මුළු රූපයම අඳුරු වේ */
+}
+
+/* 2. රූපය මඳක් විශාල වීම (Zoom effect) */
+.main-service-card .service-img img {
+  transition: transform 0.5s ease;
+}
+
+.main-service-card:hover .service-img img {
+  transform: scale(1.1);
+}
+
+/* 3. Hover වන විට අකුරු කොටස මඳක් ඉහළට පැමිණීම (Lift effect) */
+.main-service-card:hover .service-content {
+  transform: translateY(-8px);
+}
+
+/* 4. Hover වන විට මාතෘකාව (Title) රන්වන් (Gold) පැහැයෙන් Highlight වීම */
+.main-service-card:hover .service-content .title {
+  color: #c5a47c !important;
+  transition: color 0.3s ease;
+}
+
+/* 5. More Details Button එක Highlight වීම */
+.main-service-card:hover .text-btn .btn-text span,
+.main-service-card:hover .text-btn .btn-icon i {
+  color: #c5a47c !important;
+  transition: color 0.3s ease;
+}
+
+
+/* --- Diploma/Award Section Hover Fix --- */
+
+/* මූලික වර්ණය (කලින් ලබා දුන් කේතය) සහ Animation එකක් එක් කිරීම */
+.tj-award-item .tj-award-index,
+.tj-award-item .tj-award-title,
+.tj-award-item .tj-award-result,
+.tj-award-item .tj-award-date {
+  color: #0a1f44 !important;
+  transition: color 0.3s ease;
+  /* වර්ණය මාරු වීම සුමටව (Smooth) සිදුවීමට */
+}
+
+/* සම්පූර්ණ කොටුව මතින් (Hover) යන විට සියලුම අකුරු වල වර්ණය වෙනස් වීම */
+.tj-award-item:hover .tj-award-index,
+.tj-award-item:hover .tj-award-title,
+.tj-award-item:hover .tj-award-result,
+.tj-award-item:hover .tj-award-date {
+  color: #c5a47c !important;
+}
+
+/* --- Diploma/Award Section Font Colors --- */
+.tj-award-item .tj-award-index:hover,
+.tj-award-item .tj-award-title:hover,
+.tj-award-item .tj-award-result:hover,
+.tj-award-item .tj-award-date:hover {
+  color: #c5a47c !important;
+}
+
+/* =========================================
+   Business Workshops Slider Cards 
+   (Primary Colors: #0A1F44 Navy Blue, #D4AF37 Gold)
+========================================= */
+
+:root {
+  --primary-navy: #0A1F44;
+  --accent-gold: #D4AF37;
+}
+
+/* Ensure Swiper slider items have equal height */
+.h5-service-section .swiper-slide {
+  height: auto;
+  display: flex;
+}
+
+.h5-service-section .service-item.style-6 {
+  background: #ffffff !important;
+  border: 1px solid rgba(10, 31, 68, 0.08) !important;
+  border-top: 1px solid var(--accent-gold) !important;
+  border-radius: 16px !important;
+  padding: 28px 22px 22px !important;
+  height: 100% !important;
+  min-height: 490px;
+  width: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  box-shadow: 0 8px 24px rgba(10, 31, 68, 0.05);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-sizing: border-box;
+}
+
+/* Hover effect on entire card */
+.h5-service-section .service-item.style-6:hover {
+  background-color: #ffffff !important;
+  transform: translateY(-8px);
+  border-color: rgba(212, 175, 55, 0.5) !important;
+  border-top-color: var(--accent-gold) !important;
+  box-shadow: 0 20px 40px rgba(10, 31, 68, 0.12);
+}
+
+/* Card Title */
+.h5-service-section .service-item.style-6 .title {
+  max-width: 100% !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+  margin-bottom: 15px !important;
+  text-align: left !important;
+  min-height: 55px;
+  /* Title sathi fix 2 lines chi jaga */
+  display: flex;
+  align-items: flex-start;
+}
+
+.h5-service-section .service-item.style-6 .title a {
+  color: var(--primary-navy) !important;
+  transition: color 0.3s ease;
+  display: block;
+}
+
+.h5-service-section .service-item.style-6:hover .title a {
+  color: #b89128 !important;
+}
+
+/* Modern Gradient Icon Box */
+.h5-service-section .service-item.style-6 .service-icon {
+  width: 54px !important;
+  height: 54px !important;
+  margin: 0 0 20px 0 !important;
+  border-radius: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 6px 16px rgba(10, 31, 68, 0.12);
+  transition: all 0.4s ease;
+  flex-shrink: 0;
+}
+
+.h5-service-section .service-item.style-6 .service-icon i {
+  color: var(--accent-gold) !important;
+  font-size: 24px !important;
+  transition: transform 0.4s ease;
+}
+
+.h5-service-section .service-item.style-6:hover .service-icon {
+  background: var(--accent-gold) !important;
+  transform: rotate(6deg) scale(1.08);
+}
+
+.h5-service-section .service-item.style-6:hover .service-icon i {
+  color: var(--primary-navy) !important;
+}
+
+/* Card Body (Audience, Topics & Outcome Boxes) */
+.h5-service-section .service-item.style-6 .service-content {
+  flex-grow: 1;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  width: 100%;
+}
+
+/* Structured Info Boxes */
+.h5-service-section .workshop-info-box {
+  border-radius: 10px;
+  padding: 10px 13px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  line-height: 1.5;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.h5-service-section .workshop-info-box.audience-box {
+  background-color: #f6f8fb;
+  min-height: 95px;
+}
+
+.h5-service-section .workshop-info-box.topics-box {
+  background-color: #ffffff;
+  border: 1px solid rgba(10, 31, 68, 0.08);
+  min-height: 150px;
+}
+
+.h5-service-section .workshop-info-box.outcome-box {
+  background-color: #fdfbee;
+  margin-bottom: 15px;
+  min-height: 105px;
+}
+
+.h5-service-section .workshop-info-box .info-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 5px;
+  color: var(--primary-navy);
+}
+
+.h5-service-section .workshop-info-box.outcome-box .info-label {
+  color: #9a7610;
+}
+
+.h5-service-section .workshop-info-box.topics-box .info-label {
+  color: #4B5563;
+}
+
+.h5-service-section .workshop-info-box p {
+  margin: 0;
+  color: #333333 !important;
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+}
+
+/* Bullet list for Key Topics */
+.h5-service-section .workshop-info-box .topic-list {
+  margin: 0;
+  padding-left: 16px;
+  color: #333333;
+}
+
+.h5-service-section .workshop-info-box .topic-list li {
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.h5-service-section .workshop-info-box .topic-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* Card Action Button */
+.h5-service-section .workshop-card-action {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(10, 31, 68, 0.12);
+  width: 100%;
+}
+
+.h5-service-section .workshop-card-btn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background-color: rgba(10, 31, 68, 0.04);
+  color: var(--primary-navy) !important;
+  font-weight: 700;
+  font-size: 13.5px;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+}
+
+.h5-service-section .workshop-card-btn i {
+  color: var(--accent-gold);
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.h5-service-section .service-item.style-6:hover .workshop-card-btn {
+  background-color: var(--primary-navy);
+  color: #ffffff !important;
+}
+
+.h5-service-section .service-item.style-6:hover .workshop-card-btn i {
+  color: var(--accent-gold);
+  transform: translateX(4px);
 }
