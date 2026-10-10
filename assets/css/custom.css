@@ -382,17 +382,20 @@ h6,
 .custom-feature-card {
   background-color: #f8f7e6;
   border: 1px solid rgba(222, 225, 49, 0.8);
+  border-bottom: 4px solid transparent;
   border-radius: 16px;
   padding: 40px 30px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.35s ease, border-color 0.35s ease;
   height: 100%;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .custom-feature-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 35px rgba(10, 31, 68, 0.12);
-  border-bottom: 4px solid var(--accent-gold);
+  border-bottom-color: var(--accent-gold);
 }
 
 .icon-box-rounded {
@@ -1104,16 +1107,11 @@ h6,
 }
 
 /* =========================================
-   Contact Cards Pop-up Hover Animation
+   Contact Cards Hover Animation (Smooth Elevation)
    ========================================= */
-.custom-feature-card {
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-  /* Smooth bounce effect */
-}
-
-.custom-feature-card:hover {
-  transform: translateY(-15px) scale(1.03) !important;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08) !important;
+.contact-item.custom-feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
   z-index: 2;
 }
 
@@ -1226,10 +1224,34 @@ h6,
   border-radius: 25px !important;
 }
 
-.mainmenu ul li.current-menu-ancestor>a {
-  color: #ff6600 !important;
-  /* මේක ඔයාගේ website එකේ theme පාටට වෙනස් කරන්න */
+.mainmenu ul li.current-menu-ancestor > a,
+.mainmenu ul li.current-menu-item > a,
+.mainmenu ul li.active > a,
+.hamburger_menu ul li.current-menu-ancestor > a,
+.hamburger_menu ul li.current-menu-item > a,
+.hamburger_menu ul li.active > a,
+.mobile_menu ul li.current-menu-ancestor > a,
+.mobile_menu ul li.current-menu-item > a,
+.mobile_menu ul li.active > a,
+.mean-container .mean-nav ul li.current-menu-ancestor > a,
+.mean-container .mean-nav ul li.current-menu-item > a,
+.mean-container .mean-nav ul li.active > a {
+  color: #d4af37 !important;
   font-weight: 700 !important;
+}
+
+.hamburger_menu ul li.current-menu-ancestor > a,
+.hamburger_menu ul li.current-menu-item > a,
+.hamburger_menu ul li.active > a,
+.mobile_menu ul li.current-menu-ancestor > a,
+.mobile_menu ul li.current-menu-item > a,
+.mobile_menu ul li.active > a,
+.mean-container .mean-nav ul li.current-menu-ancestor > a,
+.mean-container .mean-nav ul li.current-menu-item > a,
+.mean-container .mean-nav ul li.active > a {
+  border-left: 3px solid #d4af37 !important;
+  padding-left: 14px !important;
+  background: rgba(212, 175, 55, 0.08) !important;
 }
 
 /* Custom CSS for Gold Hover Effect on Workshop Cards */
@@ -1604,29 +1626,6 @@ header.header-area.ib-desktop-header {
 .ib-brand-title-wrap {
   position: relative;
   display: inline-block;
-  overflow: hidden;
-  padding: 2px 8px;
-  border-radius: 4px;
-}
-
-/* Light beam sweep flare across the text */
-.ib-brand-title-wrap::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -120%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(115deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0) 20%,
-      rgba(255, 255, 255, 0.7) 50%,
-      rgba(255, 255, 255, 0) 80%,
-      transparent 100%);
-  transform: skewX(-25deg);
-  animation: ibSweepFlare 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  pointer-events: none;
-  z-index: 2;
 }
 
 .ib-brand-title {
@@ -1650,14 +1649,14 @@ header.header-area.ib-desktop-header {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  /* Continuous liquid shimmer + golden aura glow */
-  animation: ibGoldFlow 5s ease-in-out infinite, ibGoldAura 3s ease-in-out infinite alternate;
-  transition: filter 0.3s ease;
+  /* Continuous liquid shimmer */
+  animation: ibGoldFlow 5s ease-in-out infinite;
 }
 
 .ib-brand-link:hover .ib-brand-title {
-  animation: ibGoldFlowFast 2s linear infinite, ibGoldAuraHover 1.5s ease-in-out infinite alternate;
+  animation: ibGoldFlowFast 2s linear infinite;
 }
+
 
 /* Tagline with Flanking Luxury Lines */
 .ib-brand-tagline {
@@ -1732,38 +1731,6 @@ header.header-area.ib-desktop-header {
   }
 }
 
-@keyframes ibGoldAura {
-  0% {
-    filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.35)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
-  }
-
-  100% {
-    filter: drop-shadow(0 0 16px rgba(212, 175, 55, 0.75)) drop-shadow(0 0 28px rgba(245, 218, 122, 0.35)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
-  }
-}
-
-@keyframes ibGoldAuraHover {
-  0% {
-    filter: drop-shadow(0 0 16px rgba(212, 175, 55, 0.85)) drop-shadow(0 0 26px rgba(255, 255, 255, 0.4));
-  }
-
-  100% {
-    filter: drop-shadow(0 0 26px rgba(212, 175, 55, 1)) drop-shadow(0 0 42px rgba(255, 215, 0, 0.6));
-  }
-}
-
-@keyframes ibSweepFlare {
-
-  0%,
-  25% {
-    left: -120%;
-  }
-
-  65%,
-  100% {
-    left: 200%;
-  }
-}
 
 @keyframes ibLinePulse {
   0% {
@@ -1901,21 +1868,50 @@ header.header-area.ib-desktop-header {
   gap: 35px;
 }
 
-.ib-nav-wrapper .mainmenu ul li a {
+.ib-nav-wrapper .mainmenu ul li {
+  position: relative;
+}
+
+.ib-nav-wrapper .mainmenu ul li > a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
   color: #091a32;
   font-weight: 600;
   font-size: 15px;
   text-transform: uppercase;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
   white-space: nowrap;
   padding: 24px 0 !important;
 }
 
-.ib-nav-wrapper .mainmenu ul li a:hover,
-.ib-nav-wrapper .mainmenu ul li.current-menu-ancestor a,
-.ib-nav-wrapper .mainmenu ul li.active a {
-  color: #d4af37;
+.ib-nav-wrapper .mainmenu ul li > a::after {
+  content: "";
+  position: absolute;
+  bottom: 14px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #d4af37, #f7e7a9, #d4af37);
+  border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
+  transition: width 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.ib-nav-wrapper .mainmenu ul li:hover > a::after,
+.ib-nav-wrapper .mainmenu ul li.current-menu-ancestor > a::after,
+.ib-nav-wrapper .mainmenu ul li.current-menu-item > a::after,
+.ib-nav-wrapper .mainmenu ul li.active > a::after {
+  width: 100%;
+}
+
+.ib-nav-wrapper .mainmenu ul li > a:hover,
+.ib-nav-wrapper .mainmenu ul li.current-menu-ancestor > a,
+.ib-nav-wrapper .mainmenu ul li.current-menu-item > a,
+.ib-nav-wrapper .mainmenu ul li.active > a {
+  color: #d4af37 !important;
+  font-weight: 700;
 }
 
 @media (min-width: 1200px) {
@@ -2092,7 +2088,14 @@ header.header-area.ib-desktop-header {
   gap: 30px !important;
 }
 
-.header-area.header-sticky .menu-area .mainmenu ul li a {
+.header-area.header-sticky .menu-area .mainmenu ul li {
+  position: relative;
+}
+
+.header-area.header-sticky .menu-area .mainmenu ul li > a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
   color: #091a32 !important;
   font-weight: 600 !important;
   font-size: 15px !important;
@@ -2103,10 +2106,32 @@ header.header-area.ib-desktop-header {
   white-space: nowrap !important;
 }
 
-.header-area.header-sticky .menu-area .mainmenu ul li a:hover,
-.header-area.header-sticky .menu-area .mainmenu ul li.current-menu-ancestor a,
-.header-area.header-sticky .menu-area .mainmenu ul li.active a {
+.header-area.header-sticky .menu-area .mainmenu ul li > a::after {
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #d4af37, #f7e7a9, #d4af37);
+  border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
+  transition: width 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.header-area.header-sticky .menu-area .mainmenu ul li:hover > a::after,
+.header-area.header-sticky .menu-area .mainmenu ul li.current-menu-ancestor > a::after,
+.header-area.header-sticky .menu-area .mainmenu ul li.current-menu-item > a::after,
+.header-area.header-sticky .menu-area .mainmenu ul li.active > a::after {
+  width: 100%;
+}
+
+.header-area.header-sticky .menu-area .mainmenu ul li > a:hover,
+.header-area.header-sticky .menu-area .mainmenu ul li.current-menu-ancestor > a,
+.header-area.header-sticky .menu-area .mainmenu ul li.current-menu-item > a,
+.header-area.header-sticky .menu-area .mainmenu ul li.active > a {
   color: #d4af37 !important;
+  font-weight: 700 !important;
 }
 
 /* Header Right Item & Sticky Social Icons */
@@ -2426,15 +2451,34 @@ header.header-area.ib-desktop-header {
   }
 
   /* Mobile Menu Hover සහ Active වර්ණ (Gold - #d4af37) */
+  .hamburger_menu ul li > a,
+  .mobile_menu ul li > a,
+  .mean-container .mean-nav ul li > a {
+    position: relative !important;
+    transition: all 0.3s ease !important;
+    border-left: 3px solid transparent !important;
+  }
+
   .hamburger_menu ul li a:hover,
   .mobile_menu ul li a:hover,
-  .mean-container .mean-nav ul li a:hover,
-  .hamburger_menu ul li.current-menu-ancestor>a,
-  .hamburger_menu ul li.current-menu-item>a,
-  .mobile_menu ul li.current-menu-ancestor>a,
-  .mobile_menu ul li.current-menu-item>a,
-  .mean-container .mean-nav ul li.current-menu-ancestor>a {
+  .mean-container .mean-nav ul li a:hover {
     color: #d4af37 !important;
+  }
+
+  .hamburger_menu ul li.current-menu-ancestor > a,
+  .hamburger_menu ul li.current-menu-item > a,
+  .hamburger_menu ul li.active > a,
+  .mobile_menu ul li.current-menu-ancestor > a,
+  .mobile_menu ul li.current-menu-item > a,
+  .mobile_menu ul li.active > a,
+  .mean-container .mean-nav ul li.current-menu-ancestor > a,
+  .mean-container .mean-nav ul li.current-menu-item > a,
+  .mean-container .mean-nav ul li.active > a {
+    color: #d4af37 !important;
+    font-weight: 700 !important;
+    border-left: 3px solid #d4af37 !important;
+    padding-left: 14px !important;
+    background: rgba(212, 175, 55, 0.08) !important;
   }
 }
 
@@ -2525,14 +2569,14 @@ header.header-area.ib-desktop-header {
 
 /* 4. Hover වන විට මාතෘකාව (Title) රන්වන් (Gold) පැහැයෙන් Highlight වීම */
 .main-service-card:hover .service-content .title {
-  color: #c5a47c !important;
+  color: #d4af37 !important;
   transition: color 0.3s ease;
 }
 
 /* 5. More Details Button එක Highlight වීම */
 .main-service-card:hover .text-btn .btn-text span,
 .main-service-card:hover .text-btn .btn-icon i {
-  color: #c5a47c !important;
+  color: #d4af37 !important;
   transition: color 0.3s ease;
 }
 
@@ -2781,3 +2825,1073 @@ header.header-area.ib-desktop-header {
   color: var(--accent-gold);
   transform: translateX(4px);
 }
+
+
+/* --- Client Logos Size Adjustments --- */
+
+/* මූලික සැකසුම (Desktop සහ Tablet සඳහා) */
+.client-logo-custom img {
+    max-width: 150px !important; /* ඔබට අවශ්‍ය නම් 120px, 130px ලෙස මෙය වෙනස් කළ හැක */
+    height: auto !important;
+    margin: 0 auto; /* අයිකනය හරියටම මැදට (Center) ගැනීමට */
+    display: block;
+    filter: grayscale(100%); /* (විකල්ප) Professional පෙනුමක් සඳහා ලෝගෝ කළු සුදු කිරීම. අවශ්‍ය නැත්නම් මෙය මකා දමන්න */
+    transition: all 0.3s ease;
+}
+
+/* Hover වන විට ලෝගෝව සාමාන්‍ය වර්ණයෙන් (Color) පෙනීම සහ මඳක් Zoom වීම */
+.client-logo-custom:hover img {
+    filter: grayscale(0%); 
+    transform: scale(1.05);
+}
+
+/* ජංගම දුරකථන තිර සඳහා විශේෂ සැකසුම් (Mobile Screens - 768px ට අඩු) */
+@media (max-width: 767px) {
+    .client-logo-custom img {
+        max-width: 100px !important; /* Mobile වලදී ලෝගෝව තවත් කුඩා කිරීම */
+    }
+}
+
+
+/* ========================================================
+   Modern Executive FAQ Section Styles (contact.html)
+   ======================================================== */
+
+.ib-faq-section-modern {
+  position: relative;
+  background-color: #f8fafc;
+}
+
+.ib-faq-visual-wrap {
+  position: relative;
+  padding-bottom: 45px;
+}
+
+.ib-faq-image-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 520px;
+  box-shadow: 0 20px 45px rgba(9, 26, 50, 0.14);
+  border: 2px solid rgba(212, 175, 55, 0.3);
+}
+
+.ib-faq-main-img {
+  width: 100%;
+  height: 125%;
+  min-height: 125%;
+  object-fit: cover;
+  display: block;
+}
+
+.ib-faq-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(9, 26, 50, 0.2) 0%, rgba(9, 26, 50, 0.88) 100%);
+  pointer-events: none;
+}
+
+.ib-faq-img-badge {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  background: rgba(9, 26, 50, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #d4af37;
+  padding: 7px 16px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.ib-faq-img-caption {
+  position: absolute;
+  bottom: 95px;
+  left: 25px;
+  right: 25px;
+  z-index: 2;
+}
+
+.ib-faq-img-caption h3 {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.ib-faq-img-caption h3 span {
+  color: #d4af37;
+}
+
+/* Floating Glass Call Card */
+.ib-faq-floating-card {
+  position: absolute;
+  bottom: 0;
+  left: 15px;
+  right: 15px;
+  background: rgba(9, 26, 50, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-radius: 16px;
+  padding: 20px 22px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  z-index: 3;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.ib-faq-floating-card:hover {
+  transform: translateY(-4px);
+  border-color: #d4af37;
+  box-shadow: 0 22px 50px rgba(212, 175, 55, 0.22);
+}
+
+.ib-faq-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ib-faq-pulse-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d4af37, #aa771c);
+  color: #091a32;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+  flex-shrink: 0;
+  animation: ibPulseGold 2.5s infinite;
+}
+
+@keyframes ibPulseGold {
+  0% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(212, 175, 55, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+  }
+}
+
+.ib-faq-card-tag {
+  display: block;
+  color: #dfbe6f;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.ib-faq-card-title {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 3px 0 0;
+  line-height: 1.25;
+}
+
+.ib-faq-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.ib-faq-call-btn {
+  background: linear-gradient(135deg, #d4af37, #bf953f);
+  color: #091a32 !important;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 13.5px;
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+.ib-faq-call-btn:hover {
+  background: #ffffff;
+  color: #091a32 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 255, 255, 0.3);
+}
+
+.ib-faq-wa-btn {
+  background: #25D366;
+  color: #ffffff !important;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 13.5px;
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.ib-faq-wa-btn:hover {
+  background: #1eb857;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.45);
+}
+
+/* ========================================================
+   Executive Numbered Accordion (ib-executive-faq)
+   ======================================================== */
+
+.ib-executive-faq {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ib-executive-faq .accordion-item {
+  padding: 0 !important;
+  border: 1px solid rgba(9, 26, 50, 0.08) !important;
+  border-radius: 14px !important;
+  margin-bottom: 0 !important;
+  background: #ffffff !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03) !important;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.ib-executive-faq .accordion-item:not(.active):hover {
+  border-color: rgba(212, 175, 55, 0.45) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.1) !important;
+}
+
+.ib-executive-faq .accordion-item.active {
+  background-color: #091a32 !important;
+  border-color: rgba(212, 175, 55, 0.6) !important;
+  border-left: 4px solid #d4af37 !important;
+  box-shadow: 0 12px 30px rgba(9, 26, 50, 0.22) !important;
+}
+
+.ib-executive-faq .faq-title {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  padding: 20px 22px !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  text-align: left;
+  gap: 16px;
+  text-decoration: none !important;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Hide default theme icon on title */
+.ib-executive-faq .faq-title::after {
+  display: none !important;
+  content: none !important;
+}
+
+.ib-executive-faq .faq-number {
+  font-family: var(--tj-ff-heading, 'Mona Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 800;
+  color: #d4af37;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.ib-executive-faq .accordion-item.active .faq-number {
+  background: linear-gradient(135deg, #d4af37, #aa771c);
+  color: #091a32;
+  border-color: #d4af37;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
+}
+
+.ib-executive-faq .faq-question-text {
+  flex: 1;
+  font-family: var(--tj-ff-heading, 'Mona Sans', sans-serif);
+  font-size: 17px;
+  font-weight: 700;
+  color: #091a32;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.ib-executive-faq .accordion-item.active .faq-question-text {
+  color: #ffffff !important;
+}
+
+.ib-executive-faq .faq-toggle-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(9, 26, 50, 0.18);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #091a32;
+  font-size: 13px;
+  flex-shrink: 0;
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.ib-executive-faq .accordion-item.active .faq-toggle-icon {
+  border-color: #d4af37;
+  background: rgba(212, 175, 55, 0.18);
+  color: #d4af37;
+  transform: rotate(45deg);
+}
+
+.ib-executive-faq .accordion-body {
+  padding: 0 24px 22px 74px !important;
+  margin: 0 !important;
+}
+
+.ib-executive-faq .accordion-body p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #5a6578;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.ib-executive-faq .accordion-item.active .accordion-body p {
+  color: #cbd5e1 !important;
+}
+
+/* ========================================================
+   Responsive Media Queries
+   ======================================================== */
+
+@media (max-width: 991px) {
+  .ib-faq-visual-wrap {
+    margin-bottom: 50px;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .ib-faq-main-img {
+    height: 440px;
+  }
+}
+
+@media (max-width: 575px) {
+  .ib-faq-main-img {
+    height: 380px;
+  }
+  .ib-faq-img-caption h3 {
+    font-size: 20px;
+  }
+  .ib-faq-floating-card {
+    left: 10px;
+    right: 10px;
+    padding: 16px;
+  }
+  .ib-faq-card-title {
+    font-size: 14.5px;
+  }
+  .ib-executive-faq .faq-title {
+    padding: 16px !important;
+    gap: 12px;
+  }
+  .ib-executive-faq .faq-question-text {
+    font-size: 15px;
+  }
+  .ib-executive-faq .accordion-body {
+    padding: 0 16px 18px 16px !important;
+  }
+}
+
+/* ========================================================
+   Modern Executive Testimonial Section Styles (index.html)
+   ======================================================== */
+
+.ib-testimonial-section-modern {
+  position: relative;
+  background-color: #f8fafc;
+  overflow: hidden;
+}
+
+/* Left Column: Trust Matrix */
+.ib-trust-matrix-card {
+  position: relative;
+  padding-bottom: 75px;
+}
+
+.ib-trust-media {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 520px;
+  box-shadow: 0 20px 45px rgba(9, 26, 50, 0.14);
+  border: 2px solid rgba(212, 175, 55, 0.35);
+}
+
+.ib-trust-img {
+  width: 100%;
+  height: 125%;
+  min-height: 125%;
+  object-fit: cover;
+  display: block;
+}
+
+.ib-trust-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(9, 26, 50, 0.15) 0%, rgba(9, 26, 50, 0.9) 100%);
+  pointer-events: none;
+}
+
+.ib-trust-top-pill {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  background: rgba(9, 26, 50, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #d4af37;
+  padding: 7px 16px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.ib-trust-caption {
+  position: absolute;
+  bottom: 120px;
+  left: 25px;
+  right: 25px;
+  z-index: 2;
+}
+
+.ib-trust-caption h3 {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.ib-trust-caption h3 span {
+  color: #d4af37;
+}
+
+/* Floating Trust Hub Scorecard */
+.ib-trust-hub-card {
+  position: absolute;
+  bottom: 0;
+  left: 15px;
+  right: 15px;
+  background: rgba(9, 26, 50, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-radius: 18px;
+  padding: 22px 24px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+  z-index: 3;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.ib-trust-hub-card:hover {
+  transform: translateY(-4px);
+  border-color: #d4af37;
+  box-shadow: 0 24px 55px rgba(212, 175, 55, 0.22);
+}
+
+.ib-trust-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.ib-trust-rating-score {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.ib-score-num {
+  font-family: var(--tj-ff-heading, 'Mona Sans', sans-serif);
+  font-size: 40px;
+  font-weight: 900;
+  color: #d4af37;
+  line-height: 1;
+}
+
+.ib-score-out-of {
+  font-size: 16px;
+  color: #dfbe6f;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.ib-trust-stars-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ib-trust-stars {
+  color: #d4af37;
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+.ib-trust-subtext {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.ib-trust-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
+  margin: 16px 0;
+}
+
+.ib-trust-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  text-align: center;
+}
+
+.ib-trust-stat-box {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ib-stat-val {
+  font-family: var(--tj-ff-heading, 'Mona Sans', sans-serif);
+  font-size: 20px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.ib-stat-lbl {
+  font-size: 11px;
+  color: #dfbe6f;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Right Column: Bespoke Testimonial Cards */
+.ib-testimonial-showcase {
+  position: relative;
+}
+
+.ib-testimonial-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 38px 40px;
+  box-shadow: 0 12px 35px rgba(9, 26, 50, 0.06);
+  border: 1px solid rgba(9, 26, 50, 0.08);
+  position: relative;
+  transition: all 0.35s ease;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ib-testimonial-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 45px rgba(9, 26, 50, 0.1);
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.ib-card-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.ib-sector-tag {
+  background: rgba(9, 26, 50, 0.06);
+  color: #091a32;
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(9, 26, 50, 0.1);
+}
+
+.ib-sector-tag i {
+  color: #d4af37;
+}
+
+.ib-card-stars {
+  color: #d4af37;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.ib-quote-content {
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.ib-quote-icon {
+  font-size: 38px;
+  color: #d4af37;
+  opacity: 0.25;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.ib-quote-text {
+  font-size: 17.5px;
+  line-height: 1.7;
+  color: #1e293b;
+  font-weight: 500;
+  font-style: italic;
+  margin: 0;
+}
+
+.ib-impact-tag {
+  background: rgba(212, 175, 55, 0.1);
+  border-left: 3px solid #d4af37;
+  padding: 10px 14px;
+  border-radius: 0 8px 8px 0;
+  font-size: 13.5px;
+  color: #091a32;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 26px;
+}
+
+.ib-impact-tag i {
+  color: #d4af37;
+  font-size: 15px;
+}
+
+.ib-author-footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(9, 26, 50, 0.08);
+}
+
+.ib-author-monogram {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #091a32;
+  color: #d4af37;
+  font-family: var(--tj-ff-heading, 'Mona Sans', sans-serif);
+  font-size: 16px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #d4af37;
+  box-shadow: 0 4px 12px rgba(9, 26, 50, 0.2);
+  flex-shrink: 0;
+}
+
+.ib-author-info {
+  flex: 1;
+}
+
+.ib-author-name {
+  font-family: var(--tj-ff-heading, 'Mona Sans', sans-serif);
+  font-size: 16.5px;
+  font-weight: 700;
+  color: #091a32;
+  margin: 0 0 3px;
+  line-height: 1.2;
+}
+
+.ib-author-company {
+  font-size: 13px;
+  color: #64748b;
+  display: block;
+}
+
+.ib-verified-badge {
+  background: rgba(16, 185, 129, 0.1);
+  color: #059669;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  flex-shrink: 0;
+}
+
+/* Slider Controls (Bottom Row) */
+.ib-slider-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+  padding: 0 10px;
+  position: relative;
+}
+
+.ib-pagination-custom {
+  position: static !important;
+  width: auto !important;
+  display: flex;
+  gap: 8px;
+}
+
+.ib-pagination-custom .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: rgba(9, 26, 50, 0.2);
+  opacity: 1;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+}
+
+.ib-pagination-custom .swiper-pagination-bullet-active {
+  background: #d4af37 !important;
+  width: 32px;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+.ib-nav-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.ib-nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px solid rgba(9, 26, 50, 0.15);
+  color: #091a32;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.ib-nav-btn:hover {
+  background: #091a32;
+  color: #d4af37;
+  border-color: #d4af37;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(9, 26, 50, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .ib-trust-matrix-card {
+    margin-bottom: 50px;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .ib-trust-media {
+    height: 440px;
+  }
+  .ib-trust-img,
+  .ib-faq-main-img {
+    height: 100%;
+    min-height: 100%;
+  }
+}
+
+@media (max-width: 575px) {
+  .ib-trust-media {
+    height: 380px;
+  }
+  .ib-trust-img,
+  .ib-faq-main-img {
+    height: 100%;
+    min-height: 100%;
+  }
+  .ib-trust-caption h3 {
+    font-size: 20px;
+  }
+  .ib-trust-hub-card {
+    left: 10px;
+    right: 10px;
+    padding: 16px;
+  }
+  .ib-score-num {
+    font-size: 32px;
+  }
+  .ib-stat-val {
+    font-size: 17px;
+  }
+  .ib-stat-lbl {
+    font-size: 9.5px;
+  }
+  .ib-testimonial-card {
+    padding: 24px 20px;
+    min-height: auto;
+  }
+  .ib-quote-text {
+    font-size: 15px;
+  }
+  .ib-author-footer {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .ib-verified-badge {
+    margin-left: 66px;
+  }
+}
+
+/* =========================================
+   FAQ Accordion Cards (Executive Hover & Styling)
+   ========================================= */
+
+/* FAQ Container Setup for Auto-Numbering */
+.tj-faq {
+    counter-reset: faq-counter;
+}
+
+/* Base style for each FAQ Item Card */
+.tj-faq .accordion-item {
+    border: 1px solid #eaeaea;
+    border-left: 4px solid transparent;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    background-color: #ffffff;
+    box-shadow: 0 3px 12px rgba(10, 31, 68, 0.04);
+    transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+                box-shadow 0.35s ease,
+                border-color 0.35s ease,
+                background-color 0.35s ease;
+    overflow: hidden;
+    counter-increment: faq-counter;
+    position: relative;
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+/* Hover Animation: Inactive Card */
+.tj-faq .accordion-item:not(.active):hover {
+    transform: translateY(-4px);
+    border-color: rgba(212, 175, 55, 0.45);
+    border-left-color: #D4AF37;
+    background-color: #fcfbf7;
+    box-shadow: 0 10px 25px rgba(10, 31, 68, 0.08);
+    cursor: pointer;
+}
+
+/* Hover Animation: Active Card */
+.tj-faq .accordion-item.active:hover {
+    transform: translateY(-3px);
+    border-color: #f7e7a9;
+    box-shadow: 0 14px 30px rgba(10, 31, 68, 0.25), 0 0 20px rgba(212, 175, 55, 0.2);
+    cursor: pointer;
+}
+
+/* FAQ Button (Title Area) */
+.tj-faq .faq-title {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 22px 50px 22px 78px; /* Space for number on left, icon on right */
+    font-weight: 700;
+    font-size: 18px;
+    color: #0A1F44; /* Dark Navy Blue */
+    position: relative;
+    display: flex;
+    align-items: center;
+    box-shadow: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.tj-faq .accordion-item:not(.active):hover .faq-title {
+    color: #0A1F44;
+}
+
+/* Remove bootstrap button focus outline */
+.tj-faq .faq-title:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+
+/* Number Badge on Inactive Hover */
+.tj-faq .accordion-item:not(.active):hover .faq-title::before {
+    background: #D4AF37;
+    color: #0A1F44;
+    border-color: #D4AF37;
+    transform: translateY(-50%) scale(1.08);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+/* The Plus Icon (Inactive State) */
+.tj-faq .faq-title::after {
+    content: '+';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 34px;
+    height: 34px;
+    border: 1px solid #d1d5db;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 400;
+    color: #6b7280;
+    transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+    line-height: 1;
+}
+
+/* Plus Icon Hover Animation */
+.tj-faq .accordion-item:not(.active):hover .faq-title::after {
+    border-color: #D4AF37;
+    color: #D4AF37;
+    background: rgba(212, 175, 55, 0.12);
+    transform: translateY(-50%) rotate(90deg) scale(1.08);
+}
+
+/* FAQ Body Text */
+.tj-faq .faq-text-custom {
+    padding: 0 25px 25px 78px; /* Aligned with title text */
+    color: #5a6578;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* =========================================
+   ACTIVE STATE STYLING (Blue & Gold)
+   ========================================= */
+
+/* Active Item Background & Border */
+.tj-faq .accordion-item.active {
+    background: linear-gradient(135deg, #0A1F44 0%, #0d2654 100%);
+    border-color: #D4AF37;
+    border-left: 4px solid #D4AF37;
+    box-shadow: 0 10px 25px rgba(10, 31, 68, 0.2);
+}
+
+/* Active Title Text */
+.tj-faq .accordion-item.active .faq-title {
+    color: #ffffff;
+}
+
+/* Active Number Badge */
+.tj-faq .accordion-item.active .faq-title::before {
+    background: rgba(212, 175, 55, 0.18);
+    border-color: #D4AF37;
+    color: #ffffff;
+}
+
+.tj-faq .accordion-item.active:hover .faq-title::before {
+    background: #D4AF37;
+    color: #0A1F44;
+    transform: translateY(-50%) scale(1.08);
+}
+
+/* Active Close (x) Icon */
+.tj-faq .accordion-item.active .faq-title::after {
+    content: '\00d7'; /* Unicode for 'x' multiplication sign */
+    border-color: #D4AF37;
+    color: #D4AF37;
+    background: rgba(212, 175, 55, 0.15);
+    font-size: 24px;
+    font-weight: 300;
+}
+
+.tj-faq .accordion-item.active:hover .faq-title::after {
+    transform: translateY(-50%) rotate(90deg) scale(1.08);
+    background: rgba(212, 175, 55, 0.3);
+}
+
+/* Active Body Text */
+.tj-faq .accordion-item.active .faq-text-custom {
+    color: #e2e8f0;
+}
+
+/* Mobile Responsiveness for FAQ Cards */
+@media (max-width: 575px) {
+    .tj-faq .faq-title {
+        padding: 16px 45px 16px 65px;
+        font-size: 16px;
+    }
+
+    .tj-faq .faq-title::before {
+        left: 14px;
+        width: 34px;
+        height: 34px;
+        font-size: 13px;
+    }
+
+    .tj-faq .faq-title::after {
+        right: 14px;
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+    }
+
+    .tj-faq .faq-text-custom {
+        padding: 0 16px 20px 65px;
+        font-size: 14px;
+    }
+}
+
+
+
+
+
+

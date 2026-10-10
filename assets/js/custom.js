@@ -32,47 +32,151 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function setActiveMenu() {
-  // දැනට ඉන්න පිටුවේ URL එක ගන්නවා
-  let currentUrl = window.location.href.split("#")[0].split("?")[0];
+  // 1. Get clean current page filename in lowercase (handles http, https, and file:///)
+  let path = window.location.pathname || "";
+  let currentPage = path.substring(path.lastIndexOf("/") + 1).toLowerCase();
+  currentPage = currentPage.split("?")[0].split("#")[0];
 
-  // Menu එකේ තියෙන links ඔක්කොම ගන්නවා
-  let navLinks = document.querySelectorAll(".mainmenu ul li a");
-
-  // මුලින්ම තියෙන active classes ඔක්කොම අයින් කරනවා
-  document.querySelectorAll(".mainmenu ul li").forEach((li) => {
-    li.classList.remove("current-menu-ancestor", "active");
-  });
-
-  let isMatched = false;
-
-  navLinks.forEach((link) => {
-    // බ්‍රව්සර් එකේ URL එකයි, link එකේ URL එකයි සමානද බලනවා
-    if (link.href === currentUrl) {
-      link.parentElement.classList.add("current-menu-ancestor");
-      isMatched = true;
-    }
-  });
-
-  // Home page (index.html) එක නමක් නැතුව (උදා: www.site.com/) load වුණොත්
+  // Default to index.html if root, empty or index variations
   if (
-    !isMatched &&
-    (currentUrl.endsWith("/") ||
-      currentUrl.endsWith(".com") ||
-      currentUrl.endsWith(".lk") ||
-      currentUrl.includes("localhost"))
+    !currentPage ||
+    currentPage === "" ||
+    currentPage === "index.htm" ||
+    currentPage === "index.php"
   ) {
-    navLinks.forEach((link) => {
-      if (link.getAttribute("href") === "index.html") {
-        link.parentElement.classList.add("current-menu-ancestor");
+    currentPage = "index.html";
+  }
+
+  // 2. Map all 10 consultancy sub-service pages to consultancy-service.html
+  const consultancySubPages = [
+    "consultancy-service.html",
+    "business-health-check.html",
+    "profit-improvement.html",
+    "manufacturing-process-development.html",
+    "domestic-market-development.html",
+    "export-market-development.html",
+    "sales-marketing-development.html",
+    "product-development-pricing.html",
+    "business-process-systems.html",
+    "business-transformation-kpi.html",
+    "strategic-business-advisory.html",
+  ];
+
+  let targetPage = currentPage;
+  if (consultancySubPages.includes(currentPage)) {
+    targetPage = "consultancy-service.html";
+  }
+
+  // 3. Target all navigation lists (Desktop bottom nav, Sticky nav, Mobile source, Meanmenu drawer)
+  const navContainerSelectors = [
+    ".ib-bottom-nav .mainmenu",
+    ".header-sticky .menu-area .mainmenu",
+    "#mobile-menu",
+    ".mobile_menu",
+    ".hamburger_menu",
+    ".mean-container .mean-nav",
+  ];
+
+  navContainerSelectors.forEach((selector) => {
+    const containers = document.querySelectorAll(selector);
+    containers.forEach((container) => {
+      const items = container.querySelectorAll("li");
+      if (!items || items.length === 0) return;
+
+      // Remove previous active classes in this container
+      items.forEach((li) => {
+        li.classList.remove("current-menu-ancestor", "current-menu-item", "active");
+        const a = li.querySelector(":scope > a");
+        if (a) a.classList.remove("active");
+      });
+
+      let matched = false;
+
+      // Try matching filename
+      items.forEach((li) => {
+        const link = li.querySelector(":scope > a");
+        if (!link) return;
+
+        const href = (link.getAttribute("href") || "").trim();
+        let linkFile = href.substring(href.lastIndexOf("/") + 1).toLowerCase();
+        linkFile = linkFile.split("?")[0].split("#")[0];
+
+        if (linkFile === targetPage) {
+          li.classList.add("current-menu-ancestor", "current-menu-item", "active");
+          link.classList.add("active");
+          matched = true;
+        }
+      });
+
+      // Fallback for home page if not matched by filename
+      if (!matched && targetPage === "index.html") {
+        items.forEach((li) => {
+          const link = li.querySelector(":scope > a");
+          if (!link) return;
+          const href = (link.getAttribute("href") || "").trim().toLowerCase();
+          if (href === "index.html" || href === "./" || href === "/") {
+            li.classList.add("current-menu-ancestor", "current-menu-item", "active");
+            link.classList.add("active");
+          }
+        });
       }
     });
-  }
+  });
 }
 
-// පිටුව load වුණාට පස්සේ කේතය run කරන්න
+// Global execution hooks across lifecycle
 document.addEventListener("DOMContentLoaded", setActiveMenu);
-// Nav bar එක වෙනම load වෙනවා නම් (dynamic) කෙලින්ම run වෙන්න
-setTimeout(setActiveMenu, 10);
+window.addEventListener("load", setActiveMenu);
+setActiveMenu();
+
+// Retries at intervals to ensure dynamic AJAX nav and meanmenu cloning are handled
+[50, 150, 300, 600, 1000, 1500, 2500].forEach((delay) => {
+  setTimeout(setActiveMenu, delay);
+});
+
+// React whenever jQuery AJAX completes
+if (window.jQuery) {
+  $(document).ajaxComplete(function (event, xhr, settings) {
+    if (
+      settings &&
+      settings.url &&
+      (settings.url.indexOf("nav.html") !== -1 ||
+        settings.url.indexOf("meanmenu") !== -1 ||
+        settings.url.indexOf("main.js") !== -1 ||
+        settings.url.indexOf("footer.html") !== -1)
+    ) {
+      setActiveMenu();
+      setTimeout(setActiveMenu, 50);
+      setTimeout(setActiveMenu, 200);
+      setTimeout(setActiveMenu, 500);
+    }
+  });
+}
+
+// MutationObserver for dynamic injection in #nav-placeholder and mobile menu
+(function setupNavObserver() {
+  function observeNode(node) {
+    if (!node || !window.MutationObserver) return;
+    const observer = new MutationObserver(function () {
+      setActiveMenu();
+    });
+    observer.observe(node, { childList: true, subtree: true });
+  }
+
+  function init() {
+    const navPlaceholder = document.getElementById("nav-placeholder");
+    if (navPlaceholder) observeNode(navPlaceholder);
+
+    const hamburgerArea = document.querySelector(".hamburger-area");
+    if (hamburgerArea) observeNode(hamburgerArea);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
 
 $(document).ready(function () {
   // FAQ එකක් Open වෙද්දි ඒකට active class එක දැමීම

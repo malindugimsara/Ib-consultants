@@ -224,7 +224,7 @@
         <div class="header-right-item d-none d-lg-inline-flex">
           <div class="header-button">
             <a class="tj-primary-btn" href="contact.html">
-              <span class="btn-text"><span>Let’s Talk</span></span>
+              <span class="btn-text <span class=" btn-text topic-color2"><span>Let’s Talk</span></span>
               <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
             </a>
 
@@ -242,7 +242,7 @@
     <div class="row">
       <div class="col-12">
         <div class="header-wrapper d-flex align-items-center justify-content-between">
-          
+
           <!-- site logo -->
           <div class="site_logo">
             <a class="logo" href="index.html"><img src="assets/images/logos/logo-2.webp" alt="IB Consultants"></a>
@@ -250,17 +250,21 @@
 
           <!-- Mobile Social Icons in the Middle -->
           <div class="ib-mobile-socials d-none d-sm-flex">
-            <a href="https://wa.me/94711255610" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-            <a href="https://www.facebook.com/share/1Mi3aEoRHH/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="https://www.linkedin.com/company/ibconsultants/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="https://www.instagram.com/ibbusinessconsultants" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://wa.me/94711255610" target="_blank" aria-label="WhatsApp"><i
+                class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/share/1Mi3aEoRHH/?mibextid=wwXIfr" target="_blank"
+              aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/company/ibconsultants/" target="_blank" aria-label="LinkedIn"><i
+                class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/ibbusinessconsultants" target="_blank" aria-label="Instagram"><i
+                class="fa-brands fa-instagram"></i></a>
           </div>
 
           <!-- මඟහැරී තිබුණු Navigation (Mobile Menu Drawer එක සෑදීමට අවශ්‍ය මූලික කේතය) -->
           <div class="menu-area d-none">
             <nav id="mobile-menu" class="mainmenu">
               <ul>
-                <li class="current-menu-ancestor"><a href="index.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="consultancy-service.html">Consultancy Services</a></li>
                 <li><a href="training-programs.html">Training & Programs</a></li>
@@ -273,7 +277,7 @@
           <div class="header-right-item d-flex align-items-center">
             <div class="header-button d-none d-sm-inline-flex me-3">
               <a class="tj-primary-btn" href="contact.html">
-                <span class="btn-text"><span>Let’s Talk</span></span>
+                <span class="btn-text <span class=" btn-text topic-color2"><span>Let’s Talk</span></span>
                 <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
               </a>
             </div>
@@ -300,7 +304,7 @@
       <div class="col-12">
         <!-- d-flex සහ justify-content-between මගින් Logo එක වමටත්, Menu එක දකුණටත් තබයි -->
         <div class="header-wrapper d-flex align-items-center justify-content-between">
-          
+
           <!-- Site Logo -->
           <div class="site_logo">
             <a class="logo" href="index.html">
@@ -312,7 +316,7 @@
           <div class="menu-area d-none d-lg-inline-flex align-items-center">
             <nav class="mainmenu">
               <ul>
-                <li class="current-menu-ancestor"><a href="index.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="consultancy-service.html">Consultancy Services</a></li>
                 <li><a href="training-programs.html">Training & Programs</a></li>
@@ -325,13 +329,16 @@
           <div class="header-right-item d-none d-lg-inline-flex align-items-center">
             <div class="ib-sticky-socials d-flex align-items-center me-4" style="gap: 15px;">
               <a href="https://wa.me/94711255610" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-              <a href="https://www.facebook.com/share/1Mi3aEoRHH/?mibextid=wwXIfr" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
-              <a href="https://www.linkedin.com/company/ibconsultants/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-              <a href="https://www.instagram.com/ibbusinessconsultants" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+              <a href="https://www.facebook.com/share/1Mi3aEoRHH/?mibextid=wwXIfr" target="_blank"><i
+                  class="fa-brands fa-facebook-f"></i></a>
+              <a href="https://www.linkedin.com/company/ibconsultants/" target="_blank"><i
+                  class="fa-brands fa-linkedin-in"></i></a>
+              <a href="https://www.instagram.com/ibbusinessconsultants" target="_blank"><i
+                  class="fa-brands fa-instagram"></i></a>
             </div>
             <div class="header-button">
               <a class="tj-primary-btn" href="contact.html">
-                <span class="btn-text"><span>Let’s Talk</span></span>
+                <span class="btn-text <span class=" btn-text topic-color2"><span>Let’s Talk</span></span>
                 <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
               </a>
             </div>
@@ -350,3 +357,10 @@
   </div>
 </header>
 <!-- end: Header Area (Sticky) -->
+
+<!-- Active Menu Trigger for dynamic AJAX inclusion -->
+<script>
+  if (typeof setActiveMenu === "function") {
+    setActiveMenu();
+  }
+</script>
