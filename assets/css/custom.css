@@ -4104,12 +4104,61 @@ header.header-area.ib-desktop-header {
   width: 100% !important;
 }
 
-.tj-service-section-5 .service-item.style-5 .service-icon {
-  font-size: 46px !important;
+.tj-service-section-5 .service-item.style-5 .service-icon,
+.service-item.style-5 .service-icon {
+  width: 76px !important;
+  height: 76px !important;
+  min-width: 76px !important;
+  min-height: 76px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  background: rgba(212, 175, 55, 0.12) !important;
+  border: 1.5px solid rgba(212, 175, 55, 0.35) !important;
+  margin-bottom: 28px !important;
+  box-shadow: 0 8px 24px rgba(10, 31, 68, 0.08) !important;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  text-align: center !important;
+  line-height: 1 !important;
+  padding: 0 !important;
+}
+
+.tj-service-section-5 .service-item.style-5 .service-icon i,
+.service-item.style-5 .service-icon i {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  font-size: 36px !important;
+  line-height: 1 !important;
   color: var(--accent-gold) !important;
-  margin-bottom: 25px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: center !important;
+  transition: all 0.35s ease !important;
+}
+
+.tj-service-section-5 .service-item.style-5 .service-icon i::before,
+.service-item.style-5 .service-icon i::before {
   display: inline-block !important;
   line-height: 1 !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+}
+
+.tj-service-section-5 .service-item.style-5:hover .service-icon,
+.service-item.style-5:hover .service-icon {
+  background: var(--primary-navy) !important;
+  border-color: var(--accent-gold) !important;
+  transform: scale(1.08) rotate(4deg);
+  box-shadow: 0 12px 28px rgba(212, 175, 55, 0.25) !important;
+}
+
+.tj-service-section-5 .service-item.style-5:hover .service-icon i,
+.service-item.style-5:hover .service-icon i {
+  color: var(--accent-gold) !important;
 }
 
 .tj-service-section-5 .service-item.style-5 .no {
@@ -4198,9 +4247,18 @@ header.header-area.ib-desktop-header {
     padding: 22px 18px !important;
   }
 
-  .tj-service-section-5 .service-item.style-5 .service-icon {
-    font-size: 38px !important;
+  .tj-service-section-5 .service-item.style-5 .service-icon,
+  .service-item.style-5 .service-icon {
+    width: 62px !important;
+    height: 62px !important;
+    min-width: 62px !important;
+    min-height: 62px !important;
     margin-bottom: 16px !important;
+  }
+
+  .tj-service-section-5 .service-item.style-5 .service-icon i,
+  .service-item.style-5 .service-icon i {
+    font-size: 28px !important;
   }
 
   .tj-service-section-5 .service-item.style-5 .no {
@@ -4235,6 +4293,20 @@ header.header-area.ib-desktop-header {
 @media (max-width: 420px) {
   .tj-service-section-5 .service-item.style-5 .service-content-area {
     padding: 18px 14px !important;
+  }
+
+  .tj-service-section-5 .service-item.style-5 .service-icon,
+  .service-item.style-5 .service-icon {
+    width: 52px !important;
+    height: 52px !important;
+    min-width: 52px !important;
+    min-height: 52px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .tj-service-section-5 .service-item.style-5 .service-icon i,
+  .service-item.style-5 .service-icon i {
+    font-size: 24px !important;
   }
 
   .tj-service-section-5 .service-item.style-5 .title {
