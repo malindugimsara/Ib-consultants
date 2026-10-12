@@ -4874,29 +4874,59 @@ header.header-area.ib-desktop-header {
 }
 
 .ib-bio-highlights {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
   margin-top: 22px;
   padding-top: 18px;
   border-top: 1px solid #e2e8f0;
 }
 
 .highlight-item {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 8px;
   background: #f8fafc;
   border: 1px solid #e2e8f0;
-  padding: 7px 14px;
-  border-radius: 20px;
-  font-size: 13.5px;
+  padding: 9px 12px;
+  border-radius: 12px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--primary-navy);
+  line-height: 1.35;
+  height: 100%;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(10, 31, 68, 0.02);
+}
+
+.highlight-item:hover {
+  background: #ffffff;
+  border-color: rgba(212, 175, 55, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(10, 31, 68, 0.07);
 }
 
 .highlight-item i {
   color: var(--accent-gold);
+  font-size: 13px;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.highlight-item:hover i {
+  transform: scale(1.15);
+}
+
+@media (max-width: 991px) {
+  .ib-bio-highlights {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 575px) {
+  .ib-bio-highlights {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* =========================================
@@ -5371,33 +5401,345 @@ header.header-area.ib-desktop-header {
   text-align: justify;
 }
 
-/* 16 Expertise Chips Matrix */
-.ib-expertise-chip {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  padding: 11px 14px;
-  font-size: 13.5px;
-  font-weight: 600;
-  color: var(--primary-navy);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.25s ease;
-  height: 100%;
+/* ==========================================================================
+   16 Core Areas: Modern Tabbed Interactive Deck Design
+   ========================================================================== */
+.ib-deck-section {
+  position: relative;
 }
 
-.ib-expertise-chip:hover {
+/* Tab Navigation Strip */
+.ib-deck-nav {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 35px;
+}
+
+.ib-deck-tab {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 12px 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px rgba(10, 31, 68, 0.04);
+  font-family: inherit;
+  outline: none;
+}
+
+.ib-deck-tab:hover {
+  border-color: #cbd5e1;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(10, 31, 68, 0.08);
+}
+
+.ib-deck-tab.active {
   background: var(--primary-navy);
-  color: #ffffff;
   border-color: var(--primary-navy);
+  box-shadow: 0 10px 25px rgba(10, 31, 68, 0.2);
   transform: translateY(-2px);
 }
 
-.ib-expertise-chip i {
+.ib-deck-tab-num {
+  font-family: var(--tj-ff-heading, 'Mona Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  background: rgba(212, 175, 55, 0.15);
+  color: #b48508;
+  padding: 3px 8px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.ib-deck-tab.active .ib-deck-tab-num {
+  background: var(--accent-gold);
+  color: var(--primary-navy);
+}
+
+.ib-deck-tab-icon {
+  font-size: 16px;
+  color: var(--accent-gold);
+  transition: all 0.3s ease;
+}
+
+.ib-deck-tab-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e293b;
+  transition: all 0.3s ease;
+}
+
+.ib-deck-tab.active .ib-deck-tab-title {
+  color: #ffffff;
+}
+
+/* Panels */
+.ib-deck-panel {
+  display: none;
+}
+
+.ib-deck-panel.active {
+  display: block;
+  animation: ibDeckFadeIn 0.38s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes ibDeckFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Strategic Overview Board (Left Side) */
+.ib-deck-overview-card {
+  background: linear-gradient(155deg, #0a1f44 0%, #0d2754 60%, #112d61 100%);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  border-radius: 20px;
+  padding: 34px 28px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 12px 35px rgba(10, 31, 68, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.ib-deck-overview-card::after {
+  content: '';
+  position: absolute;
+  top: -45px;
+  right: -45px;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.18) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.ib-deck-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--tj-ff-heading, 'Mona Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  background: rgba(212, 175, 55, 0.15);
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  margin-bottom: 16px;
+  width: fit-content;
+}
+
+.ib-deck-overview-title {
+  font-size: 23px;
+  font-weight: 700;
+  color: #ffffff !important;
+  line-height: 1.35;
+  margin-bottom: 12px;
+}
+
+.ib-deck-overview-desc {
+  font-size: 14px;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+.ib-deck-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.ib-deck-hl-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  color: #e2e8f0;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.ib-deck-hl-icon {
   color: var(--accent-gold);
   font-size: 13px;
+  margin-top: 3px;
   flex-shrink: 0;
+}
+
+.ib-deck-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--accent-gold);
+  color: var(--primary-navy) !important;
+  font-size: 13.5px;
+  font-weight: 700;
+  padding: 12px 22px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.3);
+  width: fit-content;
+}
+
+.ib-deck-cta-btn:hover {
+  background: #ffffff;
+  color: var(--primary-navy) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 255, 255, 0.25);
+}
+
+/* Capability Cards (Right Side) */
+.ib-deck-cap-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 22px 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(10, 31, 68, 0.04);
+  position: relative;
+}
+
+.ib-deck-cap-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: 0 12px 28px rgba(10, 31, 68, 0.08);
+}
+
+.ib-deck-cap-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.ib-deck-cap-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(212, 175, 55, 0.12);
+  color: #a37c15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.ib-deck-cap-card:hover .ib-deck-cap-icon {
+  background: var(--primary-navy);
+  color: var(--accent-gold);
+  transform: scale(1.06);
+}
+
+.ib-deck-cap-badge {
+  font-family: var(--tj-ff-heading, 'Mona Sans', sans-serif);
+  font-size: 11px;
+  font-weight: 800;
+  color: #94a3b8;
+  letter-spacing: 1px;
+}
+
+.ib-deck-cap-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary-navy) !important;
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+
+.ib-deck-cap-desc {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.55;
+  margin-bottom: 14px;
+  flex-grow: 1;
+}
+
+.ib-deck-cap-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.ib-deck-cap-tag {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--accent-gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ib-deck-cap-arrow {
+  font-size: 13px;
+  color: #94a3b8;
+  transition: all 0.25s ease;
+}
+
+.ib-deck-cap-card:hover .ib-deck-cap-arrow {
+  color: var(--primary-navy);
+  transform: translateX(3px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .ib-deck-overview-card {
+    margin-bottom: 24px;
+    padding: 28px 22px;
+  }
+  .ib-deck-tab {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 767px) {
+  .ib-deck-nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .ib-deck-tab {
+    padding: 10px 12px;
+    justify-content: center;
+  }
+  .ib-deck-tab-title {
+    font-size: 12.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ib-deck-nav {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Positioning Quote on Homepage */
@@ -5726,4 +6068,10 @@ header.header-area.ib-desktop-header {
   .ib-preloader-bar-wrap {
     width: 140px;
   }
+}
+
+.tj-countup-section-about {
+    position: relative;
+    z-index: 2;
+    /* margin-bottom: -122px; */
 }

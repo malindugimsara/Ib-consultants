@@ -189,3 +189,44 @@ $(document).ready(function () {
     $(e.target).closest(".accordion-item").removeClass("active");
   });
 });
+
+/* ==========================================================================
+   16 Core Areas: Modern Tabbed Interactive Deck Switcher
+   ========================================================================== */
+function initDeckSwitcher() {
+  const tabs = document.querySelectorAll(".ib-deck-tab");
+  const panels = document.querySelectorAll(".ib-deck-panel");
+
+  if (!tabs.length || !panels.length) return;
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      const targetId = this.getAttribute("data-deck-target");
+      if (!targetId) return;
+
+      // Update active tab
+      tabs.forEach(function (t) { t.classList.remove("active"); });
+      this.classList.add("active");
+
+      // Update active panel
+      panels.forEach(function (panel) {
+        if (panel.id === targetId) {
+          panel.classList.add("active");
+        } else {
+          panel.classList.remove("active");
+        }
+      });
+    });
+  });
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initDeckSwitcher);
+} else {
+  initDeckSwitcher();
+}
+
+$(document).ready(function () {
+  initDeckSwitcher();
+});
+
