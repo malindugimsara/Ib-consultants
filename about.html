@@ -30,20 +30,32 @@
     <div class="body-overlay"></div>
 
     <!-- start: Preloader -->
-    <!-- <div class="tj-preloader is-loading">
-    <div class="tj-preloader-inner">
-      <div class="tj-preloader-ball-wrap">
-        <div class="tj-preloader-ball-inner-wrap">
-          <div class="tj-preloader-ball-inner">
-            <div class="tj-preloader-ball"></div>
-          </div>
-          <div class="tj-preloader-ball-shadow"></div>
+    <div class="tj-preloader is-loading">
+        <div class="tj-preloader-inner">
+            <div class="ib-preloader-content">
+                <!-- Glowing Rotating Ring + Logo -->
+                <div class="ib-preloader-logo-wrapper">
+                    <div class="ib-preloader-ring ib-ring-outer"></div>
+                    <div class="ib-preloader-ring ib-ring-inner"></div>
+                    <div class="ib-preloader-logo-circle">
+                        <img src="assets/images/logos/logo-2.webp" alt="IB Consultants Logo" class="ib-preloader-logo-img">
+                    </div>
+                </div>
+
+                <!-- Animated Text & Subtitle -->
+                <div class="ib-preloader-text-group">
+                    <div id="tj-weave-anim" class="tj-preloader-text">IB CONSULTANTS</div>
+                    <div class="ib-preloader-subtext">Business & Profit Growth Advisory</div>
+                </div>
+
+                <!-- Sleek Gold Progress Bar -->
+                <div class="ib-preloader-bar-wrap">
+                    <div class="ib-preloader-bar-line"></div>
+                </div>
+            </div>
         </div>
-        <div id="tj-weave-anim" class="tj-preloader-text">Loading...</div>
-      </div>
+        <div class="tj-preloader-overlay"></div>
     </div>
-    <div class="tj-preloader-overlay"></div>
-  </div> -->
     <!-- end: Preloader -->
 
     <div id="nav-placeholder"></div>
@@ -235,47 +247,362 @@
                 </section>
                 <!-- end: Company Overview Section -->
 
-                <!-- start: Team Section -->
-                <section class="tj-team-section-3 section-gap section-gap-x" style="background-color: #f9f9f9;">
+                <!-- start: Leadership & Founder Profile Section -->
+                <section class="ib-founder-section section-gap section-gap-x" id="founder-profile">
                     <div class="container">
+                        <!-- Section Header -->
                         <div class="row">
                             <div class="col-12">
-                                <div class="sec-heading text-center">
-                                    <span class="sub-title wow fadeInUp" data-wow-delay=".3s"><i class="tji-box"></i>Our
-                                        Leadership</span>
+                                <div class="sec-heading text-center mb-5">
+                                    <span class="sub-title wow fadeInUp" data-wow-delay=".2s"><i class="tji-box"></i>Our Leadership</span>
                                     <h2 class="sec-title title-anim topic-color">Meet Our <span>Founder.</span></h2>
+                                    <p class="ib-section-tagline wow fadeInUp" data-wow-delay=".3s">
+                                        “Practical business consulting backed by hands-on experience in sales, marketing, international business, manufacturing environments, costing, customer management, negotiation and market development.”
+                                    </p>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Center aligned single team member -->
-                        <div class="row justify-content-center leftSwipeWrap">
-                            <!-- Founder Profile -->
-                            <div class="col-lg-4 col-md-6 col-sm-8">
-                                <div class="team-item left-swipe" style="margin: 0 auto;">
-                                    <div class="team-img">
-                                        <div class="team-img-inner">
-                                            <img src="assets/images/team/Founder.jpeg"
-                                                alt="Dammika S. Bandara - Founder">
+                        <!-- Founder Main Profile Block (2 Columns) -->
+                        <div class="row align-items-start g-4 mb-5">
+                            <!-- Left: Founder Photo Card & Direct Contact -->
+                            <div class="col-lg-4 col-md-5 wow fadeInLeft" data-wow-delay=".3s">
+                                <div class="ib-founder-card">
+                                    <div class="ib-founder-img-wrap">
+                                        <img src="assets/images/team/Founder.jpeg" alt="Dammika S. Bandara - Founder & Lead Business Consultant" class="img-fluid ib-founder-img">
+                                        <div class="ib-founder-badge">
+                                            <span><i class="fa-solid fa-award"></i> Founder & Lead Consultant</span>
                                         </div>
                                     </div>
-                                    <div class="team-content text-center">
-                                        <h4 class="title topic-color" style="font-size: 22px;">Dammika S. Bandara</h4>
-                                        <span class="designation"
-                                            style="color: var(--accent-gold); font-weight: 600;">Founder & Chief
-                                            Consultant</span>
-                                        <a class="mail-at" href="mailto:dammikasbandara86@gmail.com"
-                                            style="margin: 15px auto 0;"><i class="tji-at"></i></a>
+                                    <div class="ib-founder-card-body text-center">
+                                        <h3 class="ib-founder-name topic-color">Dammika S. Bandara</h3>
+                                        <span class="ib-founder-role">Founder & Lead Business Consultant</span>
+                                        <div class="ib-founder-contacts">
+                                            <a href="mailto:dammikasbandara86@gmail.com" class="ib-contact-btn email">
+                                                <i class="fa-solid fa-envelope"></i> dammikasbandara86@gmail.com
+                                            </a>
+                                            <div class="ib-founder-loc">
+                                                <i class="fa-solid fa-location-dot"></i> Horana, Sri Lanka
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Quote callout -->
+                                    <div class="ib-founder-quote-box">
+                                        <i class="fa-solid fa-quote-left quote-icon"></i>
+                                        <p class="quote-text mb-0">
+                                            “Effective consulting begins with understanding the operational realities of the business — connecting market opportunity with commercial execution.”
+                                        </p>
                                     </div>
                                 </div>
+                            </div>
+
+                            <!-- Right: Executive Bio & Experience Story -->
+                            <div class="col-lg-8 col-md-7 wow fadeInRight" data-wow-delay=".4s">
+                                <div class="ib-founder-bio-card">
+                                    <div class="ib-card-header">
+                                        <span class="ib-mini-badge"><i class="fa-solid fa-user-tie"></i> Founder Profile</span>
+                                        <h3 class="ib-bio-title">Turning Business Challenges Into Growth.</h3>
+                                    </div>
+                                    <div class="ib-bio-text">
+                                        <p>
+                                            The Founder is a business and commercial professional with extensive experience across sales and marketing, international business development, customer relationship management, market development, manufacturing-related business environments, cost reduction, pricing, negotiation, shipping coordination, and cross-functional business operations. This professional background has developed a practical understanding of how commercial decisions connect with customers, operations, supply, logistics, costs, and profitability.
+                                        </p>
+                                        <p>
+                                            The Founder’s experience includes developing and executing sales strategies across domestic and international markets, conducting market research, developing client and distributor relationships, implementing marketing initiatives, monitoring sales performance, leading sales and marketing teams, and coordinating with product development, operations, and supply-chain functions to support product availability and timely delivery.
+                                        </p>
+                                        <p>
+                                            Earlier international marketing responsibilities included international customer communication, product development coordination, purchase-order processing, shipping documentation, logistics coordination, freight-forwarder negotiations, international trade-fair participation, brand development, annual sales and international marketing budgets, price negotiations, cost-reduction planning, ISO documentation, and achievement of corporate sales targets. This combination of commercial and operational exposure forms an important foundation for the Founder’s work as Lead Business Consultant of IB Consultants.
+                                        </p>
+                                    </div>
+
+                                    <!-- Quick Feature Badges -->
+                                    <div class="ib-bio-highlights">
+                                        <div class="highlight-item">
+                                            <i class="fa-solid fa-circle-check"></i>
+                                            <span>Domestic & Global Markets</span>
+                                        </div>
+                                        <div class="highlight-item">
+                                            <i class="fa-solid fa-circle-check"></i>
+                                            <span>Manufacturing & Cost Optimization</span>
+                                        </div>
+                                        <div class="highlight-item">
+                                            <i class="fa-solid fa-circle-check"></i>
+                                            <span>Cross-Functional Operations</span>
+                                        </div>
+                                        <div class="highlight-item">
+                                            <i class="fa-solid fa-circle-check"></i>
+                                            <span>Sustainable Revenue Growth</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Academic & Professional Qualifications (Grid of 7 Cards) -->
+                        <div class="ib-qualifications-wrap mb-5 wow fadeInUp" data-wow-delay=".3s">
+                            <div class="text-center mb-4">
+                                <span class="sub-title" style="margin-bottom: 20px !important;"><i class="tji-box"></i>Credentials</span>
+                                <h3 class="sec-title topic-color" style="font-size: 28px;">Academic & Professional <span>Qualifications.</span></h3>
+                                <p class="text-muted" style="max-width: 650px; margin: 0 auto;">Formal business education and accredited management qualifications supporting disciplined consulting execution.</p>
+                            </div>
+
+                            <div class="row g-3 justify-content-center">
+                                <!-- Qual 1 -->
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="ib-qual-card">
+                                        <div class="ib-qual-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                                        <div class="ib-qual-info">
+                                            <h5 class="ib-qual-title">Master of Business Administration (MBA)</h5>
+                                            <span class="ib-qual-status">Reading</span>
+                                            <p class="ib-qual-institute">Postgraduate Institute of Management (PIM)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Qual 2 -->
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="ib-qual-card">
+                                        <div class="ib-qual-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                                        <div class="ib-qual-info">
+                                            <h5 class="ib-qual-title">Postgraduate Diploma in Marketing Management</h5>
+                                            <span class="ib-qual-status">Postgraduate Qualification</span>
+                                            <p class="ib-qual-institute">Sri Lanka Institute of Marketing (SLIM)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Qual 3 -->
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="ib-qual-card">
+                                        <div class="ib-qual-icon"><i class="fa-solid fa-medal"></i></div>
+                                        <div class="ib-qual-info">
+                                            <h5 class="ib-qual-title">Chartered Professional Manager (CPM)</h5>
+                                            <span class="ib-qual-status">Strategic Mastery Phase</span>
+                                            <p class="ib-qual-institute">Institute of Chartered Professional Managers in Sri Lanka</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Qual 4 -->
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="ib-qual-card">
+                                        <div class="ib-qual-icon"><i class="fa-solid fa-building-columns"></i></div>
+                                        <div class="ib-qual-info">
+                                            <h5 class="ib-qual-title">Bachelor of Business Management (BBM)</h5>
+                                            <span class="ib-qual-status">Undergraduate Degree</span>
+                                            <p class="ib-qual-institute">Vavuniya Campus, University of Jaffna</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Qual 5 -->
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="ib-qual-card">
+                                        <div class="ib-qual-icon"><i class="fa-solid fa-users-gear"></i></div>
+                                        <div class="ib-qual-info">
+                                            <h5 class="ib-qual-title">People Leaders Development Program</h5>
+                                            <span class="ib-qual-status">Distinction, 2024</span>
+                                            <p class="ib-qual-institute">Sandbox Consultancy Services (Pvt) Ltd</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Qual 6 -->
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="ib-qual-card">
+                                        <div class="ib-qual-icon"><i class="fa-solid fa-industry"></i></div>
+                                        <div class="ib-qual-info">
+                                            <h5 class="ib-qual-title">World Class Manufacturing Certificate Course</h5>
+                                            <span class="ib-qual-status">Professional Certificate, 2024</span>
+                                            <p class="ib-qual-institute">Institute of Lean Management</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Qual 7 -->
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="ib-qual-card">
+                                        <div class="ib-qual-icon"><i class="fa-solid fa-language"></i></div>
+                                        <div class="ib-qual-info">
+                                            <h5 class="ib-qual-title">Diploma in English</h5>
+                                            <span class="ib-qual-status">Professional Diploma</span>
+                                            <p class="ib-qual-institute">Rajarata University of Sri Lanka</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4 Core Pillars of Expertise (Architectural 4-Column Layout) -->
+                        <div class="ib-pillars-wrap mb-5 wow fadeInUp" data-wow-delay=".3s">
+                            <div class="text-center mb-5">
+                                <span class="sub-title"><i class="tji-box"></i>Strategic Methodology</span>
+                                <h3 class="sec-title topic-color" style="font-size: 28px;">Four Pillars of <span>Consulting Expertise.</span></h3>
+                                <p class="text-muted" style="max-width: 650px; margin: 0 auto;">A balanced commercial and operational methodology built to transform market opportunity into sustainable profitability.</p>
+                            </div>
+
+                            <div class="row g-4 justify-content-center">
+                                <!-- Pillar 01 -->
+                                <div class="col-xl-3 col-lg-6 col-md-6">
+                                    <div class="ib-pillar-card">
+                                        <div class="pillar-watermark">01</div>
+                                        <div class="pillar-top-meta">
+                                            <div class="pillar-icon-box">
+                                                <i class="fa-solid fa-chart-line"></i>
+                                            </div>
+                                            <span class="pillar-step-tag">Pillar 01</span>
+                                        </div>
+                                        <span class="pillar-category-label">Revenue Strategy</span>
+                                        <h4 class="pillar-main-title">Commercial, Sales & Marketing</h4>
+                                        <p class="pillar-summary-text">
+                                            Connecting market opportunity with structured commercial execution to build a realistic route to revenue.
+                                        </p>
+                                        <ul class="pillar-features-list">
+                                            <li><i class="fa-solid fa-circle-check"></i> <span>Sales Strategy & Execution</span></li>
+                                            <li><i class="fa-solid fa-circle-check"></i> <span>Market Research & Segmentation</span></li>
+                                            <li><i class="fa-solid fa-circle-check"></i> <span>Brand & Distributor Networks</span></li>
+                                            <li><i class="fa-solid fa-circle-check"></i> <span>KPI & Sales Performance</span></li>
+                                        </ul>
+                                        <div class="pillar-bottom-impact">
+                                            <i class="fa-solid fa-arrow-trend-up"></i>
+                                            <span>Sustainable Revenue Growth</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pillar 02 -->
+                                <div class="col-xl-3 col-lg-6 col-md-6">
+                                    <div class="ib-pillar-card">
+                                        <div class="pillar-watermark">02</div>
+                                        <div class="pillar-top-meta">
+                                            <div class="pillar-icon-box">
+                                                <i class="fa-solid fa-scale-balanced"></i>
+                                            </div>
+                                            <span class="pillar-step-tag">Pillar 02</span>
+                                        </div>
+                                        <span class="pillar-category-label">Cost & Margin</span>
+                                        <h4 class="pillar-main-title">Operational Costing & Profitability</h4>
+                                        <p class="pillar-summary-text">
+                                            Grounded in manufacturing reality, analyzing underlying profit drivers beyond top-line sales.
+                                        </p>
+                                        <ul class="pillar-features-list">
+                                            <li><i class="fa-solid fa-circle-check"></i> <span>Cost Structure & Pricing Logic</span></li>
+                                            <li><i class="fa-solid fa-circle-check"></i> <span>Gross-Margin Optimization</span></li>
+                                            <li><i class="fa-solid fa-circle-check"></i> <span>Operational Inefficiencies</span></li>
+                                            <li><i class="fa-solid fa-circle-check"></i> <span>Practical Cost Reduction</span></li>
+                                        </ul>
+                                        <div class="pillar-bottom-impact">
+                                            <i class="fa-solid fa-wallet"></i>
+                                            <span>Maximized Net Margins</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pillar 03 -->
+                                <div class="col-xl-3 col-lg-6 col-md-6">
+                                    <div class="ib-pillar-card">
+                                        <div class="pillar-watermark">03</div>
+                                        <div class="pillar-top-meta">
+                                            <div class="pillar-icon-box">
+                                                <i class="fa-solid fa-globe"></i>
+                                            </div>
+                                            <span class="pillar-step-tag">Pillar 03</span>
+                                        </div>
+                                        <span class="pillar-category-label">Global Trade</span>
+                                        <h4 class="pillar-main-title">International Business & Expansion</h4>
+                                        <p class="pillar-summary-text">
+                                            Direct commercial knowledge serving global buyers, trade fairs, export logistics, and shipping.
+                                        </p>
+                                        <ul class="pillar-features-list">
+                                            <li><i class="fa-solid fa-circle-check"></i> <span>Export Market Entry Strategies</span></li>
+                                            <li><i class="fa-solid fa-circle-check"></i> <span>International Client Inquiries</span></li>
+                                            <li><i class="fa-solid fa-circle-check"></i> <span>Freight-Rate Negotiations</span></li>
+                                            <li><i class="fa-solid fa-circle-check"></i> <span>Global Distributor Relations</span></li>
+                                        </ul>
+                                        <div class="pillar-bottom-impact">
+                                            <i class="fa-solid fa-earth-americas"></i>
+                                            <span>Global Market Footprint</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Pillar 04 -->
+                                <div class="col-xl-3 col-lg-6 col-md-6">
+                                    <div class="ib-pillar-card">
+                                        <div class="pillar-watermark">04</div>
+                                        <div class="pillar-top-meta">
+                                            <div class="pillar-icon-box">
+                                                <i class="fa-solid fa-handshake"></i>
+                                            </div>
+                                            <span class="pillar-step-tag">Pillar 04</span>
+                                        </div>
+                                        <span class="pillar-category-label">Client Assets</span>
+                                        <h4 class="pillar-main-title">Customer Management & Negotiation</h4>
+                                        <p class="pillar-summary-text">
+                                            Converting customer interactions and disciplined negotiations into long-term commercial value.
+                                        </p>
+                                        <ul class="pillar-features-list">
+                                            <li><i class="fa-solid fa-circle-check"></i> <span>Strategic Commercial Negotiation</span></li>
+                                            <li><i class="fa-solid fa-circle-check"></i> <span>Key Account Management</span></li>
+                                            <li><i class="fa-solid fa-circle-check"></i> <span>Customer Retention Systems</span></li>
+                                            <li><i class="fa-solid fa-circle-check"></i> <span>Expectation & Value Alignment</span></li>
+                                        </ul>
+                                        <div class="pillar-bottom-impact">
+                                            <i class="fa-solid fa-shield-halved"></i>
+                                            <span>High Customer Retention</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Founder Perspective Callout -->
+                        <div class="ib-perspective-card mb-5 wow fadeInUp" data-wow-delay=".3s">
+                            <div class="row align-items-center">
+                                <div class="col-lg-8">
+                                    <span class="ib-perspective-tag"><i class="fa-solid fa-compass"></i> Founder Perspective</span>
+                                    <h4 class="ib-perspective-title text-white">Making Practical Guidance Accessible to Entrepreneurs & SMEs</h4>
+                                    <p class="ib-perspective-text">
+                                        The idea for IB Consultants emerged during the COVID-19 pandemic, when widespread business disruption highlighted the importance of adaptability, cost awareness, customer focus, market intelligence, and disciplined decision-making. The concept was developed further and formally implemented in 2024 with the intention of making practical business guidance more accessible to entrepreneurs and SMEs.
+                                    </p>
+                                    <p class="ib-perspective-text mb-0">
+                                        <strong>The Consulting Approach:</strong> Understand the business, analyse its challenges, identify practical opportunities, develop a strategy, support implementation where required, and encourage continuous improvement to build businesses that are better prepared for sustainable growth.
+                                    </p>
+                                </div>
+                                <div class="col-lg-4 text-center text-lg-end mt-4 mt-lg-0">
+                                    <a class="tj-primary-btn" href="contact.html">
+                                        <span class="btn-text topic-color2"><span>Consult with Our Founder</span></span>
+                                        <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Core Areas of Consulting Expertise (16 Areas Grid) -->
+                        <div class="ib-matrix-wrap wow fadeInUp" data-wow-delay=".3s">
+                            <div class="text-center mb-4">
+                                <span class="sub-title"><i class="tji-box"></i>Scope of Expertise</span>
+                                <h3 class="sec-title topic-color" style="font-size: 26px;">16 Core Areas of <span>Consulting Expertise.</span></h3>
+                                <p class="text-muted" style="max-width: 600px; margin: 0 auto;">Comprehensive advisory capabilities spanning customer-facing growth and floor-level operational efficiency.</p>
+                            </div>
+
+                            <div class="row g-2 justify-content-center">
+                                <div class="col-lg-3 col-md-4 col-sm-6"><div class="ib-expertise-chip"><i class="fa-solid fa-check"></i> Sales & Marketing Strategy</div></div>
+                                <div class="col-lg-3 col-md-4 col-sm-6"><div class="ib-expertise-chip"><i class="fa-solid fa-check"></i> International Business Development</div></div>
+                                <div class="col-lg-3 col-md-4 col-sm-6"><div class="ib-expertise-chip"><i class="fa-solid fa-check"></i> Market Research & Analysis</div></div>
+                                <div class="col-lg-3 col-md-4 col-sm-6"><div class="ib-expertise-chip"><i class="fa-solid fa-check"></i> Customer Relationship Management</div></div>
+                                <div class="col-lg-3 col-md-4 col-sm-6"><div class="ib-expertise-chip"><i class="fa-solid fa-check"></i> Business Development & Expansion</div></div>
+                                <div class="col-lg-3 col-md-4 col-sm-6"><div class="ib-expertise-chip"><i class="fa-solid fa-check"></i> Negotiation & Commercial Strategy</div></div>
+                                <div class="col-lg-3 col-md-4 col-sm-6"><div class="ib-expertise-chip"><i class="fa-solid fa-check"></i> Costing & Cost Reduction</div></div>
+                                <div class="col-lg-3 col-md-4 col-sm-6"><div class="ib-expertise-chip"><i class="fa-solid fa-check"></i> Pricing & Profitability Improvement</div></div>
+                                <div class="col-lg-3 col-md-4 col-sm-6"><div class="ib-expertise-chip"><i class="fa-solid fa-check"></i> Operational Improvement</div></div>
+                                <div class="col-lg-3 col-md-4 col-sm-6"><div class="ib-expertise-chip"><i class="fa-solid fa-check"></i> Supply Chain & Logistics Coordination</div></div>
+                                <div class="col-lg-3 col-md-4 col-sm-6"><div class="ib-expertise-chip"><i class="fa-solid fa-check"></i> Export Business Processes</div></div>
+                                <div class="col-lg-3 col-md-4 col-sm-6"><div class="ib-expertise-chip"><i class="fa-solid fa-check"></i> Brand Positioning & Promotion</div></div>
+                                <div class="col-lg-3 col-md-4 col-sm-6"><div class="ib-expertise-chip"><i class="fa-solid fa-check"></i> Sales Performance & KPI Management</div></div>
+                                <div class="col-lg-3 col-md-4 col-sm-6"><div class="ib-expertise-chip"><i class="fa-solid fa-check"></i> Cross-Functional Team Leadership</div></div>
+                                <div class="col-lg-3 col-md-4 col-sm-6"><div class="ib-expertise-chip"><i class="fa-solid fa-check"></i> Business Strategy & Planning</div></div>
+                                <div class="col-lg-3 col-md-4 col-sm-6"><div class="ib-expertise-chip"><i class="fa-solid fa-check"></i> SME Business Improvement</div></div>
                             </div>
                         </div>
 
                     </div>
-                    <div class="bg-shape-1"><img src="assets/images/shape/pattern-2.svg" alt=""></div>
-                    <div class="bg-shape-2"><img src="assets/images/shape/pattern-3.svg" alt=""></div>
                 </section>
-                <!-- end: Team Section -->
+                <!-- end: Leadership & Founder Profile Section -->
 
                 <!-- start: Countup Section -->
                 <div class="tj-countup-section">
