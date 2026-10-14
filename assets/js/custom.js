@@ -230,3 +230,130 @@ $(document).ready(function () {
   initDeckSwitcher();
 });
 
+/* ==========================================================================
+   10 Practical Business Workshops: Accordion Toggle & Category Filtering
+   ========================================================================== */
+function initWorkshopAccordion() {
+  const container = document.querySelector(".ib-workshops-section");
+  if (!container) return;
+
+  const drawers = container.querySelectorAll(".ib-workshop-drawer");
+  const filterPills = container.querySelectorAll(".ib-filter-pill");
+
+  if (!drawers.length) return;
+
+  // Drawer click toggle
+  drawers.forEach(function (drawer) {
+    const header = drawer.querySelector(".ib-drawer-header");
+    if (!header || header.dataset.bound) return;
+    header.dataset.bound = "true";
+
+    function toggleDrawer() {
+      const isAlreadyActive = drawer.classList.contains("active");
+
+      // Close all drawers for a clean, single-expanded executive view
+      drawers.forEach(function (d) {
+        d.classList.remove("active");
+      });
+
+      // If it wasn't already active, open it
+      if (!isAlreadyActive) {
+        drawer.classList.add("active");
+      }
+    }
+
+    header.addEventListener("click", toggleDrawer);
+
+    // Keyboard navigation (Enter or Space)
+    header.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggleDrawer();
+      }
+    });
+  });
+
+  // Filter pills
+  filterPills.forEach(function (pill) {
+    if (pill.dataset.bound) return;
+    pill.dataset.bound = "true";
+
+    pill.addEventListener("click", function () {
+      const filterValue = this.getAttribute("data-filter") || "all";
+
+      // Update active pill
+      filterPills.forEach(function (p) {
+        p.classList.remove("active");
+      });
+      this.classList.add("active");
+
+      let firstVisibleDrawer = null;
+      let hasActiveVisible = false;
+
+      drawers.forEach(function (drawer) {
+        const category = drawer.getAttribute("data-category") || "";
+        const matches = filterValue === "all" || category === filterValue;
+
+        if (matches) {
+          drawer.style.display = "";
+          if (!firstVisibleDrawer) firstVisibleDrawer = drawer;
+          if (drawer.classList.contains("active")) {
+            hasActiveVisible = true;
+          }
+        } else {
+          drawer.style.display = "none";
+          drawer.classList.remove("active");
+        }
+      });
+
+      // If the currently open workshop was filtered out, open the first visible one
+      if (!hasActiveVisible && firstVisibleDrawer) {
+        firstVisibleDrawer.classList.add("active");
+      }
+    });
+  });
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initWorkshopAccordion);
+} else {
+  initWorkshopAccordion();
+}
+
+window.addEventListener("load", initWorkshopAccordion);
+
+$(document).ready(function () {
+  initWorkshopAccordion();
+});
+
+/* ==========================================================================
+   Global Floating WhatsApp Button Initializer (Bottom Left - All Pages)
+   ========================================================================== */
+function ensureFloatingWhatsApp() {
+  if (document.querySelector(".ib-floating-whatsapp")) return;
+
+  const waBtn = document.createElement("a");
+  waBtn.href = "https://wa.me/94742112767?text=Hello%20IB%20Consultants,%20I%20would%20like%20to%20inquire%20about%20your%20services.";
+  waBtn.target = "_blank";
+  waBtn.rel = "noopener noreferrer";
+  waBtn.className = "ib-floating-whatsapp";
+  waBtn.setAttribute("aria-label", "Chat with IB Consultants on WhatsApp");
+  waBtn.innerHTML = '<span class="ib-wa-pulse"></span><i class="fa-brands fa-whatsapp"></i><span class="ib-wa-tooltip">Chat with us</span>';
+
+  document.body.appendChild(waBtn);
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", ensureFloatingWhatsApp);
+} else {
+  ensureFloatingWhatsApp();
+}
+
+window.addEventListener("load", ensureFloatingWhatsApp);
+
+$(document).ready(function () {
+  ensureFloatingWhatsApp();
+});
+
+
+
