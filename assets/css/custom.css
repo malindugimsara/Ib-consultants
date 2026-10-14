@@ -8,9 +8,23 @@
   --bg-white: #ffffff;
 }
 
+html,
+body {
+  overflow-x: hidden !important;
+  max-width: 100vw;
+  width: 100%;
+}
+
 body {
   color: var(--text-black);
   background-color: var(--bg-white);
+}
+
+#smooth-wrapper,
+#smooth-content,
+.site-main {
+  overflow-x: clip !important;
+  max-width: 100%;
 }
 
 h1,
@@ -669,9 +683,23 @@ only screen and (min-width: 576px) and (max-width: 767px),
   }
 }
 
+/* Client & About Section Overflow Fixes */
+.client-section-custom,
+.tj-client-section {
+  overflow-x: hidden !important;
+  max-width: 100%;
+}
+
+.client-section-custom .row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
 /* About Utilities */
-.about-section-custom {
-  overflow-x: hidden;
+.about-section-custom,
+.tj-about-section {
+  overflow-x: hidden !important;
+  max-width: 100%;
 }
 
 /* Testimonial & Rating Extract */
@@ -844,6 +872,11 @@ only screen and (min-width: 576px) and (max-width: 767px),
 
 .custom-time-flex a.footer-address-custom:hover {
   color: var(--accent-gold) !important;
+}
+
+.tj-footer-section {
+  overflow-x: hidden !important;
+  max-width: 100%;
 }
 
 /* 6. Footer Marquee Section */
@@ -7206,6 +7239,8 @@ body.ib-modal-open {
 @media (max-width: 991px) {
   .ib-featured-thumb-wrap {
     min-height: 280px;
+    margin-left: 0 !important;
+    margin: 10px !important;
   }
 
   .ib-featured-content {
