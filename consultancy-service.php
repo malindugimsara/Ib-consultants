@@ -1,3 +1,9 @@
+<?php
+include_once 'db.php'; 
+$core_query = "SELECT * FROM core_services WHERE is_published = 1 ORDER BY display_order ASC, id ASC";
+$core_result = $conn->query($core_query);
+?>
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -129,269 +135,57 @@
                             <div class="col-lg-8">
                                 <div class="service-wrapper-2">
 
-                                    <!-- Service 1 -->
-                                    <div class="service-item-wrapper tj-fadein-right-on-scroll">
-                                        <div class="service-item style-2" style="background-color: #dfecec !important;">
-                                            <div class="title-area">
-                                                <div class="service-icon"><i class="tji-service-1"></i></div>
-                                                <h4 class="title">
-                                                    <a href="business-health-check.php">01. Business Health Check and
-                                                        Assessment</a>
-                                                </h4>
-                                            </div>
-                                            <div class="service-content">
-                                                <p class="desc">
-                                                    Identify business challenges, assess current performance, and
-                                                    develop a practical improvement plan to strengthen overall business
-                                                    performance.
-                                                </p>
-                                                <ul class="list-items">
-                                                    <li><i class="tji-list"></i>Business Performance Assessment</li>
-                                                    <li><i class="tji-list"></i>Financial and Operational Review</li>
-                                                    <li><i class="tji-list"></i>Business Improvement Roadmap</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <?php
+                                    if ($core_result && $core_result->num_rows > 0):
+                                        $count = 1;
+                                        while ($core = $core_result->fetch_assoc()):
+                                            $num_formatted = str_pad($count, 2, '0', STR_PAD_LEFT) . '.';
 
-                                    <!-- Service 2 -->
-                                    <div class="service-item-wrapper tj-fadein-right-on-scroll">
-                                        <div class="service-item style-2" style="background-color: #dfecec !important;">
-                                            <div class="title-area">
-                                                <div class="service-icon"><i class="tji-service-2"></i></div>
-                                                <h4 class="title">
-                                                    <a href="manufacturing-process-development.php">02. Manufacturing
-                                                        Process Development and Optimization</a>
-                                                </h4>
-                                            </div>
-                                            <div class="service-content">
-                                                <p class="desc">
-                                                    Improve manufacturing productivity, reduce operating costs, minimize
-                                                    waste, and strengthen process efficiency through practical
-                                                    improvement strategies.
-                                                </p>
-                                                <ul class="list-items">
-                                                    <li><i class="tji-list"></i>Production Process Optimization</li>
-                                                    <li><i class="tji-list"></i>Waste Reduction and Resource Utilization
-                                                    </li>
-                                                    <li><i class="tji-list"></i>Productivity and Quality Improvement
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
+                                            // Database එකේ ඇති ලැයිස්තුව (List Items) අලුත් පේළියෙන් (Newline) කඩා ගැනීම
+                                            $list_array = explode("\n", trim($core['list_items']));
+                                            ?>
 
-                                    <!-- Service 3 -->
-                                    <div class="service-item-wrapper tj-fadein-right-on-scroll">
-                                        <div class="service-item style-2" style="background-color: #dfecec !important;">
-                                            <div class="title-area">
-                                                <div class="service-icon"><i class="tji-service-3"></i></div>
-                                                <h4 class="title">
-                                                    <a href="profit-improvement.php">03. Profitability Improvement and
-                                                        Cost Management</a>
-                                                </h4>
+                                            <!-- Dynamic Service Item -->
+                                            <div class="service-item-wrapper tj-fadein-right-on-scroll">
+                                                <div class="service-item style-2" style="background-color: #dfecec !important;">
+                                                    <div class="title-area">
+                                                        <div class="service-icon"><i
+                                                                class="<?php echo htmlspecialchars($core['icon_class']); ?>"></i>
+                                                        </div>
+                                                        <h4 class="title">
+                                                            <a href="<?php echo htmlspecialchars($core['page_link']); ?>">
+                                                                <?php echo $num_formatted; ?>
+                                                                <?php echo htmlspecialchars($core['title']); ?>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div class="service-content">
+                                                        <p class="desc">
+                                                            <?php echo htmlspecialchars($core['description']); ?>
+                                                        </p>
+                                                        <ul class="list-items">
+                                                            <?php foreach ($list_array as $item):
+                                                                if (trim($item) != ''): // හිස් පේළි මඟහැරීම
+                                                                    ?>
+                                                                    <li><i
+                                                                            class="tji-list"></i><?php echo htmlspecialchars(trim($item)); ?>
+                                                                    </li>
+                                                                <?php
+                                                                endif;
+                                                            endforeach;
+                                                            ?>
+                                                        </ul>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="service-content">
-                                                <p class="desc">
-                                                    Strengthen business profitability through effective cost control,
-                                                    improved pricing decisions, better resource allocation, and
-                                                    continuous performance monitoring.
-                                                </p>
-                                                <ul class="list-items">
-                                                    <li><i class="tji-list"></i>Cost Analysis and Cost Reduction</li>
-                                                    <li><i class="tji-list"></i>Profit Margin Improvement</li>
-                                                    <li><i class="tji-list"></i>Financial Performance Monitoring</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                    <!-- Service 4 -->
-                                    <div class="service-item-wrapper tj-fadein-right-on-scroll">
-                                        <div class="service-item style-2" style="background-color: #dfecec !important;">
-                                            <div class="title-area">
-                                                <div class="service-icon"><i class="tji-service-4"></i></div>
-                                                <h4 class="title">
-                                                    <a href="domestic-market-development.php">04. Domestic Market
-                                                        Development and Sales Expansion</a>
-                                                </h4>
-                                            </div>
-                                            <div class="service-content">
-                                                <p class="desc">
-                                                    Help businesses expand their presence in the Sri Lankan market by
-                                                    identifying new opportunities, strengthening distribution networks,
-                                                    and improving sales performance.
-                                                </p>
-                                                <ul class="list-items">
-                                                    <li><i class="tji-list"></i>Market Research and Opportunity Analysis
-                                                    </li>
-                                                    <li><i class="tji-list"></i>Distribution Channel Development</li>
-                                                    <li><i class="tji-list"></i>Sales Growth and Market Expansion</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Service 5 -->
-                                    <div class="service-item-wrapper tj-fadein-right-on-scroll">
-                                        <div class="service-item style-2" style="background-color: #dfecec !important;">
-                                            <div class="title-area">
-                                                <div class="service-icon"><i class="tji-service-1"></i></div>
-                                                <h4 class="title">
-                                                    <a href="sales-marketing-development.php">05. Sales and Marketing
-                                                        Strategy Development</a>
-                                                </h4>
-                                            </div>
-                                            <div class="service-content">
-                                                <p class="desc">
-                                                    Develop structured sales and marketing strategies that help
-                                                    businesses reach the right customers, improve customer engagement,
-                                                    and achieve sustainable revenue growth.
-                                                </p>
-                                                <ul class="list-items">
-                                                    <li><i class="tji-list"></i>Sales Strategy and Target Setting</li>
-                                                    <li><i class="tji-list"></i>Marketing Planning and Lead Generation
-                                                    </li>
-                                                    <li><i class="tji-list"></i>Customer Relationship Management</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Service 6 -->
-                                    <div class="service-item-wrapper tj-fadein-right-on-scroll">
-                                        <div class="service-item style-2" style="background-color: #dfecec !important;">
-                                            <div class="title-area">
-                                                <div class="service-icon"><i class="tji-service-2"></i></div>
-                                                <h4 class="title">
-                                                    <a href="export-market-development.php">06. International Market
-                                                        Development</a>
-                                                </h4>
-                                            </div>
-                                            <div class="service-content">
-                                                <p class="desc">
-                                                    Support businesses in exploring international markets, understanding
-                                                    export opportunities, identifying potential buyers, and developing
-                                                    practical strategies for global market entry.
-                                                </p>
-                                                <ul class="list-items">
-                                                    <li><i class="tji-list"></i>Export Market Research and Readiness
-                                                    </li>
-                                                    <li><i class="tji-list"></i>International Buyer Identification</li>
-                                                    <li><i class="tji-list"></i>Export Pricing and Market Entry Planning
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Service 7 -->
-                                    <div class="service-item-wrapper tj-fadein-right-on-scroll">
-                                        <div class="service-item style-2" style="background-color: #dfecec !important;">
-                                            <div class="title-area">
-                                                <div class="service-icon"><i class="tji-service-3"></i></div>
-                                                <h4 class="title">
-                                                    <a href="business-process-systems.php">07. Business Process
-                                                        Improvement and Management Systems</a>
-                                                </h4>
-                                            </div>
-                                            <div class="service-content">
-                                                <p class="desc">
-                                                    Establish clear business processes, improve accountability, and
-                                                    introduce practical management systems that support consistent
-                                                    performance and effective decision-making.
-                                                </p>
-                                                <ul class="list-items">
-                                                    <li><i class="tji-list"></i>Standard Operating Procedure Development
-                                                    </li>
-                                                    <li><i class="tji-list"></i>Key Performance Indicator Development
-                                                    </li>
-                                                    <li><i class="tji-list"></i>Workflow and Accountability Improvement
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Service 8 -->
-                                    <div class="service-item-wrapper tj-fadein-right-on-scroll">
-                                        <div class="service-item style-2" style="background-color: #dfecec !important;">
-                                            <div class="title-area">
-                                                <div class="service-icon"><i class="tji-service-4"></i></div>
-                                                <h4 class="title">
-                                                    <a href="strategic-business-advisory.php">08. Strategic Business
-                                                        Planning and Advisory Services</a>
-                                                </h4>
-                                            </div>
-                                            <div class="service-content">
-                                                <p class="desc">
-                                                    Help business owners and management teams establish clear
-                                                    objectives, evaluate growth opportunities, make informed decisions,
-                                                    and plan for long-term business success.
-                                                </p>
-                                                <ul class="list-items">
-                                                    <li><i class="tji-list"></i>Business Strategy and Planning</li>
-                                                    <li><i class="tji-list"></i>Growth and Expansion Strategies</li>
-                                                    <li><i class="tji-list"></i>Management Decision Support</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Service 9 -->
-                                    <div class="service-item-wrapper tj-fadein-right-on-scroll">
-                                        <div class="service-item style-2" style="background-color: #dfecec !important;">
-                                            <div class="title-area">
-                                                <div class="service-icon"><i class="tji-service-1"></i></div>
-                                                <h4 class="title">
-                                                    <a href="product-development-pricing.php">09. Product Development,
-                                                        Pricing and Market Positioning</a>
-                                                </h4>
-                                            </div>
-                                            <div class="service-content">
-                                                <p class="desc">
-                                                    Help businesses develop commercially viable products, understand
-                                                    customer needs, establish appropriate pricing strategies, and
-                                                    strengthen their competitive position.
-                                                </p>
-                                                <ul class="list-items">
-                                                    <li><i class="tji-list"></i>Product and Market Opportunity Analysis
-                                                    </li>
-                                                    <li><i class="tji-list"></i>Product Costing and Pricing Strategy
-                                                    </li>
-                                                    <li><i class="tji-list"></i>Product Launch and Market Positioning
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Service 10 -->
-                                    <div class="service-item-wrapper tj-fadein-right-on-scroll">
-                                        <div class="service-item style-2" style="background-color: #dfecec !important;">
-                                            <div class="title-area">
-                                                <div class="service-icon"><i class="tji-service-2"></i></div>
-                                                <h4 class="title">
-                                                    <a href="business-transformation-kpi.php">10. Business Performance
-                                                        Management and Continuous Improvement</a>
-                                                </h4>
-                                            </div>
-                                            <div class="service-content">
-                                                <p class="desc">
-                                                    Help organizations monitor business results, identify performance
-                                                    gaps, strengthen management practices, and implement ongoing
-                                                    improvements aligned with their business objectives.
-                                                </p>
-                                                <ul class="list-items">
-                                                    <li><i class="tji-list"></i>Performance Measurement and Reporting
-                                                    </li>
-                                                    <li><i class="tji-list"></i>Root Cause Analysis and Corrective
-                                                        Actions</li>
-                                                    <li><i class="tji-list"></i>Continuous Improvement Planning</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
+                                            <?php
+                                            $count++;
+                                        endwhile;
+                                    else:
+                                        ?>
+                                        <p>No services available at the moment.</p>
+                                    <?php endif; ?>
 
                                 </div>
                             </div>

@@ -123,9 +123,18 @@ $workshops = $conn->query("SELECT * FROM business_workshops ORDER BY display_ord
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Practical Workshops - IB Admin</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS Dependencies -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/font-awesome-pro.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="admin.css">
     <style>
         .category-preset-badge {
@@ -181,22 +190,15 @@ $workshops = $conn->query("SELECT * FROM business_workshops ORDER BY display_ord
 </head>
 <body>
 
-<div class="container-fluid">
-    <div class="row">
-        <!-- Sidebar -->
-        <div class="col-md-2 sidebar">
-            <h4>IB Admin</h4>
-            <a href="manage_slider.php">🖼️ Manage Slider</a>
-            <a href="manage_reviews.php">⭐ Manage Reviews</a>
-            <a href="manage_programs.php">🎓 Manage Programs</a>
-            <a href="manage_workshops.php" class="active">💼 Manage Workshops</a>
-            <a href="dashboard.php">📥 Inquiries</a>
-            <a href="../index.php" target="_blank">🌐 View Website</a>
-            <a href="logout.php" class="btn btn-danger w-100 mt-5">🚪 Logout</a>
-        </div>
+<div class="container-fluid p-0">
+    <div class="row g-0">
+        <!-- Sidebar Component -->
+        <?php include 'sidebar.php'; ?>
         
-        <!-- Main Content -->
-        <div class="col-md-10 main-content">
+        <!-- Main Content Area -->
+        <div class="col-lg-10 col-md-9 main-content">
+            <?php include 'topbar.php'; ?>
+
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2 style="color: #091a32; font-weight: 700; margin: 0;">Practical Business Workshops</h2>
                 <a href="../training-programs.php#services" target="_blank" class="btn btn-outline-dark btn-sm">
