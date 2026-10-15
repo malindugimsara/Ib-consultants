@@ -119,7 +119,7 @@
                                             <a class="tj-primary-btn" href="contact.html">
                                                 <span class="btn-text topic-color2"><span>Request
                                                         a Call</span></span>
-                                                <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
+                                                <span class="btn-icon"><i class="tji-arrow-right-long" ></i></span>
                                             </a>
                                         </div>
                                     </div>
@@ -234,10 +234,23 @@
                                             globally competitive enterprises.</p>
                                     </div>
                                 </div>
-                                <div class="about-btn-area wow fadeInUp" data-wow-delay=".6s">
+                                <div class="about-btn-area d-flex flex-wrap gap-3 align-items-center wow fadeInUp" data-wow-delay=".6s">
                                     <a class="tj-primary-btn" href="consultancy-service.html">
                                         <span class="btn-text topic-color2"><span>Explore Our Services</span></span>
                                         <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
+                                    </a>
+                                    <a class="ib-company-profile-card-btn" href="assets/docs/IB-Consultants-Company-Profile.pdf" download="IB-Consultants-Company-Profile.pdf"
+                                        aria-label="Download IB Consultants Company Profile">
+                                        <span class="ib-btn-file-icon">
+                                            <i class="fa-solid fa-file-pdf"></i>
+                                        </span>
+                                        <span class="ib-btn-text-group">
+                                            <span class="ib-btn-main-text">Download Company Profile</span>
+                                            <span class="ib-btn-sub-text"><i class="fa-solid fa-circle-check"></i> Official Corporate Overview</span>
+                                        </span>
+                                        <span class="ib-btn-download-circle">
+                                            <i class="fa-solid fa-arrow-down"></i>
+                                        </span>
                                     </a>
                                 </div>
                             </div>
@@ -274,7 +287,7 @@
                             <div class="col-lg-4 col-md-5 wow fadeInLeft" data-wow-delay=".3s">
                                 <div class="ib-founder-card">
                                     <div class="ib-founder-img-wrap">
-                                        <img src="assets/images/team/Founder.jpeg"
+                                        <img src="assets/images/team/Founder.webp"
                                             alt="Dammika S. Bandara - Founder & Lead Business Consultant"
                                             class="img-fluid ib-founder-img">
                                         <div class="ib-founder-badge">
@@ -789,8 +802,8 @@
                                     </p>
                                 </div>
                                 <div class="col-lg-4 text-center text-lg-end mt-4 mt-lg-0">
-                                    <a class="tj-primary-btn" href="contact.html">
-                                        <span class="btn-text topic-color2"><span>Consult with Our Founder</span></span>
+                                    <a class="tj-primary-btn btn-about" href="contact.html">
+                                        <span class="btn-text topic-color-about"><span>Consult with Our Director</span></span>
                                         <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
                                     </a>
                                 </div>
@@ -1553,7 +1566,7 @@
                                     </div>
 
                                     <div class="custom-cta-img">
-                                        <img src="assets/images/cta/cta-bg.jpg"
+                                        <img src="assets/images/cta/cta-bg.webp"
                                             alt="Building the Future with IB Consultants Sri Lanka">
                                     </div>
 

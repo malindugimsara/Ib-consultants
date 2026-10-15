@@ -354,6 +354,3 @@ window.addEventListener("load", ensureFloatingWhatsApp);
 $(document).ready(function () {
   ensureFloatingWhatsApp();
 });
-
-
-

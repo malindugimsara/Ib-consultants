@@ -337,11 +337,26 @@
                                         </p>
                                     </div>
 
-                                    <a class="tj-primary-btn" href="about.html"
-                                        aria-label="Learn more about IB Consultants company overview">
-                                        <span class="btn-text topic-color2"><span>Meet Our Founder & Learn More</span></span>
-                                        <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
-                                    </a>
+                                    <div class="d-flex flex-wrap gap-3 align-items-center">
+                                        <a class="tj-primary-btn" href="about.html"
+                                            aria-label="Learn more about IB Consultants company overview">
+                                            <span class="btn-text topic-color2"><span>Learn More</span></span>
+                                            <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
+                                        </a>
+                                        <a class="ib-company-profile-card-btn" href="assets/docs/IB-Consultants-Company-Profile.pdf" download="IB-Consultants-Company-Profile.pdf"
+                                            aria-label="Download IB Consultants Company Profile">
+                                            <span class="ib-btn-file-icon">
+                                                <i class="fa-solid fa-file-pdf"></i>
+                                            </span>
+                                            <span class="ib-btn-text-group">
+                                                <span class="ib-btn-main-text">Download Company Profile</span>
+                                                <span class="ib-btn-sub-text"><i class="fa-solid fa-circle-check"></i> Official Corporate Overview</span>
+                                            </span>
+                                            <span class="ib-btn-download-circle">
+                                                <i class="fa-solid fa-arrow-down"></i>
+                                            </span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
 
@@ -516,7 +531,7 @@
                                 <a href="consultancy-service.html"
                                     class="service-item style-1 main-service-card custom-mobile-card d-block no-text-decoration">
                                     <div class="service-img">
-                                        <img src="assets/images/service/service-1.jpg" alt="Consultancy Services"
+                                        <img src="assets/images/service/service-1.webp" alt="Consultancy Services"
                                             class="img-fluid">
                                     </div>
                                     <div class="service-icon">
@@ -541,7 +556,7 @@
                                 <a href="training-programs.html"
                                     class="service-item style-1 main-service-card custom-mobile-card d-block no-text-decoration">
                                     <div class="service-img">
-                                        <img src="assets/images/service/service-1.jpg" alt="Training and Programs"
+                                        <img src="assets/images/service/service-1.webp" alt="Training and Programs"
                                             class="img-fluid">
                                     </div>
                                     <div class="service-icon">
@@ -594,7 +609,7 @@
                             <div class="col-lg-5">
                                 <div class="ib-trust-matrix-card wow fadeInLeft" data-wow-delay=".3s">
                                     <div class="ib-trust-media">
-                                        <img data-speed=".8" src="assets/images/testimonial/testimonial-img.jpg"
+                                        <img data-speed=".8" src="assets/images/testimonial/testimonial-img.webp"
                                             alt="IB Consultants Client Trust" class="ib-trust-img">
                                         <div class="ib-trust-overlay"></div>
                                         <div class="ib-trust-top-pill">
@@ -1119,7 +1134,7 @@
                                     </div>
 
                                     <div class="custom-cta-img">
-                                        <img src="assets/images/cta/cta-bg.jpg"
+                                        <img src="assets/images/cta/cta-bg.webp"
                                             alt="Building the Future with IB Consultants Sri Lanka">
                                     </div>
 

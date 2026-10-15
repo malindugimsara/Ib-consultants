@@ -1251,24 +1251,37 @@ Progressbar js
 		/* Service js */
 		const serviceStack = gsap.utils.toArray(".service-stack");
 		if (serviceStack.length > 0) {
+			// Clean up any existing service-stack ScrollTriggers to prevent duplicates on reload
+			ScrollTrigger.getAll().forEach(st => {
+				if (st.vars && st.vars.id && String(st.vars.id).startsWith("service-stack-")) {
+					st.kill(true);
+				}
+			});
+
 			mediaMatch.add("(min-width: 992px)", () => {
-				serviceStack.forEach(item => {
-					gsap.to(item, {
-						opacity: 0,
-						scale: 0.9,
-						y: 50,
-						scrollTrigger: {
-							trigger: item,
-							scrub: 0.6,
-							start: "top top",
-							pin: true,
-							pinSpacing: false,
-							anticipatePin: 1,
-							fastScrollEnd: true,
-							invalidateOnRefresh: true,
-							markers: false,
-						},
-					});
+				serviceStack.forEach((item, index) => {
+					gsap.set(item, { zIndex: index + 1 });
+					const isLast = index === serviceStack.length - 1;
+					if (!isLast) {
+						const nextItem = serviceStack[index + 1];
+						gsap.to(item, {
+							opacity: 0,
+							scale: 0.92,
+							ease: "none",
+							scrollTrigger: {
+								id: `service-stack-${index}`,
+								trigger: item,
+								endTrigger: nextItem,
+								start: "top 90px",
+								end: "top 90px",
+								pin: true,
+								pinSpacing: false,
+								scrub: true,
+								invalidateOnRefresh: true,
+								markers: false,
+							},
+						});
+					}
 				});
 			});
 		}
