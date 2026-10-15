@@ -1,5 +1,3 @@
-<!-- <link rel="stylesheet" href="assets/css/main.css"> -->
-
 
 <!-- start: Offcanvas Menu -->
 <div class="tj-offcanvas-area d-none d-lg-block">
@@ -13,29 +11,43 @@
           </a>
         </div>
         <div class="hamburger_close">
-          <button class="hamburger_close_btn"><i class="fa-thin fa-times"></i></button>
+          <button class="hamburger_close_btn" type="button" aria-label="Close Menu"><i class="fa-solid fa-xmark"></i></button>
         </div>
       </div>
       <div class="offcanvas-text">
-        <p>Practical Business & Profit Improvement Consulting for Sri Lankan SMEs and Manufacturing Businesses.</p>
+        <p class="text-white-50 mb-3">Practical Business & Profit Improvement Consulting for Sri Lankan SMEs and Manufacturing Businesses.</p>
+        <div class="my-3">
+          <a class="ib-company-profile-card-btn w-100 justify-content-between" href="assets/docs/IB-Consultants-Company-Profile.pdf" download="IB-Consultants-Company-Profile.pdf" aria-label="Download IB Consultants Company Profile">
+            <span class="ib-btn-file-icon">
+              <i class="fa-solid fa-file-pdf"></i>
+            </span>
+            <span class="ib-btn-text-group">
+              <span class="ib-btn-main-text">Download Company Profile</span>
+              <span class="ib-btn-sub-text"><i class="fa-solid fa-circle-check"></i> Official Corporate Overview</span>
+            </span>
+            <span class="ib-btn-download-circle">
+              <i class="fa-solid fa-arrow-down"></i>
+            </span>
+          </a>
+        </div>
       </div>
       <div class="hamburger-infos">
         <h5 class="hamburger-title">Contact Info</h5>
         <div class="contact-info">
           <div class="contact-item">
-            <span class="subtitle">Phone</span>
+            <span class="subtitle"><i class="fa-solid fa-phone me-1" style="color: #d4af37;"></i> Phone</span>
             <a class="contact-link" href="tel:0711255610">071 125 5610</a>
           </div>
           <div class="contact-item">
-            <span class="subtitle">WhatsApp</span>
+            <span class="subtitle"><i class="fa-brands fa-whatsapp me-1" style="color: #25d366;"></i> WhatsApp</span>
             <a class="contact-link" href="https://wa.me/94742112767" target="_blank">074 211 2767</a>
           </div>
           <div class="contact-item">
-            <span class="subtitle">Email</span>
+            <span class="subtitle"><i class="fa-solid fa-envelope me-1" style="color: #d4af37;"></i> Email</span>
             <a class="contact-link" href="mailto:dammikasbandara86@gmail.com">dammikasbandara86@gmail.com</a>
           </div>
           <div class="contact-item">
-            <span class="subtitle">Location</span>
+            <span class="subtitle"><i class="fa-solid fa-location-dot me-1" style="color: #d4af37;"></i> Location</span>
             <span class="contact-link">93/1/B, Aggonawatte, Isipathana Mawatha, Horana</span>
           </div>
         </div>
@@ -81,11 +93,16 @@
           </a>
         </div>
         <div class="hamburger_close">
-          <button class="hamburger_close_btn"><i class="fa-thin fa-times"></i></button>
+          <button class="hamburger_close_btn" type="button" aria-label="Close Menu"><i class="fa-solid fa-xmark"></i></button>
         </div>
       </div>
       <div class="hamburger_menu">
         <div class="mobile_menu"></div>
+      </div>
+      <div class="my-3 text-center">
+        <a href="assets/docs/IB-Consultants-Company-Profile.pdf" download="IB-Consultants-Company-Profile.pdf" class="ib-offcanvas-download-btn">
+          <i class="fa-solid fa-file-pdf"></i> Download Company Profile
+        </a>
       </div>
       <div class="hamburger-infos">
         <h5 class="hamburger-title">Contact Info</h5>
@@ -239,7 +256,6 @@
               <span class="btn-text topic-color2"><span>Let’s Talk</span></span>
               <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
             </a>
-
           </div>
         </div>
       </div>
@@ -356,6 +372,12 @@
                 <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
               </a>
             </div>
+            <!-- Desktop Offcanvas Menu Trigger Button (Sticky Header) -->
+            <div class="menu_bar menu_offcanvas ms-3" role="button" tabindex="0" title="More Info & Corporate Profile" aria-label="Open Offcanvas Menu" style="display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; padding: 0 !important;">
+              <span style="margin: 0 auto !important; align-self: center !important;"></span>
+              <span style="margin: 0 auto !important; align-self: center !important;"></span>
+              <span style="margin: 0 auto !important; align-self: center !important;"></span>
+            </div>
           </div>
 
           <!-- Mobile Hamburger Menu Icon (Mobile වලදී පමණක් දර්ශනය වේ) -->
@@ -372,9 +394,14 @@
 </header>
 <!-- end: Header Area (Sticky) -->
 
-<!-- Active Menu Trigger for dynamic AJAX inclusion -->
+<!-- Active Menu & Offcanvas Triggers for dynamic AJAX inclusion -->
 <script>
-  if (typeof setActiveMenu === "function") {
-    setActiveMenu();
-  }
+  (function () {
+    if (typeof setActiveMenu === "function") {
+      setActiveMenu();
+    }
+    if (typeof initOffcanvasMenu === "function") {
+      initOffcanvasMenu();
+    }
+  })();
 </script>

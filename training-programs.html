@@ -1184,7 +1184,6 @@
                                     <h2 class="sec-title text-anim topic-color">Find answers to common questions</h2>
                                     <a class="number" href="tel:+94711255610">
                                         <span class="call-icon"><i class="tji-phone"></i></span>
-                                        <span>071 125 5610</span>
                                     </a>
                                 </div>
                             </div>
