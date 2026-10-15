@@ -35,7 +35,7 @@
 <body>
     <div class="body-overlay"></div>
 
-    <div id="nav-placeholder"></div>
+    <?php include 'header.php'; ?>
 
     <!-- start: Preloader -->
     <div class="tj-preloader is-loading">
@@ -85,9 +85,9 @@
                                     <h1 class="tj-page-title">Manufacturing Process Dev. & Cost Reduction</h1>
                                     <div class="tj-page-link">
                                         <span><i class="tji-home"></i></span>
-                                        <span><a href="index.html">Home</a></span>
+                                        <span><a href="index.php">Home</a></span>
                                         <span><i class="tji-arrow-right"></i></span>
-                                        <span><a href="consultancy-service.html">Services</a></span>
+                                        <span><a href="consultancy-service.php">Services</a></span>
                                         <span><i class="tji-arrow-right"></i></span>
                                         <span><span>Manufacturing Process Development</span></span>
                                     </div>
@@ -255,16 +255,16 @@
                                     <div class="tj-post__navigation mb-0 wow fadeInUp" data-wow-delay=".3s">
                                         <div class="tj-nav__post previous">
                                             <div class="tj-nav-post__nav prev_post">
-                                                <a href="business-health-check.html"><span><i
+                                                <a href="business-health-check.php"><span><i
                                                             class="tji-arrow-left"></i></span>Previous Service</a>
                                             </div>
                                         </div>
                                         <div class="tj-nav-post__grid">
-                                            <a href="consultancy-service.html"><i class="tji-window"></i></a>
+                                            <a href="consultancy-service.php"><i class="tji-window"></i></a>
                                         </div>
                                         <div class="tj-nav__post next">
                                             <div class="tj-nav-post__nav next_post">
-                                                <a href="profit-improvement.html">Next Service<span><i
+                                                <a href="profit-improvement.php">Next Service<span><i
                                                             class="tji-arrow-right"></i></span></a>
                                             </div>
                                         </div>
@@ -278,34 +278,34 @@
                                     <div class="tj-sidebar-widget service-categories wow fadeInUp" data-wow-delay=".1s">
                                         <h4 class="widget-title">10 Core Services</h4>
                                         <ul style="font-size: 14px;">
-                                            <li><a href="business-health-check.html">01. Business Health Check &
+                                            <li><a href="business-health-check.php">01. Business Health Check &
                                                     Performance Assessment<span class="icon"><i
                                                             class="tji-arrow-right"></i></span></a></li>
-                                            <li><a class="active" href="manufacturing-process-development.html">02.
+                                            <li><a class="active" href="manufacturing-process-development.php">02.
                                                     Manufacturing Process Development & Cost Reduction<span
                                                         class="icon"><i class="tji-arrow-right"></i></span></a></li>
-                                            <li><a href="profit-improvement.html">03. Profit Improvement & Cost
+                                            <li><a href="profit-improvement.php">03. Profit Improvement & Cost
                                                     Management<span class="icon"><i
                                                             class="tji-arrow-right"></i></span></a></li>
-                                            <li><a href="domestic-market-development.html">04. Domestic Market
+                                            <li><a href="domestic-market-development.php">04. Domestic Market
                                                     Development & Distributor Mgt<span class="icon"><i
                                                             class="tji-arrow-right"></i></span></a></li>
-                                            <li><a href="sales-marketing-development.html">05. Sales & Marketing
+                                            <li><a href="sales-marketing-development.php">05. Sales & Marketing
                                                     Development<span class="icon"><i
                                                             class="tji-arrow-right"></i></span></a></li>
-                                            <li><a href="export-market-development.html">06. Export Market Development &
+                                            <li><a href="export-market-development.php">06. Export Market Development &
                                                     International Sales<span class="icon"><i
                                                             class="tji-arrow-right"></i></span></a></li>
-                                            <li><a href="business-process-systems.html">07. Business Process, Systems &
+                                            <li><a href="business-process-systems.php">07. Business Process, Systems &
                                                     Mgt Development<span class="icon"><i
                                                             class="tji-arrow-right"></i></span></a></li>
-                                            <li><a href="strategic-business-advisory.html">08. Strategic Business
+                                            <li><a href="strategic-business-advisory.php">08. Strategic Business
                                                     Advisory & Growth Mgt<span class="icon"><i
                                                             class="tji-arrow-right"></i></span></a></li>
-                                            <li><a href="product-development-pricing.html">09. Product Development,
+                                            <li><a href="product-development-pricing.php">09. Product Development,
                                                     Pricing & Commercialization<span class="icon"><i
                                                             class="tji-arrow-right"></i></span></a></li>
-                                            <li><a href="business-transformation-kpi.html">10. Business Transformation,
+                                            <li><a href="business-transformation-kpi.php">10. Business Transformation,
                                                     KPI & Continuous Advisory<span class="icon"><i
                                                             class="tji-arrow-right"></i></span></a></li>
                                         </ul>
@@ -341,7 +341,7 @@
                                             Lanka.
                                         </p>
                                         <div class="cta-btn wow fadeInUp" data-wow-delay=".5s">
-                                            <a class="tj-primary-btn btn-dark" href="contact.html">
+                                            <a class="tj-primary-btn btn-dark" href="contact.php">
                                                 <span class="btn-text topic-color2"><span>Get
                                                         Started
                                                         Now</span></span>
@@ -363,7 +363,7 @@
                 <!-- end: Cta Section -->
             </main>
 
-            <div id="footer-placeholder"></div>
+            <?php include 'footer.php'; ?>
 
         </div>
     </div>
@@ -385,18 +385,6 @@
     <script src="assets/js/meanmenu.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/custom.js"></script>
-
-    <script>
-        $(function () {
-            $("#nav-placeholder").load("nav.html", function () {
-                $("#footer-placeholder").load("footer.html", function () {
-                    $.getScript("assets/js/meanmenu.js", function () {
-                        $.getScript("assets/js/main.js");
-                    });
-                });
-            });
-        });
-    </script>
 </body>
 
 </html>

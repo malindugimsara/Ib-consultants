@@ -35,7 +35,7 @@
 <body>
     <div class="body-overlay"></div>
 
-    <div id="nav-placeholder"></div>
+    <?php include 'header.php'; ?>
 
     <!-- start: Preloader -->
     <div class="tj-preloader is-loading">
@@ -91,7 +91,7 @@
                                     <div class="tj-page-link">
                                         <span><i class="tji-home"></i></span>
                                         <span>
-                                            <a href="index.html">Home</a>
+                                            <a href="index.php">Home</a>
                                         </span>
                                         <span><i class="tji-arrow-right"></i></span>
                                         <span>
@@ -173,12 +173,12 @@
                                             </div>
                                             <div class="service-content">
                                                 <span class="no">01.</span>
-                                                <h3 class="title"><a href="contact.html">Certificate in Business
+                                                <h3 class="title"><a href="contact.php">Certificate in Business
                                                         Management & Entrepreneurship</a></h3>
                                                 <p class="desc">Covers business fundamentals, business model
                                                     development, planning, HR, sales, financial management, and KPI
                                                     growth.</p>
-                                                <a class="tj-primary-btn" href="contact.html">
+                                                <a class="tj-primary-btn" href="contact.php">
                                                     <span class="btn-text topic-color2"><span>Enquire
                                                             Now</span></span>
                                                     <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
@@ -199,11 +199,11 @@
                                             </div>
                                             <div class="service-content">
                                                 <span class="no">02.</span>
-                                                <h3 class="title"><a href="contact.html">Certificate in Digital
+                                                <h3 class="title"><a href="contact.php">Certificate in Digital
                                                         Marketing & Lead Generation</a></h3>
                                                 <p class="desc">Learn digital marketing strategy, Facebook/Instagram
                                                     ads, SEO, generative AI fundamentals, and workflow automation.</p>
-                                                <a class="tj-primary-btn" href="contact.html">
+                                                <a class="tj-primary-btn" href="contact.php">
                                                     <span class="btn-text
                                                         topic-color2"><span>Enquire
                                                             Now</span></span>
@@ -225,11 +225,11 @@
                                             </div>
                                             <div class="service-content">
                                                 <span class="no">03.</span>
-                                                <h3 class="title"><a href="contact.html">Certificate in Manufacturing
+                                                <h3 class="title"><a href="contact.php">Certificate in Manufacturing
                                                         Operations & Cost Reduction</a></h3>
                                                 <p class="desc">Master production planning, process mapping, capacity
                                                     analysis, standard costing, and waste reduction.</p>
-                                                <a class="tj-primary-btn" href="contact.html">
+                                                <a class="tj-primary-btn" href="contact.php">
                                                     <span class="btn-text
                                                         topic-color2"><span>Enquire
                                                             Now</span></span>
@@ -273,7 +273,7 @@
                                             </p>
                                         </div>
                                         <div class="btn-area wow fadeInUp" data-wow-delay=".4s">
-                                            <a class="tj-primary-btn" href="contact.html">
+                                            <a class="tj-primary-btn" href="contact.php">
                                                 <span class="btn-text topic-color2"><span>Request a
                                                         Workshop</span></span>
                                                 <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
@@ -373,7 +373,7 @@
                                                         </div>
                                                         <p>Diagnose business problems and create a prioritized 90-day
                                                             actionable improvement plan.</p>
-                                                        <a href="contact.html?subject=Business%20Health%20Check%20Workshop"
+                                                        <a href="contact.php?subject=Business%20Health%20Check%20Workshop"
                                                             class="ib-enquire-cta">
                                                             <span>Enquire for Workshop</span>
                                                             <i class="fa-solid fa-arrow-right"></i>
@@ -444,7 +444,7 @@
                                                         </div>
                                                         <p>Identify cost savings and measurable profit-improvement
                                                             opportunities across operations.</p>
-                                                        <a href="contact.html?subject=Profit%20Improvement%20Workshop"
+                                                        <a href="contact.php?subject=Profit%20Improvement%20Workshop"
                                                             class="ib-enquire-cta">
                                                             <span>Enquire for Workshop</span>
                                                             <i class="fa-solid fa-arrow-right"></i>
@@ -516,7 +516,7 @@
                                                         </div>
                                                         <p>Calculate realistic manufacturing costs and unlock
                                                             significant factory productivity opportunities.</p>
-                                                        <a href="contact.html?subject=Manufacturing%20Costing%20Workshop"
+                                                        <a href="contact.php?subject=Manufacturing%20Costing%20Workshop"
                                                             class="ib-enquire-cta">
                                                             <span>Enquire for Workshop</span>
                                                             <i class="fa-solid fa-arrow-right"></i>
@@ -589,7 +589,7 @@
                                                         </div>
                                                         <p>Build a structured sales pipeline designed to improve
                                                             customer acquisition and close rates.</p>
-                                                        <a href="contact.html?subject=Sales%20Excellence%20Workshop"
+                                                        <a href="contact.php?subject=Sales%20Excellence%20Workshop"
                                                             class="ib-enquire-cta">
                                                             <span>Enquire for Workshop</span>
                                                             <i class="fa-solid fa-arrow-right"></i>
@@ -662,7 +662,7 @@
                                                         </div>
                                                         <p>Learn how to build, manage, and scale a performance-driven
                                                             national distribution network.</p>
-                                                        <a href="contact.html?subject=Distributor%20Management%20Workshop"
+                                                        <a href="contact.php?subject=Distributor%20Management%20Workshop"
                                                             class="ib-enquire-cta">
                                                             <span>Enquire for Workshop</span>
                                                             <i class="fa-solid fa-arrow-right"></i>
@@ -734,7 +734,7 @@
                                                         </div>
                                                         <p>Gain a practical execution framework for entering
                                                             international markets and winning export contracts.</p>
-                                                        <a href="contact.html?subject=Export%20Market%20Workshop"
+                                                        <a href="contact.php?subject=Export%20Market%20Workshop"
                                                             class="ib-enquire-cta">
                                                             <span>Enquire for Workshop</span>
                                                             <i class="fa-solid fa-arrow-right"></i>
@@ -806,7 +806,7 @@
                                                         </div>
                                                         <p>Build a practical digital marketing engine that consistently
                                                             attracts and converts high-value prospects.</p>
-                                                        <a href="contact.html?subject=Digital%20Marketing%20Workshop"
+                                                        <a href="contact.php?subject=Digital%20Marketing%20Workshop"
                                                             class="ib-enquire-cta">
                                                             <span>Enquire for Workshop</span>
                                                             <i class="fa-solid fa-arrow-right"></i>
@@ -878,7 +878,7 @@
                                                         </div>
                                                         <p>Master practical AI tools to accelerate research, marketing,
                                                             sales analysis, and daily productivity by 5x.</p>
-                                                        <a href="contact.html?subject=AI%20for%20Business%20Workshop"
+                                                        <a href="contact.php?subject=AI%20for%20Business%20Workshop"
                                                             class="ib-enquire-cta">
                                                             <span>Enquire for Workshop</span>
                                                             <i class="fa-solid fa-arrow-right"></i>
@@ -950,7 +950,7 @@
                                                         </div>
                                                         <p>Establish a disciplined framework for strategy development,
                                                             departmental alignment, and KPI execution.</p>
-                                                        <a href="contact.html?subject=Business%20Planning%20Workshop"
+                                                        <a href="contact.php?subject=Business%20Planning%20Workshop"
                                                             class="ib-enquire-cta">
                                                             <span>Enquire for Workshop</span>
                                                             <i class="fa-solid fa-arrow-right"></i>
@@ -1021,7 +1021,7 @@
                                                         </div>
                                                         <p>Gain practical commercial financial management skills to make
                                                             confident pricing and investment decisions.</p>
-                                                        <a href="contact.html?subject=SME%20Financial%20Management%20Workshop"
+                                                        <a href="contact.php?subject=SME%20Financial%20Management%20Workshop"
                                                             class="ib-enquire-cta">
                                                             <span>Enquire for Workshop</span>
                                                             <i class="fa-solid fa-arrow-right"></i>
@@ -1158,7 +1158,7 @@
                                     <span class="active-bg"></span>
                                 </div>
                                 <div class="text-center mt-5">
-                                    <a class="tj-primary-btn" href="contact.html">
+                                    <a class="tj-primary-btn" href="contact.php">
                                         <span class="btn-text topic-color2">Request Full
                                             Syllabus</span></span>
                                         <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
@@ -1303,7 +1303,7 @@
                                             Lanka.
                                         </p>
                                         <div class="cta-btn wow fadeInUp" data-wow-delay=".5s">
-                                            <a class="tj-primary-btn btn-dark" href="contact.html">
+                                            <a class="tj-primary-btn btn-dark" href="contact.php">
                                                 <span class="btn-text topic-color2"><span>Get
                                                         Started
                                                         Now</span></span>
@@ -1325,7 +1325,7 @@
                 <!-- end: Cta Section -->
             </main>
 
-            <div id="footer-placeholder"></div>
+            <?php include 'footer.php'; ?>
 
         </div>
     </div>
@@ -1347,18 +1347,6 @@
     <script src="assets/js/meanmenu.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/custom.js"></script>
-
-    <script>
-        $(function () {
-            $("#nav-placeholder").load("nav.html", function () {
-                $("#footer-placeholder").load("footer.html", function () {
-                    $.getScript("assets/js/meanmenu.js", function () {
-                        $.getScript("assets/js/main.js");
-                    });
-                });
-            });
-        });
-    </script>
 
 </body>
 

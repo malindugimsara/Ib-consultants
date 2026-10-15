@@ -37,34 +37,38 @@ function setActiveMenu() {
   let currentPage = path.substring(path.lastIndexOf("/") + 1).toLowerCase();
   currentPage = currentPage.split("?")[0].split("#")[0];
 
-  // Default to index.html if root, empty or index variations
-  if (
-    !currentPage ||
-    currentPage === "" ||
-    currentPage === "index.htm" ||
-    currentPage === "index.php"
-  ) {
-    currentPage = "index.html";
+  // Helper to normalize filenames: strip extension .php, .html, .htm
+  function normalizePage(name) {
+    if (!name) return "";
+    let clean = name.toLowerCase().split("?")[0].split("#")[0];
+    let file = clean.substring(clean.lastIndexOf("/") + 1);
+    return file.replace(/\.(php|html|htm)$/, "");
   }
 
-  // 2. Map all 10 consultancy sub-service pages to consultancy-service.html
+  // Default to index if root, empty or index variations
+  let currentBase = normalizePage(currentPage);
+  if (!currentBase || currentBase === "index") {
+    currentBase = "index";
+  }
+
+  // 2. Map all 10 consultancy sub-service pages to consultancy-service
   const consultancySubPages = [
-    "consultancy-service.html",
-    "business-health-check.html",
-    "profit-improvement.html",
-    "manufacturing-process-development.html",
-    "domestic-market-development.html",
-    "export-market-development.html",
-    "sales-marketing-development.html",
-    "product-development-pricing.html",
-    "business-process-systems.html",
-    "business-transformation-kpi.html",
-    "strategic-business-advisory.html",
+    "consultancy-service",
+    "business-health-check",
+    "profit-improvement",
+    "manufacturing-process-development",
+    "domestic-market-development",
+    "export-market-development",
+    "sales-marketing-development",
+    "product-development-pricing",
+    "business-process-systems",
+    "business-transformation-kpi",
+    "strategic-business-advisory",
   ];
 
-  let targetPage = currentPage;
-  if (consultancySubPages.includes(currentPage)) {
-    targetPage = "consultancy-service.html";
+  let targetBase = currentBase;
+  if (consultancySubPages.includes(currentBase)) {
+    targetBase = "consultancy-service";
   }
 
   // 3. Target all navigation lists (Desktop bottom nav, Sticky nav, Mobile source, Meanmenu drawer)
@@ -92,16 +96,15 @@ function setActiveMenu() {
 
       let matched = false;
 
-      // Try matching filename
+      // Try matching filename base
       items.forEach((li) => {
         const link = li.querySelector(":scope > a");
         if (!link) return;
 
         const href = (link.getAttribute("href") || "").trim();
-        let linkFile = href.substring(href.lastIndexOf("/") + 1).toLowerCase();
-        linkFile = linkFile.split("?")[0].split("#")[0];
+        const linkBase = normalizePage(href);
 
-        if (linkFile === targetPage) {
+        if (linkBase === targetBase) {
           li.classList.add("current-menu-ancestor", "current-menu-item", "active");
           link.classList.add("active");
           matched = true;
@@ -109,12 +112,13 @@ function setActiveMenu() {
       });
 
       // Fallback for home page if not matched by filename
-      if (!matched && targetPage === "index.html") {
+      if (!matched && (targetBase === "index" || targetBase === "")) {
         items.forEach((li) => {
           const link = li.querySelector(":scope > a");
           if (!link) return;
           const href = (link.getAttribute("href") || "").trim().toLowerCase();
-          if (href === "index.html" || href === "./" || href === "/") {
+          const base = normalizePage(href);
+          if (base === "index" || href === "./" || href === "/" || href === "") {
             li.classList.add("current-menu-ancestor", "current-menu-item", "active");
             link.classList.add("active");
           }

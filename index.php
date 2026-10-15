@@ -64,7 +64,7 @@
     </div>
     <!-- Preloader end -->
 
-    <div id="nav-placeholder"></div>
+    <?php include 'header.php'; ?>
 
     <!-- back to top start -->
     <div id="tj-back-to-top" class="back-to-top-bg"><span id="tj-back-to-top-percentage"
@@ -97,7 +97,7 @@
                                                         Businesses.</div>
                                                     <div
                                                         class="slider-btn d-flex justify-content-center justify-content-lg-start mt-4">
-                                                        <a class="tj-primary-btn" href="contact.html">
+                                                        <a class="tj-primary-btn" href="contact.php">
                                                             <span class="btn-text
                                                                 topic-color2"><span>Get a
                                                                     Consultation</span></span>
@@ -127,7 +127,7 @@
                                                         success.</div>
                                                     <div
                                                         class="slider-btn d-flex justify-content-center justify-content-lg-start mt-4">
-                                                        <a class="tj-primary-btn" href="consultancy-service.html">
+                                                        <a class="tj-primary-btn" href="consultancy-service.php">
                                                             <span class="btn-text 
                                                                 topic-color2"><span>Explore
                                                                     Services</span></span>
@@ -157,7 +157,7 @@
                                                         profitability.</div>
                                                     <div
                                                         class="slider-btn d-flex justify-content-center justify-content-lg-start mt-4">
-                                                        <a class="tj-primary-btn" href="consultancy-service.html">
+                                                        <a class="tj-primary-btn" href="consultancy-service.php">
                                                             <span class="btn-text
                                                                 topic-color2"><span>Our
                                                                     Services</span></span>
@@ -187,7 +187,7 @@
                                                         network.</div>
                                                     <div
                                                         class="slider-btn d-flex justify-content-center justify-content-lg-start mt-4">
-                                                        <a class="tj-primary-btn" href="contact.html">
+                                                        <a class="tj-primary-btn" href="contact.php">
                                                             <span class="btn-text
                                                                 topic-color2"><span>Let's
                                                                     Talk</span></span>
@@ -338,7 +338,7 @@
                                     </div>
 
                                     <div class="d-flex flex-wrap gap-3 align-items-center">
-                                        <a class="tj-primary-btn" href="about.html"
+                                        <a class="tj-primary-btn" href="about.php"
                                             aria-label="Learn more about IB Consultants company overview">
                                             <span class="btn-text topic-color2"><span>Learn More</span></span>
                                             <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
@@ -528,7 +528,7 @@
 
                             <!-- Consultancy Services Card -->
                             <div class="col-xl-5 col-lg-5 col-md-6 col-12 wow fadeInUp" data-wow-delay=".4s">
-                                <a href="consultancy-service.html"
+                                <a href="consultancy-service.php"
                                     class="service-item style-1 main-service-card custom-mobile-card d-block no-text-decoration">
                                     <div class="service-img">
                                         <img src="assets/images/service/service-1.webp" alt="Consultancy Services"
@@ -553,7 +553,7 @@
 
                             <!-- Training and Programs Card -->
                             <div class="col-xl-5 col-lg-5 col-md-6 col-12 wow fadeInUp" data-wow-delay=".5s">
-                                <a href="training-programs.html"
+                                <a href="training-programs.php"
                                     class="service-item style-1 main-service-card custom-mobile-card d-block no-text-decoration">
                                     <div class="service-img">
                                         <img src="assets/images/service/service-1.webp" alt="Training and Programs"
@@ -1124,7 +1124,7 @@
                                             Lanka.
                                         </p>
                                         <div class="cta-btn wow fadeInUp" data-wow-delay=".5s">
-                                            <a class="tj-primary-btn btn-dark" href="contact.html">
+                                            <a class="tj-primary-btn btn-dark" href="contact.php">
                                                 <span class="btn-text topic-color2"><span>Get
                                                         Started
                                                         Now</span></span>
@@ -1147,7 +1147,7 @@
 
             </main>
 
-            <div id="footer-placeholder"></div>
+            <?php include 'footer.php'; ?>
         </div>
     </div>
 
@@ -1168,18 +1168,6 @@
     <script src="assets/js/meanmenu.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/custom.js"></script>
-
-    <script>
-        $(function () {
-            $("#nav-placeholder").load("nav.html", function () {
-                $("#footer-placeholder").load("footer.html", function () {
-                    $.getScript("assets/js/meanmenu.js", function () {
-                        $.getScript("assets/js/main.js");
-                    });
-                });
-            });
-        });
-    </script>
 
 </body>
 

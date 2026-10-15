@@ -32,7 +32,7 @@
 <body>
     <div class="body-overlay"></div>
 
-    <div id="nav-placeholder"></div>
+    <?php include 'header.php'; ?>
 
     <!-- start: Preloader -->
     <div class="tj-preloader is-loading">
@@ -87,7 +87,7 @@
                                     <div class="tj-page-link">
                                         <span><i class="tji-home"></i></span>
                                         <span>
-                                            <a href="index.html">Home</a>
+                                            <a href="index.php">Home</a>
                                         </span>
                                         <span><i class="tji-arrow-right"></i></span>
                                         <span>
@@ -232,7 +232,8 @@
                                             Let’s Discuss Your <span>Business Growth.</span>
                                         </h3>
                                         <p class="ib-form-subtitle">
-                                            Fill in the details below and our senior consulting team will get back to you within 24 hours.
+                                            Fill in the details below and our senior consulting team will get back to
+                                            you within 24 hours.
                                         </p>
                                     </div>
 
@@ -241,7 +242,8 @@
                                             <!-- Full Name / Business Name -->
                                             <div class="col-sm-6">
                                                 <div class="ib-form-field">
-                                                    <label class="ib-field-label"> Business Name <span class="ib-req">*</span></label>
+                                                    <label class="ib-field-label"> Business Name <span
+                                                            class="ib-req">*</span></label>
                                                     <div class="ib-input-wrap">
                                                         <i class="fa-solid fa-user ib-field-icon"></i>
                                                         <input type="text" name="conName" class="ib-form-input"
@@ -253,7 +255,8 @@
                                             <!-- Email Address -->
                                             <div class="col-sm-6">
                                                 <div class="ib-form-field">
-                                                    <label class="ib-field-label">Email Address <span class="ib-req">*</span></label>
+                                                    <label class="ib-field-label">Email Address <span
+                                                            class="ib-req">*</span></label>
                                                     <div class="ib-input-wrap">
                                                         <i class="fa-solid fa-envelope ib-field-icon"></i>
                                                         <input type="email" name="conEmail" class="ib-form-input"
@@ -265,7 +268,8 @@
                                             <!-- Mobile Number -->
                                             <div class="col-sm-6">
                                                 <div class="ib-form-field">
-                                                    <label class="ib-field-label">Mobile Number <span class="ib-req">*</span></label>
+                                                    <label class="ib-field-label">Mobile Number <span
+                                                            class="ib-req">*</span></label>
                                                     <div class="ib-input-wrap">
                                                         <i class="fa-solid fa-phone ib-field-icon"></i>
                                                         <input type="tel" name="conPhone" class="ib-form-input"
@@ -277,7 +281,8 @@
                                             <!-- WhatsApp Number (Optional) -->
                                             <div class="col-sm-6">
                                                 <div class="ib-form-field">
-                                                    <label class="ib-field-label">WhatsApp Number <span class="ib-opt">(Optional)</span></label>
+                                                    <label class="ib-field-label">WhatsApp Number <span
+                                                            class="ib-opt">(Optional)</span></label>
                                                     <div class="ib-input-wrap">
                                                         <i class="fa-brands fa-whatsapp ib-field-icon ib-wa-icon"></i>
                                                         <input type="tel" name="conWhatsapp" class="ib-form-input"
@@ -289,22 +294,35 @@
                                             <!-- Services Dropdown (All 10 Core Services) -->
                                             <div class="col-12">
                                                 <div class="ib-form-field">
-                                                    <label class="ib-field-label">Choose Service Requirement <span class="ib-req">*</span></label>
+                                                    <label class="ib-field-label">Choose Service Requirement <span
+                                                            class="ib-req">*</span></label>
                                                     <div class="ib-input-wrap ib-select-wrap">
                                                         <i class="fa-solid fa-briefcase ib-field-icon"></i>
-                                                        <select name="conSubject" class="ib-form-select" style="width: 100%;">
+                                                        <select name="conSubject" class="ib-form-select"
+                                                            style="width: 100%;">
                                                             <option value="">Choose a Service Requirement</option>
-                                                            <option value="Business Health Check & Performance">01. Business Health Check & Performance</option>
-                                                            <option value="Manufacturing Process & Cost Reduction">02. Manufacturing Process & Cost Reduction</option>
-                                                            <option value="Profit Improvement & Cost Management">03. Profit Improvement & Cost Management</option>
-                                                            <option value="Domestic Market & Distributor Management">04. Domestic Market & Distributor Management</option>
-                                                            <option value="Sales & Marketing Development">05. Sales & Marketing Development</option>
-                                                            <option value="Export Market & International Sales">06. Export Market & International Sales</option>
-                                                            <option value="Business Process & Systems Development">07. Business Process & Systems Development</option>
-                                                            <option value="Strategic Business Advisory & Growth">08. Strategic Business Advisory & Growth</option>
-                                                            <option value="Product Development & Pricing">09. Product Development & Pricing</option>
-                                                            <option value="Business Transformation & KPI">10. Business Transformation & KPI</option>
-                                                            <option value="Corporate Training / Workshop">11. Corporate Training / Workshop</option>
+                                                            <option value="Business Health Check & Performance">01.
+                                                                Business Health Check & Performance</option>
+                                                            <option value="Manufacturing Process & Cost Reduction">02.
+                                                                Manufacturing Process & Cost Reduction</option>
+                                                            <option value="Profit Improvement & Cost Management">03.
+                                                                Profit Improvement & Cost Management</option>
+                                                            <option value="Domestic Market & Distributor Management">04.
+                                                                Domestic Market & Distributor Management</option>
+                                                            <option value="Sales & Marketing Development">05. Sales &
+                                                                Marketing Development</option>
+                                                            <option value="Export Market & International Sales">06.
+                                                                Export Market & International Sales</option>
+                                                            <option value="Business Process & Systems Development">07.
+                                                                Business Process & Systems Development</option>
+                                                            <option value="Strategic Business Advisory & Growth">08.
+                                                                Strategic Business Advisory & Growth</option>
+                                                            <option value="Product Development & Pricing">09. Product
+                                                                Development & Pricing</option>
+                                                            <option value="Business Transformation & KPI">10. Business
+                                                                Transformation & KPI</option>
+                                                            <option value="Corporate Training / Workshop">11. Corporate
+                                                                Training / Workshop</option>
                                                             <option value="Other Requirement">Other Requirement</option>
                                                         </select>
                                                     </div>
@@ -314,11 +332,15 @@
                                             <!-- Message / Requirement Box -->
                                             <div class="col-12">
                                                 <div class="ib-form-field">
-                                                    <label class="ib-field-label">Your Requirement or Challenge <span class="ib-req">*</span></label>
+                                                    <label class="ib-field-label">Your Requirement or Challenge <span
+                                                            class="ib-req">*</span></label>
                                                     <div class="ib-input-wrap ib-textarea-wrap">
-                                                        <i class="fa-solid fa-pen-to-square ib-field-icon ib-textarea-icon"></i>
-                                                        <textarea name="conMessage" id="message" class="ib-form-textarea"
-                                                            placeholder="Briefly describe your business challenge, operations, or how we can assist..." required></textarea>
+                                                        <i
+                                                            class="fa-solid fa-pen-to-square ib-field-icon ib-textarea-icon"></i>
+                                                        <textarea name="conMessage" id="message"
+                                                            class="ib-form-textarea"
+                                                            placeholder="Briefly describe your business challenge, operations, or how we can assist..."
+                                                            required></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -428,7 +450,7 @@
                             <div class="col-lg-5">
                                 <div class="ib-faq-visual-wrap wow fadeInLeft" data-wow-delay=".3s">
                                     <div class="ib-faq-image-card">
-                                        <img data-speed=".8" src="assets/images/faq/faq.jpg" alt="IB Consultants FAQ"
+                                        <img data-speed=".8" src="assets/images/faq/faq.webp" alt="IB Consultants FAQ"
                                             class="ib-faq-main-img">
                                         <div class="ib-faq-img-overlay"></div>
                                         <div class="ib-faq-img-badge">
@@ -593,7 +615,7 @@
                                             Lanka.
                                         </p>
                                         <div class="cta-btn wow fadeInUp" data-wow-delay=".5s">
-                                            <a class="tj-primary-btn btn-dark" href="contact.html">
+                                            <a class="tj-primary-btn btn-dark" href="contact.php">
                                                 <span class="btn-text topic-color2"><span>Get
                                                         Started
                                                         Now</span></span>
@@ -615,7 +637,7 @@
                 <!-- end: Cta Section -->
             </main>
 
-            <div id="footer-placeholder"></div>
+            <?php include 'footer.php'; ?>
         </div>
     </div>
 
@@ -676,18 +698,6 @@
     <script src="assets/js/validate.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/custom.js"></script>
-
-    <script>
-        $(function () {
-            $("#nav-placeholder").load("nav.html", function () {
-                $("#footer-placeholder").load("footer.html", function () {
-                    $.getScript("assets/js/meanmenu.js", function () {
-                        $.getScript("assets/js/main.js");
-                    });
-                });
-            });
-        });
-    </script>
 
 </body>
 

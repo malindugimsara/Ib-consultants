@@ -59,7 +59,7 @@
     </div>
     <!-- end: Preloader -->
 
-    <div id="nav-placeholder"></div>
+    <?php include 'header.php'; ?>
 
     <div id="tj-back-to-top"><span id="tj-back-to-top-percentage"></span></div>
 
@@ -85,7 +85,7 @@
                                     <div class="tj-page-link">
                                         <span><i class="tji-home"></i></span>
                                         <span>
-                                            <a href="index.html">Home</a>
+                                            <a href="index.php">Home</a>
                                         </span>
                                         <span><i class="tji-arrow-right"></i></span>
                                         <span>
@@ -116,7 +116,7 @@
                                             </h2>
                                         </div>
                                         <div class="btn-wrap wow fadeInUp" data-wow-delay=".6s">
-                                            <a class="tj-primary-btn" href="contact.html">
+                                            <a class="tj-primary-btn" href="contact.php">
                                                 <span class="btn-text topic-color2"><span>Request
                                                         a Call</span></span>
                                                 <span class="btn-icon"><i class="tji-arrow-right-long" ></i></span>
@@ -235,7 +235,7 @@
                                     </div>
                                 </div>
                                 <div class="about-btn-area d-flex flex-wrap gap-3 align-items-center wow fadeInUp" data-wow-delay=".6s">
-                                    <a class="tj-primary-btn" href="consultancy-service.html">
+                                    <a class="tj-primary-btn" href="consultancy-service.php">
                                         <span class="btn-text topic-color2"><span>Explore Our Services</span></span>
                                         <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
                                     </a>
@@ -802,7 +802,7 @@
                                     </p>
                                 </div>
                                 <div class="col-lg-4 text-center text-lg-end mt-4 mt-lg-0">
-                                    <a class="tj-primary-btn btn-about" href="contact.html">
+                                    <a class="tj-primary-btn btn-about" href="contact.php">
                                         <span class="btn-text topic-color-about"><span>Consult with Our Director</span></span>
                                         <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
                                     </a>
@@ -877,7 +877,7 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <a href="contact.html" class="ib-deck-cta-btn">
+                                                <a href="contact.php" class="ib-deck-cta-btn">
                                                     <span>Inquire on Commercial</span>
                                                     <i class="tji-arrow-right-long"></i>
                                                 </a>
@@ -1011,7 +1011,7 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <a href="contact.html" class="ib-deck-cta-btn">
+                                                <a href="contact.php" class="ib-deck-cta-btn">
                                                     <span>Inquire on Profitability</span>
                                                     <i class="tji-arrow-right-long"></i>
                                                 </a>
@@ -1141,7 +1141,7 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <a href="contact.html" class="ib-deck-cta-btn">
+                                                <a href="contact.php" class="ib-deck-cta-btn">
                                                     <span>Inquire on Operations</span>
                                                     <i class="tji-arrow-right-long"></i>
                                                 </a>
@@ -1271,7 +1271,7 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <a href="contact.html" class="ib-deck-cta-btn">
+                                                <a href="contact.php" class="ib-deck-cta-btn">
                                                     <span>Inquire on Strategy</span>
                                                     <i class="tji-arrow-right-long"></i>
                                                 </a>
@@ -1459,7 +1459,7 @@
                                         programs, and how we help SMEs achieve their business goals.
                                     </p>
                                     <div class="wow fadeInUp" data-wow-delay=".8s">
-                                        <a class="tj-primary-btn" href="contact.html">
+                                        <a class="tj-primary-btn" href="contact.php">
                                             <span class="btn-text topic-color2"><span>Contact Us
                                                     Today</span></span>
                                             <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
@@ -1556,7 +1556,7 @@
                                             Lanka.
                                         </p>
                                         <div class="cta-btn wow fadeInUp" data-wow-delay=".5s">
-                                            <a class="tj-primary-btn btn-dark" href="contact.html">
+                                            <a class="tj-primary-btn btn-dark" href="contact.php">
                                                 <span class="btn-text topic-color2"><span>Get
                                                         Started
                                                         Now</span></span>
@@ -1578,7 +1578,7 @@
 
             </main>
 
-            <div id="footer-placeholder"></div>
+            <?php include 'footer.php'; ?>
         </div>
     </div>
 
@@ -1599,20 +1599,6 @@
     <script src="assets/js/meanmenu.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/custom.js"></script>
-
-
-
-    <script>
-        $(function () {
-            $("#nav-placeholder").load("nav.html", function () {
-                $("#footer-placeholder").load("footer.html", function () {
-                    $.getScript("assets/js/meanmenu.js", function () {
-                        $.getScript("assets/js/main.js");
-                    });
-                });
-            });
-        });
-    </script>
 
 
 </body>

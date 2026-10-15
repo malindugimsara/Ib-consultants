@@ -6,7 +6,7 @@
     <div class="hamburger_inner">
       <div class="hamburger_top d-flex align-items-center justify-content-between">
         <div class="hamburger_logo">
-          <a href="index.html" class="mobile_logo">
+          <a href="index.php" class="mobile_logo">
             <img src="assets/images/logos/logo-2.webp" alt="IB Consultants Logo">
           </a>
         </div>
@@ -88,7 +88,7 @@
     <div class="hamburger_inner">
       <div class="hamburger_top d-flex align-items-center justify-content-between">
         <div class="hamburger_logo">
-          <a href="index.html" class="mobile_logo">
+          <a href="index.php" class="mobile_logo">
             <img src="assets/images/logos/logo-2.webp" alt="IB Consultants Logo">
           </a>
         </div>
@@ -184,13 +184,13 @@
       <div class="d-flex justify-content-between align-items-center">
         <!-- Logo -->
         <div class="site_logo">
-          <a href="index.html"><img src="assets/images/logos/logo-2.webp" alt="IB Consultants"
+          <a href="index.php"><img src="assets/images/logos/logo-2.webp" alt="IB Consultants"
               style="max-height: 80px;"></a>
         </div>
 
         <!-- Center Animated Brand Title -->
         <div class="ib-middle-brand">
-          <a href="index.html" class="ib-brand-link" title="IB Consultants">
+          <a href="index.php" class="ib-brand-link" title="IB Consultants">
             <div class="ib-brand-title-wrap">
               <span class="ib-brand-title">IB CONSULTANTS</span>
             </div>
@@ -241,18 +241,18 @@
         <!-- Navigation Links -->
         <nav class="mainmenu">
           <ul>
-            <li><a href="index.html">HOME</a></li>
-            <li><a href="about.html">ABOUT US</a></li>
-            <li><a href="consultancy-service.html">CONSULTANCY SERVICES</a></li>
-            <li><a href="training-programs.html">TRAINING & PROGRAMS</a></li>
-            <li><a href="blog.html">BLOG</a></li>
-            <li><a href="contact.html">CONTACT US</a></li>
+            <li><a href="index.php">HOME</a></li>
+            <li><a href="about.php">ABOUT US</a></li>
+            <li><a href="consultancy-service.php">CONSULTANCY SERVICES</a></li>
+            <li><a href="training-programs.php">TRAINING & PROGRAMS</a></li>
+            <li><a href="blog.php">BLOG</a></li>
+            <li><a href="contact.php">CONTACT US</a></li>
           </ul>
         </nav>
         <!-- CTA Button -->
         <div class="header-right-item d-none d-lg-inline-flex">
           <div class="header-button">
-            <a class="tj-primary-btn" href="contact.html">
+            <a class="tj-primary-btn" href="contact.php">
               <span class="btn-text topic-color2"><span>Let’s Talk</span></span>
               <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
             </a>
@@ -273,7 +273,7 @@
 
           <!-- site logo -->
           <div class="site_logo">
-            <a class="logo" href="index.html"><img src="assets/images/logos/logo-2.webp" alt="IB Consultants"></a>
+            <a class="logo" href="index.php"><img src="assets/images/logos/logo-2.webp" alt="IB Consultants"></a>
           </div>
 
           <!-- Mobile Social Icons in the Middle -->
@@ -292,12 +292,12 @@
           <div class="menu-area d-none">
             <nav id="mobile-menu" class="mainmenu">
               <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="consultancy-service.html">Consultancy Services</a></li>
-                <li><a href="training-programs.html">Training & Programs</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="about.php">About Us</a></li>
+                <li><a href="consultancy-service.php">Consultancy Services</a></li>
+                <li><a href="training-programs.php">Training & Programs</a></li>
+                <li><a href="blog.php">Blog</a></li>
+                <li><a href="contact.php">Contact Us</a></li>
               </ul>
             </nav>
           </div>
@@ -305,7 +305,7 @@
           <!-- header right info -->
           <div class="header-right-item d-flex align-items-center">
             <div class="header-button d-none d-sm-inline-flex me-3">
-              <a class="tj-primary-btn" href="contact.html">
+              <a class="tj-primary-btn" href="contact.php">
                 <span class="btn-text topic-color2"><span>Let’s Talk</span></span>
                 <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
               </a>
@@ -336,7 +336,7 @@
 
           <!-- Site Logo -->
           <div class="site_logo">
-            <a class="logo" href="index.html">
+            <a class="logo" href="index.php">
               <img src="assets/images/logos/logo-2.webp" alt="IB Consultants" style="max-height: 55px;">
             </a>
           </div>
@@ -345,12 +345,12 @@
           <div class="menu-area d-none d-lg-inline-flex align-items-center">
             <nav class="mainmenu">
               <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="consultancy-service.html">Consultancy Services</a></li>
-                <li><a href="training-programs.html">Training & Programs</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="about.php">About Us</a></li>
+                <li><a href="consultancy-service.php">Consultancy Services</a></li>
+                <li><a href="training-programs.php">Training & Programs</a></li>
+                <li><a href="blog.php">Blog</a></li>
+                <li><a href="contact.php">Contact Us</a></li>
               </ul>
             </nav>
           </div>
@@ -367,7 +367,7 @@
                   class="fa-brands fa-instagram"></i></a>
             </div>
             <div class="header-button">
-              <a class="tj-primary-btn" href="contact.html">
+              <a class="tj-primary-btn" href="contact.php">
                 <span class="btn-text topic-color2"><span>Let’s Talk</span></span>
                 <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
               </a>

@@ -59,7 +59,7 @@
     </div>
     <!-- end: Preloader -->
 
-    <div id="nav-placeholder"></div>
+    <?php include 'header.php'; ?>
 
     <div id="tj-back-to-top"><span id="tj-back-to-top-percentage"></span></div>
 
@@ -84,7 +84,7 @@
                                     <div class="tj-page-link">
                                         <span><i class="tji-home"></i></span>
                                         <span>
-                                            <a href="index.html">Home</a>
+                                            <a href="index.php">Home</a>
                                         </span>
                                         <span><i class="tji-arrow-right"></i></span>
                                         <span>
@@ -438,7 +438,7 @@
                                             Over 20+ years of commercial, manufacturing, international market development, shipping coordination, and profit engineering experience helping Sri Lankan SMEs build profitable, resilient enterprises.
                                         </p>
                                         <div class="mt-3">
-                                            <a href="about.html" class="ib-read-more-btn justify-content-center">
+                                            <a href="about.php" class="ib-read-more-btn justify-content-center">
                                                 View Consultant Profile <i class="fa-solid fa-arrow-right-long"></i>
                                             </a>
                                         </div>
@@ -537,7 +537,7 @@
 
             </main>
 
-            <div id="footer-placeholder"></div>
+            <?php include 'footer.php'; ?>
 
         </div>
     </div>
@@ -1027,14 +1027,6 @@
                 applyFilters();
             };
         });
-
-        // Dynamic Header and Footer Loader
-        $(function () {
-            $("#nav-placeholder").load("nav.html", function () {
-                $("#footer-placeholder").load("footer.html", function () {
-                    $.getScript("assets/js/meanmenu.js", function () {
-                        $.getScript("assets/js/main.js");
-                    });
                 });
             });
         });
