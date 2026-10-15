@@ -1027,9 +1027,6 @@
                 applyFilters();
             };
         });
-                });
-            });
-        });
     </script>
 
 </body>

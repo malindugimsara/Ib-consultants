@@ -264,7 +264,8 @@
                                             <div class="title-area">
                                                 <div class="service-icon"><i class="tji-service-2"></i></div>
                                                 <h4 class="title">
-                                                    <a href="export-market-development.php">06. International Market Development</a>
+                                                    <a href="export-market-development.php">06. International Market
+                                                        Development</a>
                                                 </h4>
                                             </div>
                                             <div class="service-content">
@@ -654,7 +655,7 @@
                                     </div>
 
                                     <div class="custom-cta-img">
-                                        <img src="assets/images/cta/cta-bg.jpg"
+                                        <img src="assets/images/cta/cta-bg.webp"
                                             alt="Building the Future with IB Consultants Sri Lanka">
                                     </div>
 

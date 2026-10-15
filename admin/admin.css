@@ -1,0 +1,285 @@
+/* ==========================================================================
+   IB Consultants - Admin Panel Styles (admin.css)
+   ========================================================================== */
+
+/* --- Global & Body Styles --- */
+body {
+    background-color: #f4f6fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333333;
+}
+
+/* --- Login Page Styles --- */
+body.login-page {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-box {
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(9, 26, 50, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-box h3 {
+    color: #091a32;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.btn-primary-custom {
+    background-color: #d4af37;
+    border: none;
+    color: #091a32;
+    font-weight: bold;
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.btn-primary-custom:hover {
+    background-color: #091a32;
+    color: #d4af37;
+}
+
+/* --- Sidebar (Admin Menu) --- */
+.sidebar {
+    background-color: #091a32;
+    color: #fff;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.sidebar h4 {
+    color: #d4af37;
+    font-weight: bold;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 15px;
+}
+
+.sidebar a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background: #d4af37;
+    color: #091a32;
+    font-weight: bold;
+}
+
+.btn-logout {
+    background-color: #dc3545;
+    color: #fff;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.btn-logout:hover {
+    background-color: #bb2d3b;
+    color: #fff;
+}
+
+/* --- Main Content & Cards --- */
+.main-content {
+    padding: 40px;
+}
+
+.card-custom {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+/* --- Tables & Badges --- */
+.table th {
+    background-color: #091a32;
+    color: #fff;
+    padding: 15px;
+}
+
+.table td {
+    padding: 15px;
+    vertical-align: middle;
+}
+
+.badge-service {
+    background-color: rgba(212, 175, 55, 0.15);
+    color: #091a32;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    border: 1px solid #d4af37;
+    font-size: 13px;
+}
+
+/* --- Custom Buttons & Images --- */
+.btn-custom {
+    background-color: #d4af37;
+    color: #091a32;
+    font-weight: bold;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-custom:hover {
+    background-color: #091a32;
+    color: #d4af37;
+}
+
+.img-preview {
+    width: 150px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.badge-published {
+    background-color: #198754;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.badge-hidden {
+    background-color: #6c757d;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+
+
+
+
+/* ==========================================================================
+   IB Consultants - Admin Panel Styles (admin.css)
+   ========================================================================== */
+
+body {
+    background-color: #f4f6fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333333;
+}
+
+/* Login Page Specific */
+body.login-page {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-box {
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(9, 26, 50, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+.login-box h3 {
+    color: #091a32;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    background-color: #091a32;
+    color: #fff;
+    min-height: 100vh;
+    padding: 20px;
+}
+.sidebar h4 {
+    color: #d4af37;
+    font-weight: bold;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 15px;
+}
+.sidebar a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+}
+.sidebar a:hover,
+.sidebar a.active {
+    background: #d4af37;
+    color: #091a32;
+    font-weight: bold;
+}
+
+/* Main Content & Cards */
+.main-content {
+    padding: 40px;
+}
+.card-custom {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+/* Buttons */
+.btn-custom {
+    background-color: #d4af37;
+    color: #091a32;
+    font-weight: bold;
+    border: none;
+    transition: 0.3s;
+}
+.btn-custom:hover {
+    background-color: #091a32;
+    color: #d4af37;
+}
+.btn-primary-custom {
+    background-color: #d4af37;
+    border: none;
+    color: #091a32;
+    font-weight: bold;
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+.btn-primary-custom:hover {
+    background-color: #091a32;
+    color: #d4af37;
+}
+
+/* Tables */
+.table th {
+    background-color: #091a32;
+    color: #fff;
+    padding: 15px;
+}
+.table td {
+    padding: 15px;
+    vertical-align: middle;
+}

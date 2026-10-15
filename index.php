@@ -30,6 +30,16 @@
     <link rel="stylesheet" href="assets/css/custom.css">
 
 
+    <?php
+    include_once 'db.php';
+    $slider_query = "SELECT * FROM hero_slider ORDER BY id ASC";
+    $slider_result = $conn->query($slider_query);
+     // client review
+    $reviews_query = "SELECT * FROM client_reviews ORDER BY display_order ASC, id DESC";
+    $reviews_result = $conn->query($reviews_query);
+    ?>
+
+
 </head>
 
 <body>
@@ -44,7 +54,8 @@
                     <div class="ib-preloader-ring ib-ring-outer"></div>
                     <div class="ib-preloader-ring ib-ring-inner"></div>
                     <div class="ib-preloader-logo-circle">
-                        <img src="assets/images/logos/logo-2.webp" alt="IB Consultants Logo" class="ib-preloader-logo-img">
+                        <img src="assets/images/logos/logo-2.webp" alt="IB Consultants Logo"
+                            class="ib-preloader-logo-img">
                     </div>
                 </div>
 
@@ -75,136 +86,95 @@
         <div id="smooth-content">
             <main id="primary" class="site-main">
 
+
+
                 <!-- start: Hero Banner Slider -->
                 <section class="tj-slider-section overflow-hidden">
-
                     <div class="swiper hero-slider h-100">
                         <div class="swiper-wrapper h-100 mt-lg-custom">
 
-                            <!-- Slide 1 -->
-                            <div class="swiper-slide tj-slider-item">
-                                <div class="slider-bg-image slider-bg-1"></div>
-                                <div class="container relative z-3 mt-lg-custom">
-                                    <div class="row">
-                                        <div class="col-12 col-md-9 col-lg-7">
-                                            <div class="slider-wrapper text-center text-lg-start">
-                                                <div class="slider-content">
-                                                    <h1 class="slider-title text-white">Expertise&nbsp;For&nbsp;Your
-                                                        <span>Growth.</span>
-                                                    </h1>
-                                                    <div class="slider-desc text-white">Practical Business & Profit
-                                                        Improvement Consulting for Sri Lankan SMEs and Manufacturing
-                                                        Businesses.</div>
-                                                    <div
-                                                        class="slider-btn d-flex justify-content-center justify-content-lg-start mt-4">
-                                                        <a class="tj-primary-btn" href="contact.php">
-                                                            <span class="btn-text
-                                                                topic-color2"><span>Get a
-                                                                    Consultation</span></span>
-                                                            <span class="btn-icon"><i
-                                                                    class="tji-arrow-right-long"></i></span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php
+                            if ($slider_result && $slider_result->num_rows > 0):
+                                while ($slide = $slider_result->fetch_assoc()):
+                                    ?>
 
-                            <!-- Slide 2 -->
-                            <div class="swiper-slide tj-slider-item">
-                                <div class="slider-bg-image slider-bg-2"></div>
-                                <div class="container relative z-3 mt-lg-custom">
-                                    <div class="row">
-                                        <div class="col-12 col-md-9 col-lg-7">
-                                            <div class="slider-wrapper text-center text-lg-start">
-                                                <div class="slider-content">
-                                                    <h1 class="slider-title text-white">
-                                                        Challenges&nbsp;Into<br><span>Growth.</span></h1>
-                                                    <div class="slider-desc text-white">Empowering businesses to achieve
-                                                        sustainable growth, stronger profitability, and long-term
-                                                        success.</div>
-                                                    <div
-                                                        class="slider-btn d-flex justify-content-center justify-content-lg-start mt-4">
-                                                        <a class="tj-primary-btn" href="consultancy-service.php">
-                                                            <span class="btn-text 
-                                                                topic-color2"><span>Explore
-                                                                    Services</span></span>
-                                                            <span class="btn-icon"><i
-                                                                    class="tji-arrow-right-long"></i></span>
-                                                        </a>
+                                    <div class="swiper-slide tj-slider-item">
+                                        <div class="slider-bg-image"
+                                            style="background-image: url('<?php echo $slide['image_path']; ?>');"></div>
+                                        <div class="container relative z-3 mt-lg-custom">
+                                            <div class="row">
+                                                <div class="col-12 col-md-10 col-lg-8 col-xl-8">
+                                                    <div class="slider-wrapper text-center text-lg-start">
+                                                        <div class="slider-content">
+                                                            <h1 class="slider-title text-white">
+                                                                <?php 
+                                                                $slide_title = $slide['title'];
+                                                                if (strpos($slide_title, '<span') === false) {
+                                                                    $words = explode(' ', trim($slide_title));
+                                                                    if (count($words) > 1) {
+                                                                        $last_word = array_pop($words);
+                                                                        $slide_title = implode(' ', $words) . ' <span>' . $last_word . '</span>';
+                                                                    }
+                                                                }
+                                                                echo $slide_title; 
+                                                                ?>
+                                                            </h1>
+                                                            <div class="slider-desc text-white">
+                                                                <?php echo $slide['description']; ?>
+                                                            </div>
+                                                            <div
+                                                                class="slider-btn d-flex justify-content-center justify-content-lg-start mt-4">
+                                                                <a class="tj-primary-btn" href="contact.php">
+                                                                    <span class="btn-text topic-color2"><span>Get a
+                                                                            Consultation</span></span>
+                                                                    <span class="btn-icon"><i
+                                                                            class="tji-arrow-right-long"></i></span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                    <?php
+                                endwhile;
+                            else:
+                                ?>
 
-                            <!-- Slide 3 -->
-                            <div class="swiper-slide tj-slider-item">
-                                <div class="slider-bg-image slider-bg-3"></div>
-                                <div class="container relative z-3 mt-lg-custom">
-                                    <div class="row">
-                                        <div class="col-12 col-md-9 col-lg-7">
-                                            <div class="slider-wrapper text-center text-lg-start">
-                                                <div class="slider-content">
-                                                    <h1 class="slider-title text-white">
-                                                        Maximize&nbsp;Your<br><span>Profitability.</span></h1>
-                                                    <div class="slider-desc text-white">Identify profit leakage and
-                                                        implement practical initiatives to improve overall
-                                                        profitability.</div>
-                                                    <div
-                                                        class="slider-btn d-flex justify-content-center justify-content-lg-start mt-4">
-                                                        <a class="tj-primary-btn" href="consultancy-service.php">
-                                                            <span class="btn-text
-                                                                topic-color2"><span>Our
-                                                                    Services</span></span>
-                                                            <span class="btn-icon"><i
-                                                                    class="tji-arrow-right-long"></i></span>
-                                                        </a>
+                                <div class="swiper-slide tj-slider-item">
+                                    <div class="slider-bg-image"
+                                        style="background-image: url('assets/images/hero/slider-1.jpg');"></div>
+                                    <div class="container relative z-3 mt-lg-custom">
+                                        <div class="row">
+                                            <div class="col-12 col-md-10 col-lg-8 col-xl-8">
+                                                <div class="slider-wrapper text-center text-lg-start">
+                                                    <div class="slider-content">
+                                                        <h1 class="slider-title text-white">Expertise For Your
+                                                            <span>Growth.</span>
+                                                        </h1>
+                                                        <div class="slider-desc text-white">Practical Business & Profit
+                                                            Improvement Consulting for Sri Lankan SMEs and Manufacturing
+                                                            Businesses.</div>
+                                                        <div
+                                                            class="slider-btn d-flex justify-content-center justify-content-lg-start mt-4">
+                                                            <a class="tj-primary-btn" href="contact.php">
+                                                                <span class="btn-text topic-color2"><span>Get a
+                                                                        Consultation</span></span>
+                                                                <span class="btn-icon"><i
+                                                                        class="tji-arrow-right-long"></i></span>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <!-- Slide 4 -->
-                            <div class="swiper-slide tj-slider-item">
-                                <div class="slider-bg-image slider-bg-4"></div>
-                                <div class="container relative z-3 mt-lg-custom">
-                                    <div class="row">
-                                        <div class="col-12 col-md-9 col-lg-7">
-                                            <div class="slider-wrapper text-center text-lg-start">
-                                                <div class="slider-content ">
-                                                    <h1 class="slider-title text-white">
-                                                        Expand&nbsp;Market<br><span>Reach.</span></h1>
-                                                    <div class="slider-desc text-white">Develop stronger domestic and
-                                                        export sales channels and build a structured distributor
-                                                        network.</div>
-                                                    <div
-                                                        class="slider-btn d-flex justify-content-center justify-content-lg-start mt-4">
-                                                        <a class="tj-primary-btn" href="contact.php">
-                                                            <span class="btn-text
-                                                                topic-color2"><span>Let's
-                                                                    Talk</span></span>
-                                                            <span class="btn-icon"><i
-                                                                    class="tji-arrow-right-long"></i></span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php endif; ?>
 
                         </div>
 
-                        <!-- Navigation Arrows -->
                         <div class="hero-navigation d-inline-flex wow fadeIn" data-wow-delay="1.5s">
                             <div class="slider-prev">
                                 <span class="anim-icon">
@@ -224,88 +194,89 @@
                 <!-- end: Hero Banner Slider -->
 
                 <section class="tj-client-section section-gap client-section-custom"
-    aria-label="Our Core Industries and Business Focus in Sri Lanka">
+                    aria-label="Our Core Industries and Business Focus in Sri Lanka">
 
-    <div class="container-fluid client-container">
-        <div class="row">
-            <div class="col-12">
+                    <div class="container-fluid client-container">
+                        <div class="row">
+                            <div class="col-12">
 
-                <!-- SEO Optimized Heading -->
-                <div class="text-center wow fadeIn" data-wow-delay=".3s"
-                    style="margin-bottom: 40px; padding: 0 15px;">
+                                <!-- SEO Optimized Heading -->
+                                <div class="text-center wow fadeIn" data-wow-delay=".3s"
+                                    style="margin-bottom: 40px; padding: 0 15px;">
 
-                    <!-- Main Heading (Mobile Responsive Fix) -->
-                    <h2
-                        style="color: var(--primary-navy) !important; font-weight: 700; margin-bottom: 12px; display: block !important; font-size: 30px; line-height: 1.3;">
-                        Empowering Key <span
-                            style="color: var(--accent-gold) !important; font-weight: 900; font-size: 1.2em;">Industries</span>
-                    </h2>
+                                    <!-- Main Heading (Mobile Responsive Fix) -->
+                                    <h2
+                                        style="color: var(--primary-navy) !important; font-weight: 700; margin-bottom: 12px; display: block !important; font-size: 30px; line-height: 1.3;">
+                                        Empowering Key <span
+                                            style="color: var(--accent-gold) !important; font-weight: 900; font-size: 1.2em;">Industries</span>
+                                    </h2>
 
-                    <!-- Subtitle -->
-                    <p style="color: var(--text-black); font-size: 16px; font-weight: 500; margin-top: 0;">
-                        We provide tailored consulting solutions across diverse sectors in Sri Lanka.
-                    </p>
+                                    <!-- Subtitle -->
+                                    <p
+                                        style="color: var(--text-black); font-size: 16px; font-weight: 500; margin-top: 0;">
+                                        We provide tailored consulting solutions across diverse sectors in Sri Lanka.
+                                    </p>
 
-                </div>
+                                </div>
 
-                <!-- Industry/Trust Badges Slider (Replacing Client Logos) -->
-                <div class="swiper client-slider client-slider-1 wow fadeIn" data-wow-delay=".5s">
-                    <div class="swiper-wrapper p-3 client-swiper-custom">
+                                <!-- Industry/Trust Badges Slider (Replacing Client Logos) -->
+                                <div class="swiper client-slider client-slider-1 wow fadeIn" data-wow-delay=".5s">
+                                    <div class="swiper-wrapper p-3 client-swiper-custom">
 
-                        <!-- Item 1: SME Development -->
-                        <div class="swiper-slide client-item">
-                            <div class="industry-badge-custom">
-                                <i class="fa-solid fa-briefcase"></i>
-                                <span>SME Development</span>
+                                        <!-- Item 1: SME Development -->
+                                        <div class="swiper-slide client-item">
+                                            <div class="industry-badge-custom">
+                                                <i class="fa-solid fa-briefcase"></i>
+                                                <span>SME Development</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Item 2: Manufacturing -->
+                                        <div class="swiper-slide client-item">
+                                            <div class="industry-badge-custom">
+                                                <i class="fa-solid fa-industry"></i>
+                                                <span>Manufacturing Sector</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Item 3: Retail & Distribution -->
+                                        <div class="swiper-slide client-item">
+                                            <div class="industry-badge-custom">
+                                                <i class="fa-solid fa-store"></i>
+                                                <span>Retail & Distribution</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Item 4: Export Business -->
+                                        <div class="swiper-slide client-item">
+                                            <div class="industry-badge-custom">
+                                                <i class="fa-solid fa-ship"></i>
+                                                <span>Export Businesses</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Item 5: FMCG Sector -->
+                                        <div class="swiper-slide client-item">
+                                            <div class="industry-badge-custom">
+                                                <i class="fa-solid fa-boxes-stacked"></i>
+                                                <span>FMCG Sector</span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Item 6: Corporate Strategy -->
+                                        <div class="swiper-slide client-item">
+                                            <div class="industry-badge-custom">
+                                                <i class="fa-solid fa-chart-line"></i>
+                                                <span>Corporate Strategy</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                        <!-- Item 2: Manufacturing -->
-                        <div class="swiper-slide client-item">
-                            <div class="industry-badge-custom">
-                                <i class="fa-solid fa-industry"></i>
-                                <span>Manufacturing Sector</span>
-                            </div>
-                        </div>
-
-                        <!-- Item 3: Retail & Distribution -->
-                        <div class="swiper-slide client-item">
-                            <div class="industry-badge-custom">
-                                <i class="fa-solid fa-store"></i>
-                                <span>Retail & Distribution</span>
-                            </div>
-                        </div>
-
-                        <!-- Item 4: Export Business -->
-                        <div class="swiper-slide client-item">
-                            <div class="industry-badge-custom">
-                                <i class="fa-solid fa-ship"></i>
-                                <span>Export Businesses</span>
-                            </div>
-                        </div>
-
-                        <!-- Item 5: FMCG Sector -->
-                        <div class="swiper-slide client-item">
-                            <div class="industry-badge-custom">
-                                <i class="fa-solid fa-boxes-stacked"></i>
-                                <span>FMCG Sector</span>
-                            </div>
-                        </div>
-
-                        <!-- Item 6: Corporate Strategy -->
-                        <div class="swiper-slide client-item">
-                            <div class="industry-badge-custom">
-                                <i class="fa-solid fa-chart-line"></i>
-                                <span>Corporate Strategy</span>
-                            </div>
-                        </div>
-
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+                </section>
 
                 <!-- start: About Summary Section -->
                 <section class="tj-about-section section-gap-index about-section-custom">
@@ -324,7 +295,13 @@
                                     </div>
 
                                     <p class="overview-text-justify custom-about-text mb-3">
-                                        At IB Consultants, we believe that every business has the potential to grow with the right guidance and a clear direction. We work closely with our clients to identify challenges, uncover new opportunities, and develop strategies that deliver lasting value. By combining practical industry knowledge with a personalized approach, we help businesses make informed decisions, improve efficiency, and build a strong foundation for sustainable growth in an increasingly competitive market.
+                                        At IB Consultants, we believe that every business has the potential to grow with
+                                        the right guidance and a clear direction. We work closely with our clients to
+                                        identify challenges, uncover new opportunities, and develop strategies that
+                                        deliver lasting value. By combining practical industry knowledge with a
+                                        personalized approach, we help businesses make informed decisions, improve
+                                        efficiency, and build a strong foundation for sustainable growth in an
+                                        increasingly competitive market.
                                     </p>
 
                                     <!-- Website Positioning Statement -->
@@ -343,14 +320,17 @@
                                             <span class="btn-text topic-color2"><span>Learn More</span></span>
                                             <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
                                         </a>
-                                        <a class="ib-company-profile-card-btn" href="assets/docs/IB-Consultants-Company-Profile.pdf" download="IB-Consultants-Company-Profile.pdf"
+                                        <a class="ib-company-profile-card-btn"
+                                            href="assets/docs/IB-Consultants-Company-Profile.pdf"
+                                            download="IB-Consultants-Company-Profile.pdf"
                                             aria-label="Download IB Consultants Company Profile">
                                             <span class="ib-btn-file-icon">
                                                 <i class="fa-solid fa-file-pdf"></i>
                                             </span>
                                             <span class="ib-btn-text-group">
                                                 <span class="ib-btn-main-text">Download Company Profile</span>
-                                                <span class="ib-btn-sub-text"><i class="fa-solid fa-circle-check"></i> Official Corporate Overview</span>
+                                                <span class="ib-btn-sub-text"><i class="fa-solid fa-circle-check"></i>
+                                                    Official Corporate Overview</span>
                                             </span>
                                             <span class="ib-btn-download-circle">
                                                 <i class="fa-solid fa-arrow-down"></i>
@@ -462,7 +442,7 @@
                                     <video autoplay muted loop playsinline class="countup-bg-video">
                                         <source src="assets/video/countup-bg.mp4" type="video/mp4">
                                     </video>
-                                    
+
                                     <!-- Dark Luxury Navy Overlay inside floating card -->
                                     <div class="countup-overlay"></div>
 
@@ -472,7 +452,8 @@
                                             <span class="count-plus">+</span>
                                         </div>
                                         <span class="count-text">Years Experience</span>
-                                        <span class="count-separator" data-bg-image="assets/images/shape/separator.svg"></span>
+                                        <span class="count-separator"
+                                            data-bg-image="assets/images/shape/separator.svg"></span>
                                     </div>
 
                                     <div class="countup-item">
@@ -481,7 +462,8 @@
                                             <span class="count-plus">+</span>
                                         </div>
                                         <span class="count-text">Projects Completed</span>
-                                        <span class="count-separator" data-bg-image="assets/images/shape/separator.svg"></span>
+                                        <span class="count-separator"
+                                            data-bg-image="assets/images/shape/separator.svg"></span>
                                     </div>
 
                                     <div class="countup-item">
@@ -490,7 +472,8 @@
                                             <span class="count-plus">+</span>
                                         </div>
                                         <span class="count-text">Happy Customers</span>
-                                        <span class="count-separator" data-bg-image="assets/images/shape/separator.svg"></span>
+                                        <span class="count-separator"
+                                            data-bg-image="assets/images/shape/separator.svg"></span>
                                     </div>
 
                                     <div class="countup-item">
@@ -531,7 +514,7 @@
                                 <a href="consultancy-service.php"
                                     class="service-item style-1 main-service-card custom-mobile-card d-block no-text-decoration">
                                     <div class="service-img">
-                                        <img src="assets/images/service/service-1.webp" alt="Consultancy Services"
+                                        <img src="assets/images/service/service-1.jpg" alt="Consultancy Services"
                                             class="img-fluid">
                                     </div>
                                     <div class="service-icon">
@@ -556,7 +539,7 @@
                                 <a href="training-programs.php"
                                     class="service-item style-1 main-service-card custom-mobile-card d-block no-text-decoration">
                                     <div class="service-img">
-                                        <img src="assets/images/service/service-1.webp" alt="Training and Programs"
+                                        <img src="assets/images/service/service-2.jpg" alt="Training and Programs"
                                             class="img-fluid">
                                     </div>
                                     <div class="service-icon">
@@ -662,274 +645,74 @@
 
                             <!-- Right Column: Bespoke Executive Testimonial Slider -->
                             <div class="col-lg-7">
-                                <div class="ib-testimonial-showcase wow fadeInRight" data-wow-delay=".4s">
-                                    <div class="swiper testimonial-slider-2">
-                                        <div class="swiper-wrapper">
+    <div class="ib-testimonial-showcase wow fadeInRight" data-wow-delay=".4s">
+        <div class="swiper testimonial-slider-2">
+            <div class="swiper-wrapper">
 
-                                            <!-- Review 1 -->
-                                            <div class="swiper-slide">
-                                                <div class="ib-testimonial-card">
-                                                    <div class="ib-card-top-bar">
-                                                        <span class="ib-sector-tag">
-                                                            <i class="fa-solid fa-industry"></i> Manufacturing SME
-                                                        </span>
-                                                        <div class="ib-card-stars">
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="ib-quote-content">
-                                                        <div class="ib-quote-icon">
-                                                            <i class="fa-solid fa-quote-left"></i>
-                                                        </div>
-                                                        <p class="ib-quote-text">
-                                                            “Working with IB Consultants has been a game-changer for our
-                                                            manufacturing business. Their practical solutions helped us
-                                                            streamline plant operations, reduce critical wastage, and
-                                                            achieve our operational growth goals faster than we
-                                                            imagined.”
-                                                        </p>
-                                                    </div>
-
-                                                    <div class="ib-impact-tag">
-                                                        <i class="fa-solid fa-chart-line"></i>
-                                                        <span><strong>Key Impact:</strong> Plant Operations Streamlined
-                                                            &amp; Wastage Minimized</span>
-                                                    </div>
-
-                                                    <div class="ib-author-footer">
-                                                        <div class="ib-author-monogram">MD</div>
-                                                        <div class="ib-author-info">
-                                                            <h4 class="ib-author-name">Managing Director</h4>
-                                                            <span class="ib-author-company">Leading Manufacturing SME ·
-                                                                Western Province</span>
-                                                        </div>
-                                                        <div class="ib-verified-badge">
-                                                            <i class="fa-solid fa-circle-check"></i>
-                                                            <span>Verified Client</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Review 2 -->
-                                            <div class="swiper-slide">
-                                                <div class="ib-testimonial-card">
-                                                    <div class="ib-card-top-bar">
-                                                        <span class="ib-sector-tag">
-                                                            <i class="fa-solid fa-wallet"></i> Retail &amp; Finance
-                                                        </span>
-                                                        <div class="ib-card-stars">
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="ib-quote-content">
-                                                        <div class="ib-quote-icon">
-                                                            <i class="fa-solid fa-quote-left"></i>
-                                                        </div>
-                                                        <p class="ib-quote-text">
-                                                            “IB Consultants provided us with exceptional guidance on
-                                                            financial control. Their strategies helped us pinpoint
-                                                            hidden profit leakages and optimize gross margins
-                                                            significantly within just a few months of active
-                                                            implementation.”
-                                                        </p>
-                                                    </div>
-
-                                                    <div class="ib-impact-tag">
-                                                        <i class="fa-solid fa-chart-line"></i>
-                                                        <span><strong>Key Impact:</strong> Profit Leakage Arrested &amp;
-                                                            Margin Expansion</span>
-                                                    </div>
-
-                                                    <div class="ib-author-footer">
-                                                        <div class="ib-author-monogram">FD</div>
-                                                        <div class="ib-author-info">
-                                                            <h4 class="ib-author-name">Finance Director</h4>
-                                                            <span class="ib-author-company">Local Retail Chain · Sri
-                                                                Lanka</span>
-                                                        </div>
-                                                        <div class="ib-verified-badge">
-                                                            <i class="fa-solid fa-circle-check"></i>
-                                                            <span>Verified Client</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Review 3 -->
-                                            <div class="swiper-slide">
-                                                <div class="ib-testimonial-card">
-                                                    <div class="ib-card-top-bar">
-                                                        <span class="ib-sector-tag">
-                                                            <i class="fa-solid fa-globe"></i> Export Sector
-                                                        </span>
-                                                        <div class="ib-card-stars">
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="ib-quote-content">
-                                                        <div class="ib-quote-icon">
-                                                            <i class="fa-solid fa-quote-left"></i>
-                                                        </div>
-                                                        <p class="ib-quote-text">
-                                                            “The market expansion strategies recommended by the team
-                                                            were spot on. We successfully established a robust new
-                                                            distribution network that completely transformed our
-                                                            regional market reach and boosted sales revenue.”
-                                                        </p>
-                                                    </div>
-
-                                                    <div class="ib-impact-tag">
-                                                        <i class="fa-solid fa-chart-line"></i>
-                                                        <span><strong>Key Impact:</strong> New Distribution Channels
-                                                            &amp; Revenue Surge</span>
-                                                    </div>
-
-                                                    <div class="ib-author-footer">
-                                                        <div class="ib-author-monogram">CEO</div>
-                                                        <div class="ib-author-info">
-                                                            <h4 class="ib-author-name">Chief Executive Officer</h4>
-                                                            <span class="ib-author-company">Export &amp; Trade Company ·
-                                                                Sri Lanka</span>
-                                                        </div>
-                                                        <div class="ib-verified-badge">
-                                                            <i class="fa-solid fa-circle-check"></i>
-                                                            <span>Verified Client</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Review 4 -->
-                                            <div class="swiper-slide">
-                                                <div class="ib-testimonial-card">
-                                                    <div class="ib-card-top-bar">
-                                                        <span class="ib-sector-tag">
-                                                            <i class="fa-solid fa-boxes-stacked"></i> FMCG &amp; Retail
-                                                        </span>
-                                                        <div class="ib-card-stars">
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="ib-quote-content">
-                                                        <div class="ib-quote-icon">
-                                                            <i class="fa-solid fa-quote-left"></i>
-                                                        </div>
-                                                        <p class="ib-quote-text">
-                                                            “Their hands-on approach and deep understanding of the Sri
-                                                            Lankan commercial sector make them stand out. The customized
-                                                            corporate training programs completely transformed how our
-                                                            sales and marketing teams operate daily.”
-                                                        </p>
-                                                    </div>
-
-                                                    <div class="ib-impact-tag">
-                                                        <i class="fa-solid fa-chart-line"></i>
-                                                        <span><strong>Key Impact:</strong> Sales Productivity &amp; Team
-                                                            Mindset Shift</span>
-                                                    </div>
-
-                                                    <div class="ib-author-footer">
-                                                        <div class="ib-author-monogram">SM</div>
-                                                        <div class="ib-author-info">
-                                                            <h4 class="ib-author-name">Sales Manager</h4>
-                                                            <span class="ib-author-company">FMCG Business ·
-                                                                Island-wide</span>
-                                                        </div>
-                                                        <div class="ib-verified-badge">
-                                                            <i class="fa-solid fa-circle-check"></i>
-                                                            <span>Verified Client</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Review 5 -->
-                                            <div class="swiper-slide">
-                                                <div class="ib-testimonial-card">
-                                                    <div class="ib-card-top-bar">
-                                                        <span class="ib-sector-tag">
-                                                            <i class="fa-solid fa-rocket"></i> Growing Enterprise
-                                                        </span>
-                                                        <div class="ib-card-stars">
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
-                                                            <i class="fa-solid fa-star"></i>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="ib-quote-content">
-                                                        <div class="ib-quote-icon">
-                                                            <i class="fa-solid fa-quote-left"></i>
-                                                        </div>
-                                                        <p class="ib-quote-text">
-                                                            “A truly professional and result-oriented consultancy. They
-                                                            didn't just give us a theoretical report; they worked right
-                                                            alongside our executive team to implement the operational
-                                                            changes needed for sustainable growth.”
-                                                        </p>
-                                                    </div>
-
-                                                    <div class="ib-impact-tag">
-                                                        <i class="fa-solid fa-chart-line"></i>
-                                                        <span><strong>Key Impact:</strong> Hands-On Strategy Execution
-                                                            &amp; Scalability</span>
-                                                    </div>
-
-                                                    <div class="ib-author-footer">
-                                                        <div class="ib-author-monogram">FN</div>
-                                                        <div class="ib-author-info">
-                                                            <h4 class="ib-author-name">Founder &amp; Director</h4>
-                                                            <span class="ib-author-company">Technology &amp; Innovations
-                                                                Enterprise</span>
-                                                        </div>
-                                                        <div class="ib-verified-badge">
-                                                            <i class="fa-solid fa-circle-check"></i>
-                                                            <span>Verified Client</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Custom Navigation & Pagination Footer -->
-                                        <div class="ib-slider-controls">
-                                            <div class="swiper-pagination-area ib-pagination-custom"></div>
-                                            <div class="ib-nav-buttons">
-                                                <button class="slider-prev ib-nav-btn" aria-label="Previous Slide">
-                                                    <i class="fa-solid fa-arrow-left"></i>
-                                                </button>
-                                                <button class="slider-next ib-nav-btn" aria-label="Next Slide">
-                                                    <i class="fa-solid fa-arrow-right"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                <?php 
+                if($reviews_result && $reviews_result->num_rows > 0): 
+                    while($rev = $reviews_result->fetch_assoc()):
+                ?>
+                <div class="swiper-slide">
+                    <div class="ib-testimonial-card">
+                        <div class="ib-card-top-bar">
+                            <span class="ib-sector-tag">
+                                <i class="<?php echo htmlspecialchars($rev['sector_icon']); ?>"></i> <?php echo htmlspecialchars($rev['sector_name']); ?>
+                            </span>
+                            <div class="ib-card-stars">
+                                <?php for($i=0; $i<$rev['stars']; $i++) { echo '<i class="fa-solid fa-star"></i> '; } ?>
                             </div>
+                        </div>
+
+                        <div class="ib-quote-content">
+                            <div class="ib-quote-icon">
+                                <i class="fa-solid fa-quote-left"></i>
+                            </div>
+                            <p class="ib-quote-text">
+                                “<?php echo htmlspecialchars($rev['quote_text']); ?>”
+                            </p>
+                        </div>
+
+                        <div class="ib-impact-tag">
+                            <i class="fa-solid fa-chart-line"></i>
+                            <span><strong>Key Impact:</strong> <?php echo htmlspecialchars($rev['impact_text']); ?></span>
+                        </div>
+
+                        <div class="ib-author-footer">
+                            <div class="ib-author-monogram"><?php echo htmlspecialchars($rev['author_monogram']); ?></div>
+                            <div class="ib-author-info">
+                                <h4 class="ib-author-name"><?php echo htmlspecialchars($rev['author_name']); ?></h4>
+                                <span class="ib-author-company"><?php echo htmlspecialchars($rev['author_company']); ?></span>
+                            </div>
+                            <div class="ib-verified-badge">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <span>Verified Client</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php 
+                    endwhile; 
+                endif; 
+                ?>
+
+            </div>
+
+            <!-- Custom Navigation & Pagination Footer -->
+            <div class="ib-slider-controls">
+                <div class="swiper-pagination-area ib-pagination-custom"></div>
+                <div class="ib-nav-buttons">
+                    <button class="slider-prev ib-nav-btn" aria-label="Previous Slide">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <button class="slider-next ib-nav-btn" aria-label="Next Slide">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
                         </div>
                     </div>
                 </section>

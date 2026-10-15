@@ -182,17 +182,79 @@ if (window.jQuery) {
   }
 })();
 
-$(document).ready(function () {
-  // FAQ එකක් Open වෙද්දි ඒකට active class එක දැමීම
-  $(".accordion").on("show.bs.collapse", function (e) {
-    $(e.target).closest(".accordion-item").addClass("active");
-  });
+/* ==========================================================================
+   FAQ Accordion Active State Synchronization
+   ========================================================================== */
+(function setupAccordionActiveSync() {
+  function syncAccordionItems() {
+    document.querySelectorAll(".accordion .accordion-item").forEach(function (item) {
+      var collapse = item.querySelector(".collapse, .collapsing");
+      var btn = item.querySelector(".faq-title, [data-bs-toggle='collapse']");
+      var isOpen = (collapse && (collapse.classList.contains("show") || collapse.classList.contains("collapsing")))
+                   || (btn && btn.getAttribute("aria-expanded") === "true")
+                   || (btn && !btn.classList.contains("collapsed"));
+      if (isOpen) {
+        item.classList.add("active");
+      } else {
+        item.classList.remove("active");
+      }
+    });
+  }
 
-  // FAQ එකක් Close වෙද්දි ඒකෙන් active class එක ඉවත් කිරීම
-  $(".accordion").on("hide.bs.collapse", function (e) {
-    $(e.target).closest(".accordion-item").removeClass("active");
+  // 1. Initial sync on DOM ready and window load
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", syncAccordionItems);
+  } else {
+    syncAccordionItems();
+  }
+  window.addEventListener("load", syncAccordionItems);
+
+  // 2. Native Capture Phase Listeners (Catches all Bootstrap 5 events globally)
+  document.addEventListener("show.bs.collapse", function (e) {
+    var item = e.target.closest(".accordion-item");
+    if (!item) return;
+    item.classList.add("active");
+    if (item.parentElement) {
+      item.parentElement.querySelectorAll(".accordion-item").forEach(function (sib) {
+        if (sib !== item) sib.classList.remove("active");
+      });
+    }
+  }, true);
+
+  document.addEventListener("hide.bs.collapse", function (e) {
+    var item = e.target.closest(".accordion-item");
+    if (item) {
+      item.classList.remove("active");
+    }
+  }, true);
+
+  // 3. User Click Delegation for Instant Response
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest(".faq-title, [data-bs-toggle='collapse']");
+    if (!btn) return;
+    var item = btn.closest(".accordion-item");
+    if (!item) return;
+
+    // Direct toggle on click
+    setTimeout(function () {
+      var collapse = item.querySelector(".collapse, .collapsing");
+      var isExpanded = (collapse && (collapse.classList.contains("show") || collapse.classList.contains("collapsing")))
+                       || btn.getAttribute("aria-expanded") === "true"
+                       || !btn.classList.contains("collapsed");
+      if (isExpanded) {
+        item.classList.add("active");
+        if (item.parentElement) {
+          item.parentElement.querySelectorAll(".accordion-item").forEach(function (sib) {
+            if (sib !== item) sib.classList.remove("active");
+          });
+        }
+      } else {
+        item.classList.remove("active");
+      }
+    }, 20);
   });
-});
+})();
+
 
 /* ==========================================================================
    16 Core Areas: Modern Tabbed Interactive Deck Switcher

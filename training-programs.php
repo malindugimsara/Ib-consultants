@@ -1,3 +1,23 @@
+<?php
+include_once 'db.php';
+
+
+$prog_query = "SELECT * FROM certificate_programs WHERE is_published = 1 ORDER BY display_order ASC, id DESC";
+$prog_result = $conn->query($prog_query);
+
+$workshop_query = "SELECT * FROM business_workshops WHERE is_published = 1 ORDER BY display_order ASC, id ASC";
+$workshop_result = $conn->query($workshop_query);
+$workshops = [];
+if ($workshop_result && $workshop_result->num_rows > 0) {
+    while ($w = $workshop_result->fetch_assoc()) {
+        $workshops[] = $w;
+    }
+}
+
+$dip_query = "SELECT * FROM diploma_programs WHERE is_published = 1 ORDER BY display_order ASC, id ASC";
+$dip_result = $conn->query($dip_query);
+?>
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -30,6 +50,7 @@
     <link rel="stylesheet" href="assets/css/meanmenu.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/custom.css">
+
 </head>
 
 <body>
@@ -121,21 +142,25 @@
 
                                     <!-- Philosophy Card Content -->
                                     <div class="ib-philosophy-content">
-                                        <span class="sub-title ib-philosophy-subtitle wow fadeInUp" data-wow-delay=".3s">
+                                        <span class="sub-title ib-philosophy-subtitle wow fadeInUp"
+                                            data-wow-delay=".3s">
                                             <i class="tji-box"></i>Our Philosophy
                                         </span>
                                         <h2 class="sec-title ib-philosophy-title wow fadeInUp" data-wow-delay=".4s">
                                             Practical Business Education for <span>Professionals.</span>
                                         </h2>
                                         <p class="desc ib-philosophy-desc wow fadeInUp" data-wow-delay=".5s">
-                                            We provide practical business education for SME owners, managers, executives,
+                                            We provide practical business education for SME owners, managers,
+                                            executives,
                                             entrepreneurs, and professionals. Our programmes are designed to combine
                                             business knowledge with practical tools, real business examples, hands-on
-                                            exercises, case studies, and implementation activities so you can apply what you
+                                            exercises, case studies, and implementation activities so you can apply what
+                                            you
                                             learn immediately.
                                         </p>
                                         <div class="wow fadeInUp" data-wow-delay=".6s">
-                                            <a href="https://wa.me/94742112767" target="_blank" class="tj-primary-btn ib-philosophy-btn">
+                                            <a href="https://wa.me/94742112767" target="_blank"
+                                                class="tj-primary-btn ib-philosophy-btn">
                                                 <span class="btn-text topic-color2"><span>Enquire Now</span></span>
                                                 <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
                                             </a>
@@ -165,83 +190,47 @@
                             <div class="col-12">
                                 <div class="service-wrapper">
 
-                                    <!-- Program 01 -->
-                                    <div class="service-item style-5 service-stack">
-                                        <div class="service-content-area">
-                                            <div class="service-icon">
-                                                <i class="tji-service-4"></i>
-                                            </div>
-                                            <div class="service-content">
-                                                <span class="no">01.</span>
-                                                <h3 class="title"><a href="contact.php">Certificate in Business
-                                                        Management & Entrepreneurship</a></h3>
-                                                <p class="desc">Covers business fundamentals, business model
-                                                    development, planning, HR, sales, financial management, and KPI
-                                                    growth.</p>
-                                                <a class="tj-primary-btn" href="contact.php">
-                                                    <span class="btn-text topic-color2"><span>Enquire
-                                                            Now</span></span>
-                                                    <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="service-img">
-                                            <img src="assets/images/service/service3.jpg"
-                                                alt="Business Management Program">
-                                        </div>
-                                    </div>
+                                    <?php
+                                    if ($prog_result && $prog_result->num_rows > 0):
+                                        $count = 1; // අංකනය සඳහා
+                                        while ($prog = $prog_result->fetch_assoc()):
+                                            // අංකය 01, 02 ලෙස හැඩගැන්වීම
+                                            $num_formatted = str_pad($count, 2, '0', STR_PAD_LEFT) . '.';
+                                            ?>
 
-                                    <!-- Program 02 -->
-                                    <div class="service-item style-5 service-stack">
-                                        <div class="service-content-area">
-                                            <div class="service-icon">
-                                                <i class="tji-service-1"></i>
+                                            <!-- Dynamic Program Item -->
+                                            <div class="service-item style-5 service-stack">
+                                                <div class="service-content-area">
+                                                    <div class="service-icon">
+                                                        <i class="<?php echo htmlspecialchars($prog['icon_class']); ?>"></i>
+                                                    </div>
+                                                    <div class="service-content">
+                                                        <span class="no"><?php echo $num_formatted; ?></span>
+                                                        <h3 class="title">
+                                                            <a
+                                                                href="contact.php"><?php echo htmlspecialchars($prog['title']); ?></a>
+                                                        </h3>
+                                                        <p class="desc"><?php echo htmlspecialchars($prog['description']); ?>
+                                                        </p>
+                                                        <a class="tj-primary-btn" href="contact.php">
+                                                            <span class="btn-text topic-color2"><span>Enquire Now</span></span>
+                                                            <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="service-img">
+                                                    <img src="<?php echo htmlspecialchars($prog['image_path']); ?>"
+                                                        alt="<?php echo htmlspecialchars($prog['title']); ?>">
+                                                </div>
                                             </div>
-                                            <div class="service-content">
-                                                <span class="no">02.</span>
-                                                <h3 class="title"><a href="contact.php">Certificate in Digital
-                                                        Marketing & Lead Generation</a></h3>
-                                                <p class="desc">Learn digital marketing strategy, Facebook/Instagram
-                                                    ads, SEO, generative AI fundamentals, and workflow automation.</p>
-                                                <a class="tj-primary-btn" href="contact.php">
-                                                    <span class="btn-text
-                                                        topic-color2"><span>Enquire
-                                                            Now</span></span>
-                                                    <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="service-img">
-                                            <img src="assets/images/service/service4.jpg"
-                                                alt="Digital Marketing and AI Program">
-                                        </div>
-                                    </div>
 
-                                    <!-- Program 03 -->
-                                    <div class="service-item style-5 service-stack">
-                                        <div class="service-content-area">
-                                            <div class="service-icon">
-                                                <i class="tji-service-3"></i>
-                                            </div>
-                                            <div class="service-content">
-                                                <span class="no">03.</span>
-                                                <h3 class="title"><a href="contact.php">Certificate in Manufacturing
-                                                        Operations & Cost Reduction</a></h3>
-                                                <p class="desc">Master production planning, process mapping, capacity
-                                                    analysis, standard costing, and waste reduction.</p>
-                                                <a class="tj-primary-btn" href="contact.php">
-                                                    <span class="btn-text
-                                                        topic-color2"><span>Enquire
-                                                            Now</span></span>
-                                                    <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="service-img">
-                                            <img src="assets/images/service/service5.jpg"
-                                                alt="Manufacturing Operations Program">
-                                        </div>
-                                    </div>
+                                            <?php
+                                            $count++;
+                                        endwhile;
+                                    else:
+                                        ?>
+                                        <p class="text-center">New programs will be updated soon.</p>
+                                    <?php endif; ?>
 
                                 </div>
                             </div>
@@ -252,7 +241,7 @@
                 </section>
                 <!-- end: Featured Programs Section -->
 
-                <!-- start: 10 Practical Business Workshops (Interactive Detail Drawer List) -->
+                <!-- start: Practical Business Workshops (Interactive Detail Drawer List) -->
                 <section id="services" class="h5-service-section overflow-hidden section-gap ib-workshops-section">
                     <div class="container">
                         <div class="row">
@@ -288,8 +277,7 @@
                         <div class="row mb-4">
                             <div class="col-12">
                                 <div class="ib-workshop-filters wow fadeInUp" data-wow-delay=".3s">
-                                    <button type="button" class="ib-filter-pill active" data-filter="all">All Workshops
-                                        (10)</button>
+                                    <button type="button" class="ib-filter-pill active" data-filter="all">All Workshops (<?php echo count($workshops); ?>)</button>
                                     <button type="button" class="ib-filter-pill" data-filter="strategy">Strategy &
                                         Management</button>
                                     <button type="button" class="ib-filter-pill" data-filter="finance">Finance &
@@ -311,726 +299,98 @@
                             <div class="col-12">
                                 <div class="ib-workshop-accordion-wrap wow fadeInUp" data-wow-delay=".4s">
 
-                                    <!-- Workshop 01 (Open by default) -->
-                                    <div class="ib-workshop-drawer active" data-category="strategy">
-                                        <div class="ib-drawer-header" role="button" tabindex="0">
-                                            <div class="ib-header-left">
-                                                <span class="ib-drawer-num">01</span>
-                                                <div class="ib-header-info">
-                                                    <h4 class="ib-drawer-title">Business Health Check & Performance
-                                                        Improvement</h4>
-                                                    <div class="ib-drawer-tags">
-                                                        <span class="ib-tag-badge"><i
-                                                                class="fa-solid fa-layer-group"></i> Strategy &
-                                                            Management</span>
-                                                        <span class="ib-time-badge"><i class="fa-regular fa-clock"></i>
-                                                            1-Day Practical Workshop</span>
+                                    <?php if (!empty($workshops)): 
+                                        $workshop_idx = 0;
+                                        foreach ($workshops as $item): 
+                                            $workshop_idx++;
+                                            $num_str = str_pad($item['display_order'] > 0 ? $item['display_order'] : $workshop_idx, 2, '0', STR_PAD_LEFT);
+                                            $is_first = ($workshop_idx === 1);
+                                            $topics_arr = preg_split('/\r\n|\r|\n/', trim($item['key_topics']));
+                                            $subject_param = urlencode($item['title'] . ' Workshop');
+                                    ?>
+                                        <!-- Workshop <?php echo $num_str; ?> -->
+                                        <div class="ib-workshop-drawer <?php echo $is_first ? 'active' : ''; ?>" data-category="<?php echo htmlspecialchars($item['category_slug']); ?>">
+                                            <div class="ib-drawer-header" role="button" tabindex="0">
+                                                <div class="ib-header-left">
+                                                    <span class="ib-drawer-num"><?php echo $num_str; ?></span>
+                                                    <div class="ib-header-info">
+                                                        <h4 class="ib-drawer-title"><?php echo htmlspecialchars($item['title']); ?></h4>
+                                                        <div class="ib-drawer-tags">
+                                                            <span class="ib-tag-badge">
+                                                                <i class="<?php echo htmlspecialchars($item['category_icon']); ?>"></i> 
+                                                                <?php echo htmlspecialchars($item['category_name']); ?>
+                                                            </span>
+                                                            <span class="ib-time-badge">
+                                                                <i class="fa-regular fa-clock"></i>
+                                                                <?php echo htmlspecialchars($item['duration']); ?>
+                                                            </span>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="ib-header-right">
-                                                <span class="ib-drawer-action-text">Explore Details</span>
-                                                <div class="ib-drawer-arrow"><i class="fa-solid fa-chevron-down"></i>
+                                                <div class="ib-header-right">
+                                                    <span class="ib-drawer-action-text">Explore Details</span>
+                                                    <div class="ib-drawer-arrow"><i class="fa-solid fa-chevron-down"></i></div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="ib-drawer-content">
-                                            <div class="ib-drawer-grid">
-                                                <div class="ib-drawer-col audience-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i class="fa-solid fa-users"></i>
+                                            <div class="ib-drawer-content">
+                                                <div class="ib-drawer-grid">
+                                                    <!-- Target Audience -->
+                                                    <div class="ib-drawer-col audience-col">
+                                                        <div class="ib-content-card">
+                                                            <div class="ib-card-head">
+                                                                <div class="ib-card-icon"><i class="fa-solid fa-users"></i></div>
+                                                                <h5>Target Audience</h5>
                                                             </div>
-                                                            <h5>Target Audience</h5>
+                                                            <p><?php echo nl2br(htmlspecialchars($item['target_audience'])); ?></p>
                                                         </div>
-                                                        <p>Business owners, managing directors, senior managers, and
-                                                            cross-functional leadership teams.</p>
                                                     </div>
-                                                </div>
-                                                <div class="ib-drawer-col topics-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i
-                                                                    class="fa-solid fa-list-check"></i></div>
-                                                            <h5>Key Topics Covered</h5>
-                                                        </div>
-                                                        <ul class="ib-topic-bullets">
-                                                            <li><i class="fa-solid fa-circle-check"></i> Business
-                                                                performance assessment</li>
-                                                            <li><i class="fa-solid fa-circle-check"></i> Sales and
-                                                                profit analysis</li>
-                                                            <li><i class="fa-solid fa-circle-check"></i> 90-day
-                                                                improvement planning</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="ib-drawer-col outcome-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i
-                                                                    class="fa-solid fa-bullseye"></i></div>
-                                                            <h5>Expected Outcome</h5>
-                                                        </div>
-                                                        <p>Diagnose business problems and create a prioritized 90-day
-                                                            actionable improvement plan.</p>
-                                                        <a href="contact.php?subject=Business%20Health%20Check%20Workshop"
-                                                            class="ib-enquire-cta">
-                                                            <span>Enquire for Workshop</span>
-                                                            <i class="fa-solid fa-arrow-right"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Workshop 02 -->
-                                    <div class="ib-workshop-drawer" data-category="finance">
-                                        <div class="ib-drawer-header" role="button" tabindex="0">
-                                            <div class="ib-header-left">
-                                                <span class="ib-drawer-num">02</span>
-                                                <div class="ib-header-info">
-                                                    <h4 class="ib-drawer-title">Profit Improvement & Cost Reduction</h4>
-                                                    <div class="ib-drawer-tags">
-                                                        <span class="ib-tag-badge"><i class="fa-solid fa-chart-pie"></i>
-                                                            Finance & Costing</span>
-                                                        <span class="ib-time-badge"><i class="fa-regular fa-clock"></i>
-                                                            1-Day Practical Workshop</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ib-header-right">
-                                                <span class="ib-drawer-action-text">Explore Details</span>
-                                                <div class="ib-drawer-arrow"><i class="fa-solid fa-chevron-down"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ib-drawer-content">
-                                            <div class="ib-drawer-grid">
-                                                <div class="ib-drawer-col audience-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i class="fa-solid fa-users"></i>
+                                                    <!-- Key Topics -->
+                                                    <div class="ib-drawer-col topics-col">
+                                                        <div class="ib-content-card">
+                                                            <div class="ib-card-head">
+                                                                <div class="ib-card-icon"><i class="fa-solid fa-list-check"></i></div>
+                                                                <h5>Key Topics Covered</h5>
                                                             </div>
-                                                            <h5>Target Audience</h5>
+                                                            <ul class="ib-topic-bullets">
+                                                                <?php 
+                                                                foreach ($topics_arr as $topic_line):
+                                                                    $topic_line = trim($topic_line);
+                                                                    if (!empty($topic_line)):
+                                                                        $topic_line = ltrim($topic_line, "-*• \t");
+                                                                ?>
+                                                                    <li><i class="fa-solid fa-circle-check"></i> <?php echo htmlspecialchars($topic_line); ?></li>
+                                                                <?php 
+                                                                    endif;
+                                                                endforeach; 
+                                                                ?>
+                                                            </ul>
                                                         </div>
-                                                        <p>SME owners, finance managers, operations managers, and
-                                                            management teams looking to protect margins.</p>
                                                     </div>
-                                                </div>
-                                                <div class="ib-drawer-col topics-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i
-                                                                    class="fa-solid fa-list-check"></i></div>
-                                                            <h5>Key Topics Covered</h5>
-                                                        </div>
-                                                        <ul class="ib-topic-bullets">
-                                                            <li><i class="fa-solid fa-circle-check"></i> Gross margin
-                                                                analysis</li>
-                                                            <li><i class="fa-solid fa-circle-check"></i> Cost leakage
-                                                                identification</li>
-                                                            <li><i class="fa-solid fa-circle-check"></i> Waste and
-                                                                unnecessary-cost reduction</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="ib-drawer-col outcome-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i
-                                                                    class="fa-solid fa-bullseye"></i></div>
-                                                            <h5>Expected Outcome</h5>
-                                                        </div>
-                                                        <p>Identify cost savings and measurable profit-improvement
-                                                            opportunities across operations.</p>
-                                                        <a href="contact.php?subject=Profit%20Improvement%20Workshop"
-                                                            class="ib-enquire-cta">
-                                                            <span>Enquire for Workshop</span>
-                                                            <i class="fa-solid fa-arrow-right"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Workshop 03 -->
-                                    <div class="ib-workshop-drawer" data-category="manufacturing">
-                                        <div class="ib-drawer-header" role="button" tabindex="0">
-                                            <div class="ib-header-left">
-                                                <span class="ib-drawer-num">03</span>
-                                                <div class="ib-header-info">
-                                                    <h4 class="ib-drawer-title">Manufacturing Costing & Process
-                                                        Improvement</h4>
-                                                    <div class="ib-drawer-tags">
-                                                        <span class="ib-tag-badge"><i class="fa-solid fa-industry"></i>
-                                                            Manufacturing</span>
-                                                        <span class="ib-time-badge"><i class="fa-regular fa-clock"></i>
-                                                            1-Day Practical Workshop</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ib-header-right">
-                                                <span class="ib-drawer-action-text">Explore Details</span>
-                                                <div class="ib-drawer-arrow"><i class="fa-solid fa-chevron-down"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ib-drawer-content">
-                                            <div class="ib-drawer-grid">
-                                                <div class="ib-drawer-col audience-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i class="fa-solid fa-users"></i>
+                                                    <!-- Expected Outcome -->
+                                                    <div class="ib-drawer-col outcome-col">
+                                                        <div class="ib-content-card">
+                                                            <div class="ib-card-head">
+                                                                <div class="ib-card-icon"><i class="fa-solid fa-bullseye"></i></div>
+                                                                <h5>Expected Outcome</h5>
                                                             </div>
-                                                            <h5>Target Audience</h5>
+                                                            <p><?php echo nl2br(htmlspecialchars($item['expected_outcome'])); ?></p>
+                                                            <a href="contact.php?subject=<?php echo $subject_param; ?>" class="ib-enquire-cta">
+                                                                <span>Enquire for Workshop</span>
+                                                                <i class="fa-solid fa-arrow-right"></i>
+                                                            </a>
                                                         </div>
-                                                        <p>Factory owners, production managers, costing/finance teams,
-                                                            engineers, and plant supervisors.</p>
-                                                    </div>
-                                                </div>
-                                                <div class="ib-drawer-col topics-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i
-                                                                    class="fa-solid fa-list-check"></i></div>
-                                                            <h5>Key Topics Covered</h5>
-                                                        </div>
-                                                        <ul class="ib-topic-bullets">
-                                                            <li><i class="fa-solid fa-circle-check"></i> BOM (Bill of
-                                                                Materials) and material costing</li>
-                                                            <li><i class="fa-solid fa-circle-check"></i> Standard
-                                                                costing and cost per unit</li>
-                                                            <li><i class="fa-solid fa-circle-check"></i> Labour
-                                                                productivity and machine utilization</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="ib-drawer-col outcome-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i
-                                                                    class="fa-solid fa-bullseye"></i></div>
-                                                            <h5>Expected Outcome</h5>
-                                                        </div>
-                                                        <p>Calculate realistic manufacturing costs and unlock
-                                                            significant factory productivity opportunities.</p>
-                                                        <a href="contact.php?subject=Manufacturing%20Costing%20Workshop"
-                                                            class="ib-enquire-cta">
-                                                            <span>Enquire for Workshop</span>
-                                                            <i class="fa-solid fa-arrow-right"></i>
-                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <!-- Workshop 04 -->
-                                    <div class="ib-workshop-drawer" data-category="sales">
-                                        <div class="ib-drawer-header" role="button" tabindex="0">
-                                            <div class="ib-header-left">
-                                                <span class="ib-drawer-num">04</span>
-                                                <div class="ib-header-info">
-                                                    <h4 class="ib-drawer-title">Sales Excellence & Customer Development
-                                                    </h4>
-                                                    <div class="ib-drawer-tags">
-                                                        <span class="ib-tag-badge"><i
-                                                                class="fa-solid fa-chart-line"></i> Sales &
-                                                            Marketing</span>
-                                                        <span class="ib-time-badge"><i class="fa-regular fa-clock"></i>
-                                                            1-Day Practical Workshop</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ib-header-right">
-                                                <span class="ib-drawer-action-text">Explore Details</span>
-                                                <div class="ib-drawer-arrow"><i class="fa-solid fa-chevron-down"></i>
-                                                </div>
-                                            </div>
+                                    <?php 
+                                        endforeach; 
+                                    else: 
+                                    ?>
+                                        <div class="text-center py-5">
+                                            <p class="text-muted">No workshops are currently published. Please check back soon.</p>
                                         </div>
-                                        <div class="ib-drawer-content">
-                                            <div class="ib-drawer-grid">
-                                                <div class="ib-drawer-col audience-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i class="fa-solid fa-users"></i>
-                                                            </div>
-                                                            <h5>Target Audience</h5>
-                                                        </div>
-                                                        <p>Sales managers, commercial executives, business owners, and
-                                                            customer-facing relationship teams.</p>
-                                                    </div>
-                                                </div>
-                                                <div class="ib-drawer-col topics-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i
-                                                                    class="fa-solid fa-list-check"></i></div>
-                                                            <h5>Key Topics Covered</h5>
-                                                        </div>
-                                                        <ul class="ib-topic-bullets">
-                                                            <li><i class="fa-solid fa-circle-check"></i> Sales planning
-                                                                and realistic target setting</li>
-                                                            <li><i class="fa-solid fa-circle-check"></i> Lead generation
-                                                                and systematic prospecting</li>
-                                                            <li><i class="fa-solid fa-circle-check"></i> High-conversion
-                                                                negotiation techniques</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="ib-drawer-col outcome-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i
-                                                                    class="fa-solid fa-bullseye"></i></div>
-                                                            <h5>Expected Outcome</h5>
-                                                        </div>
-                                                        <p>Build a structured sales pipeline designed to improve
-                                                            customer acquisition and close rates.</p>
-                                                        <a href="contact.php?subject=Sales%20Excellence%20Workshop"
-                                                            class="ib-enquire-cta">
-                                                            <span>Enquire for Workshop</span>
-                                                            <i class="fa-solid fa-arrow-right"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Workshop 05 -->
-                                    <div class="ib-workshop-drawer" data-category="sales">
-                                        <div class="ib-drawer-header" role="button" tabindex="0">
-                                            <div class="ib-header-left">
-                                                <span class="ib-drawer-num">05</span>
-                                                <div class="ib-header-info">
-                                                    <h4 class="ib-drawer-title">Domestic Market Dev. & Distributor Mgt.
-                                                    </h4>
-                                                    <div class="ib-drawer-tags">
-                                                        <span class="ib-tag-badge"><i
-                                                                class="fa-solid fa-map-location-dot"></i> Sales &
-                                                            Distribution</span>
-                                                        <span class="ib-time-badge"><i class="fa-regular fa-clock"></i>
-                                                            1-Day Practical Workshop</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ib-header-right">
-                                                <span class="ib-drawer-action-text">Explore Details</span>
-                                                <div class="ib-drawer-arrow"><i class="fa-solid fa-chevron-down"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ib-drawer-content">
-                                            <div class="ib-drawer-grid">
-                                                <div class="ib-drawer-col audience-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i class="fa-solid fa-users"></i>
-                                                            </div>
-                                                            <h5>Target Audience</h5>
-                                                        </div>
-                                                        <p>Business owners, regional sales heads, distribution agents,
-                                                            and wholesale channel managers.</p>
-                                                    </div>
-                                                </div>
-                                                <div class="ib-drawer-col topics-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i
-                                                                    class="fa-solid fa-list-check"></i></div>
-                                                            <h5>Key Topics Covered</h5>
-                                                        </div>
-                                                        <ul class="ib-topic-bullets">
-                                                            <li><i class="fa-solid fa-circle-check"></i> Territory and
-                                                                retail channel strategy</li>
-                                                            <li><i class="fa-solid fa-circle-check"></i> Distributor
-                                                                selection criteria & margin models</li>
-                                                            <li><i class="fa-solid fa-circle-check"></i> Territory
-                                                                targets and field sales monitoring</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="ib-drawer-col outcome-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i
-                                                                    class="fa-solid fa-bullseye"></i></div>
-                                                            <h5>Expected Outcome</h5>
-                                                        </div>
-                                                        <p>Learn how to build, manage, and scale a performance-driven
-                                                            national distribution network.</p>
-                                                        <a href="contact.php?subject=Distributor%20Management%20Workshop"
-                                                            class="ib-enquire-cta">
-                                                            <span>Enquire for Workshop</span>
-                                                            <i class="fa-solid fa-arrow-right"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Workshop 06 -->
-                                    <div class="ib-workshop-drawer" data-category="export">
-                                        <div class="ib-drawer-header" role="button" tabindex="0">
-                                            <div class="ib-header-left">
-                                                <span class="ib-drawer-num">06</span>
-                                                <div class="ib-header-info">
-                                                    <h4 class="ib-drawer-title">Export Market Dev. & International Sales
-                                                    </h4>
-                                                    <div class="ib-drawer-tags">
-                                                        <span class="ib-tag-badge"><i class="fa-solid fa-globe"></i>
-                                                            Export & Trade</span>
-                                                        <span class="ib-time-badge"><i class="fa-regular fa-clock"></i>
-                                                            1-Day Practical Workshop</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ib-header-right">
-                                                <span class="ib-drawer-action-text">Explore Details</span>
-                                                <div class="ib-drawer-arrow"><i class="fa-solid fa-chevron-down"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ib-drawer-content">
-                                            <div class="ib-drawer-grid">
-                                                <div class="ib-drawer-col audience-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i class="fa-solid fa-users"></i>
-                                                            </div>
-                                                            <h5>Target Audience</h5>
-                                                        </div>
-                                                        <p>Aspiring & active exporters, manufacturers, business owners,
-                                                            and international trade executives.</p>
-                                                    </div>
-                                                </div>
-                                                <div class="ib-drawer-col topics-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i
-                                                                    class="fa-solid fa-list-check"></i></div>
-                                                            <h5>Key Topics Covered</h5>
-                                                        </div>
-                                                        <ul class="ib-topic-bullets">
-                                                            <li><i class="fa-solid fa-circle-check"></i> Target-market
-                                                                selection & export readiness</li>
-                                                            <li><i class="fa-solid fa-circle-check"></i> International
-                                                                B2B lead generation & buyer discovery</li>
-                                                            <li><i class="fa-solid fa-circle-check"></i> Export costing,
-                                                                Incoterms, and currency pricing</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="ib-drawer-col outcome-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i
-                                                                    class="fa-solid fa-bullseye"></i></div>
-                                                            <h5>Expected Outcome</h5>
-                                                        </div>
-                                                        <p>Gain a practical execution framework for entering
-                                                            international markets and winning export contracts.</p>
-                                                        <a href="contact.php?subject=Export%20Market%20Workshop"
-                                                            class="ib-enquire-cta">
-                                                            <span>Enquire for Workshop</span>
-                                                            <i class="fa-solid fa-arrow-right"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Workshop 07 -->
-                                    <div class="ib-workshop-drawer" data-category="digital">
-                                        <div class="ib-drawer-header" role="button" tabindex="0">
-                                            <div class="ib-header-left">
-                                                <span class="ib-drawer-num">07</span>
-                                                <div class="ib-header-info">
-                                                    <h4 class="ib-drawer-title">Digital Marketing, Lead Gen & Social
-                                                        Media</h4>
-                                                    <div class="ib-drawer-tags">
-                                                        <span class="ib-tag-badge"><i class="fa-solid fa-bullhorn"></i>
-                                                            Digital & AI</span>
-                                                        <span class="ib-time-badge"><i class="fa-regular fa-clock"></i>
-                                                            1-Day Practical Workshop</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ib-header-right">
-                                                <span class="ib-drawer-action-text">Explore Details</span>
-                                                <div class="ib-drawer-arrow"><i class="fa-solid fa-chevron-down"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ib-drawer-content">
-                                            <div class="ib-drawer-grid">
-                                                <div class="ib-drawer-col audience-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i class="fa-solid fa-users"></i>
-                                                            </div>
-                                                            <h5>Target Audience</h5>
-                                                        </div>
-                                                        <p>SME owners, marketing executives, sales leaders, brand
-                                                            managers, and digital entrepreneurs.</p>
-                                                    </div>
-                                                </div>
-                                                <div class="ib-drawer-col topics-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i
-                                                                    class="fa-solid fa-list-check"></i></div>
-                                                            <h5>Key Topics Covered</h5>
-                                                        </div>
-                                                        <ul class="ib-topic-bullets">
-                                                            <li><i class="fa-solid fa-circle-check"></i> ROI-focused
-                                                                digital marketing strategy</li>
-                                                            <li><i class="fa-solid fa-circle-check"></i> Facebook,
-                                                                Instagram & LinkedIn targeted ads</li>
-                                                            <li><i class="fa-solid fa-circle-check"></i> Automated
-                                                                lead-generation and conversion funnels</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="ib-drawer-col outcome-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i
-                                                                    class="fa-solid fa-bullseye"></i></div>
-                                                            <h5>Expected Outcome</h5>
-                                                        </div>
-                                                        <p>Build a practical digital marketing engine that consistently
-                                                            attracts and converts high-value prospects.</p>
-                                                        <a href="contact.php?subject=Digital%20Marketing%20Workshop"
-                                                            class="ib-enquire-cta">
-                                                            <span>Enquire for Workshop</span>
-                                                            <i class="fa-solid fa-arrow-right"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Workshop 08 -->
-                                    <div class="ib-workshop-drawer" data-category="digital">
-                                        <div class="ib-drawer-header" role="button" tabindex="0">
-                                            <div class="ib-header-left">
-                                                <span class="ib-drawer-num">08</span>
-                                                <div class="ib-header-info">
-                                                    <h4 class="ib-drawer-title">AI for Business, Marketing &
-                                                        Productivity</h4>
-                                                    <div class="ib-drawer-tags">
-                                                        <span class="ib-tag-badge"><i class="fa-solid fa-robot"></i>
-                                                            Digital & AI</span>
-                                                        <span class="ib-time-badge"><i class="fa-regular fa-clock"></i>
-                                                            1-Day Practical Workshop</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ib-header-right">
-                                                <span class="ib-drawer-action-text">Explore Details</span>
-                                                <div class="ib-drawer-arrow"><i class="fa-solid fa-chevron-down"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ib-drawer-content">
-                                            <div class="ib-drawer-grid">
-                                                <div class="ib-drawer-col audience-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i class="fa-solid fa-users"></i>
-                                                            </div>
-                                                            <h5>Target Audience</h5>
-                                                        </div>
-                                                        <p>Business owners, executives, managers, sales teams, and
-                                                            professionals looking to automate workflows.</p>
-                                                    </div>
-                                                </div>
-                                                <div class="ib-drawer-col topics-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i
-                                                                    class="fa-solid fa-list-check"></i></div>
-                                                            <h5>Key Topics Covered</h5>
-                                                        </div>
-                                                        <ul class="ib-topic-bullets">
-                                                            <li><i class="fa-solid fa-circle-check"></i> Generative AI
-                                                                fundamentals for enterprise</li>
-                                                            <li><i class="fa-solid fa-circle-check"></i> AI tools for
-                                                                rapid content creation & marketing</li>
-                                                            <li><i class="fa-solid fa-circle-check"></i> Advanced prompt
-                                                                engineering for business decisions</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="ib-drawer-col outcome-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i
-                                                                    class="fa-solid fa-bullseye"></i></div>
-                                                            <h5>Expected Outcome</h5>
-                                                        </div>
-                                                        <p>Master practical AI tools to accelerate research, marketing,
-                                                            sales analysis, and daily productivity by 5x.</p>
-                                                        <a href="contact.php?subject=AI%20for%20Business%20Workshop"
-                                                            class="ib-enquire-cta">
-                                                            <span>Enquire for Workshop</span>
-                                                            <i class="fa-solid fa-arrow-right"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Workshop 09 -->
-                                    <div class="ib-workshop-drawer" data-category="strategy">
-                                        <div class="ib-drawer-header" role="button" tabindex="0">
-                                            <div class="ib-header-left">
-                                                <span class="ib-drawer-num">09</span>
-                                                <div class="ib-header-info">
-                                                    <h4 class="ib-drawer-title">Business Planning, Strategy & KPI Mgt.
-                                                    </h4>
-                                                    <div class="ib-drawer-tags">
-                                                        <span class="ib-tag-badge"><i class="fa-solid fa-chess"></i>
-                                                            Strategy & Management</span>
-                                                        <span class="ib-time-badge"><i class="fa-regular fa-clock"></i>
-                                                            1-Day Practical Workshop</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ib-header-right">
-                                                <span class="ib-drawer-action-text">Explore Details</span>
-                                                <div class="ib-drawer-arrow"><i class="fa-solid fa-chevron-down"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ib-drawer-content">
-                                            <div class="ib-drawer-grid">
-                                                <div class="ib-drawer-col audience-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i class="fa-solid fa-users"></i>
-                                                            </div>
-                                                            <h5>Target Audience</h5>
-                                                        </div>
-                                                        <p>Founders, directors, general managers, and heads of
-                                                            departments responsible for annual KPIs.</p>
-                                                    </div>
-                                                </div>
-                                                <div class="ib-drawer-col topics-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i
-                                                                    class="fa-solid fa-list-check"></i></div>
-                                                            <h5>Key Topics Covered</h5>
-                                                        </div>
-                                                        <ul class="ib-topic-bullets">
-                                                            <li><i class="fa-solid fa-circle-check"></i> Strategic
-                                                                market positioning & SWOT analysis</li>
-                                                            <li><i class="fa-solid fa-circle-check"></i> Annual
-                                                                strategic business planning templates</li>
-                                                            <li><i class="fa-solid fa-circle-check"></i> Executive KPI
-                                                                dashboards and tracking systems</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="ib-drawer-col outcome-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i
-                                                                    class="fa-solid fa-bullseye"></i></div>
-                                                            <h5>Expected Outcome</h5>
-                                                        </div>
-                                                        <p>Establish a disciplined framework for strategy development,
-                                                            departmental alignment, and KPI execution.</p>
-                                                        <a href="contact.php?subject=Business%20Planning%20Workshop"
-                                                            class="ib-enquire-cta">
-                                                            <span>Enquire for Workshop</span>
-                                                            <i class="fa-solid fa-arrow-right"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Workshop 10 -->
-                                    <div class="ib-workshop-drawer" data-category="finance">
-                                        <div class="ib-drawer-header" role="button" tabindex="0">
-                                            <div class="ib-header-left">
-                                                <span class="ib-drawer-num">10</span>
-                                                <div class="ib-header-info">
-                                                    <h4 class="ib-drawer-title">SME Financial Management & Pricing</h4>
-                                                    <div class="ib-drawer-tags">
-                                                        <span class="ib-tag-badge"><i class="fa-solid fa-coins"></i>
-                                                            Finance & Costing</span>
-                                                        <span class="ib-time-badge"><i class="fa-regular fa-clock"></i>
-                                                            1-Day Practical Workshop</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ib-header-right">
-                                                <span class="ib-drawer-action-text">Explore Details</span>
-                                                <div class="ib-drawer-arrow"><i class="fa-solid fa-chevron-down"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ib-drawer-content">
-                                            <div class="ib-drawer-grid">
-                                                <div class="ib-drawer-col audience-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i class="fa-solid fa-users"></i>
-                                                            </div>
-                                                            <h5>Target Audience</h5>
-                                                        </div>
-                                                        <p>Business owners, non-finance managers, startup founders, and
-                                                            operational leaders.</p>
-                                                    </div>
-                                                </div>
-                                                <div class="ib-drawer-col topics-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i
-                                                                    class="fa-solid fa-list-check"></i></div>
-                                                            <h5>Key Topics Covered</h5>
-                                                        </div>
-                                                        <ul class="ib-topic-bullets">
-                                                            <li><i class="fa-solid fa-circle-check"></i> Reading P&L,
-                                                                balance sheets, and cash flow</li>
-                                                            <li><i class="fa-solid fa-circle-check"></i> Commercial
-                                                                pricing models & contribution margins</li>
-                                                            <li><i class="fa-solid fa-circle-check"></i> Working
-                                                                capital, receivables, and cash-flow control</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="ib-drawer-col outcome-col">
-                                                    <div class="ib-content-card">
-                                                        <div class="ib-card-head">
-                                                            <div class="ib-card-icon"><i
-                                                                    class="fa-solid fa-bullseye"></i></div>
-                                                            <h5>Expected Outcome</h5>
-                                                        </div>
-                                                        <p>Gain practical commercial financial management skills to make
-                                                            confident pricing and investment decisions.</p>
-                                                        <a href="contact.php?subject=SME%20Financial%20Management%20Workshop"
-                                                            class="ib-enquire-cta">
-                                                            <span>Enquire for Workshop</span>
-                                                            <i class="fa-solid fa-arrow-right"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <?php endif; ?>
 
                                 </div>
                             </div>
@@ -1055,105 +415,40 @@
                             <div class="col-12">
                                 <div class="tj-award-wrapper tj-active-bg-wrapper">
 
-                                    <!-- Diploma 01 -->
-                                    <div class="tj-award-item tj-active-bg-item wow fadeInUp" data-wow-delay=".3s">
-                                        <div class="tj-award-item-inner">
-                                            <div class="row align-items-center justify-content-between">
-                                                <div class="col-md-2 tj-award-img-wrapper">
-                                                    <h6 class="tj-award-index">01.</h6>
-                                                </div>
-                                                <div class="col-md-7 col-lg-7 tj-award-title-wrapper">
-                                                    <h5 class="tj-award-title">Diploma in
-                                                        Business Management <br class="d-none d-md-inline">& SME
-                                                        Development</h5>
-                                                </div>
-                                                <div class="col-md-3 tj-award-date-wrapper text-md-end">
-                                                    <h6 class="tj-award-result">Duration</h6>
-                                                    <h6 class="tj-award-date">3 - 6 Months</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Diploma 02 -->
-                                    <div class="tj-award-item tj-active-bg-item wow fadeInUp" data-wow-delay=".3s">
-                                        <div class="tj-award-item-inner">
-                                            <div class="row align-items-center justify-content-between">
-                                                <div class="col-md-2 tj-award-img-wrapper">
-                                                    <h6 class="tj-award-index">02.</h6>
-                                                </div>
-                                                <div class="col-md-7 col-lg-7 tj-award-title-wrapper">
-                                                    <h5 class="tj-award-title">Diploma in
-                                                        Sales, Marketing <br class="d-none d-md-inline">& Business
-                                                        Development</h5>
-                                                </div>
-                                                <div class="col-md-3 tj-award-date-wrapper text-md-end">
-                                                    <h6 class="tj-award-result">Duration</h6>
-                                                    <h6 class="tj-award-date">3 - 6 Months</h6>
+                                    <?php
+                                    if ($dip_result && $dip_result->num_rows > 0):
+                                        $count = 1;
+                                        while ($dip = $dip_result->fetch_assoc()):
+                                            $num_formatted = str_pad($count, 2, '0', STR_PAD_LEFT) . '.';
+                                            ?>
+                                            <!-- Dynamic Diploma Item -->
+                                            <div class="tj-award-item tj-active-bg-item wow fadeInUp" data-wow-delay=".3s"
+                                                onclick="window.location.href='contact.php'" role="button" tabindex="0">
+                                                <div class="tj-award-item-inner">
+                                                    <div class="row align-items-center justify-content-between">
+                                                        <div class="col-md-2 tj-award-img-wrapper">
+                                                            <h6 class="tj-award-index"><?php echo $num_formatted; ?></h6>
+                                                        </div>
+                                                        <div class="col-md-7 col-lg-7 tj-award-title-wrapper">
+                                                            <h5 class="tj-award-title"><?php echo $dip['title']; ?></h5>
+                                                        </div>
+                                                        <div class="col-md-3 tj-award-date-wrapper text-md-end">
+                                                            <h6 class="tj-award-result">Duration</h6>
+                                                            <h6 class="tj-award-date">
+                                                                <?php echo htmlspecialchars($dip['duration']); ?> <i
+                                                                    class="fa-solid fa-arrow-right-long ib-diploma-arrow"></i>
+                                                            </h6>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Diploma 03 -->
-                                    <div class="tj-award-item tj-active-bg-item wow fadeInUp" data-wow-delay=".3s">
-                                        <div class="tj-award-item-inner">
-                                            <div class="row align-items-center justify-content-between">
-                                                <div class="col-md-2 tj-award-img-wrapper">
-                                                    <h6 class="tj-award-index">03.</h6>
-                                                </div>
-                                                <div class="col-md-7 col-lg-7 tj-award-title-wrapper">
-                                                    <h5 class="tj-award-title">Diploma in
-                                                        Manufacturing Cost, <br class="d-none d-md-inline">Operations &
-                                                        Profit Improvement</h5>
-                                                </div>
-                                                <div class="col-md-3 tj-award-date-wrapper text-md-end">
-                                                    <h6 class="tj-award-result">Duration</h6>
-                                                    <h6 class="tj-award-date">3 - 6 Months</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Diploma 04 -->
-                                    <div class="tj-award-item tj-active-bg-item wow fadeInUp" data-wow-delay=".3s">
-                                        <div class="tj-award-item-inner">
-                                            <div class="row align-items-center justify-content-between">
-                                                <div class="col-md-2 tj-award-img-wrapper">
-                                                    <h6 class="tj-award-index">04.</h6>
-                                                </div>
-                                                <div class="col-md-7 col-lg-7 tj-award-title-wrapper">
-                                                    <h5 class="tj-award-title">Diploma in
-                                                        Digital Marketing, <br class="d-none d-md-inline">AI & Business
-                                                        Growth</h5>
-                                                </div>
-                                                <div class="col-md-3 tj-award-date-wrapper text-md-end">
-                                                    <h6 class="tj-award-result">Duration</h6>
-                                                    <h6 class="tj-award-date">3 - 6 Months</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Diploma 05 -->
-                                    <div class="tj-award-item tj-active-bg-item wow fadeInUp" data-wow-delay=".3s">
-                                        <div class="tj-award-item-inner">
-                                            <div class="row align-items-center justify-content-between">
-                                                <div class="col-md-2 tj-award-img-wrapper">
-                                                    <h6 class="tj-award-index">05.</h6>
-                                                </div>
-                                                <div class="col-md-7 col-lg-7 tj-award-title-wrapper">
-                                                    <h5 class="tj-award-title">Diploma in
-                                                        Export Market <br class="d-none d-md-inline">Development &
-                                                        International Sales</h5>
-                                                </div>
-                                                <div class="col-md-3 tj-award-date-wrapper text-md-end">
-                                                    <h6 class="tj-award-result">Duration</h6>
-                                                    <h6 class="tj-award-date">3 - 6 Months</h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                            <?php
+                                            $count++;
+                                        endwhile;
+                                    else:
+                                        ?>
+                                        <p class="text-center mt-4">No diploma programs available at the moment.</p>
+                                    <?php endif; ?>
 
                                     <span class="active-bg"></span>
                                 </div>
@@ -1313,7 +608,7 @@
                                     </div>
 
                                     <div class="custom-cta-img">
-                                        <img src="assets/images/cta/cta-bg.jpg"
+                                        <img src="assets/images/cta/cta-bg.webp"
                                             alt="Building the Future with IB Consultants Sri Lanka">
                                     </div>
 

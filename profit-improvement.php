@@ -348,7 +348,7 @@
                                     </div>
 
                                     <div class="custom-cta-img">
-                                        <img src="assets/images/cta/cta-bg.jpg"
+                                        <img src="assets/images/cta/cta-bg.webp"
                                             alt="Building the Future with IB Consultants Sri Lanka">
                                     </div>
 
