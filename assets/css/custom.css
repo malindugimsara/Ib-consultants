@@ -20,10 +20,7 @@ body {
   background-color: var(--bg-white);
 }
 
-#smooth-wrapper,
-#smooth-content,
 .site-main {
-  overflow-x: clip !important;
   max-width: 100%;
 }
 
@@ -4111,7 +4108,8 @@ header.header-area.ib-desktop-header {
   border-radius: 20px !important;
   overflow: hidden !important;
   box-shadow: 0 10px 30px rgba(10, 31, 68, 0.06) !important;
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+  will-change: transform, opacity;
   margin-bottom: 30px !important;
 }
 
@@ -4120,7 +4118,6 @@ header.header-area.ib-desktop-header {
 }
 
 .tj-service-section-5 .service-item.style-5:hover {
-  transform: translateY(-6px) !important;
   border-color: var(--accent-gold) !important;
   box-shadow: 0 20px 45px rgba(10, 31, 68, 0.12) !important;
 }
@@ -8392,7 +8389,11 @@ body.ib-modal-open {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(6, 19, 43, 0.90) 0%, rgba(10, 31, 68, 0.85) 50%, rgba(6, 19, 43, 0.92) 100%);
+  background: 
+    radial-gradient(ellipse at center, rgba(6, 21, 47, 0.7) 0%, rgba(3, 10, 24, 0.7) 100%),
+    linear-gradient(180deg, rgba(4, 13, 30, 0.1) 0%, rgba(6, 19, 43, 0.2) 50%, rgba(3, 10, 24, 0.7) 100%);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   z-index: 1;
 }
 
@@ -8401,21 +8402,25 @@ body.ib-modal-open {
   z-index: 2;
   max-width: 950px;
   margin: 0 auto;
+  padding: 20px 24px;
+  border-radius: 20px;
+  background: radial-gradient(ellipse at center, rgba(6, 21, 47, 0.65) 0%, rgba(6, 21, 47, 0) 75%);
 }
 
 .ib-philosophy-subtitle {
   display: inline-flex !important;
   align-items: center;
   gap: 8px;
-  padding: 6px 18px;
-  background: rgba(212, 175, 55, 0.16) !important;
-  border: 1px solid rgba(212, 175, 55, 0.45);
+  padding: 8px 22px;
+  background: rgba(6, 21, 47, 0.85) !important;
+  border: 1px solid rgba(212, 175, 55, 0.55);
   border-radius: 50px;
   color: #d4af37 !important;
   font-size: 13.5px;
   font-weight: 600;
   letter-spacing: 0.5px;
   text-transform: uppercase;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
 }
 
 .ib-philosophy-subtitle i {
@@ -8430,18 +8435,21 @@ body.ib-modal-open {
   margin-top: 18px !important;
   margin-bottom: 20px !important;
   line-height: 1.3 !important;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.75);
 }
 
 .ib-philosophy-title span {
   color: #d4af37 !important;
+  text-shadow: 0 2px 16px rgba(212, 175, 55, 0.35), 0 2px 12px rgba(0, 0, 0, 0.8);
 }
 
 .ib-philosophy-desc {
-  color: #e2e8f0 !important;
-  font-size: 16px !important;
-  line-height: 1.75 !important;
+  color: #f1f5f9 !important;
+  font-size: 16.5px !important;
+  line-height: 1.8 !important;
   max-width: 860px;
   margin: 0 auto 32px auto !important;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
 }
 
 .ib-philosophy-btn {

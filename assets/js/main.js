@@ -1259,10 +1259,13 @@ Progressbar js
 						y: 50,
 						scrollTrigger: {
 							trigger: item,
-							scrub: true,
+							scrub: 0.6,
 							start: "top top",
 							pin: true,
 							pinSpacing: false,
+							anticipatePin: 1,
+							fastScrollEnd: true,
+							invalidateOnRefresh: true,
 							markers: false,
 						},
 					});
