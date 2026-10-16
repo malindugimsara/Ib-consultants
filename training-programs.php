@@ -134,6 +134,7 @@ $dip_result = $conn->query($dip_query);
                                 <div class="ib-philosophy-video-card">
                                     <!-- Background Video inside floating card -->
                                     <video autoplay muted loop playsinline class="ib-philosophy-bg-video">
+                                        <source src="assets/video/our-philosophy-bg.webm" type="video/webm">
                                         <source src="assets/video/our-philosophy-bg.mp4" type="video/mp4">
                                     </video>
 
@@ -277,7 +278,8 @@ $dip_result = $conn->query($dip_query);
                         <div class="row mb-4">
                             <div class="col-12">
                                 <div class="ib-workshop-filters wow fadeInUp" data-wow-delay=".3s">
-                                    <button type="button" class="ib-filter-pill active" data-filter="all">All Workshops (<?php echo count($workshops); ?>)</button>
+                                    <button type="button" class="ib-filter-pill active" data-filter="all">All Workshops
+                                        (<?php echo count($workshops); ?>)</button>
                                     <button type="button" class="ib-filter-pill" data-filter="strategy">Strategy &
                                         Management</button>
                                     <button type="button" class="ib-filter-pill" data-filter="finance">Finance &
@@ -299,96 +301,108 @@ $dip_result = $conn->query($dip_query);
                             <div class="col-12">
                                 <div class="ib-workshop-accordion-wrap wow fadeInUp" data-wow-delay=".4s">
 
-                                    <?php if (!empty($workshops)): 
+                                    <?php if (!empty($workshops)):
                                         $workshop_idx = 0;
-                                        foreach ($workshops as $item): 
+                                        foreach ($workshops as $item):
                                             $workshop_idx++;
                                             $num_str = str_pad($item['display_order'] > 0 ? $item['display_order'] : $workshop_idx, 2, '0', STR_PAD_LEFT);
                                             $is_first = ($workshop_idx === 1);
                                             $topics_arr = preg_split('/\r\n|\r|\n/', trim($item['key_topics']));
                                             $subject_param = urlencode($item['title'] . ' Workshop');
-                                    ?>
-                                        <!-- Workshop <?php echo $num_str; ?> -->
-                                        <div class="ib-workshop-drawer <?php echo $is_first ? 'active' : ''; ?>" data-category="<?php echo htmlspecialchars($item['category_slug']); ?>">
-                                            <div class="ib-drawer-header" role="button" tabindex="0">
-                                                <div class="ib-header-left">
-                                                    <span class="ib-drawer-num"><?php echo $num_str; ?></span>
-                                                    <div class="ib-header-info">
-                                                        <h4 class="ib-drawer-title"><?php echo htmlspecialchars($item['title']); ?></h4>
-                                                        <div class="ib-drawer-tags">
-                                                            <span class="ib-tag-badge">
-                                                                <i class="<?php echo htmlspecialchars($item['category_icon']); ?>"></i> 
-                                                                <?php echo htmlspecialchars($item['category_name']); ?>
-                                                            </span>
-                                                            <span class="ib-time-badge">
-                                                                <i class="fa-regular fa-clock"></i>
-                                                                <?php echo htmlspecialchars($item['duration']); ?>
-                                                            </span>
+                                            ?>
+                                            <!-- Workshop <?php echo $num_str; ?> -->
+                                            <div class="ib-workshop-drawer <?php echo $is_first ? 'active' : ''; ?>"
+                                                data-category="<?php echo htmlspecialchars($item['category_slug']); ?>">
+                                                <div class="ib-drawer-header" role="button" tabindex="0">
+                                                    <div class="ib-header-left">
+                                                        <span class="ib-drawer-num"><?php echo $num_str; ?></span>
+                                                        <div class="ib-header-info">
+                                                            <h4 class="ib-drawer-title">
+                                                                <?php echo htmlspecialchars($item['title']); ?></h4>
+                                                            <div class="ib-drawer-tags">
+                                                                <span class="ib-tag-badge">
+                                                                    <i
+                                                                        class="<?php echo htmlspecialchars($item['category_icon']); ?>"></i>
+                                                                    <?php echo htmlspecialchars($item['category_name']); ?>
+                                                                </span>
+                                                                <span class="ib-time-badge">
+                                                                    <i class="fa-regular fa-clock"></i>
+                                                                    <?php echo htmlspecialchars($item['duration']); ?>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ib-header-right">
+                                                        <span class="ib-drawer-action-text">Explore Details</span>
+                                                        <div class="ib-drawer-arrow"><i class="fa-solid fa-chevron-down"></i>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="ib-header-right">
-                                                    <span class="ib-drawer-action-text">Explore Details</span>
-                                                    <div class="ib-drawer-arrow"><i class="fa-solid fa-chevron-down"></i></div>
+                                                <div class="ib-drawer-content">
+                                                    <div class="ib-drawer-grid">
+                                                        <!-- Target Audience -->
+                                                        <div class="ib-drawer-col audience-col">
+                                                            <div class="ib-content-card">
+                                                                <div class="ib-card-head">
+                                                                    <div class="ib-card-icon"><i class="fa-solid fa-users"></i>
+                                                                    </div>
+                                                                    <h5>Target Audience</h5>
+                                                                </div>
+                                                                <p><?php echo nl2br(htmlspecialchars($item['target_audience'])); ?>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Key Topics -->
+                                                        <div class="ib-drawer-col topics-col">
+                                                            <div class="ib-content-card">
+                                                                <div class="ib-card-head">
+                                                                    <div class="ib-card-icon"><i
+                                                                            class="fa-solid fa-list-check"></i></div>
+                                                                    <h5>Key Topics Covered</h5>
+                                                                </div>
+                                                                <ul class="ib-topic-bullets">
+                                                                    <?php
+                                                                    foreach ($topics_arr as $topic_line):
+                                                                        $topic_line = trim($topic_line);
+                                                                        if (!empty($topic_line)):
+                                                                            $topic_line = ltrim($topic_line, "-*• \t");
+                                                                            ?>
+                                                                            <li><i class="fa-solid fa-circle-check"></i>
+                                                                                <?php echo htmlspecialchars($topic_line); ?></li>
+                                                                        <?php
+                                                                        endif;
+                                                                    endforeach;
+                                                                    ?>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Expected Outcome -->
+                                                        <div class="ib-drawer-col outcome-col">
+                                                            <div class="ib-content-card">
+                                                                <div class="ib-card-head">
+                                                                    <div class="ib-card-icon"><i
+                                                                            class="fa-solid fa-bullseye"></i></div>
+                                                                    <h5>Expected Outcome</h5>
+                                                                </div>
+                                                                <p><?php echo nl2br(htmlspecialchars($item['expected_outcome'])); ?>
+                                                                </p>
+                                                                <a href="contact.php?subject=<?php echo $subject_param; ?>"
+                                                                    class="ib-enquire-cta">
+                                                                    <span>Enquire for Workshop</span>
+                                                                    <i class="fa-solid fa-arrow-right"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="ib-drawer-content">
-                                                <div class="ib-drawer-grid">
-                                                    <!-- Target Audience -->
-                                                    <div class="ib-drawer-col audience-col">
-                                                        <div class="ib-content-card">
-                                                            <div class="ib-card-head">
-                                                                <div class="ib-card-icon"><i class="fa-solid fa-users"></i></div>
-                                                                <h5>Target Audience</h5>
-                                                            </div>
-                                                            <p><?php echo nl2br(htmlspecialchars($item['target_audience'])); ?></p>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Key Topics -->
-                                                    <div class="ib-drawer-col topics-col">
-                                                        <div class="ib-content-card">
-                                                            <div class="ib-card-head">
-                                                                <div class="ib-card-icon"><i class="fa-solid fa-list-check"></i></div>
-                                                                <h5>Key Topics Covered</h5>
-                                                            </div>
-                                                            <ul class="ib-topic-bullets">
-                                                                <?php 
-                                                                foreach ($topics_arr as $topic_line):
-                                                                    $topic_line = trim($topic_line);
-                                                                    if (!empty($topic_line)):
-                                                                        $topic_line = ltrim($topic_line, "-*• \t");
-                                                                ?>
-                                                                    <li><i class="fa-solid fa-circle-check"></i> <?php echo htmlspecialchars($topic_line); ?></li>
-                                                                <?php 
-                                                                    endif;
-                                                                endforeach; 
-                                                                ?>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Expected Outcome -->
-                                                    <div class="ib-drawer-col outcome-col">
-                                                        <div class="ib-content-card">
-                                                            <div class="ib-card-head">
-                                                                <div class="ib-card-icon"><i class="fa-solid fa-bullseye"></i></div>
-                                                                <h5>Expected Outcome</h5>
-                                                            </div>
-                                                            <p><?php echo nl2br(htmlspecialchars($item['expected_outcome'])); ?></p>
-                                                            <a href="contact.php?subject=<?php echo $subject_param; ?>" class="ib-enquire-cta">
-                                                                <span>Enquire for Workshop</span>
-                                                                <i class="fa-solid fa-arrow-right"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php 
-                                        endforeach; 
-                                    else: 
-                                    ?>
+                                        <?php
+                                        endforeach;
+                                    else:
+                                        ?>
                                         <div class="text-center py-5">
-                                            <p class="text-muted">No workshops are currently published. Please check back soon.</p>
+                                            <p class="text-muted">No workshops are currently published. Please check back
+                                                soon.</p>
                                         </div>
                                     <?php endif; ?>
 

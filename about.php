@@ -1389,6 +1389,7 @@
                                 <div class="countup-wrap countup-video-card">
                                     <!-- Background Video inside floating card -->
                                     <video autoplay muted loop playsinline class="countup-bg-video">
+                                        <source src="assets/video/countup-bg.webm" type="video/webm">
                                         <source src="assets/video/countup-bg.mp4" type="video/mp4">
                                     </video>
 
