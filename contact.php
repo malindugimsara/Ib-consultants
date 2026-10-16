@@ -713,85 +713,91 @@
     </div>
 
     <style>
-        /* Toast CSS Styling */
+    /* Toast CSS Styling */
+    .ib-toast {
+        position: fixed;
+        top: -100px; /* Udara thabanna (Bottom wenuwata) */
+        right: 30px;
+        background: #091a32; /* Navy Blue background */
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        padding: 16px 20px;
+        z-index: 9999999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        border-left: 5px solid;
+    }
+
+    .ib-toast.show {
+        top: 30px; /* Display weddi udin penwanawa */
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Success Theme - Gold */
+    .toast-success {
+        border-color: #FFD700; /* Gold border */
+    }
+
+    .toast-success .toast-icon i {
+        color: #FFD700; /* Gold icon */
+        font-size: 26px;
+        margin-right: 15px;
+    }
+
+    /* Error Theme - Red */
+    .toast-error {
+        border-color: #ff4d4f; /* Red border */
+    }
+
+    .toast-error .toast-icon i {
+        color: #ff4d4f; /* Red icon */
+        font-size: 26px;
+        margin-right: 15px;
+    }
+
+    /* Text Formatting */
+    .toast-message {
+        color: #ffffff; /* White text */
+        font-size: 14.5px;
+        line-height: 1.4;
+    }
+
+    .toast-message strong {
+        font-size: 16px;
+        color: #ffffff; /* White text for bold words */
+    }
+
+    /* Close Button */
+    .toast-close {
+        margin-left: 25px;
+        cursor: pointer;
+        color: #a0aabf; /* Light gray */
+        font-size: 18px;
+        transition: 0.3s;
+    }
+
+    .toast-close:hover {
+        color: #ffffff; /* Pure white on hover */
+    }
+
+    /* Mobile Responsive (Top) */
+    @media (max-width: 575px) {
         .ib-toast {
-            position: fixed;
-            bottom: -100px;
-            right: 30px;
-            background: #ffffff;
-            box-shadow: 0 10px 35px rgba(9, 26, 50, 0.15);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            padding: 16px 20px;
-            z-index: 9999999;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            border-left: 5px solid;
+            right: 15px;
+            left: 15px;
+            top: -100px; 
+            bottom: auto; 
         }
 
         .ib-toast.show {
-            bottom: 30px;
-            opacity: 1;
-            visibility: visible;
+            top: 20px;
         }
-
-        .toast-success {
-            border-color: #198754;
-        }
-
-        .toast-success .toast-icon i {
-            color: #198754;
-            font-size: 26px;
-            margin-right: 15px;
-        }
-
-        .toast-error {
-            border-color: #dc3545;
-        }
-
-        .toast-error .toast-icon i {
-            color: #dc3545;
-            font-size: 26px;
-            margin-right: 15px;
-        }
-
-        .toast-message {
-            color: #091a32;
-            font-size: 14.5px;
-            line-height: 1.4;
-        }
-
-        .toast-message strong {
-            font-size: 16px;
-            color: #091a32;
-        }
-
-        .toast-close {
-            margin-left: 25px;
-            cursor: pointer;
-            color: #a0aabf;
-            font-size: 18px;
-            transition: 0.3s;
-        }
-
-        .toast-close:hover {
-            color: #091a32;
-        }
-
-        @media (max-width: 575px) {
-            .ib-toast {
-                right: 15px;
-                left: 15px;
-                bottom: -100px;
-            }
-
-            .ib-toast.show {
-                bottom: 20px;
-            }
-        }
-    </style>
+    }
+</style>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {

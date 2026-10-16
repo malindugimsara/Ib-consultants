@@ -1,5 +1,5 @@
 <?php
-include_once 'db.php'; 
+include_once 'db.php';
 $core_query = "SELECT * FROM core_services WHERE is_published = 1 ORDER BY display_order ASC, id ASC";
 $core_result = $conn->query($core_query);
 ?>
@@ -153,7 +153,8 @@ $core_result = $conn->query($core_query);
                                                                 class="<?php echo htmlspecialchars($core['icon_class']); ?>"></i>
                                                         </div>
                                                         <h4 class="title ">
-                                                            <a href="<?php echo htmlspecialchars($core['page_link']); ?>" class="title-test">
+                                                            <a href="<?php echo htmlspecialchars($core['page_link']); ?>"
+                                                                class="title-test">
                                                                 <?php echo $num_formatted; ?>
                                                                 <?php echo htmlspecialchars($core['title']); ?>
                                                             </a>
@@ -165,12 +166,12 @@ $core_result = $conn->query($core_query);
                                                         </p>
                                                         <ul class="list-items">
                                                             <?php foreach ($list_array as $item):
-                                                                if (trim($item) != ''): 
+                                                                if (trim($item) != ''):
                                                                     ?>
                                                                     <li><i
                                                                             class="tji-list"></i><?php echo htmlspecialchars(trim($item)); ?>
                                                                     </li>
-                                                                <?php
+                                                                    <?php
                                                                 endif;
                                                             endforeach;
                                                             ?>
@@ -212,7 +213,8 @@ $core_result = $conn->query($core_query);
                             <div class="col-lg-8">
                                 <div class="post-details-wrapper">
                                     <div class="blog-images wow fadeInUp" data-wow-delay=".1s">
-                                        <img src="assets/images/service/service-details.webp" alt="Consultancy Services">
+                                        <img src="assets/images/service/service-details.webp"
+                                            alt="Consultancy Services">
                                     </div>
                                     <h2 class="title title-anim topic-color">Practical Business, Profitability & Growth
                                         Solutions.
@@ -231,20 +233,107 @@ $core_result = $conn->query($core_query);
                                             transform challenges into measurable growth.
                                         </p>
 
-                                        <h4 class="wow fadeInUp mt-4 mb-3" data-wow-delay=".3s">Our Proven Approach:
-                                        </h4>
-                                        <ul class="wow fadeInUp" data-wow-delay=".3s">
-                                            <li><span><i class="tji-check"></i></span><strong>Diagnose:</strong> Assess
-                                                the current condition and identify critical issues.</li>
-                                            <li><span><i class="tji-check"></i></span><strong>Plan:</strong> Develop
-                                                structured strategies and 90-day roadmaps.</li>
-                                            <li><span><i class="tji-check"></i></span><strong>Implement:</strong> Work
-                                                on-the-ground to execute operational changes.</li>
-                                            <li><span><i class="tji-check"></i></span><strong>Measure:</strong> Track
-                                                progress through strict financial and operational KPIs.</li>
-                                            <li><span><i class="tji-check"></i></span><strong>Improve:</strong>
-                                                Establish a culture of continuous business transformation.</li>
-                                        </ul>
+                                        <!-- Executive 5-Stage Consulting Framework -->
+                                        <div class="ib-approach-box wow fadeInUp" data-wow-delay=".25s">
+                                            <div class="ib-approach-header">
+                                                <span class="ib-approach-kicker">
+                                                    <i class="fa-solid fa-layer-group"></i> 5-Stage Consulting
+                                                    Methodology
+                                                </span>
+                                                <h4 class="ib-approach-title">Our Proven Implementation Approach</h4>
+                                                <p class="ib-approach-subtitle">A disciplined, results-driven framework
+                                                    moving your enterprise from on-site diagnosis to measurable,
+                                                    sustainable profit growth.</p>
+                                            </div>
+
+                                            <div class="ib-approach-grid">
+                                                <!-- Step 01: Diagnose -->
+                                                <div class="ib-approach-step-card wow fadeInUp" data-wow-delay=".1s">
+                                                    <div class="ib-step-badge">
+                                                        <div class="ib-step-icon">
+                                                            <i class="fa-solid fa-magnifying-glass-chart"></i>
+                                                        </div>
+                                                        <span class="ib-step-num">01</span>
+                                                    </div>
+                                                    <div class="ib-step-body">
+                                                        <div class="ib-step-phase"> Diagnostic</div>
+                                                        <h5 class="ib-step-title">Diagnose</h5>
+                                                        <p class="ib-step-desc">Assess the current condition, audit
+                                                            workflow bottlenecks, and uncover critical cost and
+                                                            operational leaks.</p>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Step 02: Plan -->
+                                                <div class="ib-approach-step-card wow fadeInUp" data-wow-delay=".2s">
+                                                    <div class="ib-step-badge">
+                                                        <div class="ib-step-icon">
+                                                            <i class="fa-solid fa-compass-drafting"></i>
+                                                        </div>
+                                                        <span class="ib-step-num">02</span>
+                                                    </div>
+                                                    <div class="ib-step-body">
+                                                        <div class="ib-step-phase"> Strategy</div>
+                                                        <h5 class="ib-step-title">Plan</h5>
+                                                        <p class="ib-step-desc">Develop structured turnaround
+                                                            strategies, prioritized solutions, and actionable 90-day
+                                                            execution roadmaps.</p>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Step 03: Implement -->
+                                                <div class="ib-approach-step-card wow fadeInUp" data-wow-delay=".3s">
+                                                    <div class="ib-step-badge">
+                                                        <div class="ib-step-icon">
+                                                            <i class="fa-solid fa-gears"></i>
+                                                        </div>
+                                                        <span class="ib-step-num">03</span>
+                                                    </div>
+                                                    <div class="ib-step-body">
+                                                        <div class="ib-step-phase"> Execution</div>
+                                                        <h5 class="ib-step-title">Implement</h5>
+                                                        <p class="ib-step-desc">Work hands-on with frontline teams and
+                                                            executive management to execute operational and process
+                                                            changes.</p>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Step 04: Measure -->
+                                                <div class="ib-approach-step-card wow fadeInUp" data-wow-delay=".4s">
+                                                    <div class="ib-step-badge">
+                                                        <div class="ib-step-icon">
+                                                            <i class="fa-solid fa-chart-line"></i>
+                                                        </div>
+                                                        <span class="ib-step-num">04</span>
+                                                    </div>
+                                                    <div class="ib-step-body">
+                                                        <div class="ib-step-phase"> Governance</div>
+                                                        <h5 class="ib-step-title">Measure</h5>
+                                                        <p class="ib-step-desc">Track quantitative milestones through
+                                                            strict financial metrics, productivity gains, and
+                                                            operational KPIs.</p>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Step 05: Improve (Continuous Transformation) -->
+                                                <div class="ib-approach-step-card ib-step-highlight wow fadeInUp"
+                                                    data-wow-delay=".5s">
+                                                    <div class="ib-step-badge">
+                                                        <div class="ib-step-icon">
+                                                            <i class="fa-solid fa-arrows-spin"></i>
+                                                        </div>
+                                                        <span class="ib-step-num">05</span>
+                                                    </div>
+                                                    <div class="ib-step-body">
+                                                        <div class="ib-step-phase">Sustainable Scale</div>
+                                                        <h5 class="ib-step-title">Improve</h5>
+                                                        <p class="ib-step-desc">Establish sustainable management
+                                                            disciplines and embed a lasting company-wide culture of
+                                                            continuous business transformation.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <div class="images-wrap mt-4">
                                             <div class="row">

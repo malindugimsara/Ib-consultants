@@ -40,7 +40,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         </a>
         <a href="manage_services.php" class="<?php echo ($currentPage === 'manage_services.php') ? 'active' : ''; ?>">
             <i class="fa-solid fa-layer-group"></i>
-            <span>Core Services</span>
+            <span>Manage Core Services</span>
         </a>
         <a href="manage_reviews.php" class="<?php echo ($currentPage === 'manage_reviews.php') ? 'active' : ''; ?>">
             <i class="fa-solid fa-star"></i>
@@ -52,7 +52,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         </a>
         <a href="manage_blog.php" class="<?php echo ($currentPage === 'manage_blog.php') ? 'active' : ''; ?>">
             <i class="fa-solid fa-newspaper"></i>
-            <span>Blog & Articles</span>
+            <span>Manage Blog & Articles</span>
         </a>
         <a href="../index.php" target="_blank">
             <i class="fa-solid fa-globe"></i>

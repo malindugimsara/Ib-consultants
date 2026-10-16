@@ -56,8 +56,8 @@ if ($dip_res && $row = $dip_res->fetch_assoc()) {
     $stat_diplomas = (int) $row['total'];
 }
 
-// 2. Fetch all contact inquiries (latest first)
-$sql = "SELECT * FROM contact_messages ORDER BY created_at DESC";
+// 2. Fetch last 30 contact inquiries (latest first)
+$sql = "SELECT * FROM contact_messages ORDER BY created_at DESC LIMIT 30";
 $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>

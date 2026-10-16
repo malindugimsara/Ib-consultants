@@ -16,6 +16,13 @@ if (isset($_GET['toggle_publish']) && isset($_GET['id'])) {
     $status = (int) $_GET['toggle_publish'];
     $new_status = ($status == 1) ? 0 : 1;
     $conn->query("UPDATE hero_slider SET is_published = $new_status WHERE id = $id");
+
+    if ((!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') || isset($_GET['ajax'])) {
+        header('Content-Type: application/json');
+        echo json_encode(['status' => 'success', 'new_status' => $new_status]);
+        exit;
+    }
+
     header("Location: manage_slider.php?msg=updated");
     exit;
 }

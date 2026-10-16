@@ -222,14 +222,14 @@
                                     <!-- Mission -->
                                     <div class="mission-vision-box wow fadeInLeft" data-wow-delay=".5s">
                                         <h4 class="title">Our Mission</h4>
-                                        <p class="desc text-justify-custom">To empower Sri Lankan businesses through
+                                        <p class="desc">To empower Sri Lankan businesses through
                                             hands-on advisory services and practical training, ensuring optimized
                                             operations and sustainable revenue growth.</p>
                                     </div>
                                     <!-- Vision -->
                                     <div class="mission-vision-box wow fadeInRight" data-wow-delay=".5s">
                                         <h4 class="title">Our Vision</h4>
-                                        <p class="desc text-justify-custom">To be the most trusted consulting partner
+                                        <p class="desc ">To be the most trusted consulting partner
                                             for local SMEs, transforming standard operations into highly efficient and
                                             globally competitive enterprises.</p>
                                     </div>

@@ -1,6 +1,7 @@
 <?php
 // Include Database Connection
-include 'db.php'; 
+include 'db.php';
+$env = parse_ini_file(__DIR__ . '/.env');
 
 // Include PHPMailer Classes
 use PHPMailer\PHPMailer\PHPMailer;
@@ -12,44 +13,57 @@ require 'PHPMailer/src/SMTP.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    
-    
-    // Sanitize and capture POST form data
-    $name = $conn->real_escape_string($_POST['conName']);
-    $email = $conn->real_escape_string($_POST['conEmail']);
-    $mobile = $conn->real_escape_string($_POST['conPhone']);
-    $whatsapp = isset($_POST['conWhatsapp']) ? $conn->real_escape_string($_POST['conWhatsapp']) : '';
-    $service = $conn->real_escape_string($_POST['conSubject']);
-    $message = $conn->real_escape_string($_POST['conMessage']);
+    // XSS protection
+    $name = strip_tags(trim($_POST['conName']));
+    $email = filter_var(trim($_POST['conEmail']), FILTER_SANITIZE_EMAIL);
+    $mobile = strip_tags(trim($_POST['conPhone']));
+    $whatsapp = isset($_POST['conWhatsapp']) ? strip_tags(trim($_POST['conWhatsapp'])) : '';
+    $service = strip_tags(trim($_POST['conSubject']));
+    $message = strip_tags(trim($_POST['conMessage']));
 
-    // 1. Save Inquiry into Database (for Admin Dashboard)
-    $sql = "INSERT INTO contact_messages (name, email, mobile, whatsapp, service, message) 
-            VALUES ('$name', '$email', '$mobile', '$whatsapp', '$service', '$message')";
-    $conn->query($sql);
+    // Email validation
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo json_encode(['status' => 'error', 'message' => 'Invalid email address format.']);
+        exit();
+    }
+
+
+    // SQL Injection protection
+    $stmt = $conn->prepare("INSERT INTO contact_messages (name, email, mobile, whatsapp, service, message) VALUES (?, ?, ?, ?, ?, ?)");
+
+    if ($stmt) {
+        // "ssssss" is a string of 6 characters
+        $stmt->bind_param("ssssss", $name, $email, $mobile, $whatsapp, $service, $message);
+        $stmt->execute();
+        $stmt->close();
+    } else {
+        echo json_encode(['status' => 'error', 'message' => 'Database error occurred.']);
+        exit();
+    }
 
     // 2. Email Dispatch Process (PHPMailer)
     $mail = new PHPMailer(true);
 
     try {
         // Set to 0 for production / AJAX to prevent corrupting JSON response (set to 2 for console debugging)
-        $mail->SMTPDebug = 0; 
+        $mail->SMTPDebug = 0;
 
         // SMTP Server Configuration
         $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com'; 
-        $mail->SMTPAuth   = true;
-        
-        // Gmail SMTP Credentials (Username & App Password)
-        $mail->Username   = 'applicationweb6@gmail.com'; 
-        $mail->Password   = 'kxhqcoepkeutjuim'; 
-        
+        $mail->Host = $env['SMTP_HOST'];
+        $mail->SMTPAuth = true;
+
+        // Gmail SMTP Credentials from .env
+        $mail->Username = $env['SMTP_USER'];
+        $mail->Password = $env['SMTP_PASS'];
+
         // Port 587 with TLS Encryption
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = 587;
+        $mail->Port = (int) $env['SMTP_PORT'];
 
         // Send Notification Email to Admin
-        $mail->setFrom('applicationweb6@gmail.com', 'IB Consultants Website');
-        $mail->addAddress('applicationweb6@gmail.com');
+        $mail->setFrom($env['SMTP_FROM_EMAIL'], $env['SMTP_FROM_NAME']);
+        $mail->addAddress($env['SMTP_USER']);
         $mail->addReplyTo($email, $name);
 
         $mail->isHTML(false);
@@ -62,23 +76,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $admin_body .= "WhatsApp Number: $whatsapp\n";
         $admin_body .= "Service Required: $service\n\n";
         $admin_body .= "Requirement / Message:\n$message\n";
-        
+
         $mail->Body = $admin_body;
         $mail->send();
 
         // Send Automated "Thank You" Confirmation Email to Customer
-        $mail->clearAllRecipients(); 
+        $mail->clearAllRecipients();
         $mail->clearReplyTos();
-        
-        $mail->setFrom('applicationweb6@gmail.com', 'IB Consultants');
-        $mail->addAddress($email); 
-        
+
+        $mail->setFrom($env['SMTP_FROM_EMAIL'], 'IB Consultants');
+        $mail->addAddress($email);
+
         $mail->Subject = "Thank you for contacting IB Consultants";
         $customer_body = "Dear $name,\n\n";
         $customer_body .= "Thank you for reaching out to IB Consultants. We have successfully received your inquiry regarding '$service'.\n\n";
         $customer_body .= "Our senior consulting team will review your requirement and get back to you within 24 hours.\n\n";
         $customer_body .= "Best Regards,\nIB Consultants\n";
-        
+
         $mail->Body = $customer_body;
         $mail->send();
 
@@ -87,7 +101,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
 
     } catch (Exception $e) {
-        // Return JSON error response if email dispatch fails
         echo json_encode(['status' => 'error', 'message' => $mail->ErrorInfo]);
         exit();
     }

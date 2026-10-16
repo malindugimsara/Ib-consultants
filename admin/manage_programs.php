@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../db.php';
+require_once 'icon_picker_helper.php';
 
 if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
     header("Location: login.php");
@@ -76,6 +77,13 @@ if (isset($_GET['toggle_publish']) && isset($_GET['id'])) {
     $status = (int) $_GET['toggle_publish'];
     $new_status = ($status == 1) ? 0 : 1;
     $conn->query("UPDATE certificate_programs SET is_published = $new_status WHERE id=$id");
+
+    if ((!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') || isset($_GET['ajax'])) {
+        header('Content-Type: application/json');
+        echo json_encode(['status' => 'success', 'new_status' => $new_status]);
+        exit;
+    }
+
     header("Location: manage_programs.php?msg=updated");
     exit;
 }
@@ -147,55 +155,72 @@ $programs = $conn->query("SELECT * FROM certificate_programs ORDER BY display_or
                 <div class="card-custom" style="<?php echo $edit_mode ? 'border: 2px solid #d4af37;' : ''; ?>">
                     <h5 class="mb-3"><?php echo $edit_mode ? 'Edit Program Details' : 'Add New Program'; ?></h5>
 
-                    <form action="manage_programs.php" method="POST" enctype="multipart/form-data">
+                    <form action="manage_programs.php" method="POST" enctype="multipart/form-data" class="modern-form">
                         <?php if ($edit_mode): ?>
                             <input type="hidden" name="program_id" value="<?php echo $edit_data['id']; ?>">
                         <?php endif; ?>
 
-                        <div class="row">
-                            <div class="col-md-4 mb-3">
-                                <label>Program Image
-                                    <?php echo $edit_mode ? '(Leave empty to keep current)' : ''; ?></label>
-                                <input type="file" name="image" class="form-control" accept="image/*" <?php echo $edit_mode ? '' : 'required'; ?>>
-                                <?php if ($edit_mode): ?>
-                                    <img src="../<?php echo $edit_data['image_path']; ?>" class="mt-2 img-preview"
-                                        style="height: 60px;">
-                                <?php endif; ?>
+                        <!-- Section 1: Basic Information -->
+                        <div class="form-section mb-4">
+                            <h6 class="section-title"><i class="fa-solid fa-image me-2"></i>1. Basic Information</h6>
+                            <div class="row">
+                                <div class="col-md-7 mb-3">
+                                    <label class="form-label fw-bold">Program Title *</label>
+                                    <input type="text" name="title" class="form-control"
+                                        placeholder="E.g. Certificate in Business Management & Entrepreneurship"
+                                        value="<?php echo $edit_mode ? htmlspecialchars($edit_data['title']) : ''; ?>"
+                                        required>
+                                </div>
+                                <div class="col-md-5 mb-3">
+                                    <label class="form-label fw-bold">Program Image
+                                        <?php echo $edit_mode ? '(Leave empty to keep current)' : '*'; ?></label>
+                                    <input type="file" name="image" class="form-control" accept="image/*" <?php echo $edit_mode ? '' : 'required'; ?>>
+
+                                    <!-- Current Image Preview in Edit Mode -->
+                                    <?php if ($edit_mode && !empty($edit_data['image_path'])): ?>
+                                        <div class="mt-3 p-2 border rounded bg-light d-flex align-items-center gap-3">
+                                            <img src="../<?php echo $edit_data['image_path']; ?>"
+                                                class="img-thumbnail shadow-sm"
+                                                style="height: 60px; width: auto; object-fit: cover;">
+                                            <span class="text-muted small fw-bold">Current Banner Image</span>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
                             </div>
-                            <div class="col-md-5 mb-3">
-                                <label>Program Title</label>
-                                <input type="text" name="title" class="form-control"
-                                    placeholder="E.g. Certificate in Business..."
-                                    value="<?php echo $edit_mode ? htmlspecialchars($edit_data['title']) : ''; ?>"
-                                    required>
+                        </div>
+
+                        <!-- Section 2: Visuals & Content -->
+                        <div class="form-section mb-4">
+                            <h6 class="section-title"><i class="fa-solid fa-file-lines me-2"></i>2. Visuals & Content
+                            </h6>
+                            <div class="row">
+                                <!-- Icon Picker (Full width to avoid grid layout issues) -->
+                                <div class="col-md-12 mb-4">
+                                    <?php
+                                    $curr_prog_icon = ($edit_mode && !empty($edit_data['icon_class'])) ? $edit_data['icon_class'] : 'tji-service-4';
+                                    echo renderAdminIconPicker('icon_class', $curr_prog_icon, 'Program Icon Class', ['default' => 'tji-service-4']);
+                                    ?>
+                                </div>
+
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label fw-bold">Short Description *</label>
+                                    <textarea name="description" class="form-control" rows="4"
+                                        placeholder="Write an engaging executive summary of this certificate program..."
+                                        required><?php echo $edit_mode ? htmlspecialchars($edit_data['description']) : ''; ?></textarea>
+                                </div>
                             </div>
-                            <div class="col-md-3 mb-3">
-                                <label>Default Icon</label>
-                                <select name="icon_class" class="form-control">
-                                    <option value="tji-service-4" <?php echo ($edit_mode && $edit_data['icon_class'] == 'tji-service-4') ? 'selected' : ''; ?>>Icon 1
-                                        (Star/Ribbon)</option>
-                                    <option value="tji-service-1" <?php echo ($edit_mode && $edit_data['icon_class'] == 'tji-service-1') ? 'selected' : ''; ?>>Icon 2 (Chart)
-                                    </option>
-                                    <option value="tji-service-3" <?php echo ($edit_mode && $edit_data['icon_class'] == 'tji-service-3') ? 'selected' : ''; ?>>Icon 3
-                                        (Settings)</option>
-                                </select>
-                            </div>
-                            <div class="col-md-10 mb-3">
-                                <label>Short Description</label>
-                                <textarea name="description" class="form-control" rows="2"
-                                    placeholder="Write a short description..."
-                                    required><?php echo $edit_mode ? htmlspecialchars($edit_data['description']) : ''; ?></textarea>
-                            </div>
-                            <div class="col-md-2 mb-3 d-flex align-items-end">
-                                <?php if ($edit_mode): ?>
-                                    <button type="submit" name="update_program"
-                                        class="btn btn-custom w-100 p-2 mb-1">Update</button>
-                                    <a href="manage_programs.php" class="btn btn-secondary w-100 p-2 ms-2 mb-1">Cancel</a>
-                                <?php else: ?>
-                                    <button type="submit" name="add_program" class="btn btn-custom w-100 p-2">Add
-                                        Program</button>
-                                <?php endif; ?>
-                            </div>
+                        </div>
+
+                        <!-- Submit Buttons -->
+                        <div class="d-flex justify-content-end align-items-center mt-4 pt-3 border-top">
+                            <?php if ($edit_mode): ?>
+                                <a href="manage_programs.php" class="btn btn-secondary px-4 py-2 me-3">Cancel</a>
+                                <button type="submit" name="update_program" class="btn btn-custom px-5 py-2"><i
+                                        class="fa-solid fa-floppy-disk me-2"></i> Update Program</button>
+                            <?php else: ?>
+                                <button type="submit" name="add_program" class="btn btn-custom px-5 py-2"><i
+                                        class="fa-solid fa-plus me-2"></i> Add Program</button>
+                            <?php endif; ?>
                         </div>
                     </form>
                 </div>

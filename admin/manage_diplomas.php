@@ -42,6 +42,13 @@ if (isset($_GET['toggle_publish']) && isset($_GET['id'])) {
     $status = (int) $_GET['toggle_publish'];
     $new_status = ($status == 1) ? 0 : 1;
     $conn->query("UPDATE diploma_programs SET is_published = $new_status WHERE id=$id");
+
+    if ((!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') || isset($_GET['ajax'])) {
+        header('Content-Type: application/json');
+        echo json_encode(['status' => 'success', 'new_status' => $new_status]);
+        exit;
+    }
+
     header("Location: manage_diplomas.php?msg=updated");
     exit;
 }
@@ -85,23 +92,6 @@ $diplomas = $conn->query("SELECT * FROM diploma_programs ORDER BY display_order 
     <link rel="stylesheet" href="../assets/css/font-awesome-pro.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="admin.css"> <!-- Common Admin CSS -->
-    <style>
-        .badge-published {
-            background-color: #198754;
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 12px;
-        }
-
-        .badge-hidden {
-            background-color: #6c757d;
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 12px;
-        }
-    </style>
 
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="../assets/images/logos/logo-2.webp">

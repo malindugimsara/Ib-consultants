@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../db.php';
+require_once 'icon_picker_helper.php';
 
 if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
     header("Location: login.php");
@@ -87,6 +88,13 @@ if (isset($_GET['toggle_publish']) && isset($_GET['id'])) {
     $stmt = $conn->prepare("UPDATE business_workshops SET is_published = ? WHERE id = ?");
     $stmt->bind_param("ii", $new_status, $id);
     $stmt->execute();
+
+    if ((!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') || isset($_GET['ajax'])) {
+        header('Content-Type: application/json');
+        echo json_encode(['status' => 'success', 'new_status' => $new_status]);
+        exit;
+    }
+
     header("Location: manage_workshops.php?msg=updated");
     exit;
 }
@@ -230,16 +238,17 @@ $workshops = $conn->query("SELECT * FROM business_workshops ORDER BY display_ord
                         <?php endif; ?>
                     </div>
 
-                    <form action="manage_workshops.php" method="POST">
+                    <form action="manage_workshops.php" method="POST" class="modern-form">
                         <?php if ($edit_mode): ?>
                             <input type="hidden" name="workshop_id" value="<?php echo (int) $edit_data['id']; ?>">
                         <?php endif; ?>
 
-                        <!-- Presets Helper -->
-                        <div class="mb-3">
-                            <label class="form-label text-muted small fw-bold">Quick Category Presets (Click to autofill
-                                category info):</label>
-                            <div>
+                        <!-- Quick Presets Box -->
+                        <div class="preset-box mb-4">
+                            <label class="form-label text-muted small fw-bold mb-2 d-block"><i
+                                    class="fa-solid fa-wand-magic-sparkles text-warning"></i> Quick Category Presets
+                                (Click to autofill):</label>
+                            <div class="d-flex flex-wrap gap-2">
                                 <span class="category-preset-badge"
                                     onclick="applyPreset('Strategy & Management', 'strategy', 'fa-solid fa-layer-group')"><i
                                         class="fa-solid fa-layer-group"></i> Strategy & Management</span>
@@ -253,9 +262,6 @@ $workshops = $conn->query("SELECT * FROM business_workshops ORDER BY display_ord
                                     onclick="applyPreset('Sales & Marketing', 'sales', 'fa-solid fa-chart-line')"><i
                                         class="fa-solid fa-chart-line"></i> Sales & Marketing</span>
                                 <span class="category-preset-badge"
-                                    onclick="applyPreset('Sales & Distribution', 'sales', 'fa-solid fa-map-location-dot')"><i
-                                        class="fa-solid fa-map-location-dot"></i> Sales & Distribution</span>
-                                <span class="category-preset-badge"
                                     onclick="applyPreset('Export & Trade', 'export', 'fa-solid fa-globe')"><i
                                         class="fa-solid fa-globe"></i> Export & Trade</span>
                                 <span class="category-preset-badge"
@@ -264,113 +270,106 @@ $workshops = $conn->query("SELECT * FROM business_workshops ORDER BY display_ord
                             </div>
                         </div>
 
-                        <div class="row">
-                            <!-- Workshop Title -->
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label fw-bold">Workshop Title *</label>
-                                <input type="text" name="title" class="form-control"
-                                    placeholder="E.g. Business Health Check & Performance Improvement"
-                                    value="<?php echo $edit_mode ? htmlspecialchars($edit_data['title']) : ''; ?>"
-                                    required>
-                            </div>
-
-                            <!-- Category Name -->
-                            <div class="col-md-3 mb-3">
-                                <label class="form-label fw-bold">Category Display Name *</label>
-                                <input type="text" id="category_name" name="category_name" class="form-control"
-                                    placeholder="E.g. Strategy & Management"
-                                    value="<?php echo $edit_mode ? htmlspecialchars($edit_data['category_name']) : 'Strategy & Management'; ?>"
-                                    required>
-                            </div>
-
-                            <!-- Category Slug -->
-                            <div class="col-md-3 mb-3">
-                                <label class="form-label fw-bold">Category Filter Slug *</label>
-                                <select id="category_slug" name="category_slug" class="form-select" required>
-                                    <option value="strategy" <?php echo ($edit_mode && $edit_data['category_slug'] == 'strategy') ? 'selected' : ''; ?>>strategy
-                                        (Strategy & Management)</option>
-                                    <option value="finance" <?php echo ($edit_mode && $edit_data['category_slug'] == 'finance') ? 'selected' : ''; ?>>finance (Finance &
-                                        Costing)</option>
-                                    <option value="manufacturing" <?php echo ($edit_mode && $edit_data['category_slug'] == 'manufacturing') ? 'selected' : ''; ?>>
-                                        manufacturing (Manufacturing)</option>
-                                    <option value="sales" <?php echo ($edit_mode && $edit_data['category_slug'] == 'sales') ? 'selected' : ''; ?>>sales (Sales &
-                                        Distribution / Marketing)</option>
-                                    <option value="export" <?php echo ($edit_mode && $edit_data['category_slug'] == 'export') ? 'selected' : ''; ?>>export (Export &
-                                        Trade)</option>
-                                    <option value="digital" <?php echo ($edit_mode && $edit_data['category_slug'] == 'digital') ? 'selected' : ''; ?>>digital (Digital &
-                                        AI)</option>
-                                </select>
-                                <small class="text-muted" style="font-size: 11px;">Used by interactive filter
-                                    tabs</small>
-                            </div>
-
-                            <!-- Category Icon -->
-                            <div class="col-md-4 mb-3">
-                                <label class="form-label fw-bold">Category Icon Class (FontAwesome)</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i id="icon-preview"
-                                            class="<?php echo $edit_mode ? htmlspecialchars($edit_data['category_icon']) : 'fa-solid fa-layer-group'; ?>"></i></span>
-                                    <input type="text" id="category_icon" name="category_icon" class="form-control"
-                                        placeholder="E.g. fa-solid fa-layer-group"
-                                        value="<?php echo $edit_mode ? htmlspecialchars($edit_data['category_icon']) : 'fa-solid fa-layer-group'; ?>"
-                                        oninput="updateIconPreview(this.value)">
+                        <!-- Section 1: Basic Information -->
+                        <div class="form-section mb-4">
+                            <h6 class="section-title"><i class="fa-solid fa-circle-info me-2"></i>1. Basic Information
+                            </h6>
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label fw-bold">Workshop Title *</label>
+                                    <input type="text" name="title" class="form-control"
+                                        placeholder="E.g. Business Health Check & Performance Improvement"
+                                        value="<?php echo $edit_mode ? htmlspecialchars($edit_data['title']) : ''; ?>"
+                                        required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-bold">Category Display Name *</label>
+                                    <input type="text" id="category_name" name="category_name" class="form-control"
+                                        placeholder="E.g. Strategy & Management"
+                                        value="<?php echo $edit_mode ? htmlspecialchars($edit_data['category_name']) : 'Strategy & Management'; ?>"
+                                        required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-bold">Category Filter Slug *</label>
+                                    <select id="category_slug" name="category_slug" class="form-select" required>
+                                        <option value="strategy" <?php echo ($edit_mode && $edit_data['category_slug'] == 'strategy') ? 'selected' : ''; ?>>strategy
+                                            (Strategy & Management)</option>
+                                        <option value="finance" <?php echo ($edit_mode && $edit_data['category_slug'] == 'finance') ? 'selected' : ''; ?>>finance
+                                            (Finance & Costing)</option>
+                                        <option value="manufacturing" <?php echo ($edit_mode && $edit_data['category_slug'] == 'manufacturing') ? 'selected' : ''; ?>>
+                                            manufacturing (Manufacturing)</option>
+                                        <option value="sales" <?php echo ($edit_mode && $edit_data['category_slug'] == 'sales') ? 'selected' : ''; ?>>sales (Sales &
+                                            Marketing)</option>
+                                        <option value="export" <?php echo ($edit_mode && $edit_data['category_slug'] == 'export') ? 'selected' : ''; ?>>export (Export
+                                            & Trade)</option>
+                                        <option value="digital" <?php echo ($edit_mode && $edit_data['category_slug'] == 'digital') ? 'selected' : ''; ?>>digital
+                                            (Digital & AI)</option>
+                                    </select>
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- Duration -->
-                            <div class="col-md-5 mb-3">
-                                <label class="form-label fw-bold">Duration Badge</label>
-                                <input type="text" name="duration" class="form-control"
-                                    placeholder="1-Day Practical Workshop"
-                                    value="<?php echo $edit_mode ? htmlspecialchars($edit_data['duration']) : '1-Day Practical Workshop'; ?>">
+                        <!-- Section 2: Visuals & Settings -->
+                        <div class="form-section mb-4">
+                            <h6 class="section-title"><i class="fa-solid fa-palette me-2"></i>2. Visuals & Settings</h6>
+                            <div class="row">
+                                <div class="col-md-12 mb-4">
+                                    <?php
+                                    $curr_cat_icon = $edit_mode ? $edit_data['category_icon'] : 'fa-solid fa-layer-group';
+                                    echo renderAdminIconPicker('category_icon', $curr_cat_icon, 'Category Icon Class', ['default' => 'fa-solid fa-layer-group']);
+                                    ?>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-bold">Duration Badge</label>
+                                    <input type="text" name="duration" class="form-control"
+                                        placeholder="1-Day Practical Workshop"
+                                        value="<?php echo $edit_mode ? htmlspecialchars($edit_data['duration']) : '1-Day Practical Workshop'; ?>">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-bold">Display Order</label>
+                                    <input type="number" name="display_order" class="form-control" min="1" max="99"
+                                        value="<?php echo $edit_mode ? (int) $edit_data['display_order'] : (int) ($workshops->num_rows + 1); ?>">
+                                </div>
                             </div>
+                        </div>
 
-                            <!-- Display Order -->
-                            <div class="col-md-3 mb-3">
-                                <label class="form-label fw-bold">Display Order</label>
-                                <input type="number" name="display_order" class="form-control" min="1" max="99"
-                                    value="<?php echo $edit_mode ? (int) $edit_data['display_order'] : (int) ($workshops->num_rows + 1); ?>">
-                                <small class="text-muted" style="font-size: 11px;">Determines drawer position (01, 02,
-                                    etc.)</small>
+                        <!-- Section 3: Workshop Content -->
+                        <div class="form-section mb-4">
+                            <h6 class="section-title"><i class="fa-solid fa-file-lines me-2"></i>3. Workshop Content
+                            </h6>
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label fw-bold">Target Audience *</label>
+                                    <textarea name="target_audience" class="form-control" rows="2"
+                                        placeholder="E.g. Business owners, managing directors..."
+                                        required><?php echo $edit_mode ? htmlspecialchars($edit_data['target_audience']) : ''; ?></textarea>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-bold">Key Topics Covered *</label>
+                                    <textarea name="key_topics" class="form-control" rows="4"
+                                        placeholder="Topic 1&#10;Topic 2&#10;Topic 3"
+                                        required><?php echo $edit_mode ? htmlspecialchars($edit_data['key_topics']) : ''; ?></textarea>
+                                    <small class="text-muted">One topic per line.</small>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-bold">Expected Outcome *</label>
+                                    <textarea name="expected_outcome" class="form-control" rows="4"
+                                        placeholder="E.g. Diagnose business problems..."
+                                        required><?php echo $edit_mode ? htmlspecialchars($edit_data['expected_outcome']) : ''; ?></textarea>
+                                </div>
                             </div>
+                        </div>
 
-                            <!-- Target Audience -->
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label fw-bold">Target Audience *</label>
-                                <textarea name="target_audience" class="form-control" rows="4"
-                                    placeholder="E.g. Business owners, managing directors, senior managers, and cross-functional leadership teams."
-                                    required><?php echo $edit_mode ? htmlspecialchars($edit_data['target_audience']) : ''; ?></textarea>
-                            </div>
-
-                            <!-- Key Topics -->
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label fw-bold">Key Topics Covered * (One topic per line)</label>
-                                <textarea name="key_topics" class="form-control" rows="4"
-                                    placeholder="Business performance assessment&#10;Sales and profit analysis&#10;90-day improvement planning"
-                                    required><?php echo $edit_mode ? htmlspecialchars($edit_data['key_topics']) : ''; ?></textarea>
-                                <small class="text-muted" style="font-size: 11px;">Each line will automatically be
-                                    formatted with a green checkmark bullet point</small>
-                            </div>
-
-                            <!-- Expected Outcome -->
-                            <div class="col-md-12 mb-3">
-                                <label class="form-label fw-bold">Expected Outcome *</label>
-                                <textarea name="expected_outcome" class="form-control" rows="2"
-                                    placeholder="E.g. Diagnose business problems and create a prioritized 90-day actionable improvement plan."
-                                    required><?php echo $edit_mode ? htmlspecialchars($edit_data['expected_outcome']) : ''; ?></textarea>
-                            </div>
-
-                            <!-- Submit Buttons -->
-                            <div class="col-md-12 text-end">
-                                <?php if ($edit_mode): ?>
-                                    <button type="submit" name="update_workshop" class="btn btn-custom px-4 py-2">💾 Update
-                                        Workshop</button>
-                                    <a href="manage_workshops.php" class="btn btn-secondary px-4 py-2 ms-2">Cancel</a>
-                                <?php else: ?>
-                                    <button type="submit" name="add_workshop" class="btn btn-custom px-4 py-2">➕ Add
-                                        Workshop</button>
-                                <?php endif; ?>
-                            </div>
+                        <!-- Submit Buttons -->
+                        <div class="d-flex justify-content-end align-items-center mt-4 pt-3 border-top">
+                            <?php if ($edit_mode): ?>
+                                <a href="manage_workshops.php" class="btn btn-secondary px-4 py-2 me-3">Cancel</a>
+                                <button type="submit" name="update_workshop" class="btn btn-custom px-5 py-2"><i
+                                        class="fa-solid fa-floppy-disk me-2"></i> Update Workshop</button>
+                            <?php else: ?>
+                                <button type="submit" name="add_workshop" class="btn btn-custom px-5 py-2"><i
+                                        class="fa-solid fa-plus me-2"></i> Add Workshop</button>
+                            <?php endif; ?>
                         </div>
                     </form>
                 </div>
@@ -520,17 +519,14 @@ $workshops = $conn->query("SELECT * FROM business_workshops ORDER BY display_ord
         function applyPreset(name, slug, icon) {
             document.getElementById('category_name').value = name;
             document.getElementById('category_slug').value = slug;
-            document.getElementById('category_icon').value = icon;
-            updateIconPreview(icon);
-        }
-
-        function updateIconPreview(iconClass) {
-            var preview = document.getElementById('icon-preview');
-            if (preview) {
-                preview.className = iconClass ? iconClass : 'fa-solid fa-layer-group';
+            if (typeof updateIconPickerUI === 'function') {
+                updateIconPickerUI('category_icon', icon);
+            } else {
+                document.getElementById('category_icon').value = icon;
             }
         }
     </script>
+
 </body>
 
 </html>
