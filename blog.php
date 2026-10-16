@@ -154,7 +154,7 @@ $featured_article = isset($articles[0]) ? $articles[0] : null;
                                                 </p>
                                                 <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
                                                     <div class="ib-author-card">
-                                                        <img src="assets/images/service/Founder.jpeg" alt="Author" class="ib-author-img">
+                                                        <img src="assets/images/service/Founder.webp" alt="Author" class="ib-author-img">
                                                         <div class="ib-author-info">
                                                             <div class="ib-author-name"><?php echo htmlspecialchars($featured_article['author_name']); ?></div>
                                                             <div class="ib-author-role">Lead Business Consultant</div>
@@ -225,7 +225,7 @@ $featured_article = isset($articles[0]) ? $articles[0] : null;
                                                 </p>
                                                 <div class="ib-blog-card-footer">
                                                     <div class="ib-author-card">
-                                                        <img src="assets/images/service/Founder.jpeg" alt="Author" class="ib-author-img" style="width: 32px; height: 32px;">
+                                                        <img src="assets/images/service/Founder.webp" alt="Author" class="ib-author-img" style="width: 32px; height: 32px;">
                                                         <span class="ib-author-name" style="font-size: 13px;">Dammika B.</span>
                                                     </div>
                                                     <button class="ib-read-more-btn" onclick="openArticleModal('art-<?php echo $art['id']; ?>')" data-article-id="art-<?php echo $art['id']; ?>">
@@ -254,7 +254,7 @@ $featured_article = isset($articles[0]) ? $articles[0] : null;
                             <div class="col-lg-4">
                                 <div class="ib-blog-sidebar">
                                     <div class="ib-sidebar-widget ib-author-widget wow fadeInUp" data-wow-delay=".2s">
-                                        <img src="assets/images/service/Founder.jpeg" alt="Dammika Bandara" class="ib-author-avatar-lg">
+                                        <img src="assets/images/service/Founder.webp" alt="Dammika Bandara" class="ib-author-avatar-lg">
                                         <h5>Dammika Bandara</h5>
                                         <span class="ib-author-subtitle">Lead Business Consultant</span>
                                         <p>Over 20+ years of commercial, manufacturing, international market development, shipping coordination, and profit engineering experience helping Sri Lankan SMEs build profitable, resilient enterprises.</p>
@@ -324,7 +324,7 @@ $featured_article = isset($articles[0]) ? $articles[0] : null;
                     <h2 id="modal-article-title" class="ib-modal-title">Article Title</h2>
                     
                     <div class="ib-author-card mb-4 pb-3 border-bottom">
-                        <img src="assets/images/service/Founder.jpeg"
+                        <img src="assets/images/service/Founder.webp"
                             alt="Dammika Bandara" class="ib-author-img">
                         <div class="ib-author-info">
                             <div class="ib-author-name">Dammika Bandara</div>

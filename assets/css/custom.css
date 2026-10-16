@@ -2106,30 +2106,48 @@ header.header-area.ib-desktop-header {
 }
 
 /* Mobile Menu Bar - Only on Mobile/Tablet */
-@media (max-width: 991px) {
+  /* Hide desktop-only offcanvas button on mobile/tablet */
+  .menu_bar.menu_offcanvas {
+    display: none !important;
+  }
+
   .menu_bar.mobile_menu_bar {
-    width: 45px !important;
-    height: 40px !important;
-    padding: 9px 9px !important;
+    width: 44px !important;
+    height: 42px !important;
+    padding: 10px 9px !important;
     background: #091a32 !important;
-    /* Navy Blue */
-    border-radius: 8px !important;
+    border: 1.5px solid rgba(212, 175, 55, 0.45) !important;
+    border-radius: 10px !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
     align-items: center !important;
     cursor: pointer !important;
-    border: none !important;
+    box-shadow: 0 4px 12px rgba(9, 26, 50, 0.15) !important;
   }
 
   .menu_bar.mobile_menu_bar span {
     display: block !important;
+    height: 2px !important;
     background-color: #ffffff !important;
-    /* White lines */
     border-radius: 2px !important;
     transition: all 0.3s ease !important;
+    margin: 0 auto !important;
   }
-}
+
+  .menu_bar.mobile_menu_bar span:nth-child(1) {
+    width: 22px !important;
+  }
+
+  .menu_bar.mobile_menu_bar span:nth-child(2) {
+    width: 15px !important;
+    background-color: var(--accent-gold, #d4af37) !important;
+  }
+
+  .menu_bar.mobile_menu_bar span:nth-child(3) {
+    width: 22px !important;
+  }
+
 
 @media (min-width: 992px) {
   .menu_bar.mobile_menu_bar {
@@ -2877,10 +2895,12 @@ header.header-area.ib-desktop-header {
     z-index: 5 !important;
   }
 
-  /* Sticky Header එකේ අනවශ්‍ය දේවල් සැඟවීම */
+  /* Sticky Header: Hide unnecessary elements on mobile/tablet */
   .header-area.header-sticky .menu-area,
   .header-area.header-sticky .mainmenu,
-  .header-area.header-sticky .header-button {
+  .header-area.header-sticky .header-button,
+  .header-area.header-sticky .menu_bar.menu_offcanvas,
+  .header-area.header-sticky .header-right-item .menu_bar.menu_offcanvas {
     display: none !important;
   }
 
@@ -5467,6 +5487,7 @@ header.header-area.ib-desktop-header {
   }
 
   .tj-award .tj-award-title {
+    margin-left: 10px !important;
     font-size: 15px !important;
   }
 }
@@ -8423,8 +8444,8 @@ body.ib-modal-open {
 
 @media (max-width: 575px) {
   .tj-countup-section.countup-overlap-section {
-    margin-bottom: -50px !important;
-    margin-top: 25px;
+    margin-bottom: 10px !important;
+    margin-top: 1px;
   }
 
   .countup-video-card {
@@ -8446,7 +8467,7 @@ body.ib-modal-open {
   }
 
   .tj-service-section {
-    padding-top: 100px !important;
+    padding-top: 10px !important;
   }
 }
 

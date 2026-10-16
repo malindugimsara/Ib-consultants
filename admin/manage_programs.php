@@ -118,14 +118,16 @@ $programs = $conn->query("SELECT * FROM certificate_programs ORDER BY display_or
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
     <!-- CSS Dependencies -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/font-awesome-pro.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="admin.css">
-
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/images/logos/logo-2.webp">
 </head>
 
 <body>
@@ -216,10 +218,13 @@ $programs = $conn->query("SELECT * FROM certificate_programs ORDER BY display_or
                                     while ($row = $programs->fetch_assoc()): ?>
                                         <tr>
                                             <td><img src="../<?php echo $row['image_path']; ?>" class="img-preview"
-                                                    style="width: 110px; height: 70px; object-fit: cover; border-radius: 8px;"></td>
+                                                    style="width: 110px; height: 70px; object-fit: cover; border-radius: 8px;">
+                                            </td>
                                             <td>
-                                                <strong style="color: var(--admin-navy); font-size: 15px;"><?php echo htmlspecialchars($row['title']); ?></strong><br>
-                                                <small class="text-muted"><?php echo htmlspecialchars($row['description']); ?></small>
+                                                <strong
+                                                    style="color: var(--admin-navy); font-size: 15px;"><?php echo htmlspecialchars($row['title']); ?></strong><br>
+                                                <small
+                                                    class="text-muted"><?php echo htmlspecialchars($row['description']); ?></small>
                                             </td>
                                             <td class="text-center">
                                                 <?php if ($row['is_published'] == 1): ?>
@@ -240,13 +245,13 @@ $programs = $conn->query("SELECT * FROM certificate_programs ORDER BY display_or
                                                     <a href="manage_programs.php?toggle_publish=<?php echo $row['is_published']; ?>&id=<?php echo $row['id']; ?>"
                                                         class="btn-action <?php echo ($row['is_published'] == 1) ? 'btn-action-hide' : 'btn-action-publish'; ?>"
                                                         title="<?php echo ($row['is_published'] == 1) ? 'Hide / Unpublish Program' : 'Show / Publish Program'; ?>">
-                                                        <i class="fa-solid <?php echo ($row['is_published'] == 1) ? 'fa-eye-slash' : 'fa-eye'; ?>"></i>
+                                                        <i
+                                                            class="fa-solid <?php echo ($row['is_published'] == 1) ? 'fa-eye-slash' : 'fa-eye'; ?>"></i>
                                                     </a>
 
                                                     <!-- Delete Button -->
                                                     <a href="manage_programs.php?delete=<?php echo $row['id']; ?>"
-                                                        class="btn-action btn-action-delete"
-                                                        title="Delete Program"
+                                                        class="btn-action btn-action-delete" title="Delete Program"
                                                         data-item-name="<?php echo htmlspecialchars($row['title']); ?>">
                                                         <i class="fa-solid fa-trash-can"></i>
                                                     </a>
@@ -255,7 +260,8 @@ $programs = $conn->query("SELECT * FROM certificate_programs ORDER BY display_or
                                         </tr>
                                     <?php endwhile; else: ?>
                                     <tr>
-                                        <td colspan="4" class="text-center py-4 text-muted">No programs found in database.</td>
+                                        <td colspan="4" class="text-center py-4 text-muted">No programs found in database.
+                                        </td>
                                     </tr>
                                 <?php endif; ?>
                             </tbody>

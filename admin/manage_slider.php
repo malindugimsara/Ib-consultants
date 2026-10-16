@@ -12,8 +12,8 @@ $msg = '';
 
 // Toggle Publish / Hide Status
 if (isset($_GET['toggle_publish']) && isset($_GET['id'])) {
-    $id = (int)$_GET['id'];
-    $status = (int)$_GET['toggle_publish'];
+    $id = (int) $_GET['id'];
+    $status = (int) $_GET['toggle_publish'];
     $new_status = ($status == 1) ? 0 : 1;
     $conn->query("UPDATE hero_slider SET is_published = $new_status WHERE id = $id");
     header("Location: manage_slider.php?msg=updated");
@@ -22,7 +22,7 @@ if (isset($_GET['toggle_publish']) && isset($_GET['id'])) {
 
 // Delete Slide
 if (isset($_GET['delete'])) {
-    $id = (int)$_GET['delete'];
+    $id = (int) $_GET['delete'];
     $res = $conn->query("SELECT image_path FROM hero_slider WHERE id = $id");
     if ($res && $row = $res->fetch_assoc()) {
         if (!empty($row['image_path']) && file_exists("../" . $row['image_path'])) {
@@ -38,7 +38,7 @@ if (isset($_GET['delete'])) {
 $edit_mode = false;
 $edit_data = null;
 if (isset($_GET['edit'])) {
-    $edit_id = (int)$_GET['edit'];
+    $edit_id = (int) $_GET['edit'];
     $res = $conn->query("SELECT * FROM hero_slider WHERE id = $edit_id");
     if ($res && $res->num_rows > 0) {
         $edit_mode = true;
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if (isset($_POST['update_slide'])) {
-        $id = (int)$_POST['slide_id'];
+        $id = (int) $_POST['slide_id'];
         $image_sql_part = "";
 
         if (isset($_FILES["slide_image"]) && $_FILES["slide_image"]["error"] == 0) {
@@ -118,13 +118,17 @@ $slides = $conn->query("SELECT * FROM hero_slider ORDER BY id DESC");
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
     <!-- CSS Dependencies -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/font-awesome-pro.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="admin.css">
+
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/images/logos/logo-2.webp">
 </head>
 
 <body>
@@ -140,8 +144,10 @@ $slides = $conn->query("SELECT * FROM hero_slider ORDER BY id DESC");
 
                 <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
                     <div>
-                        <h2 style="color: var(--admin-navy); font-weight: 800; margin: 0; font-size: 26px;">Manage Hero Slider</h2>
-                        <p class="text-muted m-0" style="font-size: 14px;">Upload and control the promotional slider graphics shown on your main landing page.</p>
+                        <h2 style="color: var(--admin-navy); font-weight: 800; margin: 0; font-size: 26px;">Manage Hero
+                            Slider</h2>
+                        <p class="text-muted m-0" style="font-size: 14px;">Upload and control the promotional slider
+                            graphics shown on your main landing page.</p>
                     </div>
                 </div>
 
@@ -167,11 +173,13 @@ $slides = $conn->query("SELECT * FROM hero_slider ORDER BY id DESC");
 
                         <div class="row">
                             <div class="col-md-4 mb-3">
-                                <label class="form-label" style="font-weight: 600; font-size: 13px;">Slider Image (1920x1080px recommended)</label>
+                                <label class="form-label" style="font-weight: 600; font-size: 13px;">Slider Image
+                                    (1920x1080px recommended)</label>
                                 <input type="file" name="slide_image" class="form-control" accept="image/*" <?php echo $edit_mode ? '' : 'required'; ?>>
                                 <?php if ($edit_mode && !empty($edit_data['image_path'])): ?>
                                     <div class="mt-2 d-flex align-items-center gap-2">
-                                        <img src="../<?php echo $edit_data['image_path']; ?>" style="width: 80px; height: 45px; object-fit: cover; border-radius: 6px; border: 1px solid #e2e8f0;">
+                                        <img src="../<?php echo $edit_data['image_path']; ?>"
+                                            style="width: 80px; height: 45px; object-fit: cover; border-radius: 6px; border: 1px solid #e2e8f0;">
                                         <small class="text-muted">Current image (leave blank to keep unchanged)</small>
                                     </div>
                                 <?php endif; ?>
@@ -179,13 +187,15 @@ $slides = $conn->query("SELECT * FROM hero_slider ORDER BY id DESC");
                             <div class="col-md-8 mb-3">
                                 <label class="form-label" style="font-weight: 600; font-size: 13px;">Main Title</label>
                                 <input type="text" name="title" class="form-control"
-                                    placeholder="E.g. Expertise For Your Growth." 
+                                    placeholder="E.g. Expertise For Your Growth."
                                     value="<?php echo htmlspecialchars($edit_data['title'] ?? ''); ?>" required>
                             </div>
                             <div class="col-md-12 mb-3">
-                                <label class="form-label" style="font-weight: 600; font-size: 13px;">Short Description</label>
+                                <label class="form-label" style="font-weight: 600; font-size: 13px;">Short
+                                    Description</label>
                                 <textarea name="description" class="form-control" rows="2"
-                                    placeholder="E.g. Practical Business & Profit Improvement Solutions..." required><?php echo htmlspecialchars($edit_data['description'] ?? ''); ?></textarea>
+                                    placeholder="E.g. Practical Business & Profit Improvement Solutions..."
+                                    required><?php echo htmlspecialchars($edit_data['description'] ?? ''); ?></textarea>
                             </div>
                         </div>
 
@@ -220,15 +230,19 @@ $slides = $conn->query("SELECT * FROM hero_slider ORDER BY id DESC");
                             </thead>
                             <tbody>
                                 <?php if ($slides && $slides->num_rows > 0): ?>
-                                    <?php while ($row = $slides->fetch_assoc()): 
-                                        $is_pub = isset($row['is_published']) ? (int)$row['is_published'] : 1;
-                                    ?>
+                                    <?php while ($row = $slides->fetch_assoc()):
+                                        $is_pub = isset($row['is_published']) ? (int) $row['is_published'] : 1;
+                                        ?>
                                         <tr>
                                             <td>
-                                                <img src="../<?php echo $row['image_path']; ?>" class="img-preview" style="width: 120px; height: 68px; object-fit: cover; border-radius: 8px; border: 1px solid #e2e8f0;">
+                                                <img src="../<?php echo $row['image_path']; ?>" class="img-preview"
+                                                    style="width: 120px; height: 68px; object-fit: cover; border-radius: 8px; border: 1px solid #e2e8f0;">
                                             </td>
-                                            <td><strong style="color: var(--admin-navy);"><?php echo htmlspecialchars($row['title']); ?></strong></td>
-                                            <td style="font-size: 13px; color: #475569;"><?php echo htmlspecialchars($row['description']); ?></td>
+                                            <td><strong
+                                                    style="color: var(--admin-navy);"><?php echo htmlspecialchars($row['title']); ?></strong>
+                                            </td>
+                                            <td style="font-size: 13px; color: #475569;">
+                                                <?php echo htmlspecialchars($row['description']); ?></td>
                                             <td class="text-center">
                                                 <?php if ($is_pub == 1): ?>
                                                     <span class="badge-published">Published</span>
@@ -240,8 +254,7 @@ $slides = $conn->query("SELECT * FROM hero_slider ORDER BY id DESC");
                                                 <div class="action-btn-group justify-content-center">
                                                     <!-- Edit -->
                                                     <a href="manage_slider.php?edit=<?php echo $row['id']; ?>"
-                                                        class="btn-action btn-action-edit"
-                                                        title="Edit Slide">
+                                                        class="btn-action btn-action-edit" title="Edit Slide">
                                                         <i class="fa-solid fa-pen-to-square"></i>
                                                     </a>
 
@@ -249,13 +262,13 @@ $slides = $conn->query("SELECT * FROM hero_slider ORDER BY id DESC");
                                                     <a href="manage_slider.php?toggle_publish=<?php echo $is_pub; ?>&id=<?php echo $row['id']; ?>"
                                                         class="btn-action <?php echo ($is_pub == 1) ? 'btn-action-hide' : 'btn-action-publish'; ?>"
                                                         title="<?php echo ($is_pub == 1) ? 'Hide / Unpublish Slide' : 'Show / Publish Slide'; ?>">
-                                                        <i class="fa-solid <?php echo ($is_pub == 1) ? 'fa-eye-slash' : 'fa-eye'; ?>"></i>
+                                                        <i
+                                                            class="fa-solid <?php echo ($is_pub == 1) ? 'fa-eye-slash' : 'fa-eye'; ?>"></i>
                                                     </a>
 
                                                     <!-- Delete (Red) -->
                                                     <a href="manage_slider.php?delete=<?php echo $row['id']; ?>"
-                                                        class="btn-action btn-action-delete"
-                                                        title="Delete Slide"
+                                                        class="btn-action btn-action-delete" title="Delete Slide"
                                                         data-item-name="<?php echo htmlspecialchars($row['title']); ?>">
                                                         <i class="fa-solid fa-trash-can"></i>
                                                     </a>
@@ -265,7 +278,8 @@ $slides = $conn->query("SELECT * FROM hero_slider ORDER BY id DESC");
                                     <?php endwhile; ?>
                                 <?php else: ?>
                                     <tr>
-                                        <td colspan="5" class="text-center py-4 text-muted">No slides found in database. Add a new slide above!</td>
+                                        <td colspan="5" class="text-center py-4 text-muted">No slides found in database. Add
+                                            a new slide above!</td>
                                     </tr>
                                 <?php endif; ?>
                             </tbody>

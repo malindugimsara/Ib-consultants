@@ -78,9 +78,8 @@ body {
 }
 
 .sidebar-logo-frame {
-    width: 44px;
-    height: 44px;
-    background: #ffffff;
+    width: 54px;
+    height: 54px;
     border-radius: 10px;
     display: flex;
     align-items: center;

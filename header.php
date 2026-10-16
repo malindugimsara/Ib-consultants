@@ -372,11 +372,11 @@
                 <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
               </a>
             </div>
-            <!-- Desktop Offcanvas Menu Trigger Button (Sticky Header) -->
-            <div class="menu_bar menu_offcanvas ms-3" role="button" tabindex="0" title="More Info & Corporate Profile" aria-label="Open Offcanvas Menu" style="display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; padding: 0 !important;">
-              <span style="margin: 0 auto !important; align-self: center !important;"></span>
-              <span style="margin: 0 auto !important; align-self: center !important;"></span>
-              <span style="margin: 0 auto !important; align-self: center !important;"></span>
+            <!-- Desktop Offcanvas Menu Trigger Button (Sticky Header - Desktop Only) -->
+            <div class="menu_bar menu_offcanvas ms-3 d-none d-lg-flex" role="button" tabindex="0" title="More Info & Corporate Profile" aria-label="Open Offcanvas Menu">
+              <span></span>
+              <span></span>
+              <span></span>
             </div>
           </div>
 

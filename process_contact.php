@@ -11,6 +11,8 @@ require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    
     
     // Sanitize and capture POST form data
     $name = $conn->real_escape_string($_POST['conName']);

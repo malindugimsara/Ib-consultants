@@ -12,7 +12,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 // Delete inquiry message action
 $msg = '';
 if (isset($_GET['delete'])) {
-    $del_id = (int)$_GET['delete'];
+    $del_id = (int) $_GET['delete'];
     $stmt = $conn->prepare("DELETE FROM contact_messages WHERE id = ?");
     if ($stmt) {
         $stmt->bind_param("i", $del_id);
@@ -35,25 +35,25 @@ if (isset($_GET['msg']) && $_GET['msg'] === 'deleted') {
 $stat_inquiries = 0;
 $inq_res = $conn->query("SELECT COUNT(*) AS total FROM contact_messages");
 if ($inq_res && $row = $inq_res->fetch_assoc()) {
-    $stat_inquiries = (int)$row['total'];
+    $stat_inquiries = (int) $row['total'];
 }
 
 $stat_workshops = 0;
 $ws_res = $conn->query("SELECT COUNT(*) AS total FROM business_workshops WHERE is_published = 1");
 if ($ws_res && $row = $ws_res->fetch_assoc()) {
-    $stat_workshops = (int)$row['total'];
+    $stat_workshops = (int) $row['total'];
 }
 
 $stat_programs = 0;
 $prog_res = $conn->query("SELECT COUNT(*) AS total FROM certificate_programs WHERE is_published = 1");
 if ($prog_res && $row = $prog_res->fetch_assoc()) {
-    $stat_programs = (int)$row['total'];
+    $stat_programs = (int) $row['total'];
 }
 
 $stat_diplomas = 0;
 $dip_res = @$conn->query("SELECT COUNT(*) AS total FROM diploma_programs WHERE is_published = 1");
 if ($dip_res && $row = $dip_res->fetch_assoc()) {
-    $stat_diplomas = (int)$row['total'];
+    $stat_diplomas = (int) $row['total'];
 }
 
 // 2. Fetch all contact inquiries (latest first)
@@ -67,16 +67,20 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - IB Consultants</title>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
     <!-- CSS Dependencies -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/font-awesome-pro.min.css">
     <link rel="stylesheet" href="admin.css">
+
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/images/logos/logo-2.webp">
 </head>
 
 <body>
@@ -88,15 +92,19 @@ $result = $conn->query($sql);
 
             <!-- Right Main Content Area -->
             <div class="col-lg-10 col-md-9 main-content">
-                
+
                 <!-- Common Top Bar Component -->
                 <?php include 'topbar.php'; ?>
 
                 <!-- Page Heading -->
                 <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
                     <div>
-                        <h2 style="color: var(--admin-navy); font-weight: 800; margin: 0; font-size: 26px; letter-spacing: -0.5px;">Dashboard Overview</h2>
-                        <p class="text-muted m-0" style="font-size: 14px;">Welcome back, <strong><?php echo htmlspecialchars($_SESSION['admin_user'] ?? 'Admin'); ?></strong>! Here is your business activity overview.</p>
+                        <h2
+                            style="color: var(--admin-navy); font-weight: 800; margin: 0; font-size: 26px; letter-spacing: -0.5px;">
+                            Dashboard Overview</h2>
+                        <p class="text-muted m-0" style="font-size: 14px;">Welcome back,
+                            <strong><?php echo htmlspecialchars($_SESSION['admin_user'] ?? 'Admin'); ?></strong>! Here
+                            is your business activity overview.</p>
                     </div>
                 </div>
 
@@ -162,7 +170,8 @@ $result = $conn->query($sql);
                         <?php if ($result && $result->num_rows > 0): ?>
                             <div class="table-search-box">
                                 <i class="fa-solid fa-magnifying-glass"></i>
-                                <input type="text" id="inquirySearch" placeholder="Search inquiries..." onkeyup="filterInquiries()">
+                                <input type="text" id="inquirySearch" placeholder="Search inquiries..."
+                                    onkeyup="filterInquiries()">
                             </div>
                         <?php endif; ?>
                     </div>
@@ -180,20 +189,21 @@ $result = $conn->query($sql);
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php while ($row = $result->fetch_assoc()): 
+                                    <?php while ($row = $result->fetch_assoc()):
                                         $initial = strtoupper(substr($row['name'] ?? 'C', 0, 1));
                                         $clean_mobile = preg_replace('/[^0-9]/', '', $row['mobile'] ?? '');
                                         $clean_wa = !empty($row['whatsapp']) ? preg_replace('/[^0-9]/', '', $row['whatsapp']) : $clean_mobile;
                                         if (strlen($clean_wa) == 10 && substr($clean_wa, 0, 1) == '0') {
                                             $clean_wa = '94' . substr($clean_wa, 1);
                                         }
-                                    ?>
+                                        ?>
                                         <tr class="inquiry-row">
                                             <!-- Date & Time -->
                                             <td>
                                                 <div class="date-meta-cell">
                                                     <strong><?php echo date('d M Y', strtotime($row['created_at'])); ?></strong>
-                                                    <span><i class="fa-regular fa-clock me-1"></i><?php echo date('h:i A', strtotime($row['created_at'])); ?></span>
+                                                    <span><i
+                                                            class="fa-regular fa-clock me-1"></i><?php echo date('h:i A', strtotime($row['created_at'])); ?></span>
                                                 </div>
                                             </td>
 
@@ -204,26 +214,34 @@ $result = $conn->query($sql);
                                                         <?php echo $initial; ?>
                                                     </div>
                                                     <div class="customer-meta">
-                                                        <strong class="searchable-name"><?php echo htmlspecialchars($row['name']); ?></strong>
-                                                        
+                                                        <strong
+                                                            class="searchable-name"><?php echo htmlspecialchars($row['name']); ?></strong>
+
                                                         <div class="customer-links">
                                                             <!-- Email Pill -->
                                                             <?php if (!empty($row['email'])): ?>
-                                                                <a href="mailto:<?php echo htmlspecialchars($row['email']); ?>" class="contact-pill contact-pill-email searchable-email" title="Send Email">
-                                                                    <i class="fa-solid fa-envelope"></i> <?php echo htmlspecialchars($row['email']); ?>
+                                                                <a href="mailto:<?php echo htmlspecialchars($row['email']); ?>"
+                                                                    class="contact-pill contact-pill-email searchable-email"
+                                                                    title="Send Email">
+                                                                    <i class="fa-solid fa-envelope"></i>
+                                                                    <?php echo htmlspecialchars($row['email']); ?>
                                                                 </a>
                                                             <?php endif; ?>
 
                                                             <!-- Phone Call Pill -->
                                                             <?php if (!empty($row['mobile'])): ?>
-                                                                <a href="tel:<?php echo htmlspecialchars($row['mobile']); ?>" class="contact-pill contact-pill-phone" title="Call Customer">
-                                                                    <i class="fa-solid fa-phone"></i> <?php echo htmlspecialchars($row['mobile']); ?>
+                                                                <a href="tel:<?php echo htmlspecialchars($row['mobile']); ?>"
+                                                                    class="contact-pill contact-pill-phone" title="Call Customer">
+                                                                    <i class="fa-solid fa-phone"></i>
+                                                                    <?php echo htmlspecialchars($row['mobile']); ?>
                                                                 </a>
                                                             <?php endif; ?>
 
                                                             <!-- Direct WhatsApp Pill -->
                                                             <?php if (!empty($row['whatsapp']) || !empty($clean_wa)): ?>
-                                                                <a href="https://wa.me/<?php echo $clean_wa; ?>" target="_blank" class="contact-pill contact-pill-whatsapp" title="Chat on WhatsApp">
+                                                                <a href="https://wa.me/<?php echo $clean_wa; ?>" target="_blank"
+                                                                    class="contact-pill contact-pill-whatsapp"
+                                                                    title="Chat on WhatsApp">
                                                                     <i class="fa-brands fa-whatsapp"></i> WhatsApp
                                                                 </a>
                                                             <?php endif; ?>
@@ -252,13 +270,16 @@ $result = $conn->query($sql);
                                                 <div class="action-btn-group justify-content-center">
                                                     <!-- Reply Email -->
                                                     <?php if (!empty($row['email'])): ?>
-                                                        <a href="mailto:<?php echo htmlspecialchars($row['email']); ?>?subject=Inquiry%20Response%20-%20IB%20Consultants" class="btn-action btn-action-edit" title="Reply via Email">
+                                                        <a href="mailto:<?php echo htmlspecialchars($row['email']); ?>?subject=Inquiry%20Response%20-%20IB%20Consultants"
+                                                            class="btn-action btn-action-edit" title="Reply via Email">
                                                             <i class="fa-solid fa-reply"></i>
                                                         </a>
                                                     <?php endif; ?>
 
                                                     <!-- Delete Button -->
-                                                    <a href="dashboard.php?delete=<?php echo $row['id']; ?>" class="btn-action btn-action-delete" title="Delete Inquiry" data-item-name="Inquiry from <?php echo htmlspecialchars($row['name']); ?>">
+                                                    <a href="dashboard.php?delete=<?php echo $row['id']; ?>"
+                                                        class="btn-action btn-action-delete" title="Delete Inquiry"
+                                                        data-item-name="Inquiry from <?php echo htmlspecialchars($row['name']); ?>">
                                                         <i class="fa-solid fa-trash-can"></i>
                                                     </a>
                                                 </div>
@@ -274,9 +295,11 @@ $result = $conn->query($sql);
                             <div class="empty-state-icon">
                                 <i class="fa-solid fa-inbox"></i>
                             </div>
-                            <h4 style="color: var(--admin-navy); font-weight: 800; margin-bottom: 8px;">No Customer Inquiries Yet</h4>
+                            <h4 style="color: var(--admin-navy); font-weight: 800; margin-bottom: 8px;">No Customer
+                                Inquiries Yet</h4>
                             <p class="text-muted" style="max-width: 450px; margin: 0 auto 20px auto;">
-                                When visitors submit questions or workshop booking requests through the website's contact form, they will appear here instantly.
+                                When visitors submit questions or workshop booking requests through the website's contact
+                                form, they will appear here instantly.
                             </p>
                             <a href="../contact.php" target="_blank" class="btn btn-outline-dark btn-sm">
                                 <i class="fa-solid fa-paper-plane me-1"></i> Test Contact Form on Website
@@ -296,24 +319,24 @@ $result = $conn->query($sql);
 
     <!-- Client-side Instant Filter Script -->
     <script>
-    function filterInquiries() {
-        var input = document.getElementById('inquirySearch');
-        var filter = input.value.toLowerCase().trim();
-        var rows = document.querySelectorAll('.inquiry-row');
+        function filterInquiries() {
+            var input = document.getElementById('inquirySearch');
+            var filter = input.value.toLowerCase().trim();
+            var rows = document.querySelectorAll('.inquiry-row');
 
-        rows.forEach(function(row) {
-            var name = row.querySelector('.searchable-name') ? row.querySelector('.searchable-name').textContent.toLowerCase() : '';
-            var email = row.querySelector('.searchable-email') ? row.querySelector('.searchable-email').textContent.toLowerCase() : '';
-            var service = row.querySelector('.searchable-service') ? row.querySelector('.searchable-service').textContent.toLowerCase() : '';
-            var message = row.querySelector('.searchable-message') ? row.querySelector('.searchable-message').textContent.toLowerCase() : '';
+            rows.forEach(function (row) {
+                var name = row.querySelector('.searchable-name') ? row.querySelector('.searchable-name').textContent.toLowerCase() : '';
+                var email = row.querySelector('.searchable-email') ? row.querySelector('.searchable-email').textContent.toLowerCase() : '';
+                var service = row.querySelector('.searchable-service') ? row.querySelector('.searchable-service').textContent.toLowerCase() : '';
+                var message = row.querySelector('.searchable-message') ? row.querySelector('.searchable-message').textContent.toLowerCase() : '';
 
-            if (name.includes(filter) || email.includes(filter) || service.includes(filter) || message.includes(filter)) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
-            }
-        });
-    }
+                if (name.includes(filter) || email.includes(filter) || service.includes(filter) || message.includes(filter)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
     </script>
 
 </body>
