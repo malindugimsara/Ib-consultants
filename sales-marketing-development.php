@@ -105,7 +105,7 @@
                             <div class="col-lg-8">
                                 <div class="post-details-wrapper">
                                     <div class="blog-images wow fadeInUp" data-wow-delay=".1s">
-                                        <img src="assets/images/service/service-sales-marketing.jpg"
+                                        <img src="assets/images/service/service-sales-marketing.webp"
                                             alt="Sales and Marketing Development by IB Consultants">
                                     </div>
                                     <h2 class="title title-anim">Build a Systematic Sales & Marketing Engine.</h2>
@@ -144,13 +144,13 @@
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="image-box wow fadeInUp" data-wow-delay=".3s">
-                                                        <img src="assets/images/service/service-1.jpg"
+                                                        <img src="assets/images/service/service-1.webp"
                                                             alt="Lead Generation and Conversion">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="image-box wow fadeInUp" data-wow-delay=".5s">
-                                                        <img src="assets/images/service/service-2.jpg"
+                                                        <img src="assets/images/service/service-2.webp"
                                                             alt="Sales KPI and Performance Management">
                                                     </div>
                                                 </div>

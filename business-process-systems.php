@@ -104,7 +104,7 @@
                             <div class="col-lg-8">
                                 <div class="post-details-wrapper">
                                     <div class="blog-images wow fadeInUp" data-wow-delay=".1s">
-                                        <img src="assets/images/service/service-business-systems.jpg"
+                                        <img src="assets/images/service/service-business-systems.webp"
                                             alt="Business Process and Systems Development by IB Consultants">
                                     </div>
                                     <h2 class="title title-anim">Create Clear Processes & Management Systems.</h2>
@@ -142,13 +142,13 @@
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="image-box wow fadeInUp" data-wow-delay=".3s">
-                                                        <img src="assets/images/service/service-1.jpg"
+                                                        <img src="assets/images/service/service-1.webp"
                                                             alt="SOP and workflow redesign">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="image-box wow fadeInUp" data-wow-delay=".5s">
-                                                        <img src="assets/images/service/service-2.jpg"
+                                                        <img src="assets/images/service/service-2.webp"
                                                             alt="Management reporting and KPIs">
                                                     </div>
                                                 </div>

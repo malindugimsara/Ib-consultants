@@ -120,25 +120,25 @@
           <div class="swiper-slide marquee-item">
             <h4 class="marquee-text">Market Expansion</h4>
             <div class="marquee-img">
-              <img src="assets/images/marquee/marquee3.png" alt="" class="img-fluid">
+              <img src="assets/images/marquee/marquee3.webp" alt="" class="img-fluid">
             </div>
           </div>
           <div class="swiper-slide marquee-item">
             <h4 class="marquee-text">Corporate Training</h4>
             <div class="marquee-img">
-              <img src="assets/images/marquee/marquee4.png" alt="" class="img-fluid">
+              <img src="assets/images/marquee/marquee4.webp" alt="" class="img-fluid">
             </div>
           </div>
           <div class="swiper-slide marquee-item">
             <h4 class="marquee-text">Financial Control</h4>
             <div class="marquee-img">
-              <img src="assets/images/marquee/marquee5.png" alt="" class="img-fluid">
+              <img src="assets/images/marquee/marquee5.webp" alt="" class="img-fluid">
             </div>
           </div>
           <div class="swiper-slide marquee-item">
             <h4 class="marquee-text">Strategic Advisory</h4>
             <div class="marquee-img">
-              <img src="assets/images/marquee/marquee6.png" alt="" class="img-fluid">
+              <img src="assets/images/marquee/marquee6.webp" alt="" class="img-fluid">
             </div>
           </div>
         </div>

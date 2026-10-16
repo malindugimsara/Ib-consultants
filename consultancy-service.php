@@ -81,7 +81,7 @@ $core_result = $conn->query($core_query);
                 <section class="tj-page-header section-gap-x custom-page-header"
                     data-bg-image="assets/images/bg/consultancy.webp">
 
-                    <!-- Dark Overlay (මෙය ඔබේ CSS එකෙන් පාලනය වේ) -->
+                    <!-- Dark Overlay (styled via custom CSS) -->
                     <div class="custom-page-overlay"></div>
 
                     <div class="container">
@@ -141,7 +141,7 @@ $core_result = $conn->query($core_query);
                                         while ($core = $core_result->fetch_assoc()):
                                             $num_formatted = str_pad($count, 2, '0', STR_PAD_LEFT) . '.';
 
-                                            // Database එකේ ඇති ලැයිස්තුව (List Items) අලුත් පේළියෙන් (Newline) කඩා ගැනීම
+                                            // Split stored newline-separated list items into an array
                                             $list_array = explode("\n", trim($core['list_items']));
                                             ?>
 
@@ -152,8 +152,8 @@ $core_result = $conn->query($core_query);
                                                         <div class="service-icon"><i
                                                                 class="<?php echo htmlspecialchars($core['icon_class']); ?>"></i>
                                                         </div>
-                                                        <h4 class="title">
-                                                            <a href="<?php echo htmlspecialchars($core['page_link']); ?>">
+                                                        <h4 class="title ">
+                                                            <a href="<?php echo htmlspecialchars($core['page_link']); ?>" class="title-test">
                                                                 <?php echo $num_formatted; ?>
                                                                 <?php echo htmlspecialchars($core['title']); ?>
                                                             </a>
@@ -165,7 +165,7 @@ $core_result = $conn->query($core_query);
                                                         </p>
                                                         <ul class="list-items">
                                                             <?php foreach ($list_array as $item):
-                                                                if (trim($item) != ''): // හිස් පේළි මඟහැරීම
+                                                                if (trim($item) != ''): 
                                                                     ?>
                                                                     <li><i
                                                                             class="tji-list"></i><?php echo htmlspecialchars(trim($item)); ?>
@@ -212,7 +212,7 @@ $core_result = $conn->query($core_query);
                             <div class="col-lg-8">
                                 <div class="post-details-wrapper">
                                     <div class="blog-images wow fadeInUp" data-wow-delay=".1s">
-                                        <img src="assets/images/service/service-details.jpg" alt="Consultancy Services">
+                                        <img src="assets/images/service/service-details.webp" alt="Consultancy Services">
                                     </div>
                                     <h2 class="title title-anim topic-color">Practical Business, Profitability & Growth
                                         Solutions.
@@ -250,13 +250,13 @@ $core_result = $conn->query($core_query);
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="image-box wow fadeInUp" data-wow-delay=".3s">
-                                                        <img src="assets/images/service/service1.jpg"
+                                                        <img src="assets/images/service/service1.webp"
                                                             alt="Business Strategy Implementation">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="image-box wow fadeInUp" data-wow-delay=".5s">
-                                                        <img src="assets/images/service/service2.jpg"
+                                                        <img src="assets/images/service/service2.webp"
                                                             alt="KPI Measurement">
                                                     </div>
                                                 </div>
@@ -407,7 +407,7 @@ $core_result = $conn->query($core_query);
                                                 </a>
                                             </div>
                                             <div class="feature-images">
-                                                <img src="assets/images/service/Founder.jpeg" alt="Consultancy Contact">
+                                                <img src="assets/images/service/Founder.webp" alt="Consultancy Contact">
                                             </div>
                                         </div>
                                     </div>

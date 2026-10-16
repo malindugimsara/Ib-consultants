@@ -1,11 +1,11 @@
 <?php
 include_once 'db.php'; 
 
-// ලිපි සියල්ල ලබාගැනීම
+// Fetch all published articles
 $blog_query = "SELECT * FROM blog_posts WHERE is_published = 1 ORDER BY created_at DESC";
 $blog_result = $conn->query($blog_query);
 
-// ලිපි සියල්ල Array එකකට දැමීම (පහසුවෙන් පාවිච්චි කිරීමට)
+// Populate articles array for easy access and rendering
 $articles = [];
 if($blog_result && $blog_result->num_rows > 0) {
     while($row = $blog_result->fetch_assoc()) {
@@ -13,7 +13,7 @@ if($blog_result && $blog_result->num_rows > 0) {
     }
 }
 
-// පළමු ලිපිය Featured එක ලෙස ගැනීම
+// Select the latest article as the featured article
 $featured_article = isset($articles[0]) ? $articles[0] : null;
 ?>
 
@@ -199,7 +199,7 @@ $featured_article = isset($articles[0]) ? $articles[0] : null;
                                 <div class="row g-4" id="blog-articles-grid">
 
                                     <?php 
-                                    // සියලුම ලිපි මෙහි පෙන්වයි
+                                    // Render all article cards dynamically
                                     foreach($articles as $art): 
                                     ?>
                                     <!-- Dynamic Article Card -->
@@ -385,7 +385,7 @@ $featured_article = isset($articles[0]) ? $articles[0] : null;
 
     <!-- Blog Interactive Data & Scripts -->
     <script>
-        // Database එකෙන් එන ලිපි JavaScript Object එකක් බවට පත් කිරීම
+        // Convert database articles to client-side JavaScript object
     const IB_ARTICLES = {
         <?php foreach($articles as $art): ?>
         'art-<?php echo $art['id']; ?>': {

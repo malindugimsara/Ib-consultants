@@ -32,10 +32,10 @@
 
     <?php
     include_once 'db.php';
-    $slider_query = "SELECT * FROM hero_slider ORDER BY id ASC";
+    $slider_query = "SELECT * FROM hero_slider WHERE is_published = 1 ORDER BY id ASC";
     $slider_result = $conn->query($slider_query);
-     // client review
-    $reviews_query = "SELECT * FROM client_reviews ORDER BY display_order ASC, id DESC";
+    // client review
+    $reviews_query = "SELECT * FROM client_reviews WHERE is_published = 1 ORDER BY display_order ASC, id DESC";
     $reviews_result = $conn->query($reviews_query);
     ?>
 
@@ -98,30 +98,64 @@
                                 while ($slide = $slider_result->fetch_assoc()):
                                     ?>
 
+                                            <div class="swiper-slide tj-slider-item">
+                                                <div class="slider-bg-image"
+                                                    style="background-image: url('<?php echo $slide['image_path']; ?>');"></div>
+                                                <div class="container relative z-3 mt-lg-custom">
+                                                    <div class="row">
+                                                        <div class="col-12 col-md-10 col-lg-8 col-xl-8">
+                                                            <div class="slider-wrapper text-center text-lg-start">
+                                                                <div class="slider-content">
+                                                                    <h1 class="slider-title text-white">
+                                                                        <?php
+                                                                        $slide_title = $slide['title'];
+                                                                        if (strpos($slide_title, '<span') === false) {
+                                                                            $words = explode(' ', trim($slide_title));
+                                                                            if (count($words) > 1) {
+                                                                                $last_word = array_pop($words);
+                                                                                $slide_title = implode(' ', $words) . ' <span>' . $last_word . '</span>';
+                                                                            }
+                                                                        }
+                                                                        echo $slide_title;
+                                                                        ?>
+                                                                    </h1>
+                                                                    <div class="slider-desc text-white">
+                                                                        <?php echo $slide['description']; ?>
+                                                                    </div>
+                                                                    <div
+                                                                        class="slider-btn d-flex justify-content-center justify-content-lg-start mt-4">
+                                                                        <a class="tj-primary-btn" href="contact.php">
+                                                                            <span class="btn-text topic-color2"><span>Get a
+                                                                                    Consultation</span></span>
+                                                                            <span class="btn-icon"><i
+                                                                                    class="tji-arrow-right-long"></i></span>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php
+                                endwhile;
+                            else:
+                                ?>
+
                                     <div class="swiper-slide tj-slider-item">
                                         <div class="slider-bg-image"
-                                            style="background-image: url('<?php echo $slide['image_path']; ?>');"></div>
+                                            style="background-image: url('assets/images/hero/slider-1.jpg');"></div>
                                         <div class="container relative z-3 mt-lg-custom">
                                             <div class="row">
                                                 <div class="col-12 col-md-10 col-lg-8 col-xl-8">
                                                     <div class="slider-wrapper text-center text-lg-start">
                                                         <div class="slider-content">
-                                                            <h1 class="slider-title text-white">
-                                                                <?php 
-                                                                $slide_title = $slide['title'];
-                                                                if (strpos($slide_title, '<span') === false) {
-                                                                    $words = explode(' ', trim($slide_title));
-                                                                    if (count($words) > 1) {
-                                                                        $last_word = array_pop($words);
-                                                                        $slide_title = implode(' ', $words) . ' <span>' . $last_word . '</span>';
-                                                                    }
-                                                                }
-                                                                echo $slide_title; 
-                                                                ?>
+                                                            <h1 class="slider-title text-white">Expertise For Your
+                                                                <span>Growth.</span>
                                                             </h1>
-                                                            <div class="slider-desc text-white">
-                                                                <?php echo $slide['description']; ?>
-                                                            </div>
+                                                            <div class="slider-desc text-white">Practical Business & Profit
+                                                                Improvement Consulting for Sri Lankan SMEs and Manufacturing
+                                                                Businesses.</div>
                                                             <div
                                                                 class="slider-btn d-flex justify-content-center justify-content-lg-start mt-4">
                                                                 <a class="tj-primary-btn" href="contact.php">
@@ -137,40 +171,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <?php
-                                endwhile;
-                            else:
-                                ?>
-
-                                <div class="swiper-slide tj-slider-item">
-                                    <div class="slider-bg-image"
-                                        style="background-image: url('assets/images/hero/slider-1.jpg');"></div>
-                                    <div class="container relative z-3 mt-lg-custom">
-                                        <div class="row">
-                                            <div class="col-12 col-md-10 col-lg-8 col-xl-8">
-                                                <div class="slider-wrapper text-center text-lg-start">
-                                                    <div class="slider-content">
-                                                        <h1 class="slider-title text-white">Expertise For Your
-                                                            <span>Growth.</span>
-                                                        </h1>
-                                                        <div class="slider-desc text-white">Practical Business & Profit
-                                                            Improvement Consulting for Sri Lankan SMEs and Manufacturing
-                                                            Businesses.</div>
-                                                        <div
-                                                            class="slider-btn d-flex justify-content-center justify-content-lg-start mt-4">
-                                                            <a class="tj-primary-btn" href="contact.php">
-                                                                <span class="btn-text topic-color2"><span>Get a
-                                                                        Consultation</span></span>
-                                                                <span class="btn-icon"><i
-                                                                        class="tji-arrow-right-long"></i></span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             <?php endif; ?>
 
                         </div>
@@ -514,7 +514,7 @@
                                 <a href="consultancy-service.php"
                                     class="service-item style-1 main-service-card custom-mobile-card d-block no-text-decoration">
                                     <div class="service-img">
-                                        <img src="assets/images/service/service-1.jpg" alt="Consultancy Services"
+                                        <img src="assets/images/service/service-1.webp" alt="Consultancy Services"
                                             class="img-fluid">
                                     </div>
                                     <div class="service-icon">
@@ -539,7 +539,7 @@
                                 <a href="training-programs.php"
                                     class="service-item style-1 main-service-card custom-mobile-card d-block no-text-decoration">
                                     <div class="service-img">
-                                        <img src="assets/images/service/service-2.jpg" alt="Training and Programs"
+                                        <img src="assets/images/service/service-2.webp" alt="Training and Programs"
                                             class="img-fluid">
                                     </div>
                                     <div class="service-icon">
@@ -645,74 +645,84 @@
 
                             <!-- Right Column: Bespoke Executive Testimonial Slider -->
                             <div class="col-lg-7">
-    <div class="ib-testimonial-showcase wow fadeInRight" data-wow-delay=".4s">
-        <div class="swiper testimonial-slider-2">
-            <div class="swiper-wrapper">
+                                <div class="ib-testimonial-showcase wow fadeInRight" data-wow-delay=".4s">
+                                    <div class="swiper testimonial-slider-2">
+                                        <div class="swiper-wrapper">
 
-                <?php 
-                if($reviews_result && $reviews_result->num_rows > 0): 
-                    while($rev = $reviews_result->fetch_assoc()):
-                ?>
-                <div class="swiper-slide">
-                    <div class="ib-testimonial-card">
-                        <div class="ib-card-top-bar">
-                            <span class="ib-sector-tag">
-                                <i class="<?php echo htmlspecialchars($rev['sector_icon']); ?>"></i> <?php echo htmlspecialchars($rev['sector_name']); ?>
-                            </span>
-                            <div class="ib-card-stars">
-                                <?php for($i=0; $i<$rev['stars']; $i++) { echo '<i class="fa-solid fa-star"></i> '; } ?>
+                                            <?php
+                                            if ($reviews_result && $reviews_result->num_rows > 0):
+                                                while ($rev = $reviews_result->fetch_assoc()):
+                                                    ?>
+                                                            <div class="swiper-slide">
+                                                                <div class="ib-testimonial-card">
+                                                                    <div class="ib-card-top-bar">
+                                                                        <span class="ib-sector-tag">
+                                                                            <i
+                                                                                class="<?php echo htmlspecialchars($rev['sector_icon']); ?>"></i>
+                                                                            <?php echo htmlspecialchars($rev['sector_name']); ?>
+                                                                        </span>
+                                                                        <div class="ib-card-stars">
+                                                                            <?php for ($i = 0; $i < $rev['stars']; $i++) {
+                                                                                echo '<i class="fa-solid fa-star"></i> ';
+                                                                            } ?>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="ib-quote-content">
+                                                                        <div class="ib-quote-icon">
+                                                                            <i class="fa-solid fa-quote-left"></i>
+                                                                        </div>
+                                                                        <p class="ib-quote-text">
+                                                                            “<?php echo htmlspecialchars($rev['quote_text']); ?>”
+                                                                        </p>
+                                                                    </div>
+
+                                                                    <div class="ib-impact-tag">
+                                                                        <i class="fa-solid fa-chart-line"></i>
+                                                                        <span><strong>Key Impact:</strong>
+                                                                            <?php echo htmlspecialchars($rev['impact_text']); ?></span>
+                                                                    </div>
+
+                                                                    <div class="ib-author-footer">
+                                                                        <div class="ib-author-monogram">
+                                                                            <?php echo htmlspecialchars($rev['author_monogram']); ?>
+                                                                        </div>
+                                                                        <div class="ib-author-info">
+                                                                            <h4 class="ib-author-name">
+                                                                                <?php echo htmlspecialchars($rev['author_name']); ?>
+                                                                            </h4>
+                                                                            <span
+                                                                                class="ib-author-company"><?php echo htmlspecialchars($rev['author_company']); ?></span>
+                                                                        </div>
+                                                                        <div class="ib-verified-badge">
+                                                                            <i class="fa-solid fa-circle-check"></i>
+                                                                            <span>Verified Client</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        <?php
+                                                endwhile;
+                                            endif;
+                                            ?>
+
+                                        </div>
+
+                                        <!-- Custom Navigation & Pagination Footer -->
+                                        <div class="ib-slider-controls">
+                                            <div class="swiper-pagination-area ib-pagination-custom"></div>
+                                            <div class="ib-nav-buttons">
+                                                <button class="slider-prev ib-nav-btn" aria-label="Previous Slide">
+                                                    <i class="fa-solid fa-arrow-left"></i>
+                                                </button>
+                                                <button class="slider-next ib-nav-btn" aria-label="Next Slide">
+                                                    <i class="fa-solid fa-arrow-right"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="ib-quote-content">
-                            <div class="ib-quote-icon">
-                                <i class="fa-solid fa-quote-left"></i>
-                            </div>
-                            <p class="ib-quote-text">
-                                “<?php echo htmlspecialchars($rev['quote_text']); ?>”
-                            </p>
-                        </div>
-
-                        <div class="ib-impact-tag">
-                            <i class="fa-solid fa-chart-line"></i>
-                            <span><strong>Key Impact:</strong> <?php echo htmlspecialchars($rev['impact_text']); ?></span>
-                        </div>
-
-                        <div class="ib-author-footer">
-                            <div class="ib-author-monogram"><?php echo htmlspecialchars($rev['author_monogram']); ?></div>
-                            <div class="ib-author-info">
-                                <h4 class="ib-author-name"><?php echo htmlspecialchars($rev['author_name']); ?></h4>
-                                <span class="ib-author-company"><?php echo htmlspecialchars($rev['author_company']); ?></span>
-                            </div>
-                            <div class="ib-verified-badge">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <span>Verified Client</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <?php 
-                    endwhile; 
-                endif; 
-                ?>
-
-            </div>
-
-            <!-- Custom Navigation & Pagination Footer -->
-            <div class="ib-slider-controls">
-                <div class="swiper-pagination-area ib-pagination-custom"></div>
-                <div class="ib-nav-buttons">
-                    <button class="slider-prev ib-nav-btn" aria-label="Previous Slide">
-                        <i class="fa-solid fa-arrow-left"></i>
-                    </button>
-                    <button class="slider-next ib-nav-btn" aria-label="Next Slide">
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
                         </div>
                     </div>
                 </section>

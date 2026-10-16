@@ -105,7 +105,7 @@
                             <div class="col-lg-8">
                                 <div class="post-details-wrapper">
                                     <div class="blog-images wow fadeInUp" data-wow-delay=".1s">
-                                        <img src="assets/images/service/service-profit-improvement.jpg"
+                                        <img src="assets/images/service/service-profit-improvement.webp"
                                             alt="Profit Improvement and Cost Management by IB Consultants">
                                     </div>
                                     <h2 class="title title-anim">Identify Profit Leakage & Improve Gross Margin.</h2>
@@ -143,13 +143,13 @@
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="image-box wow fadeInUp" data-wow-delay=".3s">
-                                                        <img src="assets/images/service/service-1.jpg"
+                                                        <img src="assets/images/service/service-1.webp"
                                                             alt="Pricing and margin optimization">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="image-box wow fadeInUp" data-wow-delay=".5s">
-                                                        <img src="assets/images/service/service-2.jpg"
+                                                        <img src="assets/images/service/service-2.webp"
                                                             alt="Profit improvement initiatives">
                                                     </div>
                                                 </div>

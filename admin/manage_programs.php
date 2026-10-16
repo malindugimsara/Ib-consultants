@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_program'])) {
 
     $update_sql = "UPDATE certificate_programs SET title='$title', description='$description', icon_class='$icon_class'";
 
-    // අලුත් පින්තූරයක් Upload කර ඇත්නම් පමණක් එය Update කිරීම
+    // Update image only if a new file is uploaded
     if (!empty($_FILES["image"]["name"])) {
         $target_dir = "../uploads/programs/";
         $image_name = time() . '_' . basename($_FILES["image"]["name"]);
@@ -52,14 +52,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_program'])) {
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
             $image_path = "uploads/programs/" . $image_name;
 
-            // පරණ පින්තූරය සර්වර් එකෙන් මකා දැමීම
+            // Delete old image from server
             $old_img_res = $conn->query("SELECT image_path FROM certificate_programs WHERE id=$id");
             if ($row = $old_img_res->fetch_assoc()) {
                 if (file_exists("../" . $row['image_path'])) {
                     unlink("../" . $row['image_path']);
                 }
             }
-            // අලුත් පින්තූරයේ path එක SQL එකට එකතු කිරීම
+            // Append new image path to SQL update query
             $update_sql .= ", image_path='$image_path'";
         }
     }
@@ -76,7 +76,8 @@ if (isset($_GET['toggle_publish']) && isset($_GET['id'])) {
     $status = (int) $_GET['toggle_publish'];
     $new_status = ($status == 1) ? 0 : 1;
     $conn->query("UPDATE certificate_programs SET is_published = $new_status WHERE id=$id");
-    header("Location: manage_programs.php");
+    header("Location: manage_programs.php?msg=updated");
+    exit;
 }
 
 // 4. Delete Program
@@ -84,12 +85,13 @@ if (isset($_GET['delete'])) {
     $id = (int) $_GET['delete'];
     $res = $conn->query("SELECT image_path FROM certificate_programs WHERE id=$id");
     if ($row = $res->fetch_assoc()) {
-        if (file_exists("../" . $row['image_path'])) {
-            unlink("../" . $row['image_path']);
+        if (!empty($row['image_path']) && file_exists("../" . $row['image_path'])) {
+            @unlink("../" . $row['image_path']);
         }
     }
     $conn->query("DELETE FROM certificate_programs WHERE id=$id");
-    header("Location: manage_programs.php");
+    header("Location: manage_programs.php?msg=deleted");
+    exit;
 }
 
 // Edit Mode Check
@@ -199,61 +201,76 @@ $programs = $conn->query("SELECT * FROM certificate_programs ORDER BY display_or
                 <!-- List Programs -->
                 <div class="card-custom">
                     <h5 class="mb-3">Current Programs</h5>
-                    <table class="table table-bordered align-middle">
-                        <thead style="background-color: #091a32; color: #fff;">
-                            <tr>
-                                <th>Image</th>
-                                <th>Title & Description</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php if ($programs->num_rows > 0):
-                                while ($row = $programs->fetch_assoc()): ?>
-                                    <tr>
-                                        <td><img src="../<?php echo $row['image_path']; ?>" class="img-preview"
-                                                style="width: 120px; height: 80px;"></td>
-                                        <td>
-                                            <strong><?php echo htmlspecialchars($row['title']); ?></strong><br>
-                                            <small><?php echo htmlspecialchars($row['description']); ?></small>
-                                        </td>
-                                        <td>
-                                            <?php if ($row['is_published'] == 1): ?>
-                                                <span class="badge-published">Published</span>
-                                            <?php else: ?>
-                                                <span class="badge-hidden">Hidden</span>
-                                            <?php endif; ?>
-                                        </td>
-                                        <td>
-                                            <!-- Edit Button -->
-                                            <a href="manage_programs.php?edit=<?php echo $row['id']; ?>"
-                                                class="btn btn-sm btn-primary">Edit</a>
-
-                                            <!-- Toggle Publish Button -->
-                                            <a href="manage_programs.php?toggle_publish=<?php echo $row['is_published']; ?>&id=<?php echo $row['id']; ?>"
-                                                class="btn btn-sm <?php echo ($row['is_published'] == 1) ? 'btn-secondary' : 'btn-success'; ?>">
-                                                <?php echo ($row['is_published'] == 1) ? 'Unpublish' : 'Publish'; ?>
-                                            </a>
-
-                                            <!-- Delete Button -->
-                                            <a href="manage_programs.php?delete=<?php echo $row['id']; ?>"
-                                                class="btn btn-sm btn-danger"
-                                                onclick="return confirm('Are you sure you want to delete this program?');">Delete</a>
-                                        </td>
-                                    </tr>
-                                <?php endwhile; else: ?>
+                    <div class="table-responsive">
+                        <table class="table admin-table align-middle">
+                            <thead style="background-color: #091a32; color: #fff;">
                                 <tr>
-                                    <td colspan="4" class="text-center">No programs found.</td>
+                                    <th style="width: 140px;">Image</th>
+                                    <th>Title & Description</th>
+                                    <th style="width: 110px; text-align: center;">Status</th>
+                                    <th style="width: 140px; text-align: center;">Action</th>
                                 </tr>
-                            <?php endif; ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php if ($programs->num_rows > 0):
+                                    while ($row = $programs->fetch_assoc()): ?>
+                                        <tr>
+                                            <td><img src="../<?php echo $row['image_path']; ?>" class="img-preview"
+                                                    style="width: 110px; height: 70px; object-fit: cover; border-radius: 8px;"></td>
+                                            <td>
+                                                <strong style="color: var(--admin-navy); font-size: 15px;"><?php echo htmlspecialchars($row['title']); ?></strong><br>
+                                                <small class="text-muted"><?php echo htmlspecialchars($row['description']); ?></small>
+                                            </td>
+                                            <td class="text-center">
+                                                <?php if ($row['is_published'] == 1): ?>
+                                                    <span class="badge-published">Published</span>
+                                                <?php else: ?>
+                                                    <span class="badge-hidden">Hidden</span>
+                                                <?php endif; ?>
+                                            </td>
+                                            <td class="text-center">
+                                                <div class="action-btn-group justify-content-center">
+                                                    <!-- Edit Button -->
+                                                    <a href="manage_programs.php?edit=<?php echo $row['id']; ?>"
+                                                        class="btn-action btn-action-edit" title="Edit Program">
+                                                        <i class="fa-solid fa-pen-to-square"></i>
+                                                    </a>
+
+                                                    <!-- Toggle Publish Button -->
+                                                    <a href="manage_programs.php?toggle_publish=<?php echo $row['is_published']; ?>&id=<?php echo $row['id']; ?>"
+                                                        class="btn-action <?php echo ($row['is_published'] == 1) ? 'btn-action-hide' : 'btn-action-publish'; ?>"
+                                                        title="<?php echo ($row['is_published'] == 1) ? 'Hide / Unpublish Program' : 'Show / Publish Program'; ?>">
+                                                        <i class="fa-solid <?php echo ($row['is_published'] == 1) ? 'fa-eye-slash' : 'fa-eye'; ?>"></i>
+                                                    </a>
+
+                                                    <!-- Delete Button -->
+                                                    <a href="manage_programs.php?delete=<?php echo $row['id']; ?>"
+                                                        class="btn-action btn-action-delete"
+                                                        title="Delete Program"
+                                                        data-item-name="<?php echo htmlspecialchars($row['title']); ?>">
+                                                        <i class="fa-solid fa-trash-can"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endwhile; else: ?>
+                                    <tr>
+                                        <td colspan="4" class="text-center py-4 text-muted">No programs found in database.</td>
+                                    </tr>
+                                <?php endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
             </div>
         </div>
     </div>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <!-- Core Admin Interaction Engine -->
+    <script src="admin.js"></script>
 
 </body>
 

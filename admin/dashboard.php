@@ -14,11 +14,14 @@ $msg = '';
 if (isset($_GET['delete'])) {
     $del_id = (int)$_GET['delete'];
     $stmt = $conn->prepare("DELETE FROM contact_messages WHERE id = ?");
-    $stmt->bind_param("i", $del_id);
-    if ($stmt->execute()) {
-        header("Location: dashboard.php?msg=deleted");
-        exit;
+    if ($stmt) {
+        $stmt->bind_param("i", $del_id);
+        $stmt->execute();
+    } else {
+        $conn->query("DELETE FROM contact_messages WHERE id = $del_id");
     }
+    header("Location: dashboard.php?msg=deleted");
+    exit;
 }
 
 if (isset($_GET['msg']) && $_GET['msg'] === 'deleted') {
@@ -246,16 +249,16 @@ $result = $conn->query($sql);
 
                                             <!-- Action -->
                                             <td class="text-center">
-                                                <div class="d-flex justify-content-center gap-1">
+                                                <div class="action-btn-group justify-content-center">
                                                     <!-- Reply Email -->
                                                     <?php if (!empty($row['email'])): ?>
-                                                        <a href="mailto:<?php echo htmlspecialchars($row['email']); ?>?subject=Inquiry%20Response%20-%20IB%20Consultants" class="btn btn-sm btn-outline-primary" title="Reply via Email">
+                                                        <a href="mailto:<?php echo htmlspecialchars($row['email']); ?>?subject=Inquiry%20Response%20-%20IB%20Consultants" class="btn-action btn-action-edit" title="Reply via Email">
                                                             <i class="fa-solid fa-reply"></i>
                                                         </a>
                                                     <?php endif; ?>
 
                                                     <!-- Delete Button -->
-                                                    <a href="dashboard.php?delete=<?php echo $row['id']; ?>" class="btn btn-sm btn-outline-danger" title="Delete Inquiry" onclick="return confirm('Are you sure you want to permanently delete this inquiry from <?php echo addslashes($row['name']); ?>?');">
+                                                    <a href="dashboard.php?delete=<?php echo $row['id']; ?>" class="btn-action btn-action-delete" title="Delete Inquiry" data-item-name="Inquiry from <?php echo htmlspecialchars($row['name']); ?>">
                                                         <i class="fa-solid fa-trash-can"></i>
                                                     </a>
                                                 </div>
@@ -288,6 +291,8 @@ $result = $conn->query($sql);
 
     <!-- Bootstrap JS Bundle -->
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <!-- Core Admin Interaction Engine -->
+    <script src="admin.js"></script>
 
     <!-- Client-side Instant Filter Script -->
     <script>

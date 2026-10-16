@@ -192,9 +192,9 @@ $dip_result = $conn->query($dip_query);
 
                                     <?php
                                     if ($prog_result && $prog_result->num_rows > 0):
-                                        $count = 1; // අංකනය සඳහා
+                                        $count = 1; // Counter for numbering
                                         while ($prog = $prog_result->fetch_assoc()):
-                                            // අංකය 01, 02 ලෙස හැඩගැන්වීම
+                                            // Format number as 01., 02., etc.
                                             $num_formatted = str_pad($count, 2, '0', STR_PAD_LEFT) . '.';
                                             ?>
 

@@ -288,7 +288,7 @@
                 class="fa-brands fa-instagram"></i></a>
           </div>
 
-          <!-- මඟහැරී තිබුණු Navigation (Mobile Menu Drawer එක සෑදීමට අවශ්‍ය මූලික කේතය) -->
+          <!-- Mobile Navigation Source List (used to build Mobile Menu Drawer) -->
           <div class="menu-area d-none">
             <nav id="mobile-menu" class="mainmenu">
               <ul>
@@ -331,7 +331,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
-        <!-- d-flex සහ justify-content-between මගින් Logo එක වමටත්, Menu එක දකුණටත් තබයි -->
+        <!-- Flex container: Logo aligned left, Menu and actions aligned right -->
         <div class="header-wrapper d-flex align-items-center justify-content-between">
 
           <!-- Site Logo -->
@@ -341,7 +341,7 @@
             </a>
           </div>
 
-          <!-- Desktop Navigation (Mobile වලදී d-none මගින් සඟවා ඇත) -->
+          <!-- Desktop Navigation (Hidden on mobile via d-none) -->
           <div class="menu-area d-none d-lg-inline-flex align-items-center">
             <nav class="mainmenu">
               <ul>
@@ -355,7 +355,7 @@
             </nav>
           </div>
 
-          <!-- Desktop Header Right Info (Mobile වලදී d-none මගින් සඟවා ඇත) -->
+          <!-- Desktop Header Right Info (Hidden on mobile via d-none) -->
           <div class="header-right-item d-none d-lg-inline-flex align-items-center">
             <div class="ib-sticky-socials d-flex align-items-center me-4" style="gap: 15px;">
               <a href="https://wa.me/94742112767" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
@@ -380,7 +380,7 @@
             </div>
           </div>
 
-          <!-- Mobile Hamburger Menu Icon (Mobile වලදී පමණක් දර්ශනය වේ) -->
+          <!-- Mobile Hamburger Menu Icon (Displayed only on mobile screens) -->
           <div class="menu_bar mobile_menu_bar d-lg-none">
             <span></span>
             <span></span>

@@ -237,7 +237,7 @@
                                         </p>
                                     </div>
 
-                                    <form id="contact-form">
+                                    <form id="ib-contact-form" action="process_contact.php" method="POST">
                                         <div class="row g-3">
                                             <!-- Full Name / Business Name -->
                                             <div class="col-sm-6">
@@ -698,6 +698,178 @@
     <script src="assets/js/validate.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/custom.js"></script>
+
+
+
+    <!-- BEGIN: Custom Toast Notification & AJAX Form Submit -->
+    <div id="ib-toast" class="ib-toast">
+        <div class="toast-icon">
+            <i id="toast-icon-class" class=""></i>
+        </div>
+        <div class="toast-message" id="toast-message-text"></div>
+        <div class="toast-close" onclick="closeToast()">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+    </div>
+
+    <style>
+        /* Toast CSS Styling */
+        .ib-toast {
+            position: fixed;
+            bottom: -100px;
+            right: 30px;
+            background: #ffffff;
+            box-shadow: 0 10px 35px rgba(9, 26, 50, 0.15);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            padding: 16px 20px;
+            z-index: 9999999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border-left: 5px solid;
+        }
+
+        .ib-toast.show {
+            bottom: 30px;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .toast-success {
+            border-color: #198754;
+        }
+
+        .toast-success .toast-icon i {
+            color: #198754;
+            font-size: 26px;
+            margin-right: 15px;
+        }
+
+        .toast-error {
+            border-color: #dc3545;
+        }
+
+        .toast-error .toast-icon i {
+            color: #dc3545;
+            font-size: 26px;
+            margin-right: 15px;
+        }
+
+        .toast-message {
+            color: #091a32;
+            font-size: 14.5px;
+            line-height: 1.4;
+        }
+
+        .toast-message strong {
+            font-size: 16px;
+            color: #091a32;
+        }
+
+        .toast-close {
+            margin-left: 25px;
+            cursor: pointer;
+            color: #a0aabf;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .toast-close:hover {
+            color: #091a32;
+        }
+
+        @media (max-width: 575px) {
+            .ib-toast {
+                right: 15px;
+                left: 15px;
+                bottom: -100px;
+            }
+
+            .ib-toast.show {
+                bottom: 20px;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const contactForm = document.getElementById('ib-contact-form');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', function (e) {
+                    e.preventDefault(); 
+
+                    const submitBtn = contactForm.querySelector('button[type="submit"]');
+                    const originalBtnText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<span>Sending... <i class="fa-solid fa-spinner fa-spin"></i></span>';
+                    submitBtn.disabled = true;
+
+                    const formData = new FormData(this);
+
+                    fetch('process_contact.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            submitBtn.innerHTML = originalBtnText;
+                            submitBtn.disabled = false;
+
+                            const toast = document.getElementById('ib-toast');
+                            const toastIcon = document.getElementById('toast-icon-class');
+                            const toastMsg = document.getElementById('toast-message-text');
+
+                            if (data.status === 'success') {
+                                // Success Toast
+                                toast.className = 'ib-toast toast-success show';
+                                toastIcon.className = 'fa-solid fa-circle-check';
+                                toastMsg.innerHTML = '<strong>Message Sent!</strong><br>Thank you! We will get back to you shortly.';
+                                contactForm.reset();
+                            } else {
+                                toast.className = 'ib-toast toast-error show';
+                                toastIcon.className = 'fa-solid fa-circle-exclamation';
+                                toastMsg.innerHTML = '<strong>Error!</strong><br>Something went wrong. Please try again.';
+                                console.error('Server Error:', data.message);
+                            }
+
+                            setTimeout(function () {
+                                toast.classList.remove('show');
+                            }, 5000);
+                        })
+                        .catch(error => {
+                            submitBtn.innerHTML = originalBtnText;
+                            submitBtn.disabled = false;
+
+                            const toast = document.getElementById('ib-toast');
+                            const toastIcon = document.getElementById('toast-icon-class');
+                            const toastMsg = document.getElementById('toast-message-text');
+
+                            toast.className = 'ib-toast toast-error show';
+                            toastIcon.className = 'fa-solid fa-circle-exclamation';
+                            toastMsg.innerHTML = '<strong>Server Error!</strong><br>Could not send email. Please check your connection or server logs.';
+
+                            console.error('Fetch Catch Error:', error);
+
+                            setTimeout(function () {
+                                toast.classList.remove('show');
+                            }, 5000);
+                        });
+                });
+            }
+        });
+
+        function closeToast() {
+            document.getElementById('ib-toast').classList.remove('show');
+        }
+    </script>
+    <!-- END: Custom Toast Notification & AJAX Form Submit -->
 
 </body>
 

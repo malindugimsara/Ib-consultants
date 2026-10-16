@@ -42,14 +42,16 @@ if (isset($_GET['toggle_publish']) && isset($_GET['id'])) {
     $status = (int)$_GET['toggle_publish'];
     $new_status = ($status == 1) ? 0 : 1;
     $conn->query("UPDATE diploma_programs SET is_published = $new_status WHERE id=$id");
-    header("Location: manage_diplomas.php");
+    header("Location: manage_diplomas.php?msg=updated");
+    exit;
 }
 
 // Delete Diploma
 if (isset($_GET['delete'])) {
     $id = (int)$_GET['delete'];
     $conn->query("DELETE FROM diploma_programs WHERE id=$id");
-    header("Location: manage_diplomas.php");
+    header("Location: manage_diplomas.php?msg=deleted");
+    exit;
 }
 
 // Edit Mode Check
@@ -130,55 +132,77 @@ $diplomas = $conn->query("SELECT * FROM diploma_programs ORDER BY display_order 
             <!-- List Diplomas -->
             <div class="card-custom">
                 <h5 class="mb-3">Current Diplomas</h5>
-                <table class="table table-bordered align-middle">
-                    <thead style="background-color: #091a32; color: #fff;">
-                        <tr>
-                            <th>No.</th>
-                            <th>Title</th>
-                            <th>Duration</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php 
-                        if($diplomas->num_rows > 0): 
-                            $count = 1;
-                            while($row = $diplomas->fetch_assoc()): 
-                        ?>
+                <div class="table-responsive">
+                    <table class="table admin-table align-middle">
+                        <thead style="background-color: #091a32; color: #fff;">
                             <tr>
-                                <td><?php echo str_pad($count, 2, '0', STR_PAD_LEFT) . '.'; ?></td>
-                                <td><strong><?php echo $row['title']; ?></strong></td>
-                                <td><?php echo htmlspecialchars($row['duration']); ?></td>
-                                <td>
-                                    <?php if($row['is_published'] == 1): ?>
-                                        <span class="badge-published">Published</span>
-                                    <?php else: ?>
-                                        <span class="badge-hidden">Hidden</span>
-                                    <?php endif; ?>
-                                </td>
-                                <td>
-                                    <a href="manage_diplomas.php?edit=<?php echo $row['id']; ?>" class="btn btn-sm btn-primary">Edit</a>
-                                    <a href="manage_diplomas.php?toggle_publish=<?php echo $row['is_published']; ?>&id=<?php echo $row['id']; ?>" 
-                                       class="btn btn-sm <?php echo ($row['is_published']==1) ? 'btn-secondary' : 'btn-success'; ?>">
-                                        <?php echo ($row['is_published']==1) ? 'Unpublish' : 'Publish'; ?>
-                                    </a>
-                                    <a href="manage_diplomas.php?delete=<?php echo $row['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?');">Delete</a>
-                                </td>
+                                <th style="width: 60px; text-align: center;">No.</th>
+                                <th>Title</th>
+                                <th style="width: 160px;">Duration</th>
+                                <th style="width: 110px; text-align: center;">Status</th>
+                                <th style="width: 140px; text-align: center;">Action</th>
                             </tr>
-                        <?php 
-                            $count++;
-                            endwhile; 
-                        else: 
-                        ?>
-                            <tr><td colspan="5" class="text-center">No diplomas found.</td></tr>
-                        <?php endif; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php 
+                            if($diplomas->num_rows > 0): 
+                                $count = 1;
+                                while($row = $diplomas->fetch_assoc()): 
+                            ?>
+                                <tr>
+                                    <td class="text-center" style="font-weight: 700; color: var(--admin-navy);"><?php echo str_pad($count, 2, '0', STR_PAD_LEFT) . '.'; ?></td>
+                                    <td><strong style="color: var(--admin-navy);"><?php echo $row['title']; ?></strong></td>
+                                    <td><span class="badge bg-light text-dark border"><?php echo htmlspecialchars($row['duration']); ?></span></td>
+                                    <td class="text-center">
+                                        <?php if($row['is_published'] == 1): ?>
+                                            <span class="badge-published">Published</span>
+                                        <?php else: ?>
+                                            <span class="badge-hidden">Hidden</span>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="action-btn-group justify-content-center">
+                                            <!-- Edit -->
+                                            <a href="manage_diplomas.php?edit=<?php echo $row['id']; ?>" class="btn-action btn-action-edit" title="Edit Diploma">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                            </a>
+                                            
+                                            <!-- Toggle Publish/Hide -->
+                                            <a href="manage_diplomas.php?toggle_publish=<?php echo $row['is_published']; ?>&id=<?php echo $row['id']; ?>" 
+                                               class="btn-action <?php echo ($row['is_published']==1) ? 'btn-action-hide' : 'btn-action-publish'; ?>"
+                                               title="<?php echo ($row['is_published']==1) ? 'Hide / Unpublish Diploma' : 'Show / Publish Diploma'; ?>">
+                                                <i class="fa-solid <?php echo ($row['is_published']==1) ? 'fa-eye-slash' : 'fa-eye'; ?>"></i>
+                                            </a>
+
+                                            <!-- Delete -->
+                                            <a href="manage_diplomas.php?delete=<?php echo $row['id']; ?>" 
+                                               class="btn-action btn-action-delete" 
+                                               title="Delete Diploma"
+                                               data-item-name="<?php echo htmlspecialchars(strip_tags($row['title'])); ?>">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php 
+                                $count++;
+                                endwhile; 
+                            else: 
+                            ?>
+                                <tr><td colspan="5" class="text-center py-4 text-muted">No diplomas found in database.</td></tr>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Bootstrap Bundle JS -->
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
+<!-- Core Admin Interaction Engine -->
+<script src="admin.js"></script>
 
 </body>
 </html>

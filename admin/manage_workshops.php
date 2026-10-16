@@ -87,7 +87,7 @@ if (isset($_GET['toggle_publish']) && isset($_GET['id'])) {
     $stmt = $conn->prepare("UPDATE business_workshops SET is_published = ? WHERE id = ?");
     $stmt->bind_param("ii", $new_status, $id);
     $stmt->execute();
-    header("Location: manage_workshops.php");
+    header("Location: manage_workshops.php?msg=updated");
     exit;
 }
 
@@ -394,9 +394,7 @@ $workshops = $conn->query("SELECT * FROM business_workshops ORDER BY display_ord
                                     <!-- Outcome -->
                                     <td>
                                         <small class="text-muted"><?php echo nl2br(htmlspecialchars($row['expected_outcome'])); ?></small>
-                                    </td>
-
-                                    <!-- Status -->
+                                                             <!-- Status -->
                                     <td class="text-center">
                                         <?php if ($row['is_published'] == 1): ?>
                                             <span class="badge-published">Published</span>
@@ -405,25 +403,29 @@ $workshops = $conn->query("SELECT * FROM business_workshops ORDER BY display_ord
                                         <?php endif; ?>
                                     </td>
 
-                                    <!-- Actions -->
+                                    <!-- Actions (Icon Only) -->
                                     <td class="text-center">
-                                        <!-- Edit -->
-                                        <a href="manage_workshops.php?edit=<?php echo $row['id']; ?>" class="btn btn-sm btn-primary mb-1">
-                                            ✏️ Edit
-                                        </a>
-                                        
-                                        <!-- Toggle Publish -->
-                                        <a href="manage_workshops.php?toggle_publish=<?php echo $row['is_published']; ?>&id=<?php echo $row['id']; ?>" 
-                                           class="btn btn-sm <?php echo ($row['is_published'] == 1) ? 'btn-secondary' : 'btn-success'; ?> mb-1">
-                                            <?php echo ($row['is_published'] == 1) ? 'Hide' : 'Publish'; ?>
-                                        </a>
-                                        
-                                        <!-- Delete -->
-                                        <a href="manage_workshops.php?delete=<?php echo $row['id']; ?>" 
-                                           class="btn btn-sm btn-danger mb-1" 
-                                           onclick="return confirm('Are you sure you want to delete this workshop: <?php echo addslashes($row['title']); ?>?');">
-                                            🗑️
-                                        </a>
+                                        <div class="action-btn-group justify-content-center">
+                                            <!-- Edit -->
+                                            <a href="manage_workshops.php?edit=<?php echo $row['id']; ?>" class="btn-action btn-action-edit" title="Edit Workshop">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                            </a>
+                                            
+                                            <!-- Toggle Publish/Hide -->
+                                            <a href="manage_workshops.php?toggle_publish=<?php echo $row['is_published']; ?>&id=<?php echo $row['id']; ?>" 
+                                               class="btn-action <?php echo ($row['is_published'] == 1) ? 'btn-action-hide' : 'btn-action-publish'; ?>"
+                                               title="<?php echo ($row['is_published'] == 1) ? 'Hide / Unpublish Workshop' : 'Show / Publish Workshop'; ?>">
+                                                <i class="fa-solid <?php echo ($row['is_published'] == 1) ? 'fa-eye-slash' : 'fa-eye'; ?>"></i>
+                                            </a>
+                                            
+                                            <!-- Delete -->
+                                            <a href="manage_workshops.php?delete=<?php echo $row['id']; ?>" 
+                                               class="btn-action btn-action-delete" 
+                                               title="Delete Workshop"
+                                               data-item-name="<?php echo htmlspecialchars($row['title']); ?>">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                            </a>
+                                        </div>
                                     </td>
                                 </tr>
                             <?php 
@@ -446,6 +448,11 @@ $workshops = $conn->query("SELECT * FROM business_workshops ORDER BY display_ord
     </div>
 </div>
 
+<!-- Bootstrap Bundle JS -->
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
+<!-- Core Admin Interaction Engine -->
+<script src="admin.js"></script>
+
 <script>
 function applyPreset(name, slug, icon) {
     document.getElementById('category_name').value = name;
@@ -461,6 +468,5 @@ function updateIconPreview(iconClass) {
     }
 }
 </script>
-
 </body>
 </html>

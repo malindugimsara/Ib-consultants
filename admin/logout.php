@@ -1,8 +1,8 @@
 <?php
 session_start();
-// ලොගින් වී ඇති Session දත්ත සියල්ල මකා දැමීම
+// Clear and destroy all active admin session data
 session_destroy();
-// නැවත ලොගින් පිටුවට යැවීම
+// Redirect safely back to the login page
 header("Location: login.php");
 exit;
 ?>

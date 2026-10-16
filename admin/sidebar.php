@@ -5,15 +5,20 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 <!-- Left Sidebar Navigation Component -->
 <div class="col-lg-2 col-md-3 sidebar">
     <!-- Brand / Logo Area -->
-    <a href="dashboard.php" class="sidebar-brand">
-        <div class="sidebar-logo-frame">
-            <img src="../assets/images/logos/logo-2.webp" alt="IB Logo">
-        </div>
-        <div class="sidebar-brand-text">
-            <h4>IB ADMIN</h4>
-            <span>Management Portal</span>
-        </div>
-    </a>
+    <div class="d-flex align-items-center justify-content-between mb-3 pb-3" style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+        <a href="dashboard.php" class="sidebar-brand mb-0 pb-0 border-0 flex-grow-1">
+            <div class="sidebar-logo-frame">
+                <img src="../assets/images/logos/logo-2.webp" alt="IB Logo">
+            </div>
+            <div class="sidebar-brand-text">
+                <h4>IB ADMIN</h4>
+                <span>Management Portal</span>
+            </div>
+        </a>
+        <button type="button" class="sidebar-close-btn d-lg-none" id="sidebarCloseBtn" aria-label="Close Sidebar">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
 
     <!-- Navigation Menu Items -->
     <div class="sidebar-nav">
@@ -57,7 +62,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
     <!-- Sidebar Bottom Footer -->
     <div class="sidebar-footer">
-        <a href="logout.php" class="btn-logout" onclick="return confirm('Are you sure you want to log out?');">
+        <a href="logout.php" class="btn-logout" title="Log Out from Admin Portal">
             <i class="fa-solid fa-arrow-right-from-bracket me-2"></i> Log Out
         </a>
     </div>

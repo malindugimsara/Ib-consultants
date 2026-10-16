@@ -104,7 +104,7 @@
                             <div class="col-lg-8">
                                 <div class="post-details-wrapper">
                                     <div class="blog-images wow fadeInUp" data-wow-delay=".1s">
-                                        <img src="assets/images/service/service-export-market.jpg"
+                                        <img src="assets/images/service/service-export-market.webp"
                                             alt="Export Market Development and International Sales by IB Consultants">
                                     </div>
                                     <h2 class="title title-anim">Find Qualified Buyers & Build Export Channels.</h2>
@@ -142,13 +142,13 @@
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="image-box wow fadeInUp" data-wow-delay=".3s">
-                                                        <img src="assets/images/service/service-1.jpg"
+                                                        <img src="assets/images/service/service-1.webp"
                                                             alt="International Market Research">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="image-box wow fadeInUp" data-wow-delay=".5s">
-                                                        <img src="assets/images/service/service-2.jpg"
+                                                        <img src="assets/images/service/service-2.webp"
                                                             alt="Global Export Channels">
                                                     </div>
                                                 </div>

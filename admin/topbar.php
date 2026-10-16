@@ -14,6 +14,11 @@ $admin_initial = strtoupper(substr($current_admin_user, 0, 1));
 <div class="admin-topbar-card">
     <!-- Left Side: Company Logo & Brand -->
     <div class="topbar-left">
+        <!-- Mobile Sidebar Drawer Toggle -->
+        <button type="button" class="sidebar-toggle-btn d-lg-none" id="mobileSidebarToggle" aria-label="Toggle Navigation">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
         <a href="dashboard.php" class="topbar-brand">
             <div class="topbar-logo-frame">
                 <img src="../assets/images/logos/logo-2.webp" alt="IB Consultants Logo" class="topbar-logo-img" style="width: 36px; height: 36px; object-fit: contain;">
@@ -70,7 +75,7 @@ $admin_initial = strtoupper(substr($current_admin_user, 0, 1));
         <div class="topbar-vr"></div>
 
         <!-- Logout Button on Right Side -->
-        <a href="logout.php" class="topbar-logout-btn" onclick="return confirm('Are you sure you want to log out?');" title="Log Out from Admin Portal">
+        <a href="logout.php" class="topbar-logout-btn" title="Log Out from Admin Portal">
             <i class="fa-solid fa-arrow-right-from-bracket"></i>
             <span>Logout</span>
         </a>

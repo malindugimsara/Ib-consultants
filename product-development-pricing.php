@@ -105,7 +105,7 @@
                             <div class="col-lg-8">
                                 <div class="post-details-wrapper">
                                     <div class="blog-images wow fadeInUp" data-wow-delay=".1s">
-                                        <img src="assets/images/service/service-product-pricing.jpg"
+                                        <img src="assets/images/service/service-product-pricing.webp"
                                             alt="Product Development and Pricing by IB Consultants">
                                     </div>
                                     <h2 class="title title-anim">Convert Market Opportunities into Viable Products.</h2>
@@ -144,13 +144,13 @@
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="image-box wow fadeInUp" data-wow-delay=".3s">
-                                                        <img src="assets/images/service/service-1.jpg"
+                                                        <img src="assets/images/service/service-1.webp"
                                                             alt="Target-cost analysis">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="image-box wow fadeInUp" data-wow-delay=".5s">
-                                                        <img src="assets/images/service/service-2.jpg"
+                                                        <img src="assets/images/service/service-2.webp"
                                                             alt="Go-to-market planning">
                                                     </div>
                                                 </div>

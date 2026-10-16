@@ -49,14 +49,16 @@ if (isset($_GET['toggle_publish']) && isset($_GET['id'])) {
     $status = (int)$_GET['toggle_publish'];
     $new_status = ($status == 1) ? 0 : 1;
     $conn->query("UPDATE core_services SET is_published = $new_status WHERE id=$id");
-    header("Location: manage_services.php");
+    header("Location: manage_services.php?msg=updated");
+    exit;
 }
 
 // Delete Service
 if (isset($_GET['delete'])) {
     $id = (int)$_GET['delete'];
     $conn->query("DELETE FROM core_services WHERE id=$id");
-    header("Location: manage_services.php");
+    header("Location: manage_services.php?msg=deleted");
+    exit;
 }
 
 // Edit Mode Check
@@ -154,60 +156,83 @@ $services = $conn->query("SELECT * FROM core_services ORDER BY display_order ASC
             <!-- List Services -->
             <div class="card-custom">
                 <h5 class="mb-3">Current Services</h5>
-                <table class="table table-bordered align-middle">
-                    <thead style="background-color: #091a32; color: #fff;">
-                        <tr>
-                            <th>No.</th>
-                            <th>Title & Page Link</th>
-                            <th>List Items</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php 
-                        if($services->num_rows > 0): 
-                            $count = 1;
-                            while($row = $services->fetch_assoc()): 
-                                // අලුත් පේළි (New lines) <br> බවට පත් කිරීම පෙන්වීමට
-                                $formatted_list = nl2br(htmlspecialchars($row['list_items']));
-                        ?>
+                <div class="table-responsive">
+                    <table class="table admin-table align-middle">
+                        <thead style="background-color: #091a32; color: #fff;">
                             <tr>
-                                <td><?php echo str_pad($count, 2, '0', STR_PAD_LEFT) . '.'; ?></td>
-                                <td>
-                                    <strong><?php echo htmlspecialchars($row['title']); ?></strong><br>
-                                    <small class="text-primary"><?php echo htmlspecialchars($row['page_link']); ?></small>
-                                </td>
-                                <td style="font-size: 13px;"><?php echo $formatted_list; ?></td>
-                                <td>
-                                    <?php if($row['is_published'] == 1): ?>
-                                        <span class="badge-published">Published</span>
-                                    <?php else: ?>
-                                        <span class="badge-hidden">Hidden</span>
-                                    <?php endif; ?>
-                                </td>
-                                <td>
-                                    <a href="manage_services.php?edit=<?php echo $row['id']; ?>" class="btn btn-sm btn-primary mb-1">Edit</a><br>
-                                    <a href="manage_services.php?toggle_publish=<?php echo $row['is_published']; ?>&id=<?php echo $row['id']; ?>" 
-                                       class="btn btn-sm <?php echo ($row['is_published']==1) ? 'btn-secondary' : 'btn-success'; ?> mb-1">
-                                        <?php echo ($row['is_published']==1) ? 'Unpublish' : 'Publish'; ?>
-                                    </a><br>
-                                    <a href="manage_services.php?delete=<?php echo $row['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?');">Delete</a>
-                                </td>
+                                <th style="width: 60px; text-align: center;">No.</th>
+                                <th style="width: 260px;">Title & Page Link</th>
+                                <th>Key List Items</th>
+                                <th style="width: 110px; text-align: center;">Status</th>
+                                <th style="width: 140px; text-align: center;">Action</th>
                             </tr>
-                        <?php 
-                            $count++;
-                            endwhile; 
-                        else: 
-                        ?>
-                            <tr><td colspan="5" class="text-center">No services found.</td></tr>
-                        <?php endif; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php 
+                            if($services->num_rows > 0): 
+                                $count = 1;
+                                while($row = $services->fetch_assoc()): 
+                                    $formatted_list = nl2br(htmlspecialchars($row['list_items']));
+                            ?>
+                                <tr>
+                                    <td class="text-center" style="font-weight: 700; color: var(--admin-navy);"><?php echo str_pad($count, 2, '0', STR_PAD_LEFT) . '.'; ?></td>
+                                    <td>
+                                        <strong style="color: var(--admin-navy); font-size: 15px;"><?php echo htmlspecialchars($row['title']); ?></strong><br>
+                                        <a href="../<?php echo htmlspecialchars($row['page_link']); ?>" target="_blank" class="text-decoration-none" style="font-size: 12px; color: #0284c7;">
+                                            <i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?php echo htmlspecialchars($row['page_link']); ?>
+                                        </a>
+                                    </td>
+                                    <td style="font-size: 13px; color: #475569;"><?php echo $formatted_list; ?></td>
+                                    <td class="text-center">
+                                        <?php if($row['is_published'] == 1): ?>
+                                            <span class="badge-published">Published</span>
+                                        <?php else: ?>
+                                            <span class="badge-hidden">Hidden</span>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="action-btn-group justify-content-center">
+                                            <!-- Edit -->
+                                            <a href="manage_services.php?edit=<?php echo $row['id']; ?>" class="btn-action btn-action-edit" title="Edit Service">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                            </a>
+
+                                            <!-- Toggle Publish/Hide -->
+                                            <a href="manage_services.php?toggle_publish=<?php echo $row['is_published']; ?>&id=<?php echo $row['id']; ?>" 
+                                               class="btn-action <?php echo ($row['is_published']==1) ? 'btn-action-hide' : 'btn-action-publish'; ?>"
+                                               title="<?php echo ($row['is_published']==1) ? 'Hide / Unpublish Service' : 'Show / Publish Service'; ?>">
+                                                <i class="fa-solid <?php echo ($row['is_published']==1) ? 'fa-eye-slash' : 'fa-eye'; ?>"></i>
+                                            </a>
+
+                                            <!-- Delete -->
+                                            <a href="manage_services.php?delete=<?php echo $row['id']; ?>" 
+                                               class="btn-action btn-action-delete" 
+                                               title="Delete Service"
+                                               data-item-name="<?php echo htmlspecialchars($row['title']); ?>">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php 
+                                $count++;
+                                endwhile; 
+                            else: 
+                            ?>
+                                <tr><td colspan="5" class="text-center py-4 text-muted">No services found in database.</td></tr>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Bootstrap Bundle JS -->
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
+<!-- Core Admin Interaction Engine -->
+<script src="admin.js"></script>
 
 </body>
 </html>
