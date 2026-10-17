@@ -145,13 +145,13 @@
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="image-box wow fadeInUp" data-wow-delay=".3s">
-                                                        <img src="assets/images/service/service-1.webp"
+                                                        <img src="assets/images/service/strategic-advisory-1.webp"
                                                             alt="Annual Business Planning">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="image-box wow fadeInUp" data-wow-delay=".5s">
-                                                        <img src="assets/images/service/service-2.webp"
+                                                        <img src="assets/images/service/service3.webp"
                                                             alt="Expansion and Investment Opportunity">
                                                     </div>
                                                 </div>

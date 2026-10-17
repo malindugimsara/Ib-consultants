@@ -144,13 +144,13 @@
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="image-box wow fadeInUp" data-wow-delay=".3s">
-                                                        <img src="assets/images/service/service-1.webp"
+                                                        <img src="assets/images/service/product-pricing-1.webp"
                                                             alt="Target-cost analysis">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="image-box wow fadeInUp" data-wow-delay=".5s">
-                                                        <img src="assets/images/service/service-2.webp"
+                                                        <img src="assets/images/service/product-pricing-2.webp"
                                                             alt="Go-to-market planning">
                                                     </div>
                                                 </div>

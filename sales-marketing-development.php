@@ -144,13 +144,13 @@
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="image-box wow fadeInUp" data-wow-delay=".3s">
-                                                        <img src="assets/images/service/service-1.webp"
+                                                        <img src="assets/images/service/sales-marketing-1.webp"
                                                             alt="Lead Generation and Conversion">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="image-box wow fadeInUp" data-wow-delay=".5s">
-                                                        <img src="assets/images/service/service-2.webp"
+                                                        <img src="assets/images/service/sales-marketing-2.webp"
                                                             alt="Sales KPI and Performance Management">
                                                     </div>
                                                 </div>
