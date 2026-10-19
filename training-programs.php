@@ -2,10 +2,10 @@
 include_once 'db.php';
 
 
-$prog_query = "SELECT * FROM certificate_programs WHERE is_published = 1 ORDER BY display_order ASC, id DESC";
+$prog_query = "SELECT * FROM certificate_programs WHERE is_published = 1 AND deleted_at IS NULL ORDER BY display_order ASC, id DESC";
 $prog_result = $conn->query($prog_query);
 
-$workshop_query = "SELECT * FROM business_workshops WHERE is_published = 1 ORDER BY display_order ASC, id ASC";
+$workshop_query = "SELECT * FROM business_workshops WHERE is_published = 1 AND deleted_at IS NULL ORDER BY display_order ASC, id ASC";
 $workshop_result = $conn->query($workshop_query);
 $workshops = [];
 if ($workshop_result && $workshop_result->num_rows > 0) {
@@ -14,7 +14,7 @@ if ($workshop_result && $workshop_result->num_rows > 0) {
     }
 }
 
-$dip_query = "SELECT * FROM diploma_programs WHERE is_published = 1 ORDER BY display_order ASC, id ASC";
+$dip_query = "SELECT * FROM diploma_programs WHERE is_published = 1 AND deleted_at IS NULL ORDER BY display_order ASC, id ASC";
 $dip_result = $conn->query($dip_query);
 ?>
 

@@ -1,5 +1,17 @@
 <?php
-include_once 'db.php'; 
+include_once 'db.php';
+
+// Helper slugify function
+function slugify($text)
+{
+    $text = preg_replace('~[^\pL\d]+~u', '-', $text);
+    $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+    $text = preg_replace('~[^-\w]+~', '', $text);
+    $text = trim($text, '-');
+    $text = preg_replace('~-+~', '-', $text);
+    $text = strtolower($text);
+    return empty($text) ? 'article-' . time() : $text;
+}
 
 // Fetch all published articles
 $blog_query = "SELECT * FROM blog_posts WHERE is_published = 1 ORDER BY created_at DESC";
@@ -7,16 +19,24 @@ $blog_result = $conn->query($blog_query);
 
 // Populate articles array for easy access and rendering
 $articles = [];
-if($blog_result && $blog_result->num_rows > 0) {
-    while($row = $blog_result->fetch_assoc()) {
+if ($blog_result && $blog_result->num_rows > 0) {
+    while ($row = $blog_result->fetch_assoc()) {
+        if (empty($row['slug'])) {
+            $row['slug'] = slugify($row['title']);
+        }
         $articles[] = $row;
     }
 }
 
 // Select the latest article as the featured article
 $featured_article = isset($articles[0]) ? $articles[0] : null;
-?>
 
+// Canonical URL calculation
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+$host = $_SERVER['HTTP_HOST'];
+$base_url = $protocol . $host . rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+$canonical_url = $base_url . "/blog.php";
+?>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -24,15 +44,55 @@ $featured_article = isset($articles[0]) ? $articles[0] : null;
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!-- SEO Optimization -->
+    <title>Business Insights &amp; Blog | IB Business Consultants - SME &amp; Manufacturing Experts</title>
     <meta name="description"
         content="Actionable business insights, profit improvement strategies, manufacturing process optimization, and export expansion guides for Sri Lankan SMEs and factories from IB Business Consultants.">
-    <meta name="keywords" content="Sri Lanka business blog, SME consulting insights, manufacturing efficiency Sri Lanka, profit improvement guide, export advisory Horana Colombo">
-    <title>Business Insights & Blog | IB Business Consultants - SME & Manufacturing Experts</title>
+    <meta name="keywords"
+        content="Sri Lanka business blog, SME consulting insights, manufacturing efficiency Sri Lanka, profit improvement guide, export advisory Horana Colombo">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="<?php echo $canonical_url; ?>">
+
+    <!-- Open Graph (Facebook, WhatsApp, LinkedIn preview card) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="IB Business Consultants">
+    <meta property="og:title" content="Business Insights &amp; Blog | IB Business Consultants">
+    <meta property="og:description"
+        content="Actionable business insights, profit improvement strategies, manufacturing process optimization, and export expansion guides for Sri Lankan SMEs.">
+    <meta property="og:url" content="<?php echo $canonical_url; ?>">
+    <meta property="og:image" content="<?php echo $base_url; ?>/assets/images/logos/logo-2.webp">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Business Insights &amp; Blog | IB Business Consultants">
+    <meta name="twitter:description"
+        content="Actionable business insights, profit improvement strategies, manufacturing process optimization, and export expansion guides for Sri Lankan SMEs.">
+    <meta name="twitter:image" content="<?php echo $base_url; ?>/assets/images/logos/logo-2.webp">
 
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/logos/logo-2.webp">
 
-    <!-- CSS here -->
+    <!-- Schema.org Blog / CollectionPage JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "IB Business Consultants Insights Blog",
+      "url": "<?php echo $canonical_url; ?>",
+      "description": "Actionable business insights, profit improvement strategies, manufacturing process optimization, and export expansion guides for Sri Lankan SMEs.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "IB Business Consultants",
+        "url": "<?php echo $base_url; ?>/index.php",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "<?php echo $base_url; ?>/assets/images/logos/logo-2.webp"
+        }
+      }
+    }
+    </script>
+
+    <!-- CSS Dependencies -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/font-awesome-pro.min.css">
     <link rel="stylesheet" href="assets/css/animate.min.css">
@@ -58,14 +118,15 @@ $featured_article = isset($articles[0]) ? $articles[0] : null;
                     <div class="ib-preloader-ring ib-ring-outer"></div>
                     <div class="ib-preloader-ring ib-ring-inner"></div>
                     <div class="ib-preloader-logo-circle">
-                        <img src="assets/images/logos/logo-2.webp" alt="IB Consultants Logo" class="ib-preloader-logo-img">
+                        <img src="assets/images/logos/logo-2.webp" alt="IB Consultants Logo"
+                            class="ib-preloader-logo-img">
                     </div>
                 </div>
 
                 <!-- Animated Text & Subtitle -->
                 <div class="ib-preloader-text-group">
                     <div id="tj-weave-anim" class="tj-preloader-text">IB CONSULTANTS</div>
-                    <div class="ib-preloader-subtext">Business & Profit Growth Advisory</div>
+                    <div class="ib-preloader-subtext">Business &amp; Profit Growth Advisory</div>
                 </div>
 
                 <!-- Sleek Gold Progress Bar -->
@@ -99,16 +160,12 @@ $featured_article = isset($articles[0]) ? $articles[0] : null;
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="tj-page-header-content text-center">
-                                    <h1 class="tj-page-title text-white">Insights &amp; Articles</h1>
+                                    <h1 class="tj-page-title">Business Insights &amp; Articles</h1>
                                     <div class="tj-page-link">
                                         <span><i class="tji-home"></i></span>
-                                        <span>
-                                            <a href="index.php">Home</a>
-                                        </span>
+                                        <span><a href="index.php">Home</a></span>
                                         <span><i class="tji-arrow-right"></i></span>
-                                        <span>
-                                            <span class="custom-breadcrumb-active">Blog &amp; Insights</span>
-                                        </span>
+                                        <span><span>Insights Blog</span></span>
                                     </div>
                                 </div>
                             </div>
@@ -121,56 +178,72 @@ $featured_article = isset($articles[0]) ? $articles[0] : null;
                 <section class="ib-blog-section">
                     <div class="container">
 
-                        <?php if($featured_article): ?>
-                        <!-- Featured Spotlight Article -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="ib-featured-article wow fadeInUp" data-wow-delay=".2s">
-                                    <div class="row g-0 align-items-center">
-                                        <div class="col-lg-6">
-                                            <div class="ib-featured-thumb-wrap">
-                                                <span class="ib-featured-badge">
-                                                    <i class="fa-solid fa-star"></i> Featured Insight
-                                                </span>
-                                                <img src="<?php echo htmlspecialchars($featured_article['image_path']); ?>" alt="Featured Article" class="ib-featured-thumb" style="border-radius: 10px">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="ib-featured-content">
-                                                <div class="ib-meta-row">
-                                                    <span class="ib-meta-category"><?php echo htmlspecialchars($featured_article['category_name']); ?></span>
-                                                    <span>•</span>
-                                                    <span><i class="fa-regular fa-calendar-days"></i> <?php echo date('F d, Y', strtotime($featured_article['created_at'])); ?></span>
-                                                    <span>•</span>
-                                                    <span><i class="fa-regular fa-clock"></i> <?php echo htmlspecialchars($featured_article['read_time']); ?></span>
-                                                </div>
-                                                <h2 class="ib-featured-title">
-                                                    <a href="javascript:void(0);" onclick="openArticleModal('art-<?php echo $featured_article['id']; ?>')" data-article-id="art-<?php echo $featured_article['id']; ?>">
-                                                        <?php echo htmlspecialchars($featured_article['title']); ?>
+                        <?php if ($featured_article):
+                            $feat_url = "blog-details.php?slug=" . urlencode($featured_article['slug']);
+                            ?>
+                            <!-- Featured Spotlight Article -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="ib-featured-article wow fadeInUp" data-wow-delay=".2s">
+                                        <div class="row g-0 align-items-center">
+                                            <div class="col-lg-6">
+                                                <div class="ib-featured-thumb-wrap">
+                                                    <span class="ib-featured-badge">
+                                                        <i class="fa-solid fa-star"></i> Featured Insight
+                                                    </span>
+                                                    <a href="<?php echo $feat_url; ?>"
+                                                        style="display: block; width: 100%; height: 100%;">
+                                                        <img src="<?php echo htmlspecialchars($featured_article['image_path']); ?>"
+                                                            alt="<?php echo htmlspecialchars($featured_article['title']); ?>"
+                                                            class="ib-featured-thumb" style="border-radius: 10px">
                                                     </a>
-                                                </h2>
-                                                <p class="ib-featured-excerpt">
-                                                    <?php echo htmlspecialchars($featured_article['excerpt']); ?>
-                                                </p>
-                                                <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
-                                                    <div class="ib-author-card">
-                                                        <img src="assets/images/service/Founder.webp" alt="Author" class="ib-author-img">
-                                                        <div class="ib-author-info">
-                                                            <div class="ib-author-name"><?php echo htmlspecialchars($featured_article['author_name']); ?></div>
-                                                            <div class="ib-author-role">Lead Business Consultant</div>
-                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="ib-featured-content">
+                                                    <div class="ib-meta-row">
+                                                        <span
+                                                            class="ib-meta-category"><?php echo htmlspecialchars($featured_article['category_name']); ?></span>
+                                                        <span>•</span>
+                                                        <span><i class="fa-regular fa-calendar-days text-warning me-1"></i>
+                                                            <?php echo date('F d, Y', strtotime($featured_article['created_at'])); ?></span>
+                                                        <span>•</span>
+                                                        <span><i class="fa-regular fa-clock text-warning me-1"></i>
+                                                            <?php echo htmlspecialchars($featured_article['read_time']); ?></span>
                                                     </div>
-                                                    <button type="button" class="tj-primary-btn" onclick="openArticleModal('art-<?php echo $featured_article['id']; ?>')" data-article-id="art-<?php echo $featured_article['id']; ?>">
-                                                        <span class="btn-text topic-color2"><span>Read Full Article</span></span>
-                                                        <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
-                                                    </button>
+                                                    <h2 class="ib-featured-title">
+                                                        <a href="<?php echo $feat_url; ?>">
+                                                            <?php echo htmlspecialchars($featured_article['title']); ?>
+                                                        </a>
+                                                    </h2>
+                                                    <p class="ib-featured-excerpt">
+                                                        <?php echo htmlspecialchars($featured_article['excerpt']); ?>
+                                                    </p>
+                                                    <div
+                                                        class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                                                        <div class="ib-author-card">
+                                                            <img src="assets/images/service/Founder.webp" alt="Author"
+                                                                class="ib-author-img">
+                                                            <div class="ib-author-info">
+                                                                <div class="ib-author-name">
+                                                                    <?php echo htmlspecialchars($featured_article['author_name'] ?? 'Dammika Bandara'); ?>
+                                                                </div>
+                                                                <div class="ib-author-role">Lead Business Consultant</div>
+                                                            </div>
+                                                        </div>
+                                                        <a href="<?php echo $feat_url; ?>" class="tj-primary-btn">
+                                                            <span class="btn-text topic-color2"><span>Read Full
+                                                                    Article</span></span>
+                                                            <span class="btn-icon"><i
+                                                                    class="tji-arrow-right-long"></i></span>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         <?php endif; ?>
 
                         <!-- Filter and Search Bar -->
@@ -179,13 +252,18 @@ $featured_article = isset($articles[0]) ? $articles[0] : null;
                                 <div class="ib-blog-filter-bar wow fadeInUp" data-wow-delay=".25s">
                                     <div class="ib-filter-pills" id="category-filters">
                                         <button class="ib-filter-btn active" data-filter="all">All Articles</button>
-                                        <button class="ib-filter-btn" data-filter="manufacturing">Manufacturing Excellence</button>
-                                        <button class="ib-filter-btn" data-filter="profit">Profit &amp; Cost Control</button>
-                                        <button class="ib-filter-btn" data-filter="export">Export &amp; Global Trade</button>
-                                        <button class="ib-filter-btn" data-filter="strategy">SME Strategy &amp; KPIs</button>
+                                        <button class="ib-filter-btn" data-filter="manufacturing">Manufacturing
+                                            Excellence</button>
+                                        <button class="ib-filter-btn" data-filter="profit">Profit &amp; Cost
+                                            Control</button>
+                                        <button class="ib-filter-btn" data-filter="export">Export &amp; Global
+                                            Trade</button>
+                                        <button class="ib-filter-btn" data-filter="strategy">SME Strategy &amp;
+                                            KPIs</button>
                                     </div>
                                     <div class="ib-search-box">
-                                        <input type="text" id="blog-search-input" placeholder="Search by topic, keyword..." autocomplete="off">
+                                        <input type="text" id="blog-search-input"
+                                            placeholder="Search by topic, keyword..." autocomplete="off">
                                         <i class="fa-solid fa-magnifying-glass"></i>
                                     </div>
                                 </div>
@@ -198,43 +276,56 @@ $featured_article = isset($articles[0]) ? $articles[0] : null;
                             <div class="col-lg-8">
                                 <div class="row g-4" id="blog-articles-grid">
 
-                                    <?php 
+                                    <?php
                                     // Render all article cards dynamically
-                                    foreach($articles as $art): 
-                                    ?>
-                                    <!-- Dynamic Article Card -->
-                                    <div class="col-md-6 blog-card-wrapper" data-category="<?php echo htmlspecialchars($art['category_slug']); ?>" data-keywords="<?php echo htmlspecialchars($art['keywords']); ?>">
-                                        <div class="ib-blog-card wow fadeInUp" data-wow-delay=".2s">
-                                            <div class="ib-blog-card-thumb-wrap">
-                                                <span class="ib-card-category-badge"><?php echo htmlspecialchars($art['category_name']); ?></span>
-                                                <img src="<?php echo htmlspecialchars($art['image_path']); ?>" alt="Article" class="ib-blog-card-thumb">
-                                            </div>
-                                            <div class="ib-blog-card-body">
-                                                <div class="ib-card-meta">
-                                                    <span><i class="fa-regular fa-calendar-days"></i> <?php echo date('M d, Y', strtotime($art['created_at'])); ?></span>
-                                                    <span>•</span>
-                                                    <span><i class="fa-regular fa-clock"></i> <?php echo htmlspecialchars($art['read_time']); ?></span>
-                                                </div>
-                                                <h3 class="ib-blog-card-title">
-                                                    <a href="javascript:void(0);" onclick="openArticleModal('art-<?php echo $art['id']; ?>')" data-article-id="art-<?php echo $art['id']; ?>">
-                                                        <?php echo htmlspecialchars($art['title']); ?>
+                                    foreach ($articles as $art):
+                                        $art_url = "blog-details.php?slug=" . urlencode($art['slug']);
+                                        ?>
+                                        <!-- Dynamic Article Card -->
+                                        <div class="col-md-6 blog-card-wrapper"
+                                            data-category="<?php echo htmlspecialchars($art['category_slug']); ?>"
+                                            data-keywords="<?php echo htmlspecialchars($art['keywords']); ?>">
+                                            <div class="ib-blog-card wow fadeInUp" data-wow-delay=".2s">
+                                                <div class="ib-blog-card-thumb-wrap">
+                                                    <span
+                                                        class="ib-card-category-badge"><?php echo htmlspecialchars($art['category_name']); ?></span>
+                                                    <a href="<?php echo $art_url; ?>"
+                                                        style="display: block; width: 100%; height: 100%;">
+                                                        <img src="<?php echo htmlspecialchars($art['image_path']); ?>"
+                                                            alt="<?php echo htmlspecialchars($art['title']); ?>"
+                                                            class="ib-blog-card-thumb">
                                                     </a>
-                                                </h3>
-                                                <p class="ib-blog-card-excerpt">
-                                                    <?php echo htmlspecialchars($art['excerpt']); ?>
-                                                </p>
-                                                <div class="ib-blog-card-footer">
-                                                    <div class="ib-author-card">
-                                                        <img src="assets/images/service/Founder.webp" alt="Author" class="ib-author-img" style="width: 32px; height: 32px;">
-                                                        <span class="ib-author-name" style="font-size: 13px;">Dammika B.</span>
+                                                </div>
+                                                <div class="ib-blog-card-body">
+                                                    <div class="ib-card-meta">
+                                                        <span><i class="fa-regular fa-calendar-days text-warning me-1"></i>
+                                                            <?php echo date('M d, Y', strtotime($art['created_at'])); ?></span>
+                                                        <span>•</span>
+                                                        <span><i class="fa-regular fa-clock text-warning me-1"></i>
+                                                            <?php echo htmlspecialchars($art['read_time']); ?></span>
                                                     </div>
-                                                    <button class="ib-read-more-btn" onclick="openArticleModal('art-<?php echo $art['id']; ?>')" data-article-id="art-<?php echo $art['id']; ?>">
-                                                        Read Article <i class="fa-solid fa-arrow-right-long"></i>
-                                                    </button>
+                                                    <h3 class="ib-blog-card-title">
+                                                        <a href="<?php echo $art_url; ?>">
+                                                            <?php echo htmlspecialchars($art['title']); ?>
+                                                        </a>
+                                                    </h3>
+                                                    <p class="ib-blog-card-excerpt">
+                                                        <?php echo htmlspecialchars($art['excerpt']); ?>
+                                                    </p>
+                                                    <div class="ib-blog-card-footer">
+                                                        <div class="ib-author-card">
+                                                            <img src="assets/images/service/Founder.webp" alt="Author"
+                                                                class="ib-author-img" style="width: 32px; height: 32px;">
+                                                            <span class="ib-author-name"
+                                                                style="font-size: 13px;"><?php echo htmlspecialchars($art['author_name'] ?? 'Dammika B.'); ?></span>
+                                                        </div>
+                                                        <a href="<?php echo $art_url; ?>" class="ib-read-more-btn">
+                                                            Read Article <i class="fa-solid fa-arrow-right-long"></i>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                     <?php endforeach; ?>
 
                                 </div>
@@ -252,24 +343,34 @@ $featured_article = isset($articles[0]) ? $articles[0] : null;
 
                             <!-- Right: Sticky Sidebar -->
                             <div class="col-lg-4">
-                                <div class="ib-blog-sidebar">
+                                <div class="ib-blog-sidebar sticky-top" style="top: 100px;">
                                     <div class="ib-sidebar-widget ib-author-widget wow fadeInUp" data-wow-delay=".2s">
-                                        <img src="assets/images/service/Founder.webp" alt="Dammika Bandara" class="ib-author-avatar-lg">
+                                        <img src="assets/images/service/Founder.webp" alt="Dammika Bandara"
+                                            class="ib-author-avatar-lg">
                                         <h5>Dammika Bandara</h5>
                                         <span class="ib-author-subtitle">Lead Business Consultant</span>
-                                        <p>Over 20+ years of commercial, manufacturing, international market development, shipping coordination, and profit engineering experience helping Sri Lankan SMEs build profitable, resilient enterprises.</p>
+                                        <p>Over 20+ years of commercial, manufacturing, international market
+                                            development, shipping coordination, and profit engineering experience
+                                            helping Sri Lankan SMEs build profitable, resilient enterprises.</p>
                                         <div class="mt-3">
-                                            <a href="about.php" class="ib-read-more-btn justify-content-center">View Consultant Profile <i class="fa-solid fa-arrow-right-long"></i></a>
+                                            <a href="about.php" class="ib-read-more-btn justify-content-center">View
+                                                Consultant Profile <i class="fa-solid fa-arrow-right-long"></i></a>
                                         </div>
                                     </div>
 
                                     <div class="ib-advisory-cta-card wow fadeInUp" data-wow-delay=".35s">
-                                        <span class="badge mb-2 px-3 py-1 text-uppercase" style="background: #d4af37; color: #0a1f44; font-weight: 700; font-size: 11px;">Direct Expert Advisory</span>
+                                        <span class="badge mb-2 px-3 py-1 text-uppercase"
+                                            style="background: #d4af37; color: #0a1f44; font-weight: 700; font-size: 11px;">Direct
+                                            Expert Advisory</span>
                                         <h4>Facing Operational or Profit Bottlenecks?</h4>
-                                        <p>Get a structured diagnostic consultation for your manufacturing or SME business. Discuss practical interventions directly with our Lead Consultant.</p>
+                                        <p>Get a structured diagnostic consultation for your manufacturing or SME
+                                            business. Discuss practical interventions directly with our Lead Consultant.
+                                        </p>
                                         <div class="ib-cta-action-btns">
-                                            <a href="tel:+94711255610" class="ib-cta-call-btn"><i class="fa-solid fa-phone"></i> Call: 071 125 5610</a>
-                                            <a href="https://wa.me/94742112767" target="_blank" class="ib-cta-wa-btn"><i class="fa-brands fa-whatsapp"></i> WhatsApp: 074 211 2767</a>
+                                            <a href="tel:+94711255610" class="ib-cta-call-btn"><i
+                                                    class="fa-solid fa-phone"></i> Call: 071 125 5610</a>
+                                            <a href="https://wa.me/94742112767" target="_blank" class="ib-cta-wa-btn"><i
+                                                    class="fa-brands fa-whatsapp"></i> WhatsApp: 074 211 2767</a>
                                         </div>
                                     </div>
                                 </div>
@@ -286,84 +387,6 @@ $featured_article = isset($articles[0]) ? $articles[0] : null;
 
         </div>
     </div>
-
-    <!-- start: Article Full Reader Modal (Direct child of <body>, OUTSIDE #smooth-wrapper so position: fixed attaches to viewport!) -->
-    <div id="ib-article-modal" class="ib-article-modal-backdrop" onclick="handleBackdropClick(event)">
-        <div class="ib-article-modal-dialog" onclick="event.stopPropagation()">
-            
-            <!-- Sticky Top Header (Always accessible during reading) -->
-            <div class="ib-modal-sticky-header">
-                <button type="button" class="ib-modal-back-btn" onclick="closeArticleModal()" title="Back to Articles">
-                    <i class="fa-solid fa-arrow-left"></i> <span>Back</span>
-                </button>
-                <span class="ib-modal-header-tag" id="modal-header-tag">Article</span>
-                <button type="button" class="ib-modal-close-icon-btn" onclick="closeArticleModal()" aria-label="Close Article" title="Close Article">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-                <!-- Reading Progress Bar -->
-                <div class="ib-reading-progress-track">
-                    <div id="ib-reading-progress-bar" class="ib-reading-progress-fill"></div>
-                </div>
-            </div>
-
-            <!-- Scrollable Article Content Container -->
-            <div class="ib-modal-scroll-area" id="ib-modal-scroll-area">
-                <div class="ib-modal-img-wrap">
-                    <img id="modal-article-img" src="assets/images/blog/blog-1.webp" alt="Article Cover" class="ib-modal-hero-img">
-                </div>
-
-                <div class="ib-modal-body">
-                    <div class="ib-modal-meta">
-                        <span id="modal-article-cat" class="ib-modal-category">Manufacturing Excellence</span>
-                        <span class="d-none d-sm-inline">•</span>
-                        <span id="modal-article-date"><i class="fa-regular fa-calendar-days"></i> October 12, 2026</span>
-                        <span>•</span>
-                        <span id="modal-article-readtime"><i class="fa-regular fa-clock"></i> 6 min read</span>
-                    </div>
-
-                    <h2 id="modal-article-title" class="ib-modal-title">Article Title</h2>
-                    
-                    <div class="ib-author-card mb-4 pb-3 border-bottom">
-                        <img src="assets/images/service/Founder.webp"
-                            alt="Dammika Bandara" class="ib-author-img">
-                        <div class="ib-author-info">
-                            <div class="ib-author-name">Dammika Bandara</div>
-                            <div class="ib-author-role">Lead Business Consultant | IB Business Consultants</div>
-                        </div>
-                    </div>
-
-                    <div id="modal-article-content" class="ib-modal-text">
-                        <!-- Dynamic Content Injected Here -->
-                    </div>
-
-                    <!-- Modal CTA Footer -->
-                    <div class="ib-modal-consult-footer">
-                        <div class="ib-modal-consult-info">
-                            <h6>Need practical implementation in your business?</h6>
-                            <p>Talk directly with Dammika Bandara for tailored diagnostics &amp; execution strategies.</p>
-                        </div>
-                        <div class="ib-modal-action-btns">
-                            <a href="tel:+94711255610" class="tj-primary-btn ib-btn-call">
-                                <i class="fa-solid fa-phone me-1"></i> <span class="btn-text topic-color2"><span>Call 071 125 5610</span></span>
-                            </a>
-                            <a href="https://wa.me/94742112767" target="_blank" class="ib-cta-wa-btn ib-btn-wa">
-                                <i class="fa-brands fa-whatsapp"></i> <span>WhatsApp Us</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Bottom Dismiss Bar -->
-                    <div class="text-center mt-4 pt-2">
-                        <button type="button" class="ib-modal-bottom-close-btn" onclick="closeArticleModal()">
-                            <i class="fa-solid fa-arrow-left me-2"></i> Finished Reading — Return to Articles
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <!-- end: Article Full Reader Modal -->
 
     <!-- JS here -->
     <script src="assets/js/jquery.min.js"></script>
@@ -383,144 +406,8 @@ $featured_article = isset($articles[0]) ? $articles[0] : null;
     <script src="assets/js/main.js"></script>
     <script src="assets/js/custom.js"></script>
 
-    <!-- Blog Interactive Data & Scripts -->
+    <!-- Filter and Search Logic -->
     <script>
-        // Convert database articles to client-side JavaScript object
-    const IB_ARTICLES = {
-        <?php foreach($articles as $art): ?>
-        'art-<?php echo $art['id']; ?>': {
-            title: <?php echo json_encode($art['title']); ?>,
-            category: <?php echo json_encode($art['category_name']); ?>,
-            date: "<?php echo date('F d, Y', strtotime($art['created_at'])); ?>",
-            readTime: <?php echo json_encode($art['read_time']); ?>,
-            img: <?php echo json_encode($art['image_path']); ?>,
-            content: <?php echo json_encode($art['content']); ?>
-        },
-        <?php endforeach; ?>
-    };
-
-        // Open Article Reader Modal
-        window.openArticleModal = function (artId) {
-            const article = (typeof IB_ARTICLES !== 'undefined' && IB_ARTICLES[artId]) ? IB_ARTICLES[artId] : null;
-            if (!article) {
-                console.warn('Article data not found for id:', artId);
-                return;
-            }
-
-            const modal = document.getElementById('ib-article-modal');
-            if (!modal) {
-                console.error('Modal element #ib-article-modal not found');
-                return;
-            }
-
-            // CRITICAL: Ensure modal is direct child of <body> so GSAP ScrollSmoother transforms never clip it!
-            if (modal.parentElement !== document.body) {
-                document.body.appendChild(modal);
-            }
-
-            const imgEl = document.getElementById('modal-article-img');
-            if (imgEl) imgEl.src = article.img;
-            const catEl = document.getElementById('modal-article-cat');
-            if (catEl) catEl.textContent = article.category;
-            const headerTag = document.getElementById('modal-header-tag');
-            if (headerTag) headerTag.textContent = article.category;
-            const dateEl = document.getElementById('modal-article-date');
-            if (dateEl) dateEl.innerHTML = '<i class="fa-regular fa-calendar-days"></i> ' + article.date;
-            const readTimeEl = document.getElementById('modal-article-readtime');
-            if (readTimeEl) readTimeEl.innerHTML = '<i class="fa-regular fa-clock"></i> ' + article.readTime;
-            const titleEl = document.getElementById('modal-article-title');
-            if (titleEl) titleEl.textContent = article.title;
-            const contentEl = document.getElementById('modal-article-content');
-            if (contentEl) contentEl.innerHTML = article.content;
-
-            // Direct inline enforcement + class addition ensures immediate visibility
-            modal.classList.add('show');
-            modal.style.setProperty('display', 'flex', 'important');
-            modal.style.setProperty('visibility', 'visible', 'important');
-            modal.style.setProperty('opacity', '1', 'important');
-            modal.style.setProperty('position', 'fixed', 'important');
-            modal.style.setProperty('top', '0', 'important');
-            modal.style.setProperty('left', '0', 'important');
-            modal.style.setProperty('width', '100vw', 'important');
-            modal.style.setProperty('height', '100vh', 'important');
-            modal.style.setProperty('z-index', '999999999', 'important');
-
-            document.documentElement.classList.add('ib-modal-open');
-            document.body.classList.add('ib-modal-open');
-
-            // Reset scroll position & progress bar to top
-            const scrollArea = document.getElementById('ib-modal-scroll-area');
-            if (scrollArea) {
-                scrollArea.scrollTop = 0;
-            }
-            const progressBar = document.getElementById('ib-reading-progress-bar');
-            if (progressBar) {
-                progressBar.style.width = '0%';
-            }
-        };
-
-        var openArticleModal = window.openArticleModal;
-
-        // Close Article Reader Modal
-        window.closeArticleModal = function (event) {
-            if (event && event.stopPropagation) {
-                event.stopPropagation();
-            }
-            const modal = document.getElementById('ib-article-modal');
-            if (modal) {
-                modal.classList.remove('show');
-                modal.style.setProperty('display', 'none', 'important');
-                modal.style.setProperty('visibility', 'hidden', 'important');
-                modal.style.setProperty('opacity', '0', 'important');
-            }
-            document.documentElement.classList.remove('ib-modal-open');
-            document.body.classList.remove('ib-modal-open');
-        };
-
-        var closeArticleModal = window.closeArticleModal;
-
-        // Backdrop click handler
-        window.handleBackdropClick = function (event) {
-            if (event && event.target && event.target.id === 'ib-article-modal') {
-                window.closeArticleModal(event);
-            }
-        };
-
-        var handleBackdropClick = window.handleBackdropClick;
-
-        // Global Delegated Click Listener for maximum reliability
-        $(document).on('click', '[data-article-id]', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            const artId = $(this).attr('data-article-id');
-            if (artId && window.openArticleModal) {
-                window.openArticleModal(artId);
-            }
-        });
-
-        // Keyboard ESC key close
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') {
-                window.closeArticleModal();
-            }
-        });
-
-        // Reading Progress tracking
-        $(function () {
-            const scrollArea = document.getElementById('ib-modal-scroll-area');
-            const progressBar = document.getElementById('ib-reading-progress-bar');
-            if (scrollArea && progressBar) {
-                scrollArea.addEventListener('scroll', function () {
-                    const scrollableDist = scrollArea.scrollHeight - scrollArea.clientHeight;
-                    if (scrollableDist > 0) {
-                        const progress = (scrollArea.scrollTop / scrollableDist) * 100;
-                        progressBar.style.width = Math.min(100, Math.max(0, progress)) + '%';
-                    }
-                }, { passive: true });
-            }
-        });
-
-        // Filter and Search Logic
         $(function () {
             let currentFilter = 'all';
             let currentSearch = '';
@@ -560,20 +447,6 @@ $featured_article = isset($articles[0]) ? $articles[0] : null;
                 applyFilters();
             });
 
-            // Sidebar Category Links click
-            $('.ib-category-link').on('click', function () {
-                const filter = $(this).data('filter');
-                $('#category-filters .ib-filter-btn').removeClass('active');
-                $('#category-filters .ib-filter-btn[data-filter="' + filter + '"]').addClass('active');
-                currentFilter = filter;
-                applyFilters();
-
-                // Smooth scroll to articles grid
-                $('html, body').animate({
-                    scrollTop: $('#category-filters').offset().top - 120
-                }, 400);
-            });
-
             // Live Search Input with debouncing
             let searchTimeout;
             $('#blog-search-input').on('keyup input', function () {
@@ -594,6 +467,20 @@ $featured_article = isset($articles[0]) ? $articles[0] : null;
                 $('#category-filters .ib-filter-btn[data-filter="all"]').addClass('active');
                 applyFilters();
             };
+
+            // URL Search Params Auto-Trigger
+            const urlParams = new URLSearchParams(window.location.search);
+            const catParam = urlParams.get('category');
+            const searchParam = urlParams.get('search');
+            if (catParam) {
+                const btn = $('#category-filters .ib-filter-btn[data-filter="' + catParam + '"]');
+                if (btn.length) {
+                    btn.trigger('click');
+                }
+            }
+            if (searchParam) {
+                $('#blog-search-input').val(searchParam).trigger('input');
+            }
         });
     </script>
 

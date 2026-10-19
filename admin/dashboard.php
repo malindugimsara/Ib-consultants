@@ -39,19 +39,19 @@ if ($inq_res && $row = $inq_res->fetch_assoc()) {
 }
 
 $stat_workshops = 0;
-$ws_res = $conn->query("SELECT COUNT(*) AS total FROM business_workshops WHERE is_published = 1");
+$ws_res = $conn->query("SELECT COUNT(*) AS total FROM business_workshops WHERE is_published = 1 AND deleted_at IS NULL");
 if ($ws_res && $row = $ws_res->fetch_assoc()) {
     $stat_workshops = (int) $row['total'];
 }
 
 $stat_programs = 0;
-$prog_res = $conn->query("SELECT COUNT(*) AS total FROM certificate_programs WHERE is_published = 1");
+$prog_res = $conn->query("SELECT COUNT(*) AS total FROM certificate_programs WHERE is_published = 1 AND deleted_at IS NULL");
 if ($prog_res && $row = $prog_res->fetch_assoc()) {
     $stat_programs = (int) $row['total'];
 }
 
 $stat_diplomas = 0;
-$dip_res = @$conn->query("SELECT COUNT(*) AS total FROM diploma_programs WHERE is_published = 1");
+$dip_res = @$conn->query("SELECT COUNT(*) AS total FROM diploma_programs WHERE is_published = 1 AND deleted_at IS NULL");
 if ($dip_res && $row = $dip_res->fetch_assoc()) {
     $stat_diplomas = (int) $row['total'];
 }
@@ -79,6 +79,232 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="../assets/css/font-awesome-pro.min.css">
     <link rel="stylesheet" href="admin.css">
 
+    <!-- DataTables CSS Dependencies -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css">
+
+    <!-- DataTables Polish Styles -->
+    <style>
+        .dataTables_wrapper {
+            width: 100%;
+        }
+
+        /* --- Toolbar Container Alignment --- */
+        .dt-toolbar-left {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding-left: 20px;
+        }
+
+        /* --- Length Dropdown (Show X entries) --- */
+        .dataTables_wrapper .dataTables_length {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 0;
+        }
+
+        .dataTables_wrapper .dataTables_length label {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            font-size: 13px !important;
+            font-weight: 600 !important;
+            color: #64748b !important;
+            margin: 0 !important;
+            text-transform: none !important;
+            padding-left: 20px !important;
+        }
+
+        .dataTables_wrapper .dataTables_length select,
+        .dataTables_wrapper .dataTables_length select.form-select,
+        .dataTables_wrapper .dataTables_length select.form-select-sm {
+            min-height: 34px !important;
+            height: 34px !important;
+            line-height: 1 !important;
+            padding: 4px 28px 4px 10px !important;
+            font-size: 13px !important;
+            font-weight: 700 !important;
+            color: var(--admin-navy) !important;
+            background-color: #ffffff !important;
+            border: 1.5px solid #cbd5e1 !important;
+            border-radius: 8px !important;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .dataTables_wrapper .dataTables_length select:hover {
+            border-color: #94a3b8 !important;
+        }
+
+        .dataTables_wrapper .dataTables_length select:focus {
+            border-color: var(--admin-gold) !important;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2) !important;
+            outline: none !important;
+        }
+
+        /* --- Vertical Divider between Length & Buttons --- */
+        .dataTables_wrapper .dt-buttons {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+            padding-left: 12px !important;
+            margin-left: 6px !important;
+            border-left: 1.5px solid #e2e8f0 !important;
+        }
+
+        .dataTables_wrapper .dt-buttons.btn-group {
+            box-shadow: none !important;
+        }
+
+        .dataTables_wrapper .dt-buttons.btn-group>.btn {
+            border-radius: 8px !important;
+            margin-right: 0 !important;
+        }
+
+        /* --- Export Buttons (Excel, CSV, Print) --- */
+        .dataTables_wrapper .dt-buttons .btn {
+            min-height: 34px !important;
+            height: 34px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+            padding: 0 12px !important;
+            font-size: 12.5px !important;
+            font-weight: 700 !important;
+            color: #334155 !important;
+            background: #ffffff !important;
+            border: 1.5px solid #cbd5e1 !important;
+            border-radius: 8px !important;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+
+        .dataTables_wrapper .dt-buttons .btn:hover {
+            border-color: var(--admin-gold) !important;
+            color: var(--admin-navy) !important;
+            background: #fdfbf7 !important;
+            box-shadow: 0 4px 10px rgba(9, 26, 50, 0.08) !important;
+            transform: translateY(-1.5px);
+        }
+
+        .dataTables_wrapper .dt-buttons .btn:active {
+            transform: translateY(0);
+        }
+
+        .dataTables_wrapper .dt-buttons .btn i {
+            font-size: 13px;
+        }
+
+        /* --- Search Filter Box --- */
+        .dataTables_wrapper .dataTables_filter {
+            margin-bottom: 0 !important;
+        }
+
+        .dataTables_wrapper .dataTables_filter label {
+            position: relative !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            margin: 0 !important;
+        }
+
+        .dataTables_wrapper .dataTables_filter label::before {
+            content: "\f002";
+            font-family: "Font Awesome 6 Pro", "Font Awesome 6 Free", sans-serif;
+            font-weight: 900;
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 12.5px;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .dataTables_wrapper .dataTables_filter input {
+            min-height: 34px !important;
+            height: 34px !important;
+            padding: 5px 14px 5px 34px !important;
+            font-size: 13px !important;
+            font-weight: 500 !important;
+            border-radius: 8px !important;
+            border: 1.5px solid #cbd5e1 !important;
+            background-color: #ffffff !important;
+            width: 220px !important;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03) !important;
+            transition: all 0.25s ease !important;
+            margin-left: 0 !important;
+        }
+
+        .dataTables_wrapper .dataTables_filter input:focus {
+            background-color: #ffffff !important;
+            border-color: var(--admin-gold) !important;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2) !important;
+            width: 260px !important;
+            outline: none !important;
+        }
+
+        @media (max-width: 767px) {
+
+            .dataTables_wrapper .dataTables_filter,
+            .dataTables_wrapper .dataTables_filter label,
+            .dataTables_wrapper .dataTables_filter input {
+                width: 100% !important;
+            }
+
+            .dataTables_wrapper .dt-buttons {
+                border-left: none !important;
+                padding-left: 0 !important;
+                margin-left: 0 !important;
+            }
+        }
+
+        /* --- Pagination Controls --- */
+        .dataTables_wrapper .page-item.active .page-link {
+            background-color: var(--admin-navy) !important;
+            border-color: var(--admin-navy) !important;
+            color: var(--admin-gold) !important;
+            font-weight: 700;
+        }
+
+        .dataTables_wrapper .page-link {
+            color: var(--admin-navy);
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            margin: 0 2px;
+            font-size: 13px;
+            padding: 6px 12px;
+            transition: all 0.2s ease;
+        }
+
+        .dataTables_wrapper .page-link:hover {
+            background-color: rgba(212, 175, 55, 0.15);
+            color: #b89326;
+            border-color: var(--admin-gold);
+        }
+
+        .dataTables_info {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--admin-text-muted);
+            padding-top: 6px;
+        }
+
+        table.dataTable thead th {
+            font-size: 12px !important;
+            letter-spacing: 0.5px;
+            color: var(--admin-navy) !important;
+            background-color: #f8fafc !important;
+            border-bottom: 2px solid var(--admin-border) !important;
+            padding: 14px 18px !important;
+            user-select: none;
+        }
+    </style>
+
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="../assets/images/logos/logo-2.webp">
 </head>
@@ -104,7 +330,8 @@ $result = $conn->query($sql);
                             Dashboard Overview</h2>
                         <p class="text-muted m-0" style="font-size: 14px;">Welcome back,
                             <strong><?php echo htmlspecialchars($_SESSION['admin_user'] ?? 'Admin'); ?></strong>! Here
-                            is your business activity overview.</p>
+                            is your business activity overview.
+                        </p>
                     </div>
                 </div>
 
@@ -162,30 +389,21 @@ $result = $conn->query($sql);
                     <div class="card-custom-header">
                         <div class="card-custom-title">
                             <i class="fa-solid fa-inbox text-muted"></i>
-                            <span>Customer Inquiries</span>
+                            <span>Customer Inquiries (Recent 30)</span>
                             <span class="count-pill"><?php echo $result ? $result->num_rows : 0; ?></span>
                         </div>
-
-                        <!-- Live Search Input -->
-                        <?php if ($result && $result->num_rows > 0): ?>
-                            <div class="table-search-box">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                                <input type="text" id="inquirySearch" placeholder="Search inquiries..."
-                                    onkeyup="filterInquiries()">
-                            </div>
-                        <?php endif; ?>
                     </div>
 
                     <?php if ($result && $result->num_rows > 0): ?>
                         <div class="table-responsive">
-                            <table class="table inquiry-table" id="inquiriesTable">
+                            <table class="table inquiry-table w-100 align-middle" id="inquiriesTable">
                                 <thead>
                                     <tr>
                                         <th style="width: 140px;">Received Date</th>
                                         <th style="width: 280px;">Client Profile</th>
                                         <th style="width: 220px;">Service Requested</th>
                                         <th>Requirement / Message</th>
-                                        <th style="width: 100px; text-align: center;">Action</th>
+                                        <th style="width: 100px; text-align: center;" class="no-sort">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -198,8 +416,8 @@ $result = $conn->query($sql);
                                         }
                                         ?>
                                         <tr class="inquiry-row">
-                                            <!-- Date & Time -->
-                                            <td>
+                                            <!-- Date & Time (Sortable by unix timestamp) -->
+                                            <td data-order="<?php echo strtotime($row['created_at']); ?>">
                                                 <div class="date-meta-cell">
                                                     <strong><?php echo date('d M Y', strtotime($row['created_at'])); ?></strong>
                                                     <span><i
@@ -312,31 +530,77 @@ $result = $conn->query($sql);
         </div>
     </div>
 
-    <!-- Bootstrap JS Bundle -->
+    <!-- Core JS Dependencies (jQuery + Bootstrap) -->
+    <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
+
+    <!-- DataTables & Extension Scripts -->
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+
     <!-- Core Admin Interaction Engine -->
     <script src="admin.js"></script>
 
-    <!-- Client-side Instant Filter Script -->
+    <!-- DataTables Initialization -->
     <script>
-        function filterInquiries() {
-            var input = document.getElementById('inquirySearch');
-            var filter = input.value.toLowerCase().trim();
-            var rows = document.querySelectorAll('.inquiry-row');
-
-            rows.forEach(function (row) {
-                var name = row.querySelector('.searchable-name') ? row.querySelector('.searchable-name').textContent.toLowerCase() : '';
-                var email = row.querySelector('.searchable-email') ? row.querySelector('.searchable-email').textContent.toLowerCase() : '';
-                var service = row.querySelector('.searchable-service') ? row.querySelector('.searchable-service').textContent.toLowerCase() : '';
-                var message = row.querySelector('.searchable-message') ? row.querySelector('.searchable-message').textContent.toLowerCase() : '';
-
-                if (name.includes(filter) || email.includes(filter) || service.includes(filter) || message.includes(filter)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            });
-        }
+        $(document).ready(function () {
+            if ($('#inquiriesTable').length) {
+                $('#inquiriesTable').DataTable({
+                    responsive: true,
+                    order: [[0, 'desc']], // Sort by Date descending (newest first)
+                    pageLength: 10,
+                    lengthMenu: [[10, 25, 30, -1], [10, 25, 30, "All"]],
+                    dom: "<'row mb-3 align-items-center g-2'<'col-md-8 d-flex align-items-center flex-wrap dt-toolbar-left'lB><'col-md-4 d-flex justify-content-md-end'f>>" +
+                        "t" +
+                        "<'row mt-3 align-items-center'<'col-md-6'i><'col-md-6 d-flex justify-content-md-end'p>>",
+                    buttons: [
+                        {
+                            extend: 'excelHtml5',
+                            text: '<i class="fa-solid fa-file-excel me-1 text-success"></i> Excel',
+                            className: 'btn btn-sm btn-light border shadow-sm',
+                            title: 'Customer_Inquiries_IB_Consultants',
+                            exportOptions: { columns: [0, 1, 2, 3] }
+                        },
+                        {
+                            extend: 'csvHtml5',
+                            text: '<i class="fa-solid fa-file-csv me-1 text-primary"></i> CSV',
+                            className: 'btn btn-sm btn-light border shadow-sm',
+                            title: 'Customer_Inquiries_IB_Consultants',
+                            exportOptions: { columns: [0, 1, 2, 3] }
+                        },
+                        {
+                            extend: 'print',
+                            text: '<i class="fa-solid fa-print me-1 text-secondary"></i> Print',
+                            className: 'btn btn-sm btn-light border shadow-sm',
+                            title: 'Customer Inquiries - IB Consultants',
+                            exportOptions: { columns: [0, 1, 2, 3] }
+                        }
+                    ],
+                    columnDefs: [
+                        { orderable: false, targets: 4 } // Disable sorting on Action column
+                    ],
+                    language: {
+                        search: "",
+                        searchPlaceholder: "Search inquiries...",
+                        lengthMenu: "Show _MENU_ records",
+                        info: "Showing _START_ to _END_ of _TOTAL_ inquiries",
+                        infoEmpty: "No inquiries to show",
+                        infoFiltered: "(filtered from _MAX_ total)",
+                        paginate: {
+                            previous: '<i class="fa-solid fa-chevron-left"></i>',
+                            next: '<i class="fa-solid fa-chevron-right"></i>'
+                        }
+                    }
+                });
+            }
+        });
     </script>
 
 </body>

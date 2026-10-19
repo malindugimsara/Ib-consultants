@@ -257,18 +257,27 @@
         pendingDeleteUrl = url;
         pendingTargetRow = rowElement;
 
+        const isForce = url.includes('force_delete=');
         const confirmBtn = modalOverlay.querySelector('#adminDeleteConfirmBtn');
+        const descEl = document.getElementById('adminDeleteModalDesc');
+        const titleEl = modalOverlay.querySelector('.modal-title-text');
+
         if (confirmBtn) {
             confirmBtn.disabled = false;
-            confirmBtn.innerHTML = '<i class="fa-solid fa-trash-can"></i> Yes, Delete';
+            confirmBtn.innerHTML = isForce
+                ? '<i class="fa-solid fa-triangle-exclamation"></i> Permanently Delete'
+                : '<i class="fa-solid fa-trash-can"></i> Move to Trash';
         }
 
-        const descEl = document.getElementById('adminDeleteModalDesc');
+        if (titleEl) {
+            titleEl.textContent = isForce ? 'Permanently Delete Record' : 'Move Record to Trash';
+        }
+
         if (descEl) {
-            if (itemName) {
-                descEl.innerHTML = `Are you sure you want to delete <strong>${itemName}</strong>?<br>This action cannot be undone.`;
+            if (isForce) {
+                descEl.innerHTML = `Are you sure you want to permanently delete ${itemName ? `<strong>${itemName}</strong>` : 'this record'}?<br><span class="text-danger fw-semibold"><i class="fa-solid fa-circle-exclamation me-1"></i> This action is permanent and cannot be recovered.</span>`;
             } else {
-                descEl.innerHTML = `Are you sure you want to delete this record?<br>This action cannot be undone.`;
+                descEl.innerHTML = `Are you sure you want to move ${itemName ? `<strong>${itemName}</strong>` : 'this record'} to <strong>Trash</strong>?<br><span class="text-muted"><i class="fa-solid fa-rotate-left me-1 text-success"></i> It will be hidden from the live site, and you can restore it anytime.</span>`;
             }
         }
 
@@ -278,7 +287,7 @@
     function initDeleteInterceptors() {
         // Intercept clicks on delete action buttons or delete links
         document.addEventListener('click', function (e) {
-            const deleteBtn = e.target.closest('.btn-action-delete, .btn-delete-confirm, a[href*="delete="]');
+            const deleteBtn = e.target.closest('.btn-action-delete, .btn-action-force-delete, .btn-delete-confirm, a[href*="delete="], a[href*="force_delete="]');
             if (!deleteBtn) return;
 
             // Ignore if it's logout or another form
@@ -624,6 +633,8 @@
         }
     }
 
+    window.updateIconPickerUI = updateIconPickerUI;
+
     window.handleAdminIconDropdownChange = function (inputId, selectedValue) {
         if (selectedValue === '__custom__') {
             const rawInput = document.getElementById(inputId);
@@ -756,9 +767,9 @@
                 if (activeCategory === 'all' || activeCategory === cat.category) {
                     cat.icons.forEach(ico => {
                         const term = searchQuery.toLowerCase().trim();
-                        if (!term || 
-                            ico.name.toLowerCase().includes(term) || 
-                            ico.class.toLowerCase().includes(term) || 
+                        if (!term ||
+                            ico.name.toLowerCase().includes(term) ||
+                            ico.class.toLowerCase().includes(term) ||
                             ico.tags.toLowerCase().includes(term) ||
                             cat.category.toLowerCase().includes(term)) {
                             matchedIcons.push({ ...ico, catName: cat.category });
@@ -895,71 +906,71 @@
                     'X-Requested-With': 'XMLHttpRequest'
                 }
             })
-            .then(res => {
-                if (!res.ok) throw new Error('HTTP ' + res.status);
-                return res.json();
-            })
-            .then(data => {
-                toggleBtn.style.pointerEvents = '';
-                if (data.status === 'success') {
-                    const newStatus = parseInt(data.new_status, 10);
+                .then(res => {
+                    if (!res.ok) throw new Error('HTTP ' + res.status);
+                    return res.json();
+                })
+                .then(data => {
+                    toggleBtn.style.pointerEvents = '';
+                    if (data.status === 'success') {
+                        const newStatus = parseInt(data.new_status, 10);
 
-                    // 1. Update the status badge in the same table row
-                    if (row) {
-                        const badge = row.querySelector('.badge-published, .badge-hidden');
-                        if (badge) {
-                            if (newStatus === 1) {
-                                badge.className = 'badge-published';
-                                badge.textContent = 'Published';
-                            } else {
-                                badge.className = 'badge-hidden';
-                                badge.textContent = 'Hidden';
+                        // 1. Update the status badge in the same table row
+                        if (row) {
+                            const badge = row.querySelector('.badge-published, .badge-hidden');
+                            if (badge) {
+                                if (newStatus === 1) {
+                                    badge.className = 'badge-published';
+                                    badge.textContent = 'Published';
+                                } else {
+                                    badge.className = 'badge-hidden';
+                                    badge.textContent = 'Hidden';
+                                }
+                                badge.classList.remove('status-updated-flash');
+                                void badge.offsetWidth; // Trigger reflow for animation
+                                badge.classList.add('status-updated-flash');
                             }
-                            badge.classList.remove('status-updated-flash');
-                            void badge.offsetWidth; // Trigger reflow for animation
-                            badge.classList.add('status-updated-flash');
+                        }
+
+                        // 2. Update toggle button icon and styling
+                        if (newStatus === 1) {
+                            toggleBtn.className = 'btn-action btn-action-hide';
+                            toggleBtn.title = 'Hide / Unpublish';
+                            if (iconEl) iconEl.className = 'fa-solid fa-eye-slash';
+                        } else {
+                            toggleBtn.className = 'btn-action btn-action-publish';
+                            toggleBtn.title = 'Show / Publish';
+                            if (iconEl) iconEl.className = 'fa-solid fa-eye';
+                        }
+
+                        // 3. Update href so subsequent toggles will work seamlessly
+                        urlObj.searchParams.set('toggle_publish', newStatus);
+                        urlObj.searchParams.delete('ajax');
+                        toggleBtn.setAttribute('href', urlObj.pathname + urlObj.search);
+
+                        // 4. Show non-intrusive floating toast notification
+                        if (window.showAdminToast) {
+                            const titleText = (newStatus === 1) ? 'Status: Published' : 'Status: Hidden';
+                            const msgText = (newStatus === 1)
+                                ? 'Item is now published and live on website.'
+                                : 'Item has been hidden from public view.';
+                            window.showAdminToast('success', titleText, msgText);
+                        }
+                    } else {
+                        if (iconEl) iconEl.className = originalIconClass;
+                        if (window.showAdminToast) {
+                            window.showAdminToast('error', 'Status Update Failed', data.message || 'Database error occurred.');
                         }
                     }
-
-                    // 2. Update toggle button icon and styling
-                    if (newStatus === 1) {
-                        toggleBtn.className = 'btn-action btn-action-hide';
-                        toggleBtn.title = 'Hide / Unpublish';
-                        if (iconEl) iconEl.className = 'fa-solid fa-eye-slash';
-                    } else {
-                        toggleBtn.className = 'btn-action btn-action-publish';
-                        toggleBtn.title = 'Show / Publish';
-                        if (iconEl) iconEl.className = 'fa-solid fa-eye';
-                    }
-
-                    // 3. Update href so subsequent toggles will work seamlessly
-                    urlObj.searchParams.set('toggle_publish', newStatus);
-                    urlObj.searchParams.delete('ajax');
-                    toggleBtn.setAttribute('href', urlObj.pathname + urlObj.search);
-
-                    // 4. Show non-intrusive floating toast notification
-                    if (window.showAdminToast) {
-                        const titleText = (newStatus === 1) ? 'Status: Published' : 'Status: Hidden';
-                        const msgText = (newStatus === 1) 
-                            ? 'Item is now published and live on website.' 
-                            : 'Item has been hidden from public view.';
-                        window.showAdminToast('success', titleText, msgText);
-                    }
-                } else {
+                })
+                .catch(err => {
+                    toggleBtn.style.pointerEvents = '';
                     if (iconEl) iconEl.className = originalIconClass;
+                    console.error('AJAX Status Toggle failed:', err);
                     if (window.showAdminToast) {
-                        window.showAdminToast('error', 'Status Update Failed', data.message || 'Database error occurred.');
+                        window.showAdminToast('error', 'Network Error', 'Could not complete status toggle. Please try again.');
                     }
-                }
-            })
-            .catch(err => {
-                toggleBtn.style.pointerEvents = '';
-                if (iconEl) iconEl.className = originalIconClass;
-                console.error('AJAX Status Toggle failed:', err);
-                if (window.showAdminToast) {
-                    window.showAdminToast('error', 'Network Error', 'Could not complete status toggle. Please try again.');
-                }
-            });
+                });
         }, true);
     }
 
@@ -1004,7 +1015,7 @@
                     try {
                         const targetUrl = new URL(href, window.location.href);
                         sessionStorage.removeItem('admin_scroll_' + targetUrl.pathname);
-                    } catch (err) {}
+                    } catch (err) { }
                 }
             }
         });
@@ -1025,44 +1036,44 @@
             body: formData,
             headers: { 'X-Requested-With': 'XMLHttpRequest' }
         })
-        .then(res => res.json())
-        .then(data => {
-            if (data.status === 'success') {
-                const newStatus = parseInt(data.new_status, 10);
-                const badgeTd = document.getElementById(badgeId) || (btnElement ? btnElement.closest('tr').querySelector('.badge-published, .badge-hidden') : null);
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    const newStatus = parseInt(data.new_status, 10);
+                    const badgeTd = document.getElementById(badgeId) || (btnElement ? btnElement.closest('tr').querySelector('.badge-published, .badge-hidden') : null);
 
-                if (btnElement) {
-                    btnElement.setAttribute('onclick', `toggleAjaxStatus('${url}', ${id}, ${newStatus}, '${actionName}', this, '${badgeId}')`);
-                    if (newStatus === 1) {
-                        btnElement.className = 'btn-action btn-action-hide';
-                        btnElement.title = 'Hide / Unpublish';
-                        if (icon) icon.className = 'fa-solid fa-eye-slash';
-                    } else {
-                        btnElement.className = 'btn-action btn-action-publish';
-                        btnElement.title = 'Show / Publish';
-                        if (icon) icon.className = 'fa-solid fa-eye';
+                    if (btnElement) {
+                        btnElement.setAttribute('onclick', `toggleAjaxStatus('${url}', ${id}, ${newStatus}, '${actionName}', this, '${badgeId}')`);
+                        if (newStatus === 1) {
+                            btnElement.className = 'btn-action btn-action-hide';
+                            btnElement.title = 'Hide / Unpublish';
+                            if (icon) icon.className = 'fa-solid fa-eye-slash';
+                        } else {
+                            btnElement.className = 'btn-action btn-action-publish';
+                            btnElement.title = 'Show / Publish';
+                            if (icon) icon.className = 'fa-solid fa-eye';
+                        }
+                    }
+
+                    if (badgeTd) {
+                        badgeTd.className = (newStatus === 1) ? 'badge-published' : 'badge-hidden';
+                        badgeTd.textContent = (newStatus === 1) ? 'Published' : 'Hidden';
+                    }
+
+                    if (window.showAdminToast) {
+                        window.showAdminToast('success', 'Status Updated', 'Status changed successfully!');
+                    }
+                } else {
+                    if (icon) icon.className = originalClass;
+                    if (window.showAdminToast) {
+                        window.showAdminToast('error', 'Error', 'Failed to update status.');
                     }
                 }
-
-                if (badgeTd) {
-                    badgeTd.className = (newStatus === 1) ? 'badge-published' : 'badge-hidden';
-                    badgeTd.textContent = (newStatus === 1) ? 'Published' : 'Hidden';
-                }
-
-                if (window.showAdminToast) {
-                    window.showAdminToast('success', 'Status Updated', 'Status changed successfully!');
-                }
-            } else {
+            })
+            .catch(err => {
                 if (icon) icon.className = originalClass;
-                if (window.showAdminToast) {
-                    window.showAdminToast('error', 'Error', 'Failed to update status.');
-                }
-            }
-        })
-        .catch(err => {
-            if (icon) icon.className = originalClass;
-            console.error('toggleAjaxStatus error:', err);
-        });
+                console.error('toggleAjaxStatus error:', err);
+            });
     };
 
     // -------------------------------------------------------------------------

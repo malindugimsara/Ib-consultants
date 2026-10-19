@@ -6841,6 +6841,7 @@ header.header-area.ib-desktop-header {
 
 .section-gap-index {
   padding-bottom: 120px;
+  padding-top: 50px;
 }
 
 /* ==========================================================================
@@ -10086,4 +10087,19 @@ body.ib-modal-open {
   .ib-step-desc {
     font-size: 13px;
   }
+
+  .section-gap-index{
+    padding-top: 10px;
+  }
+
+  .index-learn-more{
+    width: 100%;
+  }
 }
+
+.contact-info .contact-item .contact-link:hover{
+  color: #7b8a9f !important;
+
+}
+
+ 

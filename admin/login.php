@@ -13,18 +13,24 @@ $error = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $conn->real_escape_string($_POST['username']);
-    $password = md5($_POST['password']);
+    $entered_password = $_POST['password'];
 
-    // Query admin database
-    $sql = "SELECT * FROM admins WHERE username='$username' AND password='$password'";
+    $sql = "SELECT * FROM admins WHERE username='$username'";
     $result = $conn->query($sql);
 
     if ($result && $result->num_rows > 0) {
-        $_SESSION['admin_logged_in'] = true;
-        $_SESSION['admin_user'] = $username;
-        header("Location: dashboard.php");
-        exit;
+        $user_row = $result->fetch_assoc();
+        
+        if (password_verify($entered_password, $user_row['password'])) {
+            $_SESSION['admin_logged_in'] = true;
+            $_SESSION['admin_user'] = $user_row['username'];
+            header("Location: dashboard.php");
+            exit;
+        } else {
+            $error = "Invalid Username or Password. Please try again.";
+        }
     } else {
+        // Username එක වැරදි නම්
         $error = "Invalid Username or Password. Please try again.";
     }
 }

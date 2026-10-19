@@ -315,7 +315,7 @@
                                     </div>
 
                                     <div class="d-flex flex-wrap gap-3 align-items-center">
-                                        <a class="tj-primary-btn" href="about.php"
+                                        <a class="tj-primary-btn index-learn-more" href="about.php"
                                             aria-label="Learn more about IB Consultants company overview">
                                             <span class="btn-text topic-color2"><span>Learn More</span></span>
                                             <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>

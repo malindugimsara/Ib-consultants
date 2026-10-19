@@ -10,8 +10,11 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 
 
 $msg = '';
-if (isset($_GET['msg']) && $_GET['msg'] == 'updated') {
-    $msg = "<div class='alert alert-success'>Service updated successfully!</div>";
+if (isset($_GET['msg'])) {
+    if ($_GET['msg'] == 'updated') $msg = "<div class='alert alert-success'>Service updated successfully!</div>";
+    if ($_GET['msg'] == 'trashed') $msg = "<div class='alert alert-warning'>Service moved to Trash! You can restore it anytime from the Trash tab.</div>";
+    if ($_GET['msg'] == 'restored') $msg = "<div class='alert alert-success'>Service restored successfully to active list!</div>";
+    if ($_GET['msg'] == 'deleted_permanent') $msg = "<div class='alert alert-danger'>Service permanently deleted!</div>";
 }
 
 // Edit / Update Service 
@@ -45,6 +48,30 @@ if (isset($_GET['toggle_publish']) && isset($_GET['id'])) {
     exit;
 }
 
+// Soft Delete (Move to Trash)
+if (isset($_GET['delete'])) {
+    $id = (int) $_GET['delete'];
+    $conn->query("UPDATE core_services SET deleted_at = NOW() WHERE id=$id");
+    header("Location: manage_services.php?msg=trashed");
+    exit;
+}
+
+// Restore from Trash
+if (isset($_GET['restore'])) {
+    $id = (int) $_GET['restore'];
+    $conn->query("UPDATE core_services SET deleted_at = NULL WHERE id=$id");
+    header("Location: manage_services.php?view=trash&msg=restored");
+    exit;
+}
+
+// Permanent Delete
+if (isset($_GET['force_delete'])) {
+    $id = (int) $_GET['force_delete'];
+    $conn->query("DELETE FROM core_services WHERE id=$id");
+    header("Location: manage_services.php?view=trash&msg=deleted_permanent");
+    exit;
+}
+
 // Edit Mode Check
 $edit_mode = false;
 $edit_data = null;
@@ -55,7 +82,27 @@ if (isset($_GET['edit'])) {
     $edit_data = $edit_res->fetch_assoc();
 }
 
-$services = $conn->query("SELECT * FROM core_services ORDER BY display_order ASC, id ASC");
+// Tab View Mode
+$view = isset($_GET['view']) && $_GET['view'] === 'trash' ? 'trash' : 'active';
+
+// Counts for tabs
+$count_active = 0;
+$c_res = $conn->query("SELECT COUNT(*) as total FROM core_services WHERE deleted_at IS NULL");
+if ($c_res && $crow = $c_res->fetch_assoc()) {
+    $count_active = (int) $crow['total'];
+}
+
+$count_trash = 0;
+$t_res = $conn->query("SELECT COUNT(*) as total FROM core_services WHERE deleted_at IS NOT NULL");
+if ($t_res && $trow = $t_res->fetch_assoc()) {
+    $count_trash = (int) $trow['total'];
+}
+
+if ($view === 'trash') {
+    $services = $conn->query("SELECT * FROM core_services WHERE deleted_at IS NOT NULL ORDER BY deleted_at DESC");
+} else {
+    $services = $conn->query("SELECT * FROM core_services WHERE deleted_at IS NULL ORDER BY display_order ASC, id ASC");
+}
 ?>
 
 <!DOCTYPE html>
@@ -147,9 +194,90 @@ $services = $conn->query("SELECT * FROM core_services ORDER BY display_order ASC
                     </div>
                 <?php endif; ?>
 
-                <!-- List Services -->
+                <!-- List Services Card -->
                 <div class="card-custom">
-                    <h5 class="mb-3">Current Services</h5>
+                    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+                        <div class="admin-tab-nav">
+                            <a href="manage_services.php" class="admin-tab-nav-btn <?php echo $view === 'active' ? 'active' : ''; ?>">
+                                <i class="fa-solid fa-list-check"></i> Active Services <span class="tab-count-badge"><?php echo $count_active; ?></span>
+                            </a>
+                            <a href="manage_services.php?view=trash" class="admin-tab-nav-btn tab-trash <?php echo $view === 'trash' ? 'active' : ''; ?>">
+                                <i class="fa-solid fa-trash-can"></i> Trash <span class="tab-count-badge"><?php echo $count_trash; ?></span>
+                            </a>
+                        </div>
+                        <?php if ($view === 'trash'): ?>
+                            <a href="manage_services.php" class="btn btn-sm btn-outline-secondary">
+                                <i class="fa-solid fa-arrow-left me-1"></i> Back to Active Services
+                            </a>
+                        <?php endif; ?>
+                    </div>
+
+                    <?php if ($view === 'trash'): ?>
+                    <!-- Trash Services Table -->
+                    <div class="table-responsive">
+                        <table class="table admin-table align-middle">
+                            <thead style="background-color: #7f1d1d; color: #fff;">
+                                <tr>
+                                    <th style="width: 60px; text-align: center;">No.</th>
+                                    <th style="width: 320px;">Title & Page Link</th>
+                                    <th>Key List Items</th>
+                                    <th style="width: 190px; text-align: center;">Deleted On</th>
+                                    <th style="width: 130px; text-align: center;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                if ($services->num_rows > 0):
+                                    $t_count = 1;
+                                    while ($row = $services->fetch_assoc()):
+                                        $formatted_list = nl2br(htmlspecialchars($row['list_items']));
+                                        ?>
+                                        <tr style="background: rgba(239, 68, 68, 0.02);">
+                                            <td class="text-center fw-bold text-muted">
+                                                <?php echo str_pad($t_count, 2, '0', STR_PAD_LEFT); ?>
+                                            </td>
+                                            <td>
+                                                <strong style="color: var(--admin-navy); font-size: 15px;"><?php echo htmlspecialchars($row['title']); ?></strong>
+                                            </td>
+                                            <td style="font-size: 13px; color: #475569;"><?php echo $formatted_list; ?></td>
+                                            <td class="text-center">
+                                                <span class="badge bg-danger-subtle text-danger border border-danger-subtle px-2 py-1">
+                                                    <i class="fa-regular fa-clock me-1"></i>
+                                                    <?php echo !empty($row['deleted_at']) ? date('M d, Y h:i A', strtotime($row['deleted_at'])) : 'Unknown'; ?>
+                                                </span>
+                                            </td>
+                                            <td class="text-center">
+                                                <div class="action-btn-group justify-content-center">
+                                                    <!-- Restore -->
+                                                    <a href="manage_services.php?restore=<?php echo $row['id']; ?>"
+                                                        class="btn-action btn-action-restore" title="Restore Service to Active List">
+                                                        <i class="fa-solid fa-rotate-left"></i>
+                                                    </a>
+                                                    <!-- Permanent Delete -->
+                                                    <a href="manage_services.php?force_delete=<?php echo $row['id']; ?>"
+                                                        class="btn-action btn-action-force-delete" title="Permanently Delete Service"
+                                                        data-item-name="<?php echo htmlspecialchars($row['title']); ?>">
+                                                        <i class="fa-solid fa-trash-can"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                        $t_count++;
+                                    endwhile;
+                                else:
+                                    ?>
+                                    <tr>
+                                        <td colspan="5" class="text-center py-4 text-muted">
+                                            <i class="fa-regular fa-trash-can me-2"></i> Trash is empty.
+                                        </td>
+                                    </tr>
+                                <?php endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <?php else: ?>
+                    <!-- Active Services Table -->
                     <div class="table-responsive">
                         <table class="table admin-table align-middle">
                             <thead style="background-color: #091a32; color: #fff;">
@@ -158,7 +286,7 @@ $services = $conn->query("SELECT * FROM core_services ORDER BY display_order ASC
                                     <th style="width: 260px;">Title & Page Link</th>
                                     <th>Key List Items</th>
                                     <th style="width: 110px; text-align: center;">Status</th>
-                                    <th style="width: 100px; text-align: center;">Action</th>
+                                    <th style="width: 140px; text-align: center;">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -200,6 +328,13 @@ $services = $conn->query("SELECT * FROM core_services ORDER BY display_order ASC
                                                         title="<?php echo ($row['is_published'] == 1) ? 'Hide / Unpublish Service' : 'Show / Publish Service'; ?>">
                                                         <i class="fa-solid <?php echo ($row['is_published'] == 1) ? 'fa-eye-slash' : 'fa-eye'; ?>"></i>
                                                     </a>
+
+                                                    <!-- Delete (Soft Delete) -->
+                                                    <a href="manage_services.php?delete=<?php echo $row['id']; ?>"
+                                                        class="btn-action btn-action-delete" title="Move to Trash"
+                                                        data-item-name="<?php echo htmlspecialchars($row['title']); ?>">
+                                                        <i class="fa-solid fa-trash-can"></i>
+                                                    </a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -216,6 +351,7 @@ $services = $conn->query("SELECT * FROM core_services ORDER BY display_order ASC
                             </tbody>
                         </table>
                     </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

@@ -9,8 +9,12 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 }
 
 $msg = '';
-if (isset($_GET['msg']) && $_GET['msg'] == 'updated') {
-    $msg = "<div class='alert alert-success'>Program updated successfully!</div>";
+if (isset($_GET['msg'])) {
+    if ($_GET['msg'] == 'added') $msg = "<div class='alert alert-success alert-dismissible fade show'><i class='fa-solid fa-circle-check me-2'></i> Program added successfully!</div>";
+    if ($_GET['msg'] == 'updated') $msg = "<div class='alert alert-success alert-dismissible fade show'><i class='fa-solid fa-circle-check me-2'></i> Program updated successfully!</div>";
+    if ($_GET['msg'] == 'trashed') $msg = "<div class='alert alert-warning alert-dismissible fade show'><i class='fa-solid fa-trash-can me-2'></i> Program moved to Trash! You can restore it anytime from the Trash tab.</div>";
+    if ($_GET['msg'] == 'restored') $msg = "<div class='alert alert-success alert-dismissible fade show'><i class='fa-solid fa-rotate-left me-2'></i> Program restored successfully to active list!</div>";
+    if ($_GET['msg'] == 'deleted_permanent') $msg = "<div class='alert alert-danger alert-dismissible fade show'><i class='fa-solid fa-triangle-exclamation me-2'></i> Program permanently deleted!</div>";
 }
 
 // 1. Add New Program
@@ -21,15 +25,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_program'])) {
 
     // Image Upload
     $target_dir = "../uploads/programs/";
+    if (!file_exists($target_dir)) {
+        @mkdir($target_dir, 0777, true);
+    }
     $image_name = time() . '_' . basename($_FILES["image"]["name"]);
     $target_file = $target_dir . $image_name;
 
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
         $image_path = "uploads/programs/" . $image_name;
-        $sql = "INSERT INTO certificate_programs (title, description, image_path, icon_class) 
-                VALUES ('$title', '$description', '$image_path', '$icon_class')";
-        $conn->query($sql);
-        $msg = "<div class='alert alert-success'>Program added successfully!</div>";
+        $sql = "INSERT INTO certificate_programs (title, description, image_path, icon_class, is_published) 
+                VALUES ('$title', '$description', '$image_path', '$icon_class', 1)";
+        if ($conn->query($sql)) {
+            header("Location: manage_programs.php?msg=added");
+            exit;
+        } else {
+            $msg = "<div class='alert alert-danger'>Failed to save program to database.</div>";
+        }
     } else {
         $msg = "<div class='alert alert-danger'>Failed to upload image.</div>";
     }
@@ -47,6 +58,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_program'])) {
     // Update image only if a new file is uploaded
     if (!empty($_FILES["image"]["name"])) {
         $target_dir = "../uploads/programs/";
+        if (!file_exists($target_dir)) {
+            @mkdir($target_dir, 0777, true);
+        }
         $image_name = time() . '_' . basename($_FILES["image"]["name"]);
         $target_file = $target_dir . $image_name;
 
@@ -56,8 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_program'])) {
             // Delete old image from server
             $old_img_res = $conn->query("SELECT image_path FROM certificate_programs WHERE id=$id");
             if ($row = $old_img_res->fetch_assoc()) {
-                if (file_exists("../" . $row['image_path'])) {
-                    unlink("../" . $row['image_path']);
+                if (!empty($row['image_path']) && file_exists("../" . $row['image_path'])) {
+                    @unlink("../" . $row['image_path']);
                 }
             }
             // Append new image path to SQL update query
@@ -88,9 +102,25 @@ if (isset($_GET['toggle_publish']) && isset($_GET['id'])) {
     exit;
 }
 
-// 4. Delete Program
+// 4. Soft Delete Program (Move to Trash)
 if (isset($_GET['delete'])) {
     $id = (int) $_GET['delete'];
+    $conn->query("UPDATE certificate_programs SET deleted_at = NOW() WHERE id=$id");
+    header("Location: manage_programs.php?msg=trashed");
+    exit;
+}
+
+// 5. Restore Program from Trash
+if (isset($_GET['restore'])) {
+    $id = (int) $_GET['restore'];
+    $conn->query("UPDATE certificate_programs SET deleted_at = NULL WHERE id=$id");
+    header("Location: manage_programs.php?view=trash&msg=restored");
+    exit;
+}
+
+// 6. Permanent / Force Delete Program (Row + Image Unlink)
+if (isset($_GET['force_delete'])) {
+    $id = (int) $_GET['force_delete'];
     $res = $conn->query("SELECT image_path FROM certificate_programs WHERE id=$id");
     if ($row = $res->fetch_assoc()) {
         if (!empty($row['image_path']) && file_exists("../" . $row['image_path'])) {
@@ -98,7 +128,7 @@ if (isset($_GET['delete'])) {
         }
     }
     $conn->query("DELETE FROM certificate_programs WHERE id=$id");
-    header("Location: manage_programs.php?msg=deleted");
+    header("Location: manage_programs.php?view=trash&msg=deleted_permanent");
     exit;
 }
 
@@ -112,8 +142,28 @@ if (isset($_GET['edit'])) {
     $edit_data = $edit_res->fetch_assoc();
 }
 
-// Fetch all programs
-$programs = $conn->query("SELECT * FROM certificate_programs ORDER BY display_order ASC, id DESC");
+// Tab View Mode
+$view = isset($_GET['view']) && $_GET['view'] === 'trash' ? 'trash' : 'active';
+
+// Counts for tabs
+$count_active = 0;
+$c_res = $conn->query("SELECT COUNT(*) as total FROM certificate_programs WHERE deleted_at IS NULL");
+if ($c_res && $crow = $c_res->fetch_assoc()) {
+    $count_active = (int) $crow['total'];
+}
+
+$count_trash = 0;
+$t_res = $conn->query("SELECT COUNT(*) as total FROM certificate_programs WHERE deleted_at IS NOT NULL");
+if ($t_res && $trow = $t_res->fetch_assoc()) {
+    $count_trash = (int) $trow['total'];
+}
+
+// Fetch programs based on active/trash view
+if ($view === 'trash') {
+    $programs = $conn->query("SELECT * FROM certificate_programs WHERE deleted_at IS NOT NULL ORDER BY deleted_at DESC");
+} else {
+    $programs = $conn->query("SELECT * FROM certificate_programs WHERE deleted_at IS NULL ORDER BY display_order ASC, id DESC");
+}
 ?>
 
 <!DOCTYPE html>
@@ -151,6 +201,7 @@ $programs = $conn->query("SELECT * FROM certificate_programs ORDER BY display_or
                 <h2 class="mb-4" style="color: #091a32; font-weight: 700;">Manage Certificate Programs</h2>
                 <?php echo $msg; ?>
 
+                <?php if ($view !== 'trash'): ?>
                 <!-- Add / Edit Form -->
                 <div class="card-custom" style="<?php echo $edit_mode ? 'border: 2px solid #d4af37;' : ''; ?>">
                     <h5 class="mb-3"><?php echo $edit_mode ? 'Edit Program Details' : 'Add New Program'; ?></h5>
@@ -224,10 +275,85 @@ $programs = $conn->query("SELECT * FROM certificate_programs ORDER BY display_or
                         </div>
                     </form>
                 </div>
+                <?php endif; ?>
 
-                <!-- List Programs -->
+                <!-- Programs Table Card -->
                 <div class="card-custom">
-                    <h5 class="mb-3">Current Programs</h5>
+                    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+                        <div class="admin-tab-nav">
+                            <a href="manage_programs.php" class="admin-tab-nav-btn <?php echo $view === 'active' ? 'active' : ''; ?>">
+                                <i class="fa-solid fa-list-check"></i> Active Programs <span class="tab-count-badge"><?php echo $count_active; ?></span>
+                            </a>
+                            <a href="manage_programs.php?view=trash" class="admin-tab-nav-btn tab-trash <?php echo $view === 'trash' ? 'active' : ''; ?>">
+                                <i class="fa-solid fa-trash-can"></i> Trash <span class="tab-count-badge"><?php echo $count_trash; ?></span>
+                            </a>
+                        </div>
+                        <?php if ($view === 'trash'): ?>
+                            <a href="manage_programs.php" class="btn btn-sm btn-outline-secondary">
+                                <i class="fa-solid fa-arrow-left me-1"></i> Back to Active Programs
+                            </a>
+                        <?php endif; ?>
+                    </div>
+
+                    <?php if ($view === 'trash'): ?>
+                    <!-- Trash Programs Table -->
+                    <div class="table-responsive">
+                        <table class="table admin-table align-middle">
+                            <thead style="background-color: #7f1d1d; color: #fff;">
+                                <tr>
+                                    <th style="width: 140px;">Image</th>
+                                    <th>Title & Description</th>
+                                    <th style="width: 190px; text-align: center;">Deleted On</th>
+                                    <th style="width: 130px; text-align: center;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php if ($programs && $programs->num_rows > 0):
+                                    while ($row = $programs->fetch_assoc()): ?>
+                                        <tr style="background: rgba(239, 68, 68, 0.02);">
+                                            <td>
+                                                <img src="../<?php echo !empty($row['image_path']) ? htmlspecialchars($row['image_path']) : 'assets/images/default.jpg'; ?>" 
+                                                     class="img-preview"
+                                                     style="width: 110px; height: 70px; object-fit: cover; border-radius: 8px; opacity: 0.75;">
+                                            </td>
+                                            <td>
+                                                <strong style="color: var(--admin-navy); font-size: 15px;"><?php echo htmlspecialchars($row['title']); ?></strong><br>
+                                                <small class="text-muted"><?php echo htmlspecialchars($row['description']); ?></small>
+                                            </td>
+                                            <td class="text-center">
+                                                <span class="badge bg-danger-subtle text-danger border border-danger-subtle px-2 py-1">
+                                                    <i class="fa-regular fa-clock me-1"></i>
+                                                    <?php echo !empty($row['deleted_at']) ? date('M d, Y h:i A', strtotime($row['deleted_at'])) : 'Unknown'; ?>
+                                                </span>
+                                            </td>
+                                            <td class="text-center">
+                                                <div class="action-btn-group justify-content-center">
+                                                    <!-- Restore -->
+                                                    <a href="manage_programs.php?restore=<?php echo $row['id']; ?>"
+                                                        class="btn-action btn-action-restore" title="Restore Program to Active List">
+                                                        <i class="fa-solid fa-rotate-left"></i>
+                                                    </a>
+                                                    <!-- Permanent Delete -->
+                                                    <a href="manage_programs.php?force_delete=<?php echo $row['id']; ?>"
+                                                        class="btn-action btn-action-force-delete" title="Permanently Delete Program"
+                                                        data-item-name="<?php echo htmlspecialchars($row['title']); ?>">
+                                                        <i class="fa-solid fa-trash-can"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endwhile; else: ?>
+                                    <tr>
+                                        <td colspan="4" class="text-center py-4 text-muted">
+                                            <i class="fa-regular fa-trash-can me-2"></i> Trash is empty.
+                                        </td>
+                                    </tr>
+                                <?php endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <?php else: ?>
+                    <!-- Active Programs Table -->
                     <div class="table-responsive">
                         <table class="table admin-table align-middle">
                             <thead style="background-color: #091a32; color: #fff;">
@@ -239,10 +365,10 @@ $programs = $conn->query("SELECT * FROM certificate_programs ORDER BY display_or
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if ($programs->num_rows > 0):
+                                <?php if ($programs && $programs->num_rows > 0):
                                     while ($row = $programs->fetch_assoc()): ?>
                                         <tr>
-                                            <td><img src="../<?php echo $row['image_path']; ?>" class="img-preview"
+                                            <td><img src="../<?php echo htmlspecialchars($row['image_path']); ?>" class="img-preview"
                                                     style="width: 110px; height: 70px; object-fit: cover; border-radius: 8px;">
                                             </td>
                                             <td>
@@ -274,9 +400,9 @@ $programs = $conn->query("SELECT * FROM certificate_programs ORDER BY display_or
                                                             class="fa-solid <?php echo ($row['is_published'] == 1) ? 'fa-eye-slash' : 'fa-eye'; ?>"></i>
                                                     </a>
 
-                                                    <!-- Delete Button -->
+                                                    <!-- Delete Button (Move to Trash) -->
                                                     <a href="manage_programs.php?delete=<?php echo $row['id']; ?>"
-                                                        class="btn-action btn-action-delete" title="Delete Program"
+                                                        class="btn-action btn-action-delete" title="Move to Trash"
                                                         data-item-name="<?php echo htmlspecialchars($row['title']); ?>">
                                                         <i class="fa-solid fa-trash-can"></i>
                                                     </a>
@@ -292,6 +418,7 @@ $programs = $conn->query("SELECT * FROM certificate_programs ORDER BY display_or
                             </tbody>
                         </table>
                     </div>
+                    <?php endif; ?>
                 </div>
 
             </div>
