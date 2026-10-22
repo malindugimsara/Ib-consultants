@@ -399,7 +399,7 @@ function ensureFloatingWhatsApp() {
   if (document.querySelector(".ib-floating-whatsapp")) return;
 
   const waBtn = document.createElement("a");
-  waBtn.href = "https://wa.me/94742112767?text=Hello%20IB%20Consultants,%20I%20would%20like%20to%20inquire%20about%20your%20services.";
+  waBtn.href = "https://wa.me/94742112767?text=Hello%20IB%20Consultants%2C%0A%0AI%20am%20interested%20in%20learning%20more%20about%20your%20consultancy%20services%20and%20would%20appreciate%20further%20information%20on%20how%20you%20could%20support%20my%20business%20in%20achieving%20its%20goals%20and%20improving%20overall%20performance.%0A%0AThank%20you.";
   waBtn.target = "_blank";
   waBtn.rel = "noopener noreferrer";
   waBtn.className = "ib-floating-whatsapp";
