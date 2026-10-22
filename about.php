@@ -239,7 +239,7 @@
                                         <span class="btn-text topic-color2"><span>Explore Our Services</span></span>
                                         <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
                                     </a>
-                                    <a class="ib-company-profile-card-btn" href="assets/docs/IB-Consultants-Company-Profile.pdf" download="IB-Consultants-Company-Profile.pdf"
+                                    <!-- <a class="ib-company-profile-card-btn" href="assets/docs/IB-Consultants-Company-Profile.pdf" download="IB-Consultants-Company-Profile.pdf"
                                         aria-label="Download IB Consultants Company Profile">
                                         <span class="ib-btn-file-icon">
                                             <i class="fa-solid fa-file-pdf"></i>
@@ -251,7 +251,7 @@
                                         <span class="ib-btn-download-circle">
                                             <i class="fa-solid fa-arrow-down"></i>
                                         </span>
-                                    </a>
+                                    </a> -->
                                 </div>
                             </div>
                         </div>
@@ -270,7 +270,7 @@
                                 <div class="sec-heading text-center mb-5">
                                     <span class="sub-title wow fadeInUp" data-wow-delay=".2s"><i class="tji-box"></i>Our
                                         Leadership</span>
-                                    <h2 class="sec-title title-anim topic-color">Meet Our <span>Director.</span></h2>
+                                    <h2 class="sec-title title-anim topic-color">Meet Our <span>Founder.</span></h2>
                                     <p class="ib-section-tagline wow fadeInUp" data-wow-delay=".3s">
                                         “Practical, results-driven business consulting backed by hands on industry
                                         experience in sales, marketing, international business, manufacturing,
@@ -291,12 +291,12 @@
                                             alt="Dammika S. Bandara - Founder & Lead Business Consultant"
                                             class="img-fluid ib-founder-img">
                                         <div class="ib-founder-badge">
-                                            <span><i class="fa-solid fa-award"></i> Director & Lead Consultant</span>
+                                            <span><i class="fa-solid fa-award"></i> Founder & Lead Consultant</span>
                                         </div>
                                     </div>
                                     <div class="ib-founder-card-body text-center">
                                         <h3 class="ib-founder-name topic-color">Dammika S. Bandara</h3>
-                                        <span class="ib-founder-role">Director & Lead Business Consultant</span>
+                                        <span class="ib-founder-role">Founder & Lead Business Consultant</span>
                                         <div class="ib-founder-contacts">
                                             <!-- Official Email -->
                                             <a href="mailto:info@businessconsultant.lk" class="ib-contact-btn email"
@@ -335,14 +335,14 @@
                             <div class="col-lg-8 col-md-7 wow fadeInRight" data-wow-delay=".4s">
                                 <div class="ib-founder-bio-card">
                                     <div class="ib-card-header">
-                                        <span class="ib-mini-badge"><i class="fa-solid fa-user-tie"></i> Director
+                                        <span class="ib-mini-badge"><i class="fa-solid fa-user-tie"></i> Founder
                                             Profile</span>
                                         <h3 class="ib-bio-title">Empowering Businesses Through Knowledge & Strategy.
                                         </h3>
                                     </div>
                                     <div class="ib-bio-text">
                                         <p>
-                                            The Director brings a practical, business-focused approach to
+                                            The founder brings a practical, business-focused approach to
                                             consulting, with an emphasis on helping organizations improve
                                             performance, strengthen operations, and achieve sustainable growth.
                                             With an understanding of business management, sales and marketing,
@@ -505,26 +505,25 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Academic 03: PGDip Marketing -->
+                                            <!-- Prof 04: Diploma in English -->
                                             <div class="ib-qual-card">
                                                 <div class="ib-qual-card-icon">
-                                                    <i class="fa-solid fa-bullhorn"></i>
+                                                    <i class="fa-solid fa-language"></i>
                                                 </div>
                                                 <div class="ib-qual-card-body">
                                                     <div class="ib-qual-meta">
                                                         <span class="ib-qual-status-pill pill-completed"><i
-                                                                class="fa-solid fa-circle-check"></i>
-                                                            Postgraduate</span>
-                                                        <span class="ib-qual-tier-tag">SLIM</span>
+                                                                class="fa-solid fa-circle-check"></i> Diploma</span>
+                                                        <span class="ib-qual-tier-tag">Communications</span>
                                                     </div>
-                                                    <h5 class="ib-qual-card-title">Postgraduate Diploma in Marketing
-                                                        Management</h5>
+                                                    <h5 class="ib-qual-card-title">Diploma in English</h5>
                                                     <div class="ib-qual-institute-wrap">
                                                         <i class="fa-solid fa-building-columns"></i>
-                                                        <span>Sri Lanka Institute of Marketing (SLIM)</span>
+                                                        <span>Rajarata University of Sri Lanka</span>
                                                     </div>
                                                 </div>
                                             </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -611,24 +610,26 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Prof 04: Diploma in English -->
                                             <div class="ib-qual-card">
                                                 <div class="ib-qual-card-icon">
-                                                    <i class="fa-solid fa-language"></i>
+                                                    <i class="fa-solid fa-bullhorn"></i>
                                                 </div>
                                                 <div class="ib-qual-card-body">
                                                     <div class="ib-qual-meta">
-                                                        <span class="ib-qual-status-pill pill-completed"><i
-                                                                class="fa-solid fa-circle-check"></i> Diploma</span>
-                                                        <span class="ib-qual-tier-tag">Communications</span>
+                                                        <span class="ib-qual-status-pill pill-reading"><i
+                                                                class="fa-solid fa-book-open-reader"></i>
+                                                            Reading</span>
+                                                        <span class="ib-qual-tier-tag">SLIM</span>
                                                     </div>
-                                                    <h5 class="ib-qual-card-title">Diploma in English</h5>
+                                                    <h5 class="ib-qual-card-title">Postgraduate Diploma in Marketing
+                                                        Management</h5>
                                                     <div class="ib-qual-institute-wrap">
                                                         <i class="fa-solid fa-building-columns"></i>
-                                                        <span>Rajarata University of Sri Lanka</span>
+                                                        <span>Sri Lanka Institute of Marketing (SLIM)</span>
                                                     </div>
                                                 </div>
                                             </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -782,7 +783,7 @@
                         <div class="ib-perspective-card mb-5 wow fadeInUp" data-wow-delay=".3s">
                             <div class="row align-items-center">
                                 <div class="col-lg-8">
-                                    <span class="ib-perspective-tag"><i class="fa-solid fa-compass"></i> Director
+                                    <span class="ib-perspective-tag"><i class="fa-solid fa-compass"></i> Founder
                                         Perspective</span>
                                     <h4 class="ib-perspective-title text-white">Making Practical Guidance Accessible to
                                         Entrepreneurs & SMEs</h4>
@@ -803,7 +804,7 @@
                                 </div>
                                 <div class="col-lg-4 text-center text-lg-end mt-4 mt-lg-0">
                                     <a class="tj-primary-btn btn-about" href="contact.php">
-                                        <span class="btn-text topic-color-about"><span>Consult with Our Director</span></span>
+                                        <span class="btn-text topic-color-about"><span>Consult with Our Founder</span></span>
                                         <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
                                     </a>
                                 </div>

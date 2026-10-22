@@ -320,7 +320,7 @@
                                             <span class="btn-text topic-color2"><span>Learn More</span></span>
                                             <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
                                         </a>
-                                        <a class="ib-company-profile-card-btn"
+                                        <!-- <a class="ib-company-profile-card-btn"
                                             href="assets/docs/IB-Consultants-Company-Profile.pdf"
                                             download="IB-Consultants-Company-Profile.pdf"
                                             aria-label="Download IB Consultants Company Profile">
@@ -335,7 +335,7 @@
                                             <span class="ib-btn-download-circle">
                                                 <i class="fa-solid fa-arrow-down"></i>
                                             </span>
-                                        </a>
+                                        </a> -->
                                     </div>
                                 </div>
                             </div>

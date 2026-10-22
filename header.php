@@ -161,9 +161,11 @@
   <div class="ib-top-bar">
     <div class="container-fluid section-gap-x">
       <div class="d-flex justify-content-between align-items-center">
-        <div class="open-hours">
-          <i class="fa-regular fa-clock" style="color: #d4af37; margin-right: 5px;"></i>
-          <strong>Open Hours:</strong> Mon — Fri: 08.00 am — 05.00 pm, Sat: 8.30a.m. – 2.00p.m
+        <div class="ib-top-advice">
+          <a href="contact.php" class="ib-top-advice-link text-decoration-none">
+            <i class="fa-solid fa-comments" style="color: #d4af37; margin-right: 6px;"></i>
+            <strong style="color: #091a32;">Need Expert Advice?</strong> <span>Get Practical Business Guidance Today</span>
+          </a>
         </div>
         <div class="social-icons">
           <a href="https://wa.me/94742112767" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>

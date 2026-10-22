@@ -2164,6 +2164,26 @@ header.header-area.ib-desktop-header {
   color: #555555;
 }
 
+.ib-top-bar .ib-top-advice-link {
+  color: #555555;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.ib-top-bar .ib-top-advice-link strong {
+  transition: color 0.3s ease;
+  margin-right: 4px;
+}
+
+.ib-top-bar .ib-top-advice-link:hover {
+  color: #091a32;
+}
+
+.ib-top-bar .ib-top-advice-link:hover strong {
+  color: #d4af37 !important;
+}
+
 .ib-top-bar .social-icons {
   margin-right: 50px;
   /* Shift left from right edge */
@@ -5736,7 +5756,8 @@ header.header-area.ib-desktop-header {
 .ib-founder-badge {
   position: absolute;
   bottom: 12px;
-  left: 12px;
+  left: 50%; /* තිරයේ හෝ Box එකේ මැදට සකස් කිරීම */
+  transform: translateX(-50%); /* හරියටම මධ්‍යගත කිරීම (Center alignment fix) */
   background: var(--primary-navy);
   color: var(--accent-gold);
   border: 1px solid var(--accent-gold);
@@ -5747,6 +5768,7 @@ header.header-area.ib-desktop-header {
   letter-spacing: 0.5px;
   text-transform: uppercase;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  white-space: nowrap; /* අකුරු වෙනත් පේළියකට පැනීම වැළැක්වීමට */
 }
 
 .ib-founder-card-body {
@@ -8585,17 +8607,22 @@ body.ib-modal-open {
 .ib-contact-text {
   color: #556987;
   font-size: 14.5px;
-  line-height: 1.6;
+  line-height: 1.5;
   margin-bottom: 0;
-  flex-grow: 1;
+  min-height: 62px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .ib-contact-info-list {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  flex-grow: 1;
+  min-height: 62px;
   margin-bottom: 0;
   width: 100%;
 }
@@ -8669,10 +8696,62 @@ body.ib-modal-open {
   }
 }
 
+/* Highlight Info / Open Hours Block in Contact Cards */
+.ib-contact-hours {
+  width: 100%;
+  margin-top: 14px;
+  padding: 10px 12px;
+  background: rgba(10, 31, 68, 0.03);
+  border: 1px dashed rgba(212, 175, 55, 0.4);
+  border-radius: 12px;
+  text-align: center;
+  transition: all 0.3s ease;
+  min-height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ib-contact-card:hover .ib-contact-hours {
+  background: rgba(212, 175, 55, 0.08);
+  border-color: rgba(212, 175, 55, 0.7);
+}
+
+.ib-hours-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #0a1f44;
+  margin-bottom: 5px;
+}
+
+.ib-hours-title i {
+  color: #d4af37;
+  font-size: 12px;
+}
+
+.ib-hours-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #556987;
+}
+
+.ib-hours-detail strong {
+  color: #0a1f44;
+}
+
 /* Action Button Container */
 .ib-contact-action {
   width: 100%;
-  margin-top: 22px;
+  margin-top: auto;
   padding-top: 18px;
   border-top: 1px solid rgba(10, 31, 68, 0.08);
 }
@@ -9750,6 +9829,18 @@ body.ib-modal-open {
   line-height: 1;
 }
 
+.ib-floating-whatsapp .ib-wa-icon,
+.ib-floating-whatsapp svg {
+  width: 32px;
+  height: 32px;
+  display: block;
+  fill: currentColor;
+  color: #ffffff !important;
+  pointer-events: none;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .ib-floating-whatsapp:hover {
   background: #20ba59;
   transform: scale(1.08) translateY(-3px);
@@ -9831,6 +9922,12 @@ body.ib-modal-open {
     width: 50px;
     height: 50px;
     font-size: 28px;
+  }
+
+  .ib-floating-whatsapp .ib-wa-icon,
+  .ib-floating-whatsapp svg {
+    width: 28px;
+    height: 28px;
   }
 
   .ib-floating-whatsapp .ib-wa-tooltip {

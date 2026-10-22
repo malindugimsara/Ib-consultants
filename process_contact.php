@@ -80,18 +80,67 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Body = $admin_body;
         $mail->send();
 
-        // Send Automated "Thank You" Confirmation Email to Customer
+        // Send Automated "Thank You" Confirmation Email to Customer (With Logo)
         $mail->clearAllRecipients();
         $mail->clearReplyTos();
 
         $mail->setFrom($env['SMTP_FROM_EMAIL'], 'IB Consultants');
         $mail->addAddress($email);
 
+        $mail->isHTML(true);
         $mail->Subject = "Thank you for contacting IB Consultants";
-        $customer_body = "Dear $name,\n\n";
-        $customer_body .= "Thank you for reaching out to IB Consultants. We have successfully received your inquiry regarding '$service'.\n\n";
-        $customer_body .= "Our senior consulting team will review your requirement and get back to you within 24 hours.\n\n";
-        $customer_body .= "Best Regards,\nIB Consultants\n";
+
+        $customer_body = '
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <style>
+                body { font-family: "Plus Jakarta Sans", Arial, sans-serif; background-color: #f4f6fa; margin: 0; padding: 0; color: #1e293b; }
+                .email-container { max-width: 600px; margin: 30px auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(9, 26, 50, 0.08); border-top: 4px solid #d4af37; }
+                .email-header { background: #091a32; padding: 25px 20px; text-align: center; color: #ffffff; }
+                .email-logo { max-width: 90px; height: auto; margin-bottom: 12px; display: block; margin-left: auto; margin-right: auto; }
+                .email-header h1 { margin: 0; font-size: 20px; font-weight: 800; letter-spacing: 1px; color: #ffffff; }
+                .email-header p { margin: 4px 0 0 0; font-size: 12px; color: #d4af37; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
+                .email-body { padding: 35px 30px; line-height: 1.6; font-size: 15px; color: #334155; }
+                .highlight-box { background: #f8fafc; border-left: 4px solid #091a32; padding: 15px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; font-size: 14px; color: #091a32; }
+                .contact-info { margin-top: 25px; padding-top: 20px; border-top: 1px solid #e2e8f0; font-size: 14px; color: #64748b; }
+                .contact-info a { color: #091a32; text-decoration: none; font-weight: 600; }
+                .email-footer { background: #f8fafc; padding: 20px; text-align: center; font-size: 12px; color: #94a3b8; border-top: 1px solid #e2e8f0; }
+            </style>
+        </head>
+        <body>
+            <div class="email-container">
+                <div class="email-header">
+                    <!-- Company Official Logo -->
+                    <img src="https://ibconsultants.ct.ws/assets/images/logos/logo-2.webp" alt="IB Consultants Logo" class="email-logo">
+                    <h1>IB CONSULTANTS</h1>
+                    <p>Business & Profit Growth Advisory</p>
+                </div>
+                <div class="email-body">
+                    <p>Dear <strong>' . htmlspecialchars($name) . '</strong>,</p>
+                    
+                    <p>Thank you for reaching out to <strong>IB Consultants</strong>. We have successfully received your inquiry regarding <strong>"' . htmlspecialchars($service) . '"</strong>.</p>
+                    
+                    <div class="highlight-box">
+                        <strong>What happens next?</strong><br>
+                        Our senior consulting team will review your requirement and get back to you within <strong>24 hours</strong> to discuss actionable strategies for your business.
+                    </div>
+                    
+                    <p>If you have any urgent operational queries in the meantime, feel free to contact us directly:</p>
+                    
+                    <div class="contact-info">
+                        📞 Hotline / Call: <a href="tel:+94711255610">+94 71 125 5610</a><br>
+                        💬 WhatsApp: <a href="https://wa.me/94742112767" target="_blank">+94 74 211 2767</a><br>
+                        🌐 Website: <a href="https://ibconsultants.ct.ws" target="_blank">www.ibconsultants.lk</a>
+                    </div>
+                </div>
+                <div class="email-footer">
+                    &copy; ' . date('Y') . ' IB Business Consultants. Horana, Sri Lanka.<br>This is an automated confirmation email. Please do not reply directly to this message.
+                </div>
+            </div>
+        </body>
+        </html>';
 
         $mail->Body = $customer_body;
         $mail->send();

@@ -130,6 +130,19 @@
                                                 <span class="status-dot whatsapp-dot"></span> Instant Consultation
                                             </span>
                                         </div>
+
+                                        <!-- WhatsApp Service Highlights -->
+                                        <div class="ib-contact-hours">
+                                            <div class="ib-hours-title">
+                                                <i class="fa-brands fa-whatsapp" style="color: #25D366;"></i>
+                                                <span>Quick Chat Support</span>
+                                            </div>
+                                            <div class="ib-hours-detail">
+                                                <div><strong>Response:</strong> Within 15–30 mins</div>
+                                                <div><strong>Availability:</strong> Mon — Sun / 7 Days Active</div>
+                                            </div>
+                                        </div>
+
                                         <div class="ib-contact-action">
                                             <a href="https://wa.me/94742112767" target="_blank"
                                                 class="ib-contact-btn ib-btn-whatsapp">
@@ -155,6 +168,19 @@
                                                 <span class="status-dot"></span> Direct Hotline
                                             </span>
                                         </div>
+
+                                        <!-- Hotline Availability -->
+                                        <div class="ib-contact-hours">
+                                            <div class="ib-hours-title">
+                                                <i class="fa-solid fa-headset"></i>
+                                                <span>Advisory Hotline</span>
+                                            </div>
+                                            <div class="ib-hours-detail">
+                                                <div><strong>Mon — Fri:</strong> 08.00 am — 05.00 pm</div>
+                                                <div><strong>Sat:</strong> 8.30 a.m. – 2.00 p.m</div>
+                                            </div>
+                                        </div>
+
                                         <div class="ib-contact-action">
                                             <a href="tel:+94711255610" class="ib-contact-btn">
                                                 <span>Call Now</span>
@@ -179,6 +205,19 @@
                                             <a href="mailto:dhammika@businessconsultant.lk"
                                                 class="ib-contact-sub">dhammika@businessconsultant.lk</a>
                                         </div>
+
+                                        <!-- Email Response Promise -->
+                                        <div class="ib-contact-hours">
+                                            <div class="ib-hours-title">
+                                                <i class="fa-solid fa-envelope-open-text"></i>
+                                                <span>Official Inquiries</span>
+                                            </div>
+                                            <div class="ib-hours-detail">
+                                                <div><strong>Response:</strong> Guaranteed within 24 Hours</div>
+                                                <div><strong>Best For:</strong> Proposals &amp; RFPs</div>
+                                            </div>
+                                        </div>
+
                                         <div class="ib-contact-action">
                                             <a href="mailto:info@businessconsultant.lk" class="ib-contact-btn">
                                                 <span>Send Email</span>
@@ -202,6 +241,19 @@
                                             Isipathana Mawatha,<br>
                                             Horana, Sri Lanka.
                                         </p>
+
+                                        <!-- Office Open Hours -->
+                                        <div class="ib-contact-hours">
+                                            <div class="ib-hours-title">
+                                                <i class="fa-regular fa-clock"></i>
+                                                <span>Open Hours</span>
+                                            </div>
+                                            <div class="ib-hours-detail">
+                                                <div><strong>Mon — Fri:</strong> 08.00 am — 05.00 pm</div>
+                                                <div><strong>Sat:</strong> 8.30 a.m. – 2.00 p.m</div>
+                                            </div>
+                                        </div>
+
                                         <div class="ib-contact-action">
                                             <a href="https://maps.app.goo.gl/7F9inH5PYGSEBzuJ6" target="_blank"
                                                 class="ib-contact-btn">
