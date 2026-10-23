@@ -893,7 +893,7 @@
                             } else {
                                 toast.className = 'ib-toast toast-error show';
                                 toastIcon.className = 'fa-solid fa-circle-exclamation';
-                                toastMsg.innerHTML = '<strong>Error!</strong><br>Something went wrong. Please try again.';
+                                toastMsg.innerHTML = '<strong>Error!</strong><br>' + (data.message ? data.message : 'Something went wrong. Please try again.');
                                 console.error('Server Error:', data.message);
                             }
 

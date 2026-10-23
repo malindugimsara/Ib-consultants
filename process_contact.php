@@ -1,4 +1,15 @@
 <?php
+ob_start();
+
+function sendJsonResponse($data) {
+    if (ob_get_length()) {
+        ob_clean();
+    }
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($data);
+    exit();
+}
+
 // Include Database Connection
 include 'db.php';
 $env = parse_ini_file(__DIR__ . '/.env');
@@ -14,31 +25,26 @@ require 'PHPMailer/src/SMTP.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // XSS protection
-    $name = strip_tags(trim($_POST['conName']));
-    $email = filter_var(trim($_POST['conEmail']), FILTER_SANITIZE_EMAIL);
-    $mobile = strip_tags(trim($_POST['conPhone']));
+    $name = strip_tags(trim($_POST['conName'] ?? ''));
+    $email = filter_var(trim($_POST['conEmail'] ?? ''), FILTER_SANITIZE_EMAIL);
+    $mobile = strip_tags(trim($_POST['conPhone'] ?? ''));
     $whatsapp = isset($_POST['conWhatsapp']) ? strip_tags(trim($_POST['conWhatsapp'])) : '';
-    $service = strip_tags(trim($_POST['conSubject']));
-    $message = strip_tags(trim($_POST['conMessage']));
+    $service = strip_tags(trim($_POST['conSubject'] ?? 'General Inquiry'));
+    $message = strip_tags(trim($_POST['conMessage'] ?? ''));
 
     // Email validation
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo json_encode(['status' => 'error', 'message' => 'Invalid email address format.']);
-        exit();
+        sendJsonResponse(['status' => 'error', 'message' => 'Invalid email address format.']);
     }
 
-
-    // SQL Injection protection
-    $stmt = $conn->prepare("INSERT INTO contact_messages (name, email, mobile, whatsapp, service, message) VALUES (?, ?, ?, ?, ?, ?)");
-
-    if ($stmt) {
-        // "ssssss" is a string of 6 characters
-        $stmt->bind_param("ssssss", $name, $email, $mobile, $whatsapp, $service, $message);
-        $stmt->execute();
-        $stmt->close();
-    } else {
-        echo json_encode(['status' => 'error', 'message' => 'Database error occurred.']);
-        exit();
+    // SQL Injection protection (Graceful database logging)
+    if (isset($conn) && $conn && !$conn->connect_error) {
+        $stmt = $conn->prepare("INSERT INTO contact_messages (name, email, mobile, whatsapp, service, message) VALUES (?, ?, ?, ?, ?, ?)");
+        if ($stmt) {
+            $stmt->bind_param("ssssss", $name, $email, $mobile, $whatsapp, $service, $message);
+            $stmt->execute();
+            $stmt->close();
+        }
     }
 
     // 2. Email Dispatch Process (PHPMailer)
@@ -53,17 +59,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Host = $env['SMTP_HOST'];
         $mail->SMTPAuth = true;
 
-        // Gmail SMTP Credentials from .env
+        // SMTP Credentials from .env
         $mail->Username = $env['SMTP_USER'];
         $mail->Password = $env['SMTP_PASS'];
 
-        // Port 587 with TLS Encryption
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = (int) $env['SMTP_PORT'];
+        // Port & Encryption Handling (Port 465 uses SSL/SMTPS, Port 587 uses STARTTLS)
+        $port = (int) ($env['SMTP_PORT'] ?? 465);
+        $mail->Port = $port;
+        if ($port === 465) {
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        } else {
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        }
+
+        // SSL Certificate Verification Options (Ensures compatibility across hosting environments)
+        $mail->SMTPOptions = [
+            'ssl' => [
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            ]
+        ];
 
         // Send Notification Email to Admin
-        $mail->setFrom($env['SMTP_FROM_EMAIL'], $env['SMTP_FROM_NAME']);
-        $mail->addAddress($env['SMTP_USER']);
+        $adminEmail = !empty($env['ADMIN_EMAIL']) ? $env['ADMIN_EMAIL'] : (!empty($env['SMTP_USER']) ? $env['SMTP_USER'] : 'info@businessconsultant.lk');
+        $fromEmail = !empty($env['SMTP_FROM_EMAIL']) ? $env['SMTP_FROM_EMAIL'] : $env['SMTP_USER'];
+        $fromName = !empty($env['SMTP_FROM_NAME']) ? $env['SMTP_FROM_NAME'] : 'IB Consultants Website';
+
+        $mail->CharSet = 'UTF-8';
+        $mail->setFrom($fromEmail, $fromName);
+        $mail->addAddress($adminEmail);
         $mail->addReplyTo($email, $name);
 
         $mail->isHTML(false);
@@ -80,25 +105,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Body = $admin_body;
         $mail->send();
 
-        // Send Automated "Thank You" Confirmation Email to Customer (With Logo)
-        $mail->clearAllRecipients();
-        $mail->clearReplyTos();
-        $mail->clearAttachments();
+        // 3. Send Automated "Thank You" Confirmation Email to Customer (Dedicated Clean Instance)
+        $customerMail = new PHPMailer(true);
+        $customerMail->SMTPDebug = 0;
+        $customerMail->isSMTP();
+        $customerMail->Host = $env['SMTP_HOST'];
+        $customerMail->SMTPAuth = true;
+        $customerMail->Username = $env['SMTP_USER'];
+        $customerMail->Password = $env['SMTP_PASS'];
+        $customerMail->Port = $port;
+        $customerMail->SMTPSecure = ($port === 465) ? PHPMailer::ENCRYPTION_SMTPS : PHPMailer::ENCRYPTION_STARTTLS;
+        $customerMail->SMTPOptions = $mail->SMTPOptions;
+        $customerMail->CharSet = 'UTF-8';
+        $customerMail->Encoding = 'base64';
 
-        $mail->setFrom($env['SMTP_FROM_EMAIL'], 'IB Consultants');
-        $mail->addAddress($email);
+        $customerMail->setFrom($fromEmail, 'IB Consultants');
+        $customerMail->addAddress($email, $name);
+        $customerMail->addReplyTo($adminEmail, 'IB Consultants');
 
-        $mail->isHTML(true);
-        $mail->Subject = "Thank you for contacting IB Consultants";
+        $customerMail->isHTML(true);
+        $customerMail->Subject = "Thank you for contacting IB Consultants";
 
-        // Embed Company Logo for 100% email client compatibility (CID attachment)
+        // Embed Company Logo
         $logoEmailPath = __DIR__ . '/assets/images/logos/logo-email.png';
         $logoFallbackPath = __DIR__ . '/assets/images/logos/logo-2.png';
         $logoPath = file_exists($logoEmailPath) ? $logoEmailPath : $logoFallbackPath;
 
-        $logoSrc = 'https://ibconsultants.ct.ws/assets/images/logos/logo-email.png';
+        $logoSrc = 'https://businessconsultant.lk/assets/images/logos/logo-email.png';
         if (file_exists($logoPath)) {
-            $mail->addEmbeddedImage($logoPath, 'ib_logo', 'logo.png');
+            $customerMail->addEmbeddedImage($logoPath, 'ib_logo', 'logo.png');
             $logoSrc = 'cid:ib_logo';
         }
 
@@ -144,7 +179,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="contact-info" style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #e2e8f0; font-size: 14px; color: #64748b; line-height: 1.8;">
                         Hotline / Call: <a href="tel:+94711255610" style="color: #091a32; text-decoration: none; font-weight: 600;">+94 71 125 5610</a><br>
                         WhatsApp: <a href="https://wa.me/94742112767" target="_blank" style="color: #091a32; text-decoration: none; font-weight: 600;">+94 74 211 2767</a><br>
-                        Website: <a href="https://businessconsultant.lk" target="_blank" style="color: #091a32; text-decoration: none; font-weight: 600;">www.ibconsultants.lk</a>
+                        Email: <a href="mailto:info@businessconsultant.lk" style="color: #091a32; text-decoration: none; font-weight: 600;">info@businessconsultant.lk</a><br>
+                        Website: <a href="https://businessconsultant.lk" target="_blank" style="color: #091a32; text-decoration: none; font-weight: 600;">www.businessconsultant.lk</a>
                     </div>
                 </div>
                 <div class="email-footer" style="background-color: #f8fafc; padding: 20px; text-align: center; font-size: 12px; color: #94a3b8; border-top: 1px solid #e2e8f0; line-height: 1.5;">
@@ -154,20 +190,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </body>
         </html>';
 
-        $mail->Body = $customer_body;
-        $mail->send();
+        $customerMail->Body = $customer_body;
+        $customerMail->AltBody = "Dear " . $name . ",\n\n"
+            . "Thank you for reaching out to IB Consultants. We have successfully received your inquiry regarding '" . $service . "'.\n\n"
+            . "Our senior consulting team will review your requirement and get back to you within 24 hours to discuss actionable strategies for your business.\n\n"
+            . "If you have any urgent operational queries in the meantime, feel free to contact us directly:\n"
+            . "Hotline: +94 71 125 5610\n"
+            . "WhatsApp: +94 74 211 2767\n"
+            . "Email: info@businessconsultant.lk\n"
+            . "Website: https://businessconsultant.lk\n\n"
+            . "Best Regards,\n"
+            . "IB Business Consultants - Horana, Sri Lanka";
 
+        $customerMail->send();
         // Return JSON response for AJAX form submission
-        echo json_encode(['status' => 'success']);
-        exit();
+        sendJsonResponse(['status' => 'success']);
 
     } catch (Exception $e) {
-        echo json_encode(['status' => 'error', 'message' => $mail->ErrorInfo]);
-        exit();
+        sendJsonResponse(['status' => 'error', 'message' => $mail->ErrorInfo ?: $e->getMessage()]);
     }
 } else {
     // Reject invalid request methods
-    echo json_encode(['status' => 'error', 'message' => 'Invalid request']);
-    exit();
+    sendJsonResponse(['status' => 'error', 'message' => 'Invalid request']);
 }
 ?>
