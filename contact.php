@@ -294,12 +294,12 @@
                                             <!-- Full Name / Business Name -->
                                             <div class="col-sm-6">
                                                 <div class="ib-form-field">
-                                                    <label class="ib-field-label"> Business Name <span
+                                                    <label class="ib-field-label"> Name of the person or Business <span
                                                             class="ib-req">*</span></label>
                                                     <div class="ib-input-wrap">
                                                         <i class="fa-solid fa-user ib-field-icon"></i>
                                                         <input type="text" name="conName" class="ib-form-input"
-                                                            placeholder="Company Name" required>
+                                                            placeholder="Name/Business" required>
                                                     </div>
                                                 </div>
                                             </div>
