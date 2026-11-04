@@ -24,6 +24,59 @@ require 'PHPMailer/src/SMTP.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    // 0. Cloudflare Turnstile Security Verification
+    $turnstileSecret = trim($env['CLOUDFLARE_TURNSTILE_SECRET_KEY'] ?? '');
+    if (!empty($turnstileSecret)) {
+        $turnstileResponse = $_POST['cf-turnstile-response'] ?? '';
+
+        if (empty($turnstileResponse)) {
+            sendJsonResponse(['status' => 'error', 'message' => 'Security check required. Please complete Cloudflare verification.']);
+        }
+
+        $verifyData = [
+            'secret' => $turnstileSecret,
+            'response' => $turnstileResponse,
+            'remoteip' => $_SERVER['REMOTE_ADDR'] ?? ''
+        ];
+
+        $verifyUrl = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+        $cfResponse = false;
+
+        if (function_exists('curl_init')) {
+            $ch = curl_init($verifyUrl);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($verifyData));
+            curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            $cfResponse = curl_exec($ch);
+            curl_close($ch);
+        } else {
+            $options = [
+                'http' => [
+                    'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method'  => 'POST',
+                    'content' => http_build_query($verifyData),
+                    'timeout' => 10
+                ]
+            ];
+            $context  = stream_context_create($options);
+            $cfResponse = @file_get_contents($verifyUrl, false, $context);
+        }
+
+        $cfSuccess = false;
+        if ($cfResponse) {
+            $resultJson = json_decode($cfResponse, true);
+            if (!empty($resultJson['success'])) {
+                $cfSuccess = true;
+            }
+        }
+
+        if (!$cfSuccess) {
+            sendJsonResponse(['status' => 'error', 'message' => 'Cloudflare verification failed. Please try again.']);
+        }
+    }
+
     // XSS protection
     $name = strip_tags(trim($_POST['conName'] ?? ''));
     $email = filter_var(trim($_POST['conEmail'] ?? ''), FILTER_SANITIZE_EMAIL);

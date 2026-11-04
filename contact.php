@@ -1,3 +1,7 @@
+<?php
+$env = @parse_ini_file(__DIR__ . '/.env');
+$turnstileSiteKey = (!empty($env['CLOUDFLARE_TURNSTILE_SITE_KEY'])) ? $env['CLOUDFLARE_TURNSTILE_SITE_KEY'] : '1x00000000000000000000AA';
+?>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -10,6 +14,9 @@
 
     <!-- Site Title -->
     <title>Contact Us | IB Business Consultants</title>
+
+    <!-- Cloudflare Turnstile API -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/logos/logo-2.webp">
@@ -395,6 +402,11 @@
                                                             required></textarea>
                                                     </div>
                                                 </div>
+                                            </div>
+
+                                            <!-- Cloudflare Turnstile Widget -->
+                                            <div class="col-12 mt-2">
+                                                <div class="cf-turnstile" data-sitekey="<?php echo htmlspecialchars($turnstileSiteKey); ?>" data-theme="light"></div>
                                             </div>
 
                                             <!-- Submit Button -->
@@ -866,6 +878,28 @@
 
                     const formData = new FormData(this);
 
+                    // Client-side verification check for Cloudflare Turnstile
+                    if (contactForm.querySelector('.cf-turnstile')) {
+                        const turnstileResponse = formData.get('cf-turnstile-response');
+                        if (!turnstileResponse) {
+                            const toast = document.getElementById('ib-toast');
+                            const toastIcon = document.getElementById('toast-icon-class');
+                            const toastMsg = document.getElementById('toast-message-text');
+
+                            submitBtn.innerHTML = originalBtnText;
+                            submitBtn.disabled = false;
+
+                            toast.className = 'ib-toast toast-error show';
+                            toastIcon.className = 'fa-solid fa-shield-halved';
+                            toastMsg.innerHTML = '<strong>Security Verification Required</strong><br>Please complete the Cloudflare security verification.';
+
+                            setTimeout(function () {
+                                toast.classList.remove('show');
+                            }, 5000);
+                            return;
+                        }
+                    }
+
                     fetch('process_contact.php', {
                         method: 'POST',
                         body: formData
@@ -897,6 +931,10 @@
                                 console.error('Server Error:', data.message);
                             }
 
+                            if (window.turnstile) {
+                                window.turnstile.reset();
+                            }
+
                             setTimeout(function () {
                                 toast.classList.remove('show');
                             }, 5000);
@@ -914,6 +952,10 @@
                             toastMsg.innerHTML = '<strong>Server Error!</strong><br>Could not send email. Please check your connection or server logs.';
 
                             console.error('Fetch Catch Error:', error);
+
+                            if (window.turnstile) {
+                                window.turnstile.reset();
+                            }
 
                             setTimeout(function () {
                                 toast.classList.remove('show');
