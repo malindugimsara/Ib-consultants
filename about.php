@@ -119,7 +119,7 @@
                                             <a class="tj-primary-btn" href="contact.php">
                                                 <span class="btn-text topic-color2"><span>Request
                                                         a Call</span></span>
-                                                <span class="btn-icon"><i class="tji-arrow-right-long" ></i></span>
+                                                <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
                                             </a>
                                         </div>
                                     </div>
@@ -234,7 +234,8 @@
                                             globally competitive enterprises.</p>
                                     </div>
                                 </div>
-                                <div class="about-btn-area d-flex flex-wrap gap-3 align-items-center wow fadeInUp" data-wow-delay=".6s">
+                                <div class="about-btn-area d-flex flex-wrap gap-3 align-items-center wow fadeInUp"
+                                    data-wow-delay=".6s">
                                     <a class="tj-primary-btn" href="consultancy-service.php">
                                         <span class="btn-text topic-color2"><span>Explore Our Services</span></span>
                                         <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
@@ -523,7 +524,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -629,7 +630,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -804,7 +805,8 @@
                                 </div>
                                 <div class="col-lg-4 text-center text-lg-end mt-4 mt-lg-0">
                                     <a class="tj-primary-btn btn-about" href="contact.php">
-                                        <span class="btn-text topic-color-about"><span>Consult with Our Founder</span></span>
+                                        <span class="btn-text topic-color-about"><span>Consult with Our
+                                                Founder</span></span>
                                         <span class="btn-icon"><i class="tji-arrow-right-long"></i></span>
                                     </a>
                                 </div>
@@ -895,7 +897,7 @@
                                                             <div class="ib-deck-cap-top">
                                                                 <div class="ib-deck-cap-icon"><i
                                                                         class="fa-solid fa-chart-line"></i></div>
-                                                                
+
                                                             </div>
                                                             <h5 class="ib-deck-cap-title">Sales & Marketing Strategy
                                                             </h5>
@@ -1456,7 +1458,8 @@
                                         <h2 class="sec-title title-anim topic-color">Need Help?<span class=""> Start
                                                 Here. </span></h2>
                                     </div>
-                                    <p class="desc text-justify-custom wow fadeInUp" data-wow-delay=".6s" style="color: rgb(133, 133, 134) !important;">
+                                    <p class="desc text-justify-custom wow fadeInUp" data-wow-delay=".6s"
+                                        style="color: rgb(133, 133, 134) !important;">
                                         Find answers to the most common questions about our consulting process, training
                                         programs, and how we help SMEs achieve their business goals.
                                     </p>
@@ -1479,7 +1482,10 @@
                                             offer?</button>
                                         <div id="faq-1" class="collapse show" data-bs-parent="#faqOne">
                                             <div class="accordion-body faq-text-custom">
-                                                <p>We provide practical business advisory services, including Business Health Checks, Profit Optimization, Manufacturing Efficiency Improvement, and Market Expansion Strategies, tailored to the specific needs of businesses.</p>
+                                                <p>We provide practical business advisory services, including Business
+                                                    Health Checks, Profit Optimization, Manufacturing Efficiency
+                                                    Improvement, and Market Expansion Strategies, tailored to the
+                                                    specific needs of businesses.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -1491,7 +1497,9 @@
                                             clients?</button>
                                         <div id="faq-2" class="collapse" data-bs-parent="#faqOne">
                                             <div class="accordion-body faq-text-custom">
-                                                <p>We primarily work with Sri Lankan small and medium-sized enterprises (SMEs) and manufacturing businesses seeking to scale their operations, reduce costs, and strengthen their market presence.</p>
+                                                <p>We primarily work with Sri Lankan small and medium-sized enterprises
+                                                    (SMEs) and manufacturing businesses seeking to scale their
+                                                    operations, reduce costs, and strengthen their market presence.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -1499,10 +1507,13 @@
                                     <!-- FAQ 3 -->
                                     <div class="accordion-item wow fadeInUp" data-wow-delay=".5s">
                                         <button class="faq-title collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#faq-3" aria-expanded="false">Do you provide employee training?</button>
+                                            data-bs-target="#faq-3" aria-expanded="false">Do you provide employee
+                                            training?</button>
                                         <div id="faq-3" class="collapse" data-bs-parent="#faqOne">
                                             <div class="accordion-body faq-text-custom">
-                                                <p>Yes, we offer corporate training programs, professional workshops, and certification programs focused on Business Management, Sales Excellence, and Financial Control.</p>
+                                                <p>Yes, we offer corporate training programs, professional workshops,
+                                                    and certification programs focused on Business Management, Sales
+                                                    Excellence, and Financial Control.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -1510,10 +1521,13 @@
                                     <!-- FAQ 4 -->
                                     <div class="accordion-item wow fadeInUp" data-wow-delay=".6s">
                                         <button class="faq-title collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#faq-4" aria-expanded="false">How can we get started with your services?</button>
+                                            data-bs-target="#faq-4" aria-expanded="false">How can we get started with
+                                            your services?</button>
                                         <div id="faq-4" class="collapse" data-bs-parent="#faqOne">
                                             <div class="accordion-body faq-text-custom">
-                                                <p>You can get started by contacting us to schedule an initial consultation or request a business assessment. We will evaluate your business needs and recommend a tailored action plan.</p>
+                                                <p>You can get started by contacting us to schedule an initial
+                                                    consultation or request a business assessment. We will evaluate your
+                                                    business needs and recommend a tailored action plan.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -1521,10 +1535,13 @@
                                     <!-- FAQ 5 -->
                                     <div class="accordion-item wow fadeInUp" data-wow-delay=".7s">
                                         <button class="faq-title collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#faq-5" aria-expanded="false"> How can your services benefit small businesses?</button>
+                                            data-bs-target="#faq-5" aria-expanded="false"> How can your services benefit
+                                            small businesses?</button>
                                         <div id="faq-5" class="collapse" data-bs-parent="#faqOne">
                                             <div class="accordion-body faq-text-custom">
-                                                <p>Our practical, action-oriented consulting and training solutions are tailored to each business's budget, size, and operational needs, helping SMEs improve performance and achieve sustainable growth.</p>
+                                                <p>Our practical, action-oriented consulting and training solutions are
+                                                    tailored to each business's budget, size, and operational needs,
+                                                    helping SMEs improve performance and achieve sustainable growth.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -1601,6 +1618,22 @@
     <script src="assets/js/meanmenu.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/custom.js"></script>
+
+
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/6aeacdb2ec5abc3c3737ebd2/1k6ij70ga';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
 
 
 </body>
