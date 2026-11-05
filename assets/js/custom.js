@@ -425,3 +425,40 @@ window.addEventListener("load", ensureFloatingWhatsApp);
 $(document).ready(function () {
   ensureFloatingWhatsApp();
 });
+
+/* ==========================================================================
+   Tawk.to Chatbot & Back-to-Top Interaction Handler
+   ========================================================================== */
+window.Tawk_API = window.Tawk_API || {};
+
+// Position Chatbot above the Percentage Circle
+window.Tawk_API.customStyle = {
+  visibility: {
+    desktop: {
+      position: 'br',
+      xOffset: 20,
+      yOffset: 88
+    },
+    mobile: {
+      position: 'br',
+      xOffset: 16,
+      yOffset: 72
+    }
+  }
+};
+window.Tawk_API.onChatMaximized = function () {
+  const backToTop = document.getElementById("tj-back-to-top");
+  if (backToTop) {
+    backToTop.style.opacity = "0";
+    backToTop.style.visibility = "hidden";
+    backToTop.style.pointerEvents = "none";
+  }
+};
+window.Tawk_API.onChatMinimized = function () {
+  const backToTop = document.getElementById("tj-back-to-top");
+  if (backToTop) {
+    backToTop.style.opacity = "";
+    backToTop.style.visibility = "";
+    backToTop.style.pointerEvents = "";
+  }
+};

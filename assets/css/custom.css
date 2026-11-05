@@ -10200,3 +10200,53 @@ body.ib-modal-open {
 }
 
  
+
+/* ========================================================
+   Floating Back-to-Top (Scroll Percentage Circle)
+   Positioned at the bottom, below the Tawk.to Chatbot widget
+======================================================== */
+#tj-back-to-top {
+  position: fixed !important;
+  width: 50px !important;
+  height: 50px !important;
+  bottom: 15px !important;
+  right: 25px !important;
+  inset-inline-end: 25px !important;
+  z-index: 9999 !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.18) !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+#tj-back-to-top.active {
+  bottom: 25px !important;
+  right: 25px !important;
+  inset-inline-end: 25px !important;
+}
+
+#tj-back-to-top-percentage {
+  width: calc(100% - 4px) !important;
+  height: calc(100% - 4px) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+}
+
+/* Mobile & Tablet responsive adjustments */
+@media only screen and (max-width: 767px) {
+  #tj-back-to-top {
+    width: 44px !important;
+    height: 44px !important;
+    bottom: 10px !important;
+    right: 23px !important;
+    inset-inline-end: 23px !important;
+  }
+
+  #tj-back-to-top.active {
+    bottom: 18px !important;
+    right: 23px !important;
+    inset-inline-end: 23px !important;
+  }
+
+  #tj-back-to-top-percentage {
+    font-size: 10px !important;
+  }
+}
