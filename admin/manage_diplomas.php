@@ -18,25 +18,34 @@ if (isset($_GET['msg'])) {
 
 // Add New Diploma
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_diploma'])) {
-    $title = $conn->real_escape_string($_POST['title']);
-    $duration = $conn->real_escape_string($_POST['duration']);
+    $title = trim($_POST['title'] ?? '');
+    $duration = trim($_POST['duration'] ?? '');
 
-    $sql = "INSERT INTO diploma_programs (title, duration, is_published) VALUES ('$title', '$duration', 1)";
-    if ($conn->query($sql)) {
-        header("Location: manage_diplomas.php?msg=added");
-        exit;
-    } else {
-        $msg = "<div class='alert alert-danger'>Failed to add diploma.</div>";
+    $stmt = $conn->prepare("INSERT INTO diploma_programs (title, duration, is_published) VALUES (?, ?, 1)");
+    if ($stmt) {
+        $stmt->bind_param("ss", $title, $duration);
+        if ($stmt->execute()) {
+            $stmt->close();
+            header("Location: manage_diplomas.php?msg=added");
+            exit;
+        }
+        $stmt->close();
     }
+    $msg = "<div class='alert alert-danger'>Failed to add diploma.</div>";
 }
 
 // Edit / Update Diploma
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_diploma'])) {
-    $id = (int) $_POST['diploma_id'];
-    $title = $conn->real_escape_string($_POST['title']);
-    $duration = $conn->real_escape_string($_POST['duration']);
+    $id = (int) ($_POST['diploma_id'] ?? 0);
+    $title = trim($_POST['title'] ?? '');
+    $duration = trim($_POST['duration'] ?? '');
 
-    $conn->query("UPDATE diploma_programs SET title='$title', duration='$duration' WHERE id=$id");
+    $stmt = $conn->prepare("UPDATE diploma_programs SET title = ?, duration = ? WHERE id = ?");
+    if ($stmt) {
+        $stmt->bind_param("ssi", $title, $duration, $id);
+        $stmt->execute();
+        $stmt->close();
+    }
     header("Location: manage_diplomas.php?msg=updated");
     exit;
 }
@@ -226,8 +235,8 @@ if ($view === 'trash') {
                                         ?>
                                         <tr style="background: rgba(239, 68, 68, 0.02);">
                                             <td class="text-center fw-bold text-muted"><?php echo str_pad($t_cnt, 2, '0', STR_PAD_LEFT); ?></td>
-                                            <td><strong style="color: var(--admin-navy);"><?php echo $row['title']; ?></strong></td>
-                                            <td><span class="badge bg-light text-dark border"><?php echo htmlspecialchars($row['duration']); ?></span></td>
+                                            <td><strong style="color: var(--admin-navy);"><?php echo $row['title'] ?? ''; ?></strong></td>
+                                            <td><span class="badge bg-light text-dark border"><?php echo htmlspecialchars($row['duration'] ?? ''); ?></span></td>
                                             <td class="text-center">
                                                 <span class="badge bg-danger-subtle text-danger border border-danger-subtle px-2 py-1">
                                                     <i class="fa-regular fa-clock me-1"></i>
@@ -244,7 +253,7 @@ if ($view === 'trash') {
                                                     <!-- Permanent Delete -->
                                                     <a href="manage_diplomas.php?force_delete=<?php echo $row['id']; ?>"
                                                         class="btn-action btn-action-force-delete" title="Permanently Delete Diploma"
-                                                        data-item-name="<?php echo htmlspecialchars(strip_tags($row['title'])); ?>">
+                                                        data-item-name="<?php echo htmlspecialchars(strip_tags($row['title'] ?? '')); ?>">
                                                         <i class="fa-solid fa-trash-can"></i>
                                                     </a>
                                                 </div>
@@ -286,10 +295,10 @@ if ($view === 'trash') {
                                         <tr>
                                             <td class="text-center" style="font-weight: 700; color: var(--admin-navy);">
                                                 <?php echo str_pad($count, 2, '0', STR_PAD_LEFT) . '.'; ?></td>
-                                            <td><strong style="color: var(--admin-navy);"><?php echo $row['title']; ?></strong>
+                                            <td><strong style="color: var(--admin-navy);"><?php echo $row['title'] ?? ''; ?></strong>
                                             </td>
                                             <td><span
-                                                    class="badge bg-light text-dark border"><?php echo htmlspecialchars($row['duration']); ?></span>
+                                                    class="badge bg-light text-dark border"><?php echo htmlspecialchars($row['duration'] ?? ''); ?></span>
                                             </td>
                                             <td class="text-center">
                                                 <?php if ($row['is_published'] == 1): ?>
@@ -317,7 +326,7 @@ if ($view === 'trash') {
                                                     <!-- Delete (Move to trash) -->
                                                     <a href="manage_diplomas.php?delete=<?php echo $row['id']; ?>"
                                                         class="btn-action btn-action-delete" title="Move to Trash"
-                                                        data-item-name="<?php echo htmlspecialchars(strip_tags($row['title'])); ?>">
+                                                        data-item-name="<?php echo htmlspecialchars(strip_tags($row['title'] ?? '')); ?>">
                                                         <i class="fa-solid fa-trash-can"></i>
                                                     </a>
                                                 </div>

@@ -2460,3 +2460,761 @@ tr.row-deleting td {
 .border-top {
     border-top: 1px solid #eaedf1 !important;
 }
+
+
+/* ==========================================================================
+   Extracted Embedded Styles (Migrated to external admin.css)
+   ========================================================================== */
+
+/* 1. Sidebar Dropdown & Submenu Styles (from sidebar.php) */
+.sidebar-nav a {
+    display: flex !important;
+    align-items: center;
+}
+.sidebar-nav a span {
+    flex-grow: 1;
+}
+.sidebar-nav a[aria-expanded="true"] .toggle-icon {
+    transform: rotate(180deg);
+}
+.sub-menu-wrap {
+    margin-left: 22px;
+    padding-left: 10px;
+    border-left: 2px solid rgba(212, 175, 55, 0.3);
+    margin-bottom: 15px;
+    margin-top: -5px;
+}
+.sub-menu-wrap a {
+    font-size: 14px !important;
+    padding: 8px 12px !important;
+    margin-bottom: 4px !important;
+    background: transparent !important;
+}
+.sub-menu-wrap a i {
+    font-size: 12px !important;
+}
+.sub-menu-wrap a:hover, 
+.sub-menu-wrap a.active {
+    background: rgba(212, 175, 55, 0.15) !important;
+    color: #d4af37 !important;
+}
+
+/* 2. DataTables Polish & Alignment Styles (from dashboard.php) */
+.dataTables_wrapper {
+    width: 100%;
+}
+
+.dt-toolbar-left {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-left: 20px;
+}
+
+.dataTables_wrapper .dataTables_length {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.dataTables_wrapper .dataTables_length label {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #64748b !important;
+    margin: 0 !important;
+    text-transform: none !important;
+    padding-left: 20px !important;
+}
+
+.dataTables_wrapper .dataTables_length select,
+.dataTables_wrapper .dataTables_length select.form-select,
+.dataTables_wrapper .dataTables_length select.form-select-sm {
+    min-height: 34px !important;
+    height: 34px !important;
+    line-height: 1 !important;
+    padding: 4px 28px 4px 10px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: var(--admin-navy) !important;
+    background-color: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dataTables_wrapper .dataTables_length select:hover {
+    border-color: #94a3b8 !important;
+}
+
+.dataTables_wrapper .dataTables_length select:focus {
+    border-color: var(--admin-gold) !important;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2) !important;
+    outline: none !important;
+}
+
+.dataTables_wrapper .dt-buttons {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding-left: 12px !important;
+    margin-left: 6px !important;
+    border-left: 1.5px solid #e2e8f0 !important;
+}
+
+.dataTables_wrapper .dt-buttons.btn-group {
+    box-shadow: none !important;
+}
+
+.dataTables_wrapper .dt-buttons.btn-group>.btn {
+    border-radius: 8px !important;
+    margin-right: 0 !important;
+}
+
+.dataTables_wrapper .dt-buttons .btn {
+    min-height: 34px !important;
+    height: 34px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 0 12px !important;
+    font-size: 12.5px !important;
+    font-weight: 700 !important;
+    color: #334155 !important;
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.dataTables_wrapper .dt-buttons .btn:hover {
+    border-color: var(--admin-gold) !important;
+    color: var(--admin-navy) !important;
+    background: #fdfbf7 !important;
+    box-shadow: 0 4px 10px rgba(9, 26, 50, 0.08) !important;
+    transform: translateY(-1.5px);
+}
+
+.dataTables_wrapper .dt-buttons .btn:active {
+    transform: translateY(0);
+}
+
+.dataTables_wrapper .dt-buttons .btn i {
+    font-size: 13px;
+}
+
+.dataTables_wrapper .dataTables_filter {
+    margin-bottom: 0 !important;
+}
+
+.dataTables_wrapper .dataTables_filter label {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+}
+
+.dataTables_wrapper .dataTables_filter label::before {
+    content: "\f002";
+    font-family: "Font Awesome 6 Pro", "Font Awesome 6 Free", sans-serif;
+    font-weight: 900;
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 12.5px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    min-height: 34px !important;
+    height: 34px !important;
+    padding: 5px 14px 5px 34px !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    border-radius: 8px !important;
+    border: 1.5px solid #cbd5e1 !important;
+    background-color: #ffffff !important;
+    width: 220px !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03) !important;
+    transition: all 0.25s ease !important;
+    margin-left: 0 !important;
+}
+
+.dataTables_wrapper .dataTables_filter input:focus {
+    background-color: #ffffff !important;
+    border-color: var(--admin-gold) !important;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2) !important;
+    width: 260px !important;
+    outline: none !important;
+}
+
+@media (max-width: 767px) {
+    .dataTables_wrapper .dataTables_filter,
+    .dataTables_wrapper .dataTables_filter label,
+    .dataTables_wrapper .dataTables_filter input {
+        width: 100% !important;
+    }
+
+    .dataTables_wrapper .dt-buttons {
+        border-left: none !important;
+        padding-left: 0 !important;
+        margin-left: 0 !important;
+    }
+}
+
+.dataTables_wrapper .page-item.active .page-link {
+    background-color: var(--admin-navy) !important;
+    border-color: var(--admin-navy) !important;
+    color: var(--admin-gold) !important;
+    font-weight: 700;
+}
+
+.dataTables_wrapper .page-link {
+    color: var(--admin-navy);
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    margin: 0 2px;
+    font-size: 13px;
+    padding: 6px 12px;
+    transition: all 0.2s ease;
+}
+
+.dataTables_wrapper .page-link:hover {
+    background-color: rgba(212, 175, 55, 0.15);
+    color: #b89326;
+    border-color: var(--admin-gold);
+}
+
+.dataTables_info {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--admin-text-muted);
+    padding-top: 6px;
+}
+
+table.dataTable thead th {
+    font-size: 12px !important;
+    letter-spacing: 0.5px;
+    color: var(--admin-navy) !important;
+    background-color: #f8fafc !important;
+    border-bottom: 2px solid var(--admin-border) !important;
+    padding: 14px 18px !important;
+    user-select: none;
+}
+
+/* 3. CKEditor Inline Styles (from manage_blog.php) */
+.ck-editor__editable_inline {
+    min-height: 250px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+}
+
+/* 4. Review Avatar, Badges & Chips (from manage_reviews.php) */
+.review-avatar-preview {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #091a32 0%, #1e3a8a 100%);
+    color: #d4af37;
+    font-weight: 800;
+    font-size: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #d4af37;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(9, 26, 50, 0.15);
+}
+
+.sector-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: rgba(9, 26, 50, 0.05);
+    color: #091a32;
+    font-size: 12.5px;
+    font-weight: 700;
+    border: 1px solid rgba(9, 26, 50, 0.1);
+}
+
+.stars-display {
+    color: #d4af37;
+    font-size: 13px;
+}
+
+.quick-sector-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #334155;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.quick-sector-chip:hover {
+    background: #091a32;
+    color: #ffffff;
+    border-color: #091a32;
+    transform: translateY(-1px);
+}
+
+/* 5. Workshop Previews & Badges (from manage_workshops.php) */
+.workshop-preview-num {
+    display: inline-flex;
+    width: 34px;
+    height: 34px;
+    background: #091a32;
+    color: #d4af37;
+    font-weight: 700;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.topics-preview-list {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 12px;
+    color: #555;
+}
+
+.topics-preview-list li {
+    margin-bottom: 3px;
+}
+
+.badge-cat {
+    background-color: rgba(9, 26, 50, 0.08);
+    color: #091a32;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 12px;
+    display: inline-block;
+}
+
+.btn-order-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 15px;
+    font-size: 10px;
+    background: #f1f4f8;
+    color: #091a32;
+    border-radius: 3px;
+    border: 1px solid #d0d7de;
+    text-decoration: none;
+    transition: all 0.15s ease;
+    line-height: 1;
+}
+
+.btn-order-arrow:hover {
+    background: #d4af37;
+    color: #091a32;
+    border-color: #d4af37;
+}
+
+.btn-order-arrow.disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+    pointer-events: none;
+    background: #e9ecef;
+    border-color: #dee2e6;
+}
+
+
+/* ==========================================================================
+   Extracted Embedded Styles (Migrated to external admin.css)
+   ========================================================================== */
+
+/* 1. Sidebar Dropdown & Submenu Styles (from sidebar.php) */
+.sidebar-nav a {
+    display: flex !important;
+    align-items: center;
+}
+.sidebar-nav a span {
+    flex-grow: 1;
+}
+.sidebar-nav a[aria-expanded="true"] .toggle-icon {
+    transform: rotate(180deg);
+}
+.sub-menu-wrap {
+    margin-left: 22px;
+    padding-left: 10px;
+    border-left: 2px solid rgba(212, 175, 55, 0.3);
+    margin-bottom: 15px;
+    margin-top: -5px;
+}
+.sub-menu-wrap a {
+    font-size: 14px !important;
+    padding: 8px 12px !important;
+    margin-bottom: 4px !important;
+    background: transparent !important;
+}
+.sub-menu-wrap a i {
+    font-size: 12px !important;
+}
+.sub-menu-wrap a:hover, 
+.sub-menu-wrap a.active {
+    background: rgba(212, 175, 55, 0.15) !important;
+    color: #d4af37 !important;
+}
+
+/* 2. DataTables Polish & Alignment Styles (from dashboard.php) */
+.dataTables_wrapper {
+    width: 100%;
+}
+
+.dt-toolbar-left {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-left: 20px;
+}
+
+.dataTables_wrapper .dataTables_length {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.dataTables_wrapper .dataTables_length label {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #64748b !important;
+    margin: 0 !important;
+    text-transform: none !important;
+    padding-left: 20px !important;
+}
+
+.dataTables_wrapper .dataTables_length select,
+.dataTables_wrapper .dataTables_length select.form-select,
+.dataTables_wrapper .dataTables_length select.form-select-sm {
+    min-height: 34px !important;
+    height: 34px !important;
+    line-height: 1 !important;
+    padding: 4px 28px 4px 10px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: var(--admin-navy) !important;
+    background-color: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dataTables_wrapper .dataTables_length select:hover {
+    border-color: #94a3b8 !important;
+}
+
+.dataTables_wrapper .dataTables_length select:focus {
+    border-color: var(--admin-gold) !important;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2) !important;
+    outline: none !important;
+}
+
+.dataTables_wrapper .dt-buttons {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding-left: 12px !important;
+    margin-left: 6px !important;
+    border-left: 1.5px solid #e2e8f0 !important;
+}
+
+.dataTables_wrapper .dt-buttons.btn-group {
+    box-shadow: none !important;
+}
+
+.dataTables_wrapper .dt-buttons.btn-group>.btn {
+    border-radius: 8px !important;
+    margin-right: 0 !important;
+}
+
+.dataTables_wrapper .dt-buttons .btn {
+    min-height: 34px !important;
+    height: 34px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 0 12px !important;
+    font-size: 12.5px !important;
+    font-weight: 700 !important;
+    color: #334155 !important;
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.dataTables_wrapper .dt-buttons .btn:hover {
+    border-color: var(--admin-gold) !important;
+    color: var(--admin-navy) !important;
+    background: #fdfbf7 !important;
+    box-shadow: 0 4px 10px rgba(9, 26, 50, 0.08) !important;
+    transform: translateY(-1.5px);
+}
+
+.dataTables_wrapper .dt-buttons .btn:active {
+    transform: translateY(0);
+}
+
+.dataTables_wrapper .dt-buttons .btn i {
+    font-size: 13px;
+}
+
+.dataTables_wrapper .dataTables_filter {
+    margin-bottom: 0 !important;
+}
+
+.dataTables_wrapper .dataTables_filter label {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+}
+
+.dataTables_wrapper .dataTables_filter label::before {
+    content: "\f002";
+    font-family: "Font Awesome 6 Pro", "Font Awesome 6 Free", sans-serif;
+    font-weight: 900;
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 12.5px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    min-height: 34px !important;
+    height: 34px !important;
+    padding: 5px 14px 5px 34px !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    border-radius: 8px !important;
+    border: 1.5px solid #cbd5e1 !important;
+    background-color: #ffffff !important;
+    width: 220px !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03) !important;
+    transition: all 0.25s ease !important;
+    margin-left: 0 !important;
+}
+
+.dataTables_wrapper .dataTables_filter input:focus {
+    background-color: #ffffff !important;
+    border-color: var(--admin-gold) !important;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2) !important;
+    width: 260px !important;
+    outline: none !important;
+}
+
+@media (max-width: 767px) {
+    .dataTables_wrapper .dataTables_filter,
+    .dataTables_wrapper .dataTables_filter label,
+    .dataTables_wrapper .dataTables_filter input {
+        width: 100% !important;
+    }
+
+    .dataTables_wrapper .dt-buttons {
+        border-left: none !important;
+        padding-left: 0 !important;
+        margin-left: 0 !important;
+    }
+}
+
+.dataTables_wrapper .page-item.active .page-link {
+    background-color: var(--admin-navy) !important;
+    border-color: var(--admin-navy) !important;
+    color: var(--admin-gold) !important;
+    font-weight: 700;
+}
+
+.dataTables_wrapper .page-link {
+    color: var(--admin-navy);
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    margin: 0 2px;
+    font-size: 13px;
+    padding: 6px 12px;
+    transition: all 0.2s ease;
+}
+
+.dataTables_wrapper .page-link:hover {
+    background-color: rgba(212, 175, 55, 0.15);
+    color: #b89326;
+    border-color: var(--admin-gold);
+}
+
+.dataTables_info {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--admin-text-muted);
+    padding-top: 6px;
+}
+
+table.dataTable thead th {
+    font-size: 12px !important;
+    letter-spacing: 0.5px;
+    color: var(--admin-navy) !important;
+    background-color: #f8fafc !important;
+    border-bottom: 2px solid var(--admin-border) !important;
+    padding: 14px 18px !important;
+    user-select: none;
+}
+
+/* 3. CKEditor Inline Styles (from manage_blog.php) */
+.ck-editor__editable_inline {
+    min-height: 250px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+}
+
+/* 4. Review Avatar, Badges & Chips (from manage_reviews.php) */
+.review-avatar-preview {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #091a32 0%, #1e3a8a 100%);
+    color: #d4af37;
+    font-weight: 800;
+    font-size: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #d4af37;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(9, 26, 50, 0.15);
+}
+
+.sector-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: rgba(9, 26, 50, 0.05);
+    color: #091a32;
+    font-size: 12.5px;
+    font-weight: 700;
+    border: 1px solid rgba(9, 26, 50, 0.1);
+}
+
+.stars-display {
+    color: #d4af37;
+    font-size: 13px;
+}
+
+.quick-sector-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #334155;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.quick-sector-chip:hover {
+    background: #091a32;
+    color: #ffffff;
+    border-color: #091a32;
+    transform: translateY(-1px);
+}
+
+/* 5. Workshop Previews & Badges (from manage_workshops.php) */
+.workshop-preview-num {
+    display: inline-flex;
+    width: 34px;
+    height: 34px;
+    background: #091a32;
+    color: #d4af37;
+    font-weight: 700;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.topics-preview-list {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 12px;
+    color: #555;
+}
+
+.topics-preview-list li {
+    margin-bottom: 3px;
+}
+
+.badge-cat {
+    background-color: rgba(9, 26, 50, 0.08);
+    color: #091a32;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 12px;
+    display: inline-block;
+}
+
+.btn-order-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 15px;
+    font-size: 10px;
+    background: #f1f4f8;
+    color: #091a32;
+    border-radius: 3px;
+    border: 1px solid #d0d7de;
+    text-decoration: none;
+    transition: all 0.15s ease;
+    line-height: 1;
+}
+
+.btn-order-arrow:hover {
+    background: #d4af37;
+    color: #091a32;
+    border-color: #d4af37;
+}
+
+.btn-order-arrow.disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+    pointer-events: none;
+    background: #e9ecef;
+    border-color: #dee2e6;
+}

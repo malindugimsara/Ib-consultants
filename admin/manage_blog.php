@@ -232,15 +232,6 @@ if ($view === 'trash') {
 
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="../assets/images/logos/logo-2.webp">
-    
-    <style>
-        /* CKEditor හි උස සහ පෙනුම සකස් කිරීම */
-        .ck-editor__editable_inline {
-            min-height: 250px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 15px;
-        }
-    </style>
 </head>
 
 <body>
@@ -438,7 +429,7 @@ if ($view === 'trash') {
                                                     <!-- Force Delete -->
                                                     <a href="manage_blog.php?force_delete=<?php echo $row['id']; ?>"
                                                         class="btn-action btn-action-force-delete" title="Permanently Delete Article"
-                                                        data-item-name="<?php echo htmlspecialchars($row['title']); ?>">
+                                                        data-item-name="<?php echo htmlspecialchars($row['title'] ?? ''); ?>">
                                                         <i class="fa-solid fa-trash-can"></i>
                                                     </a>
                                                 </div>
@@ -473,15 +464,15 @@ if ($view === 'trash') {
                                         ?>
                                         <tr>
                                             <td>
-                                                <img src="../<?php echo $row['image_path']; ?>" class="img-preview"
+                                                <img src="../<?php echo htmlspecialchars($row['image_path'] ?? ''); ?>" class="img-preview"
                                                     style="width: 100px; height: 60px; object-fit: cover; border-radius: 8px; border: 1px solid #e2e8f0;">
                                             </td>
                                             <td>
                                                 <strong
-                                                    style="color: var(--admin-navy); font-size: 15px;"><?php echo htmlspecialchars($row['title']); ?></strong><br>
+                                                    style="color: var(--admin-navy); font-size: 15px;"><?php echo htmlspecialchars($row['title'] ?? ''); ?></strong><br>
                                                 <span class="text-muted"
-                                                    style="font-size: 12px;"><?php echo htmlspecialchars($row['category_name']); ?>
-                                                    | <?php echo date('d M Y', strtotime($row['created_at'])); ?></span>
+                                                    style="font-size: 12px;"><?php echo htmlspecialchars($row['category_name'] ?? ''); ?>
+                                                    | <?php echo date('d M Y', strtotime($row['created_at'] ?? 'now')); ?></span>
                                             </td>
                                             <td class="text-center">
                                                 <?php if ($is_pub == 1): ?>
@@ -515,7 +506,7 @@ if ($view === 'trash') {
                                                     <!-- Delete (Soft Delete) -->
                                                     <a href="manage_blog.php?delete=<?php echo $row['id']; ?>"
                                                         class="btn-action btn-action-delete" title="Move to Trash"
-                                                        data-item-name="<?php echo htmlspecialchars($row['title']); ?>">
+                                                        data-item-name="<?php echo htmlspecialchars($row['title'] ?? ''); ?>">
                                                         <i class="fa-solid fa-trash-can"></i>
                                                     </a>
                                                 </div>

@@ -10250,3 +10250,457 @@ body.ib-modal-open {
     font-size: 10px !important;
   }
 }
+
+
+/* ==========================================================================
+   Migrated Styles from Inline Style Tags
+   ========================================================================== */
+
+/* Contact Page Toast Styles (from contact.php) */
+/* Toast CSS Styling */
+    .ib-toast {
+        position: fixed;
+        top: -100px; /* Udara thabanna (Bottom wenuwata) */
+        right: 30px;
+        background: #091a32; /* Navy Blue background */
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        padding: 16px 20px;
+        z-index: 9999999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        border-left: 5px solid;
+    }
+
+    .ib-toast.show {
+        top: 30px; /* Display weddi udin penwanawa */
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Success Theme - Gold */
+    .toast-success {
+        border-color: #FFD700; /* Gold border */
+    }
+
+    .toast-success .toast-icon i {
+        color: #FFD700; /* Gold icon */
+        font-size: 26px;
+        margin-right: 15px;
+    }
+
+    /* Error Theme - Red */
+    .toast-error {
+        border-color: #ff4d4f; /* Red border */
+    }
+
+    .toast-error .toast-icon i {
+        color: #ff4d4f; /* Red icon */
+        font-size: 26px;
+        margin-right: 15px;
+    }
+
+    /* Text Formatting */
+    .toast-message {
+        color: #ffffff; /* White text */
+        font-size: 14.5px;
+        line-height: 1.4;
+    }
+
+    .toast-message strong {
+        font-size: 16px;
+        color: #ffffff; /* White text for bold words */
+    }
+
+    /* Close Button */
+    .toast-close {
+        margin-left: 25px;
+        cursor: pointer;
+        color: #a0aabf; /* Light gray */
+        font-size: 18px;
+        transition: 0.3s;
+    }
+
+    .toast-close:hover {
+        color: #ffffff; /* Pure white on hover */
+    }
+
+    /* Mobile Responsive (Top) */
+    @media (max-width: 575px) {
+        .ib-toast {
+            right: 15px;
+            left: 15px;
+            top: -100px; 
+            bottom: auto; 
+        }
+
+        .ib-toast.show {
+            top: 20px;
+        }
+    }
+
+/* Blog Details / Article Page Styles (from blog-details.php) */
+/* Top Reading Progress Bar */
+        .ib-top-progress-track {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            z-index: 999999;
+        }
+
+        .ib-top-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #d4af37 0%, #b89127 100%);
+            transition: width 0.1s ease;
+        }
+
+        /* Article Container */
+        .ib-article-page-section {
+            padding: 70px 0 100px;
+            background-color: #f7f9fa;
+        }
+
+        .ib-article-main-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 45px 50px;
+            box-shadow: 0 10px 40px rgba(10, 31, 68, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 767px) {
+            .ib-article-main-card {
+                padding: 26px 20px;
+                border-radius: 14px;
+            }
+        }
+
+        /* Hero Image */
+        .ib-article-hero-wrap {
+            border-radius: 14px;
+            overflow: hidden;
+            margin-bottom: 35px;
+            box-shadow: 0 12px 30px rgba(10, 31, 68, 0.08);
+            border: 1px solid #eef2f7;
+            max-height: 480px;
+        }
+
+        .ib-article-hero-img {
+            width: 100%;
+            height: 100%;
+            max-height: 480px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Meta Row */
+        .ib-article-meta-bar {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 18px;
+            font-size: 13.5px;
+            color: #64748b;
+        }
+
+        .ib-article-badge-cat {
+            background: #0a1f44;
+            color: #d4af37;
+            font-weight: 700;
+            font-size: 11.5px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .ib-article-h1-title {
+            font-size: clamp(26px, 3.2vw, 38px) !important;
+            font-weight: 800 !important;
+            color: #0a1f44 !important;
+            line-height: 1.3 !important;
+            letter-spacing: -0.5px;
+            margin-bottom: 24px !important;
+        }
+
+        /* Author Row */
+        .ib-article-author-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding: 16px 0;
+            border-top: 1px solid #eef2f7;
+            border-bottom: 1px solid #eef2f7;
+            margin-bottom: 35px;
+        }
+
+        /* Article Rich Content Styling */
+        .ib-article-content-body {
+            font-size: 16px;
+            line-height: 1.85;
+            color: #334155;
+        }
+
+        .ib-article-content-body h2 {
+            font-size: 26px !important;
+            font-weight: 800 !important;
+            color: #0a1f44 !important;
+            margin: 40px 0 16px 0 !important;
+            letter-spacing: -0.3px;
+        }
+
+        .ib-article-content-body h3 {
+            font-size: 21px !important;
+            font-weight: 700 !important;
+            color: #0a1f44 !important;
+            margin: 30px 0 14px 0 !important;
+        }
+
+        .ib-article-content-body h4 {
+            font-size: 18px !important;
+            font-weight: 700 !important;
+            color: #0a1f44 !important;
+            margin: 24px 0 12px 0 !important;
+        }
+
+        .ib-article-content-body p {
+            margin-bottom: 22px;
+            font-size: 16px;
+            line-height: 1.85;
+            color: #334155;
+        }
+
+        .ib-article-content-body ul,
+        .ib-article-content-body ol {
+            margin: 20px 0 28px 24px;
+            padding: 0;
+        }
+
+        .ib-article-content-body li {
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+
+        .ib-article-content-body blockquote {
+            border-left: 4px solid #d4af37;
+            padding: 18px 24px;
+            background: #fdfbf7;
+            border-radius: 0 12px 12px 0;
+            margin: 30px 0;
+            font-style: italic;
+            color: #0a1f44;
+            font-size: 17px;
+            font-weight: 500;
+        }
+
+        .ib-article-content-body img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 25px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Social Share Bar */
+        .ib-share-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px 22px;
+            margin: 45px 0 35px 0;
+        }
+
+        .ib-share-label {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #0a1f44;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ib-share-btns {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .ib-share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 15px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+
+        .ib-share-wa {
+            background: #25D366;
+            color: #ffffff !important;
+        }
+
+        .ib-share-wa:hover {
+            background: #20ba59;
+            transform: translateY(-2px);
+        }
+
+        .ib-share-in {
+            background: #0077b5;
+            color: #ffffff !important;
+        }
+
+        .ib-share-in:hover {
+            background: #006097;
+            transform: translateY(-2px);
+        }
+
+        .ib-share-fb {
+            background: #1877f2;
+            color: #ffffff !important;
+        }
+
+        .ib-share-fb:hover {
+            background: #0d65d9;
+            transform: translateY(-2px);
+        }
+
+        .ib-share-copy {
+            background: #ffffff;
+            border-color: #cbd5e1;
+            color: #334155 !important;
+        }
+
+        .ib-share-copy:hover {
+            background: #f1f5f9;
+            border-color: #94a3b8;
+            transform: translateY(-2px);
+        }
+
+        /* Post Navigation (Prev / Next) */
+        .ib-post-nav-bar {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 35px;
+            padding-top: 30px;
+            border-top: 1px solid #eef2f7;
+        }
+
+        @media (max-width: 575px) {
+            .ib-post-nav-bar {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .ib-post-nav-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px 20px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ib-post-nav-box:hover {
+            background: #ffffff;
+            border-color: #d4af37;
+            box-shadow: 0 8px 20px rgba(10, 31, 68, 0.06);
+            transform: translateY(-2px);
+        }
+
+        .ib-nav-direction {
+            font-size: 11.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #b89127;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .ib-nav-title {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: #0a1f44;
+            line-height: 1.35;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Related Articles Card Section */
+        .ib-related-section {
+            margin-top: 50px;
+        }
+
+        .ib-related-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: #0a1f44;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ib-related-title i {
+            color: #d4af37;
+            font-size: 20px;
+        }
+
+        /* Toast Popup */
+        #ib-copy-toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #0a1f44;
+            color: #ffffff;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: 1px solid #d4af37;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+            font-size: 13.5px;
+            font-weight: 600;
+            z-index: 999999;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        #ib-copy-toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }

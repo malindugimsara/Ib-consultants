@@ -219,7 +219,7 @@ if ($view === 'trash') {
                                     <label class="form-label fw-bold">Program Title *</label>
                                     <input type="text" name="title" class="form-control"
                                         placeholder="E.g. Certificate in Business Management & Entrepreneurship"
-                                        value="<?php echo $edit_mode ? htmlspecialchars($edit_data['title']) : ''; ?>"
+                                        value="<?php echo $edit_mode ? htmlspecialchars($edit_data['title'] ?? '') : ''; ?>"
                                         required>
                                 </div>
                                 <div class="col-md-5 mb-3">
@@ -257,7 +257,7 @@ if ($view === 'trash') {
                                     <label class="form-label fw-bold">Short Description *</label>
                                     <textarea name="description" class="form-control" rows="4"
                                         placeholder="Write an engaging executive summary of this certificate program..."
-                                        required><?php echo $edit_mode ? htmlspecialchars($edit_data['description']) : ''; ?></textarea>
+                                        required><?php echo $edit_mode ? htmlspecialchars($edit_data['description'] ?? '') : ''; ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -317,8 +317,8 @@ if ($view === 'trash') {
                                                      style="width: 110px; height: 70px; object-fit: cover; border-radius: 8px; opacity: 0.75;">
                                             </td>
                                             <td>
-                                                <strong style="color: var(--admin-navy); font-size: 15px;"><?php echo htmlspecialchars($row['title']); ?></strong><br>
-                                                <small class="text-muted"><?php echo htmlspecialchars($row['description']); ?></small>
+                                                <strong style="color: var(--admin-navy); font-size: 15px;"><?php echo htmlspecialchars($row['title'] ?? ''); ?></strong><br>
+                                                <small class="text-muted"><?php echo htmlspecialchars($row['description'] ?? ''); ?></small>
                                             </td>
                                             <td class="text-center">
                                                 <span class="badge bg-danger-subtle text-danger border border-danger-subtle px-2 py-1">
@@ -336,7 +336,7 @@ if ($view === 'trash') {
                                                     <!-- Permanent Delete -->
                                                     <a href="manage_programs.php?force_delete=<?php echo $row['id']; ?>"
                                                         class="btn-action btn-action-force-delete" title="Permanently Delete Program"
-                                                        data-item-name="<?php echo htmlspecialchars($row['title']); ?>">
+                                                        data-item-name="<?php echo htmlspecialchars($row['title'] ?? ''); ?>">
                                                         <i class="fa-solid fa-trash-can"></i>
                                                     </a>
                                                 </div>
@@ -368,14 +368,14 @@ if ($view === 'trash') {
                                 <?php if ($programs && $programs->num_rows > 0):
                                     while ($row = $programs->fetch_assoc()): ?>
                                         <tr>
-                                            <td><img src="../<?php echo htmlspecialchars($row['image_path']); ?>" class="img-preview"
+                                            <td><img src="../<?php echo htmlspecialchars($row['image_path'] ?? ''); ?>" class="img-preview"
                                                     style="width: 110px; height: 70px; object-fit: cover; border-radius: 8px;">
                                             </td>
                                             <td>
                                                 <strong
-                                                    style="color: var(--admin-navy); font-size: 15px;"><?php echo htmlspecialchars($row['title']); ?></strong><br>
+                                                    style="color: var(--admin-navy); font-size: 15px;"><?php echo htmlspecialchars($row['title'] ?? ''); ?></strong><br>
                                                 <small
-                                                    class="text-muted"><?php echo htmlspecialchars($row['description']); ?></small>
+                                                    class="text-muted"><?php echo htmlspecialchars($row['description'] ?? ''); ?></small>
                                             </td>
                                             <td class="text-center">
                                                 <?php if ($row['is_published'] == 1): ?>
@@ -403,7 +403,7 @@ if ($view === 'trash') {
                                                     <!-- Delete Button (Move to Trash) -->
                                                     <a href="manage_programs.php?delete=<?php echo $row['id']; ?>"
                                                         class="btn-action btn-action-delete" title="Move to Trash"
-                                                        data-item-name="<?php echo htmlspecialchars($row['title']); ?>">
+                                                        data-item-name="<?php echo htmlspecialchars($row['title'] ?? ''); ?>">
                                                         <i class="fa-solid fa-trash-can"></i>
                                                     </a>
                                                 </div>

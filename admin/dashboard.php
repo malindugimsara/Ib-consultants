@@ -84,227 +84,6 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css">
 
-    <!-- DataTables Polish Styles -->
-    <style>
-        .dataTables_wrapper {
-            width: 100%;
-        }
-
-        /* --- Toolbar Container Alignment --- */
-        .dt-toolbar-left {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            padding-left: 20px;
-        }
-
-        /* --- Length Dropdown (Show X entries) --- */
-        .dataTables_wrapper .dataTables_length {
-            display: inline-flex;
-            align-items: center;
-            margin-bottom: 0;
-        }
-
-        .dataTables_wrapper .dataTables_length label {
-            display: inline-flex !important;
-            align-items: center !important;
-            gap: 8px !important;
-            font-size: 13px !important;
-            font-weight: 600 !important;
-            color: #64748b !important;
-            margin: 0 !important;
-            text-transform: none !important;
-            padding-left: 20px !important;
-        }
-
-        .dataTables_wrapper .dataTables_length select,
-        .dataTables_wrapper .dataTables_length select.form-select,
-        .dataTables_wrapper .dataTables_length select.form-select-sm {
-            min-height: 34px !important;
-            height: 34px !important;
-            line-height: 1 !important;
-            padding: 4px 28px 4px 10px !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
-            color: var(--admin-navy) !important;
-            background-color: #ffffff !important;
-            border: 1.5px solid #cbd5e1 !important;
-            border-radius: 8px !important;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .dataTables_wrapper .dataTables_length select:hover {
-            border-color: #94a3b8 !important;
-        }
-
-        .dataTables_wrapper .dataTables_length select:focus {
-            border-color: var(--admin-gold) !important;
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2) !important;
-            outline: none !important;
-        }
-
-        /* --- Vertical Divider between Length & Buttons --- */
-        .dataTables_wrapper .dt-buttons {
-            display: inline-flex !important;
-            align-items: center !important;
-            gap: 6px !important;
-            padding-left: 12px !important;
-            margin-left: 6px !important;
-            border-left: 1.5px solid #e2e8f0 !important;
-        }
-
-        .dataTables_wrapper .dt-buttons.btn-group {
-            box-shadow: none !important;
-        }
-
-        .dataTables_wrapper .dt-buttons.btn-group>.btn {
-            border-radius: 8px !important;
-            margin-right: 0 !important;
-        }
-
-        /* --- Export Buttons (Excel, CSV, Print) --- */
-        .dataTables_wrapper .dt-buttons .btn {
-            min-height: 34px !important;
-            height: 34px !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            gap: 6px !important;
-            padding: 0 12px !important;
-            font-size: 12.5px !important;
-            font-weight: 700 !important;
-            color: #334155 !important;
-            background: #ffffff !important;
-            border: 1.5px solid #cbd5e1 !important;
-            border-radius: 8px !important;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
-        }
-
-        .dataTables_wrapper .dt-buttons .btn:hover {
-            border-color: var(--admin-gold) !important;
-            color: var(--admin-navy) !important;
-            background: #fdfbf7 !important;
-            box-shadow: 0 4px 10px rgba(9, 26, 50, 0.08) !important;
-            transform: translateY(-1.5px);
-        }
-
-        .dataTables_wrapper .dt-buttons .btn:active {
-            transform: translateY(0);
-        }
-
-        .dataTables_wrapper .dt-buttons .btn i {
-            font-size: 13px;
-        }
-
-        /* --- Search Filter Box --- */
-        .dataTables_wrapper .dataTables_filter {
-            margin-bottom: 0 !important;
-        }
-
-        .dataTables_wrapper .dataTables_filter label {
-            position: relative !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            margin: 0 !important;
-        }
-
-        .dataTables_wrapper .dataTables_filter label::before {
-            content: "\f002";
-            font-family: "Font Awesome 6 Pro", "Font Awesome 6 Free", sans-serif;
-            font-weight: 900;
-            position: absolute;
-            left: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #94a3b8;
-            font-size: 12.5px;
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        .dataTables_wrapper .dataTables_filter input {
-            min-height: 34px !important;
-            height: 34px !important;
-            padding: 5px 14px 5px 34px !important;
-            font-size: 13px !important;
-            font-weight: 500 !important;
-            border-radius: 8px !important;
-            border: 1.5px solid #cbd5e1 !important;
-            background-color: #ffffff !important;
-            width: 220px !important;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03) !important;
-            transition: all 0.25s ease !important;
-            margin-left: 0 !important;
-        }
-
-        .dataTables_wrapper .dataTables_filter input:focus {
-            background-color: #ffffff !important;
-            border-color: var(--admin-gold) !important;
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2) !important;
-            width: 260px !important;
-            outline: none !important;
-        }
-
-        @media (max-width: 767px) {
-
-            .dataTables_wrapper .dataTables_filter,
-            .dataTables_wrapper .dataTables_filter label,
-            .dataTables_wrapper .dataTables_filter input {
-                width: 100% !important;
-            }
-
-            .dataTables_wrapper .dt-buttons {
-                border-left: none !important;
-                padding-left: 0 !important;
-                margin-left: 0 !important;
-            }
-        }
-
-        /* --- Pagination Controls --- */
-        .dataTables_wrapper .page-item.active .page-link {
-            background-color: var(--admin-navy) !important;
-            border-color: var(--admin-navy) !important;
-            color: var(--admin-gold) !important;
-            font-weight: 700;
-        }
-
-        .dataTables_wrapper .page-link {
-            color: var(--admin-navy);
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            margin: 0 2px;
-            font-size: 13px;
-            padding: 6px 12px;
-            transition: all 0.2s ease;
-        }
-
-        .dataTables_wrapper .page-link:hover {
-            background-color: rgba(212, 175, 55, 0.15);
-            color: #b89326;
-            border-color: var(--admin-gold);
-        }
-
-        .dataTables_info {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--admin-text-muted);
-            padding-top: 6px;
-        }
-
-        table.dataTable thead th {
-            font-size: 12px !important;
-            letter-spacing: 0.5px;
-            color: var(--admin-navy) !important;
-            background-color: #f8fafc !important;
-            border-bottom: 2px solid var(--admin-border) !important;
-            padding: 14px 18px !important;
-            user-select: none;
-        }
-    </style>
-
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="../assets/images/logos/logo-2.webp">
 </head>
@@ -417,11 +196,11 @@ $result = $conn->query($sql);
                                         ?>
                                         <tr class="inquiry-row">
                                             <!-- Date & Time (Sortable by unix timestamp) -->
-                                            <td data-order="<?php echo strtotime($row['created_at']); ?>">
+                                            <td data-order="<?php echo strtotime($row['created_at'] ?? 'now'); ?>">
                                                 <div class="date-meta-cell">
-                                                    <strong><?php echo date('d M Y', strtotime($row['created_at'])); ?></strong>
+                                                    <strong><?php echo date('d M Y', strtotime($row['created_at'] ?? 'now')); ?></strong>
                                                     <span><i
-                                                            class="fa-regular fa-clock me-1"></i><?php echo date('h:i A', strtotime($row['created_at'])); ?></span>
+                                                            class="fa-regular fa-clock me-1"></i><?php echo date('h:i A', strtotime($row['created_at'] ?? 'now')); ?></span>
                                                 </div>
                                             </td>
 
@@ -433,25 +212,25 @@ $result = $conn->query($sql);
                                                     </div>
                                                     <div class="customer-meta">
                                                         <strong
-                                                            class="searchable-name"><?php echo htmlspecialchars($row['name']); ?></strong>
+                                                            class="searchable-name"><?php echo htmlspecialchars($row['name'] ?? ''); ?></strong>
 
                                                         <div class="customer-links">
                                                             <!-- Email Pill -->
                                                             <?php if (!empty($row['email'])): ?>
-                                                                <a href="mailto:<?php echo htmlspecialchars($row['email']); ?>"
+                                                                <a href="mailto:<?php echo htmlspecialchars($row['email'] ?? ''); ?>"
                                                                     class="contact-pill contact-pill-email searchable-email"
                                                                     title="Send Email">
                                                                     <i class="fa-solid fa-envelope"></i>
-                                                                    <?php echo htmlspecialchars($row['email']); ?>
+                                                                    <?php echo htmlspecialchars($row['email'] ?? ''); ?>
                                                                 </a>
                                                             <?php endif; ?>
 
                                                             <!-- Phone Call Pill -->
                                                             <?php if (!empty($row['mobile'])): ?>
-                                                                <a href="tel:<?php echo htmlspecialchars($row['mobile']); ?>"
+                                                                <a href="tel:<?php echo htmlspecialchars($row['mobile'] ?? ''); ?>"
                                                                     class="contact-pill contact-pill-phone" title="Call Customer">
                                                                     <i class="fa-solid fa-phone"></i>
-                                                                    <?php echo htmlspecialchars($row['mobile']); ?>
+                                                                    <?php echo htmlspecialchars($row['mobile'] ?? ''); ?>
                                                                 </a>
                                                             <?php endif; ?>
 
@@ -472,14 +251,14 @@ $result = $conn->query($sql);
                                             <td>
                                                 <span class="badge-service searchable-service">
                                                     <i class="fa-solid fa-tag me-1"></i>
-                                                    <?php echo htmlspecialchars($row['service']); ?>
+                                                    <?php echo htmlspecialchars($row['service'] ?? 'General Inquiry'); ?>
                                                 </span>
                                             </td>
 
                                             <!-- Message / Requirement -->
                                             <td>
                                                 <div class="inquiry-message-bubble searchable-message">
-                                                    <?php echo nl2br(htmlspecialchars($row['message'])); ?>
+                                                    <?php echo nl2br(htmlspecialchars($row['message'] ?? '')); ?>
                                                 </div>
                                             </td>
 
@@ -488,7 +267,7 @@ $result = $conn->query($sql);
                                                 <div class="action-btn-group justify-content-center">
                                                     <!-- Reply Email -->
                                                     <?php if (!empty($row['email'])): ?>
-                                                        <a href="mailto:<?php echo htmlspecialchars($row['email']); ?>?subject=Inquiry%20Response%20-%20IB%20Consultants"
+                                                        <a href="mailto:<?php echo htmlspecialchars($row['email'] ?? ''); ?>?subject=Inquiry%20Response%20-%20IB%20Consultants"
                                                             class="btn-action btn-action-edit" title="Reply via Email">
                                                             <i class="fa-solid fa-reply"></i>
                                                         </a>
@@ -497,7 +276,7 @@ $result = $conn->query($sql);
                                                     <!-- Delete Button -->
                                                     <a href="dashboard.php?delete=<?php echo $row['id']; ?>"
                                                         class="btn-action btn-action-delete" title="Delete Inquiry"
-                                                        data-item-name="Inquiry from <?php echo htmlspecialchars($row['name']); ?>">
+                                                        data-item-name="Inquiry from <?php echo htmlspecialchars($row['name'] ?? ''); ?>">
                                                         <i class="fa-solid fa-trash-can"></i>
                                                     </a>
                                                 </div>

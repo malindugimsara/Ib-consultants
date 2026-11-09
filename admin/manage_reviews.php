@@ -173,64 +173,6 @@ $total_reviews = $reviews ? $reviews->num_rows : 0;
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="admin.css">
 
-    <style>
-        .review-avatar-preview {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #091a32 0%, #1e3a8a 100%);
-            color: #d4af37;
-            font-weight: 800;
-            font-size: 18px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #d4af37;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 10px rgba(9, 26, 50, 0.15);
-        }
-
-        .sector-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 4px 10px;
-            border-radius: 6px;
-            background: rgba(9, 26, 50, 0.05);
-            color: #091a32;
-            font-size: 12.5px;
-            font-weight: 700;
-            border: 1px solid rgba(9, 26, 50, 0.1);
-        }
-
-        .stars-display {
-            color: #d4af37;
-            font-size: 13px;
-        }
-
-        .quick-sector-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            padding: 4px 10px;
-            font-size: 12px;
-            font-weight: 600;
-            color: #334155;
-            background: #ffffff;
-            border: 1px solid #cbd5e1;
-            border-radius: 999px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .quick-sector-chip:hover {
-            background: #091a32;
-            color: #ffffff;
-            border-color: #091a32;
-            transform: translateY(-1px);
-        }
-    </style>
-
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="../assets/images/logos/logo-2.webp">
 </head>
@@ -355,7 +297,7 @@ $total_reviews = $reviews ? $reviews->num_rows : 0;
                                     <label class="form-label fw-bold">Author Company / Organization *</label>
                                     <input type="text" name="author_company" class="form-control"
                                         placeholder="E.g. Leading Manufacturing SME · Western Province"
-                                        value="<?php echo $edit_mode ? htmlspecialchars($edit_data['author_company']) : ''; ?>"
+                                        value="<?php echo $edit_mode ? htmlspecialchars($edit_data['author_company'] ?? '') : ''; ?>"
                                         required>
                                     <small class="text-muted">Company, firm, or location details</small>
                                 </div>
@@ -368,7 +310,7 @@ $total_reviews = $reviews ? $reviews->num_rows : 0;
                                         <div class="flex-grow-1">
                                             <input type="text" name="author_monogram" id="author_monogram_input" class="form-control text-uppercase"
                                                 placeholder="E.g. MD" maxlength="4"
-                                                value="<?php echo $edit_mode ? htmlspecialchars($edit_data['author_monogram']) : ''; ?>"
+                                                value="<?php echo $edit_mode ? htmlspecialchars($edit_data['author_monogram'] ?? '') : ''; ?>"
                                                 oninput="setManualMonogram(this.value)">
                                             <small class="text-muted d-block" style="font-size: 11px;">Auto-calculated if empty</small>
                                         </div>
@@ -385,7 +327,7 @@ $total_reviews = $reviews ? $reviews->num_rows : 0;
                                     <label class="form-label fw-bold">Key Impact Statement *</label>
                                     <input type="text" name="impact_text" class="form-control"
                                         placeholder="E.g. Plant Operations Streamlined & Wastage Minimized"
-                                        value="<?php echo $edit_mode ? htmlspecialchars($edit_data['impact_text']) : ''; ?>"
+                                        value="<?php echo $edit_mode ? htmlspecialchars($edit_data['impact_text'] ?? '') : ''; ?>"
                                         required>
                                     <small class="text-muted">Highlighted outcome shown in the testimonial card tag</small>
                                 </div>
@@ -398,7 +340,7 @@ $total_reviews = $reviews ? $reviews->num_rows : 0;
                                     <label class="form-label fw-bold">Client Review / Testimonial Quote *</label>
                                     <textarea name="quote_text" class="form-control" rows="4"
                                         placeholder="Write the full executive testimonial given by the client..."
-                                        required><?php echo $edit_mode ? htmlspecialchars($edit_data['quote_text']) : ''; ?></textarea>
+                                        required><?php echo $edit_mode ? htmlspecialchars($edit_data['quote_text'] ?? '') : ''; ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -472,8 +414,8 @@ $total_reviews = $reviews ? $reviews->num_rows : 0;
                                             </td>
                                             <td>
                                                 <span class="sector-badge mb-1">
-                                                    <i class="<?php echo htmlspecialchars($row['sector_icon']); ?> text-gold"></i>
-                                                    <?php echo htmlspecialchars($row['sector_name']); ?>
+                                                    <i class="<?php echo htmlspecialchars($row['sector_icon'] ?? ''); ?> text-gold"></i>
+                                                    <?php echo htmlspecialchars($row['sector_name'] ?? ''); ?>
                                                 </span>
                                                 <div class="stars-display mt-1">
                                                     <?php for ($i = 0; $i < (int) $row['stars']; $i++): ?>
@@ -490,11 +432,11 @@ $total_reviews = $reviews ? $reviews->num_rows : 0;
                                             <td>
                                                 <div class="d-flex align-items-center gap-2">
                                                     <div class="review-avatar-preview" style="width: 38px; height: 38px; font-size: 14px;">
-                                                        <?php echo htmlspecialchars($row['author_monogram']); ?>
+                                                        <?php echo htmlspecialchars($row['author_monogram'] ?? ''); ?>
                                                     </div>
                                                     <div>
-                                                        <strong style="color: var(--admin-navy); font-size: 14px;"><?php echo htmlspecialchars($row['author_name']); ?></strong><br>
-                                                        <small class="text-muted" style="font-size: 12px;"><?php echo htmlspecialchars($row['author_company']); ?></small>
+                                                        <strong style="color: var(--admin-navy); font-size: 14px;"><?php echo htmlspecialchars($row['author_name'] ?? ''); ?></strong><br>
+                                                        <small class="text-muted" style="font-size: 12px;"><?php echo htmlspecialchars($row['author_company'] ?? ''); ?></small>
                                                     </div>
                                                 </div>
                                             </td>
@@ -514,7 +456,7 @@ $total_reviews = $reviews ? $reviews->num_rows : 0;
                                                     <!-- Force Delete -->
                                                     <a href="manage_reviews.php?force_delete=<?php echo $row['id']; ?>"
                                                         class="btn-action btn-action-force-delete" title="Permanently Delete Review"
-                                                        data-item-name="Review by <?php echo htmlspecialchars($row['author_name']); ?>">
+                                                        data-item-name="Review by <?php echo htmlspecialchars($row['author_name'] ?? ''); ?>">
                                                         <i class="fa-solid fa-trash-can"></i>
                                                     </a>
                                                 </div>
@@ -558,8 +500,8 @@ $total_reviews = $reviews ? $reviews->num_rows : 0;
                                             </td>
                                             <td>
                                                 <span class="sector-badge mb-1">
-                                                    <i class="<?php echo htmlspecialchars($row['sector_icon']); ?> text-gold"></i>
-                                                    <?php echo htmlspecialchars($row['sector_name']); ?>
+                                                    <i class="<?php echo htmlspecialchars($row['sector_icon'] ?? ''); ?> text-gold"></i>
+                                                    <?php echo htmlspecialchars($row['sector_name'] ?? ''); ?>
                                                 </span>
                                                 <div class="stars-display mt-1">
                                                     <?php for ($i = 0; $i < (int) $row['stars']; $i++): ?>
@@ -568,19 +510,19 @@ $total_reviews = $reviews ? $reviews->num_rows : 0;
                                                 </div>
                                             </td>
                                             <td>
-                                                <p class="mb-1 text-dark" style="font-size: 13.5px; line-height: 1.45;">“<?php echo nl2br(htmlspecialchars($row['quote_text'])); ?>”</p>
+                                                <p class="mb-1 text-dark" style="font-size: 13.5px; line-height: 1.45;">“<?php echo nl2br(htmlspecialchars($row['quote_text'] ?? '')); ?>”</p>
                                                 <span class="badge bg-light text-primary border">
-                                                    <i class="fa-solid fa-chart-line me-1 text-gold"></i> <strong>Key Impact:</strong> <?php echo htmlspecialchars($row['impact_text']); ?>
+                                                    <i class="fa-solid fa-chart-line me-1 text-gold"></i> <strong>Key Impact:</strong> <?php echo htmlspecialchars($row['impact_text'] ?? ''); ?>
                                                 </span>
                                             </td>
                                             <td>
                                                 <div class="d-flex align-items-center gap-2">
                                                     <div class="review-avatar-preview" style="width: 42px; height: 42px; font-size: 15px;">
-                                                        <?php echo htmlspecialchars($row['author_monogram']); ?>
+                                                        <?php echo htmlspecialchars($row['author_monogram'] ?? ''); ?>
                                                     </div>
                                                     <div>
-                                                        <strong style="color: var(--admin-navy); font-size: 14px;"><?php echo htmlspecialchars($row['author_name']); ?></strong><br>
-                                                        <small class="text-muted" style="font-size: 12px;"><?php echo htmlspecialchars($row['author_company']); ?></small>
+                                                        <strong style="color: var(--admin-navy); font-size: 14px;"><?php echo htmlspecialchars($row['author_name'] ?? ''); ?></strong><br>
+                                                        <small class="text-muted" style="font-size: 12px;"><?php echo htmlspecialchars($row['author_company'] ?? ''); ?></small>
                                                     </div>
                                                 </div>
                                             </td>
@@ -609,7 +551,7 @@ $total_reviews = $reviews ? $reviews->num_rows : 0;
                                                     <!-- Delete (Soft Delete) -->
                                                     <a href="manage_reviews.php?delete=<?php echo $row['id']; ?>"
                                                         class="btn-action btn-action-delete" title="Move to Trash"
-                                                        data-item-name="Review by <?php echo htmlspecialchars($row['author_name']); ?>">
+                                                        data-item-name="Review by <?php echo htmlspecialchars($row['author_name'] ?? ''); ?>">
                                                         <i class="fa-solid fa-trash-can"></i>
                                                     </a>
                                                 </div>
