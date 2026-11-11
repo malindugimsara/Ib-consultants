@@ -6,11 +6,20 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- SEO Optimization -->
-    <meta name="description"
-        content="Discover IB Business Consultants. We specialize in practical business consulting, profit optimization, and corporate training for SMEs and manufacturing businesses in Sri Lanka.">
-    <title>About Us | IB Business Consultants - SME & Manufacturing Experts</title>
-
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/logos/logo-2.webp">
+    <?php
+    include_once 'seo_helper.php';
+    render_seo_tags([
+        'title' => 'About Us | IB Business Consultants - SME & Manufacturing Experts',
+        'description' => 'Discover IB Business Consultants. We specialize in practical business consulting, profit optimization, and corporate training for SMEs and manufacturing businesses in Sri Lanka.',
+        'keywords' => 'About IB Consultants, SME business consultants Sri Lanka, manufacturing consulting experts, profit improvement advisors, Horana, Colombo',
+        'canonical' => 'about.php',
+        'is_about' => true,
+        'breadcrumbs' => [
+            ['name' => 'Home', 'url' => 'index.php'],
+            ['name' => 'About Us', 'url' => 'about.php']
+        ]
+    ]);
+    ?>
 
     <!-- CSS here -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">

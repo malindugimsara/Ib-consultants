@@ -5,18 +5,25 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- SEO Meta Tags -->
-    <meta name="description"
-        content="Diagnose the current condition of your business, identify critical issues, and prioritize high-impact improvement opportunities with IB Consultants' Business Health Check & Performance Assessment in Sri Lanka.">
-    <meta name="keywords"
-        content="Business Health Check, Performance Assessment, SME consulting Sri Lanka, business diagnosis, KPI review, SWOT analysis, profit improvement">
-
-    <!-- Site Title -->
-    <title>Business Health Check & Performance Assessment | IB Business Consultants</title>
-
-    <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/logos/logo-2.webp">
+    <!-- SEO Meta Tags & Schema Markup -->
+    <?php
+    include_once 'seo_helper.php';
+    render_seo_tags([
+        'title' => 'Business Health Check & Performance Assessment | IB Business Consultants',
+        'description' => 'Diagnose the current condition of your business, identify critical issues, and prioritize high-impact improvement opportunities with IB Consultants',
+        'keywords' => 'Business Health Check, Performance Assessment, SME consulting Sri Lanka, business diagnosis, KPI review, SWOT analysis, profit improvement',
+        'canonical' => 'business-health-check.php',
+        'service' => [
+            'name' => 'Business Health Check & Performance Assessment',
+            'description' => 'Diagnose the current condition of your business, identify critical issues, and prioritize high-impact improvement opportunities with IB Consultants'
+        ],
+        'breadcrumbs' => [
+            ['name' => 'Home', 'url' => 'index.php'],
+            ['name' => 'Consultancy Services', 'url' => 'consultancy-service.php'],
+            ['name' => 'Business Health Check & Performance Assessment', 'url' => 'business-health-check.php']
+        ]
+    ]);
+    ?>
 
     <!-- CSS here -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">

@@ -5,18 +5,25 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- SEO Meta Tags -->
-    <meta name="description"
-        content="Identify profit leakage and implement practical initiatives to improve gross margin, contribution and overall profitability with IB Consultants in Sri Lanka.">
-    <meta name="keywords"
-        content="Profit Improvement, Cost Management, Margin Optimization, Profitability analysis, Cost leakage, SME consulting Sri Lanka">
-
-    <!-- Site Title -->
-    <title>Profit Improvement & Cost Management | IB Business Consultants</title>
-
-    <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/logos/logo-2.webp">
+    <!-- SEO Meta Tags & Schema Markup -->
+    <?php
+    include_once 'seo_helper.php';
+    render_seo_tags([
+        'title' => 'Profit Improvement & Cost Management | IB Business Consultants',
+        'description' => 'Identify profit leakage and implement practical initiatives to improve gross margin, contribution and overall profitability with IB Consultants in Sri Lanka.',
+        'keywords' => 'Profit Improvement, Cost Management, Margin Optimization, Profitability analysis, Cost leakage, SME consulting Sri Lanka',
+        'canonical' => 'profit-improvement.php',
+        'service' => [
+            'name' => 'Profit Improvement & Cost Management',
+            'description' => 'Identify profit leakage and implement practical initiatives to improve gross margin, contribution and overall profitability with IB Consultants in Sri Lanka.'
+        ],
+        'breadcrumbs' => [
+            ['name' => 'Home', 'url' => 'index.php'],
+            ['name' => 'Consultancy Services', 'url' => 'consultancy-service.php'],
+            ['name' => 'Profit Improvement & Cost Management', 'url' => 'profit-improvement.php']
+        ]
+    ]);
+    ?>
 
     <!-- CSS here -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">

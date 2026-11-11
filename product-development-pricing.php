@@ -5,18 +5,25 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- SEO Meta Tags -->
-    <meta name="description"
-        content="Convert market opportunities into commercially viable products through structured product development, costing and go-to-market planning with IB Consultants.">
-    <meta name="keywords"
-        content="Product Development, Pricing Strategy, Commercialization, Go-to-market planning, Target-cost analysis, SME Sri Lanka">
-
-    <!-- Site Title -->
-    <title>Product Development, Pricing & Commercialization | IB Business Consultants</title>
-
-    <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/logos/logo-2.webp">
+    <!-- SEO Meta Tags & Schema Markup -->
+    <?php
+    include_once 'seo_helper.php';
+    render_seo_tags([
+        'title' => 'Product Development, Pricing & Commercialization | IB Business Consultants',
+        'description' => 'Convert market opportunities into commercially viable products through structured product development, costing and go-to-market planning with IB Consultants.',
+        'keywords' => 'Product Development, Pricing Strategy, Commercialization, Go-to-market planning, Target-cost analysis, SME Sri Lanka',
+        'canonical' => 'product-development-pricing.php',
+        'service' => [
+            'name' => 'Product Development, Pricing & Commercialization',
+            'description' => 'Convert market opportunities into commercially viable products through structured product development, costing and go-to-market planning with IB Consultants.'
+        ],
+        'breadcrumbs' => [
+            ['name' => 'Home', 'url' => 'index.php'],
+            ['name' => 'Consultancy Services', 'url' => 'consultancy-service.php'],
+            ['name' => 'Product Development, Pricing & Commercialization', 'url' => 'product-development-pricing.php']
+        ]
+    ]);
+    ?>
 
     <!-- CSS here -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">

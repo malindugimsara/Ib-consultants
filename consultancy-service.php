@@ -11,14 +11,23 @@ $core_result = $conn->query($core_query);
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description"
-        content="Practical Business, Profitability, Market Development & Growth Solutions for SMEs and Manufacturing Businesses by IB Business Consultants.">
-
-    <!-- Site Title -->
-    <title>Core Consultancy Services | IB Business Consultants</title>
-
-    <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/logos/logo-2.webp">
+    <?php
+    include_once 'seo_helper.php';
+    render_seo_tags([
+        'title' => 'Core Consultancy Services | IB Business Consultants - SME & Factory Solutions',
+        'description' => 'Practical Business, Profitability, Market Development, and Growth Solutions for Sri Lankan SMEs and Manufacturing Businesses by IB Business Consultants.',
+        'keywords' => 'business consultancy services sri lanka, SME consulting services, manufacturing solutions, factory productivity, profit management consulting',
+        'canonical' => 'consultancy-service.php',
+        'service' => [
+            'name' => 'Core SME & Manufacturing Consultancy Services',
+            'description' => 'Comprehensive business, financial, manufacturing, and operational advisory for growing Sri Lankan enterprises.'
+        ],
+        'breadcrumbs' => [
+            ['name' => 'Home', 'url' => 'index.php'],
+            ['name' => 'Consultancy Services', 'url' => 'consultancy-service.php']
+        ]
+    ]);
+    ?>
 
     <!-- CSS here -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">

@@ -1,0 +1,15 @@
+# Robots.txt for IB Business Consultants
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /scratch/
+Disallow: /db.php
+Disallow: /process_contact.php
+Disallow: /.env
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+# XML Sitemap
+Sitemap: https://businessconsultant.lk/sitemap.xml
+

@@ -5,18 +5,25 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- SEO Meta Tags -->
-    <meta name="description"
-        content="Improve manufacturing productivity, process capability and cost competitiveness through practical operational improvement with IB Consultants in Sri Lanka.">
-    <meta name="keywords"
-        content="Manufacturing Process Development, Cost Reduction, Production mapping, machine utilization, BOM optimization, SME manufacturing Sri Lanka">
-
-    <!-- Site Title -->
-    <title>Manufacturing Process Development & Cost Reduction | IB Business Consultants</title>
-
-    <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/logos/logo-2.webp">
+    <!-- SEO Meta Tags & Schema Markup -->
+    <?php
+    include_once 'seo_helper.php';
+    render_seo_tags([
+        'title' => 'Manufacturing Process Development & Cost Reduction | IB Business Consultants',
+        'description' => 'Improve manufacturing productivity, process capability and cost competitiveness through practical operational improvement with IB Consultants in Sri Lanka.',
+        'keywords' => 'Manufacturing Process Development, Cost Reduction, Production mapping, machine utilization, BOM optimization, SME manufacturing Sri Lanka',
+        'canonical' => 'manufacturing-process-development.php',
+        'service' => [
+            'name' => 'Manufacturing Process Development & Cost Reduction',
+            'description' => 'Improve manufacturing productivity, process capability and cost competitiveness through practical operational improvement with IB Consultants in Sri Lanka.'
+        ],
+        'breadcrumbs' => [
+            ['name' => 'Home', 'url' => 'index.php'],
+            ['name' => 'Consultancy Services', 'url' => 'consultancy-service.php'],
+            ['name' => 'Manufacturing Process Development & Cost Reduction', 'url' => 'manufacturing-process-development.php']
+        ]
+    ]);
+    ?>
 
     <!-- CSS here -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">

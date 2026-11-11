@@ -32,9 +32,8 @@ if ($blog_result && $blog_result->num_rows > 0) {
 $featured_article = isset($articles[0]) ? $articles[0] : null;
 
 // Canonical URL calculation
-$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
-$host = $_SERVER['HTTP_HOST'];
-$base_url = $protocol . $host . rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+include_once 'seo_helper.php';
+$base_url = get_site_base_url();
 $canonical_url = $base_url . "/blog.php";
 ?>
 <!doctype html>

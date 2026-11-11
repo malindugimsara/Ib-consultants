@@ -5,18 +5,25 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- SEO Meta Tags -->
-    <meta name="description"
-        content="Support Sri Lankan businesses in developing international markets, finding qualified buyers and building sustainable export channels with IB Consultants.">
-    <meta name="keywords"
-        content="Export Market Development, International Sales, Export readiness Sri Lanka, finding international buyers, export pricing, market entry planning">
-
-    <!-- Site Title -->
-    <title>Export Market Development & International Sales | IB Business Consultants</title>
-
-    <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/logos/logo-2.webp">
+    <!-- SEO Meta Tags & Schema Markup -->
+    <?php
+    include_once 'seo_helper.php';
+    render_seo_tags([
+        'title' => 'Export Market Development & International Sales | IB Business Consultants',
+        'description' => 'Support Sri Lankan businesses in developing international markets, finding qualified buyers and building sustainable export channels with IB Consultants.',
+        'keywords' => 'Export Market Development, International Sales, Export readiness Sri Lanka, finding international buyers, export pricing, market entry planning',
+        'canonical' => 'export-market-development.php',
+        'service' => [
+            'name' => 'Export Market Development & International Sales',
+            'description' => 'Support Sri Lankan businesses in developing international markets, finding qualified buyers and building sustainable export channels with IB Consultants.'
+        ],
+        'breadcrumbs' => [
+            ['name' => 'Home', 'url' => 'index.php'],
+            ['name' => 'Consultancy Services', 'url' => 'consultancy-service.php'],
+            ['name' => 'Export Market Development & International Sales', 'url' => 'export-market-development.php']
+        ]
+    ]);
+    ?>
 
     <!-- CSS here -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">

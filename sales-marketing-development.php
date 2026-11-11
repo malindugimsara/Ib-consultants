@@ -5,18 +5,25 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- SEO Meta Tags -->
-    <meta name="description"
-        content="Build a systematic sales and marketing engine that improves lead generation, conversion, and customer retention with IB Consultants in Sri Lanka.">
-    <meta name="keywords"
-        content="Sales and Marketing Development, Lead Generation, CRM systems, Sales KPIs, Marketing Strategy, Customer Retention, SME Sri Lanka">
-
-    <!-- Site Title -->
-    <title>Sales & Marketing Development | IB Business Consultants</title>
-
-    <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/logos/logo-2.webp">
+    <!-- SEO Meta Tags & Schema Markup -->
+    <?php
+    include_once 'seo_helper.php';
+    render_seo_tags([
+        'title' => 'Sales & Marketing Development | IB Business Consultants',
+        'description' => 'Build a systematic sales and marketing engine that improves lead generation, conversion, and customer retention with IB Consultants in Sri Lanka.',
+        'keywords' => 'Sales and Marketing Development, Lead Generation, CRM systems, Sales KPIs, Marketing Strategy, Customer Retention, SME Sri Lanka',
+        'canonical' => 'sales-marketing-development.php',
+        'service' => [
+            'name' => 'Sales & Marketing Development',
+            'description' => 'Build a systematic sales and marketing engine that improves lead generation, conversion, and customer retention with IB Consultants in Sri Lanka.'
+        ],
+        'breadcrumbs' => [
+            ['name' => 'Home', 'url' => 'index.php'],
+            ['name' => 'Consultancy Services', 'url' => 'consultancy-service.php'],
+            ['name' => 'Sales & Marketing Development', 'url' => 'sales-marketing-development.php']
+        ]
+    ]);
+    ?>
 
     <!-- CSS here -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">

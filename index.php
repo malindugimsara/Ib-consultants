@@ -7,14 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- SEO Meta Tags for Sri Lanka -->
-    <title>IB Business Consultants | Top SME & Manufacturing Business Consulting in Sri Lanka</title>
-    <meta name="description"
-        content="IB Business Consultants provides practical business consulting, profitability improvement, and market development for SMEs and manufacturing businesses in Sri Lanka.">
-    <meta name="keywords"
-        content="management trainee programs in sri lanka, Best Management Trainee Programs in Sri Lanka, business consulting firms in sri lanka, business consultant sri lanka, Best accountant services for small business sri lanka, Business Consultant Sri Lanka, SME Consulting, Profit Improvement, Manufacturing Consulting, IB Business Consultants Horana">
-    <meta name="author" content="IB Business Consultants">
-    <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/logos/logo-2.webp">
+    <?php
+    include_once 'seo_helper.php';
+    render_seo_tags([
+        'title' => 'IB Business Consultants | Top SME & Manufacturing Business Consulting in Sri Lanka',
+        'description' => 'IB Business Consultants provides practical business consulting, profitability improvement, and market development for SMEs and manufacturing businesses in Sri Lanka.',
+        'keywords' => 'management trainee programs in sri lanka, business consulting firms in sri lanka, business consultant sri lanka, SME Consulting, Profit Improvement, Manufacturing Consulting, IB Business Consultants Horana, Colombo',
+        'canonical' => 'index.php',
+        'is_home' => true
+    ]);
+    ?>
 
     <!-- CSS here -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -95,7 +97,10 @@
 
                             <?php
                             if ($slider_result && $slider_result->num_rows > 0):
+                                $slide_idx = 0;
                                 while ($slide = $slider_result->fetch_assoc()):
+                                    $slide_idx++;
+                                    $h_tag = ($slide_idx === 1) ? 'h1' : 'h2';
                                     ?>
 
                                     <div class="swiper-slide tj-slider-item">
@@ -106,7 +111,7 @@
                                                 <div class="col-12 col-md-10 col-lg-8 col-xl-8">
                                                     <div class="slider-wrapper text-center text-lg-start">
                                                         <div class="slider-content">
-                                                            <h1 class="slider-title text-white">
+                                                            <<?php echo $h_tag; ?> class="slider-title text-white">
                                                                 <?php
                                                                 $slide_title = $slide['title'];
                                                                 if (strpos($slide_title, '<span') === false) {
@@ -118,7 +123,7 @@
                                                                 }
                                                                 echo $slide_title;
                                                                 ?>
-                                                            </h1>
+                                                            </<?php echo $h_tag; ?>>
                                                             <div class="slider-desc text-white">
                                                                 <?php echo $slide['description']; ?>
                                                             </div>

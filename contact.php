@@ -9,17 +9,23 @@ $turnstileSiteKey = (!empty($env['CLOUDFLARE_TURNSTILE_SITE_KEY'])) ? $env['CLOU
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description"
-        content="Contact IB Business Consultants for practical business and profit improvement consulting for Sri Lankan SMEs and Manufacturing Businesses.">
-
-    <!-- Site Title -->
-    <title>Contact Us | IB Business Consultants</title>
+    <?php
+    include_once 'seo_helper.php';
+    render_seo_tags([
+        'title' => 'Contact Us | IB Business Consultants - Schedule a Consultation',
+        'description' => 'Contact IB Business Consultants for practical business and profit improvement consulting for Sri Lankan SMEs and Manufacturing Businesses. Located in Horana, serving nationwide.',
+        'keywords' => 'contact IB consultants, business consultant Horana, SME consultation Sri Lanka, manufacturing consultant contact',
+        'canonical' => 'contact.php',
+        'is_contact' => true,
+        'breadcrumbs' => [
+            ['name' => 'Home', 'url' => 'index.php'],
+            ['name' => 'Contact Us', 'url' => 'contact.php']
+        ]
+    ]);
+    ?>
 
     <!-- Cloudflare Turnstile API -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-
-    <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/logos/logo-2.webp">
 
     <!-- CSS here -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">

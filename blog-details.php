@@ -51,9 +51,8 @@ if (!$article) {
 }
 
 // 2. Compute SEO & URL Metadata
-$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
-$host = $_SERVER['HTTP_HOST'];
-$base_url = $protocol . $host . rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+include_once 'seo_helper.php';
+$base_url = get_site_base_url();
 
 $current_slug = !empty($article['slug']) ? $article['slug'] : slugify($article['title']);
 $canonical_url = $base_url . "/blog-details.php?slug=" . urlencode($current_slug);
@@ -266,9 +265,9 @@ $categories_res = $conn->query("SELECT category_slug, category_name, COUNT(*) as
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="tj-page-header-content text-center">
-                                    <h1 class="tj-page-title"
+                                    <h2 class="tj-page-title"
                                         style="font-size: clamp(24px, 3.2vw, 36px); max-width: 900px; margin: 0 auto 12px auto;">
-                                        <?php echo htmlspecialchars($article['title']); ?></h1>
+                                        <?php echo htmlspecialchars($article['title']); ?></h2>
                                     <div class="tj-page-link">
                                         <span><i class="tji-home"></i></span>
                                         <span><a href="index.php">Home</a></span>

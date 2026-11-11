@@ -5,18 +5,25 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- SEO Meta Tags -->
-    <meta name="description"
-        content="Establish a practical improvement culture with measurable KPIs, management reviews and ongoing implementation support with IB Consultants.">
-    <meta name="keywords"
-        content="Business Transformation, KPI frameworks, Continuous Improvement, Root-cause analysis, Performance dashboards, SME consulting Sri Lanka">
-
-    <!-- Site Title -->
-    <title>Business Transformation, KPI & Continuous Improvement | IB Business Consultants</title>
-
-    <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/logos/logo-2.webp">
+    <!-- SEO Meta Tags & Schema Markup -->
+    <?php
+    include_once 'seo_helper.php';
+    render_seo_tags([
+        'title' => 'Business Transformation, KPI & Continuous Improvement | IB Business Consultants',
+        'description' => 'Establish a practical improvement culture with measurable KPIs, management reviews and ongoing implementation support with IB Consultants.',
+        'keywords' => 'Business Transformation, KPI frameworks, Continuous Improvement, Root-cause analysis, Performance dashboards, SME consulting Sri Lanka',
+        'canonical' => 'business-transformation-kpi.php',
+        'service' => [
+            'name' => 'Business Transformation, KPI & Continuous Improvement',
+            'description' => 'Establish a practical improvement culture with measurable KPIs, management reviews and ongoing implementation support with IB Consultants.'
+        ],
+        'breadcrumbs' => [
+            ['name' => 'Home', 'url' => 'index.php'],
+            ['name' => 'Consultancy Services', 'url' => 'consultancy-service.php'],
+            ['name' => 'Business Transformation, KPI & Continuous Improvement', 'url' => 'business-transformation-kpi.php']
+        ]
+    ]);
+    ?>
 
     <!-- CSS here -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">

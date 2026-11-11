@@ -5,18 +5,25 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- SEO Meta Tags -->
-    <meta name="description"
-        content="Develop stronger domestic sales channels and build a structured, performance-driven distributor and dealer network with IB Consultants in Sri Lanka.">
-    <meta name="keywords"
-        content="Domestic Market Development, Distributor Management, Sales Channels, Dealer network, Territory allocation, SME sales Sri Lanka">
-
-    <!-- Site Title -->
-    <title>Domestic Market Dev. & Distributor Management | IB Business Consultants</title>
-
-    <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/logos/logo-2.webp">
+    <!-- SEO Meta Tags & Schema Markup -->
+    <?php
+    include_once 'seo_helper.php';
+    render_seo_tags([
+        'title' => 'Domestic Market Dev. & Distributor Management | IB Business Consultants',
+        'description' => 'Develop stronger domestic sales channels and build a structured, performance-driven distributor and dealer network with IB Consultants in Sri Lanka.',
+        'keywords' => 'Domestic Market Development, Distributor Management, Sales Channels, Dealer network, Territory allocation, SME sales Sri Lanka',
+        'canonical' => 'domestic-market-development.php',
+        'service' => [
+            'name' => 'Domestic Market Development & Distributor Management',
+            'description' => 'Develop stronger domestic sales channels and build a structured, performance-driven distributor and dealer network with IB Consultants in Sri Lanka.'
+        ],
+        'breadcrumbs' => [
+            ['name' => 'Home', 'url' => 'index.php'],
+            ['name' => 'Consultancy Services', 'url' => 'consultancy-service.php'],
+            ['name' => 'Domestic Market Development & Distributor Management', 'url' => 'domestic-market-development.php']
+        ]
+    ]);
+    ?>
 
     <!-- CSS here -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">

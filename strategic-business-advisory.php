@@ -5,18 +5,25 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- SEO Meta Tags -->
-    <meta name="description"
-        content="Provide management with practical strategic direction for sustainable growth, expansion and better decision-making with IB Consultants.">
-    <meta name="keywords"
-        content="Strategic Business Advisory, Growth Management, Corporate Strategy, Annual Business Planning, Expansion strategies Sri Lanka">
-
-    <!-- Site Title -->
-    <title>Strategic Business Advisory & Growth Mgt. | IB Business Consultants</title>
-
-    <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/logos/logo-2.webp">
+    <!-- SEO Meta Tags & Schema Markup -->
+    <?php
+    include_once 'seo_helper.php';
+    render_seo_tags([
+        'title' => 'Strategic Business Advisory & Growth Mgt. | IB Business Consultants',
+        'description' => 'Provide management with practical strategic direction for sustainable growth, expansion and better decision-making with IB Consultants.',
+        'keywords' => 'Strategic Business Advisory, Growth Management, Corporate Strategy, Annual Business Planning, Expansion strategies Sri Lanka',
+        'canonical' => 'strategic-business-advisory.php',
+        'service' => [
+            'name' => 'Strategic Business Advisory & Growth Management',
+            'description' => 'Provide management with practical strategic direction for sustainable growth, expansion and better decision-making with IB Consultants.'
+        ],
+        'breadcrumbs' => [
+            ['name' => 'Home', 'url' => 'index.php'],
+            ['name' => 'Consultancy Services', 'url' => 'consultancy-service.php'],
+            ['name' => 'Strategic Business Advisory & Growth Management', 'url' => 'strategic-business-advisory.php']
+        ]
+    ]);
+    ?>
 
     <!-- CSS here -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">

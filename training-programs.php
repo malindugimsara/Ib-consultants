@@ -27,16 +27,20 @@ $dip_result = $conn->query($dip_query);
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- SEO Meta Tags -->
-    <meta name="description"
-        content="Enroll in practical business workshops, certificate programs, and diploma courses for SME owners, managers, and professionals with IB Consultants in Sri Lanka.">
-    <meta name="keywords"
-        content="Business Training Sri Lanka, Corporate Workshops, Certificate in Business Management, SME Training, Digital Marketing Course, Manufacturing Training">
-
-    <!-- Site Title -->
-    <title>Training & Programs | Business Workshops & Certificates | IB Consultants</title>
-
-    <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/logos/logo-2.webp">
+    <?php
+    include_once 'seo_helper.php';
+    render_seo_tags([
+        'title' => 'Training & Programs | Business Workshops & Certificates | IB Consultants',
+        'description' => 'Enroll in practical business workshops, certificate programs, and diploma courses for SME owners, managers, and professionals with IB Consultants in Sri Lanka.',
+        'keywords' => 'Business Training Sri Lanka, Corporate Workshops, Certificate in Business Management, SME Training, Digital Marketing Course, Manufacturing Training, Diplomas',
+        'canonical' => 'training-programs.php',
+        'is_training' => true,
+        'breadcrumbs' => [
+            ['name' => 'Home', 'url' => 'index.php'],
+            ['name' => 'Training & Programs', 'url' => 'training-programs.php']
+        ]
+    ]);
+    ?>
 
     <!-- CSS here -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">

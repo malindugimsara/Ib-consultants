@@ -5,18 +5,25 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- SEO Meta Tags -->
-    <meta name="description"
-        content="Create clear processes, responsibilities and management systems that improve operational control and organizational effectiveness with IB Consultants.">
-    <meta name="keywords"
-        content="Business Process, Systems Development, Management Systems, SOP development, KPI dashboards, organizational structure Sri Lanka">
-
-    <!-- Site Title -->
-    <title>Business Process, Systems & Management Dev. | IB Business Consultants</title>
-
-    <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/logos/logo-2.webp">
+    <!-- SEO Meta Tags & Schema Markup -->
+    <?php
+    include_once 'seo_helper.php';
+    render_seo_tags([
+        'title' => 'Business Process, Systems & Management Dev. | IB Business Consultants',
+        'description' => 'Create clear processes, responsibilities and management systems that improve operational control and organizational effectiveness with IB Consultants.',
+        'keywords' => 'Business Process, Systems Development, Management Systems, SOP development, KPI dashboards, organizational structure Sri Lanka',
+        'canonical' => 'business-process-systems.php',
+        'service' => [
+            'name' => 'Business Process, Systems & Management Development',
+            'description' => 'Create clear processes, responsibilities and management systems that improve operational control and organizational effectiveness with IB Consultants.'
+        ],
+        'breadcrumbs' => [
+            ['name' => 'Home', 'url' => 'index.php'],
+            ['name' => 'Consultancy Services', 'url' => 'consultancy-service.php'],
+            ['name' => 'Business Process, Systems & Management Development', 'url' => 'business-process-systems.php']
+        ]
+    ]);
+    ?>
 
     <!-- CSS here -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
