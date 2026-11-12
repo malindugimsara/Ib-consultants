@@ -9,18 +9,18 @@
     <?php
     include_once 'seo_helper.php';
     render_seo_tags([
-        'title' => 'Business Health Check & Performance Assessment | IB Business Consultants',
-        'description' => 'Diagnose the current condition of your business, identify critical issues, and prioritize high-impact improvement opportunities with IB Consultants',
-        'keywords' => 'Business Health Check, Performance Assessment, SME consulting Sri Lanka, business diagnosis, KPI review, SWOT analysis, profit improvement',
+        'title' => 'Business Performance Improvement | Health Check & Profitability Sri Lanka',
+        'description' => 'Comprehensive business health check in Sri Lanka. Diagnose critical issues to drive rapid business performance improvement and business profitability improvement.',
+        'keywords' => 'Business Performance Improvement, Business profitability improvement, Business Health Check, Performance Assessment, SME consulting Sri Lanka',
         'canonical' => 'business-health-check.php',
         'service' => [
-            'name' => 'Business Health Check & Performance Assessment',
-            'description' => 'Diagnose the current condition of your business, identify critical issues, and prioritize high-impact improvement opportunities with IB Consultants'
+            'name' => 'Business Performance Improvement & Health Check',
+            'description' => 'Business performance improvement, health check diagnostics and business profitability improvement in Sri Lanka.'
         ],
         'breadcrumbs' => [
             ['name' => 'Home', 'url' => 'index.php'],
             ['name' => 'Consultancy Services', 'url' => 'consultancy-service.php'],
-            ['name' => 'Business Health Check & Performance Assessment', 'url' => 'business-health-check.php']
+            ['name' => 'Business Health Check', 'url' => 'business-health-check.php']
         ]
     ]);
     ?>
@@ -90,7 +90,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="tj-page-header-content text-center">
-                                    <h1 class="tj-page-title">Business Health Check & Performance Assessment</h1>
+                                    <h1 class="tj-page-title">Business Performance Improvement & Health Check Sri Lanka</h1>
                                     <div class="tj-page-link">
                                         <span><i class="tji-home"></i></span>
                                         <span><a href="index.php">Home</a></span>
@@ -116,16 +116,10 @@
                                         <img src="assets/images/service/service-health-check.webp"
                                             alt="Business Health Check and Performance Assessment Services by IB Consultants">
                                     </div>
-                                    <h2 class="title title-anim">Diagnose, Identify, and Prioritize High-Impact
-                                        Opportunities.</h2>
+                                    <h2 class="title title-anim">Comprehensive Assessment for Business Profitability Improvement.</h2>
                                     <div class="blog-text">
                                         <p class="wow fadeInUp" data-wow-delay=".3s">
-                                            <strong>Diagnose the current condition of the business, identify critical
-                                                issues and prioritize high-impact improvement opportunities.</strong> At
-                                            IB Consultants, we understand that sustainable growth requires a clear
-                                            baseline. We conduct a thorough diagnostic evaluation of your operations to
-                                            ensure every strategic decision you make is backed by accurate data and
-                                            professional insights.
+                                            <strong>Diagnose the current condition of the business, identify critical issues and prioritize high-impact improvement opportunities.</strong> At IB Consultants, our business health check is engineered to unlock sustainable business performance improvement and long-term business profitability improvement. We conduct a thorough diagnostic evaluation of your operations to ensure every strategic decision you make is backed by accurate data and actionable insights.
                                         </p>
 
                                         <!-- Core 8 Bullet Points from Document -->

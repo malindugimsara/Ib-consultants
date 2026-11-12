@@ -9,9 +9,9 @@
     <?php
     include_once 'seo_helper.php';
     render_seo_tags([
-        'title' => 'Product Development, Pricing & Commercialization | IB Business Consultants',
-        'description' => 'Convert market opportunities into commercially viable products through structured product development, costing and go-to-market planning with IB Consultants.',
-        'keywords' => 'Product Development, Pricing Strategy, Commercialization, Go-to-market planning, Target-cost analysis, SME Sri Lanka',
+        'title' => 'Product Development & Pricing Strategy Sri Lanka | Commercialization',
+        'description' => 'Expert product development, pricing strategy & commercialization in Sri Lanka. Target costing, go-to-market planning and profitability optimization for SMEs.',
+        'keywords' => 'Product Development Sri Lanka, Pricing Strategy, Commercialization, Go-to-market planning, Target-cost analysis, SME Sri Lanka',
         'canonical' => 'product-development-pricing.php',
         'service' => [
             'name' => 'Product Development, Pricing & Commercialization',
@@ -20,7 +20,7 @@
         'breadcrumbs' => [
             ['name' => 'Home', 'url' => 'index.php'],
             ['name' => 'Consultancy Services', 'url' => 'consultancy-service.php'],
-            ['name' => 'Product Development, Pricing & Commercialization', 'url' => 'product-development-pricing.php']
+            ['name' => 'Product Development', 'url' => 'product-development-pricing.php']
         ]
     ]);
     ?>

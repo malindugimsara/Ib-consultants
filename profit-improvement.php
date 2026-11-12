@@ -9,13 +9,13 @@
     <?php
     include_once 'seo_helper.php';
     render_seo_tags([
-        'title' => 'Profit Improvement & Cost Management | IB Business Consultants',
-        'description' => 'Identify profit leakage and implement practical initiatives to improve gross margin, contribution and overall profitability with IB Consultants in Sri Lanka.',
-        'keywords' => 'Profit Improvement, Cost Management, Margin Optimization, Profitability analysis, Cost leakage, SME consulting Sri Lanka',
+        'title' => 'Profit Improvement Consultancy | Cost Reduction Consultants Sri Lanka',
+        'description' => 'Leading cost reduction consultants in Sri Lanka. Our profit improvement consultancy delivers business profitability improvement, operating cost reduction & analysis.',
+        'keywords' => 'Profit improvement consultancy, Cost Reduction Consultants Sri Lanka, Business profitability improvement, Operating cost reduction, Cost management consultants, Business financial analysis',
         'canonical' => 'profit-improvement.php',
         'service' => [
-            'name' => 'Profit Improvement & Cost Management',
-            'description' => 'Identify profit leakage and implement practical initiatives to improve gross margin, contribution and overall profitability with IB Consultants in Sri Lanka.'
+            'name' => 'Profit Improvement Consultancy & Cost Reduction',
+            'description' => 'Business profitability improvement, operating cost reduction, cost management and business financial analysis in Sri Lanka.'
         ],
         'breadcrumbs' => [
             ['name' => 'Home', 'url' => 'index.php'],
@@ -89,7 +89,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="tj-page-header-content text-center">
-                                    <h1 class="tj-page-title">Profit Improvement & Cost Management</h1>
+                                    <h1 class="tj-page-title">Profit Improvement Consultancy | Cost Reduction Sri Lanka</h1>
                                     <div class="tj-page-link">
                                         <span><i class="tji-home"></i></span>
                                         <span><a href="index.php">Home</a></span>
@@ -115,14 +115,10 @@
                                         <img src="assets/images/service/service-profit-improvement.webp"
                                             alt="Profit Improvement and Cost Management by IB Consultants">
                                     </div>
-                                    <h2 class="title title-anim">Identify Profit Leakage & Improve Gross Margin.</h2>
+                                    <h2 class="title title-anim">Business Profitability Improvement & Operating Cost Reduction.</h2>
                                     <div class="blog-text">
                                         <p class="wow fadeInUp" data-wow-delay=".3s">
-                                            <strong>Identify profit leakage and implement practical initiatives to
-                                                improve gross margin, contribution and overall profitability.</strong>
-                                            High sales volumes do not always guarantee high net profits. We help Sri
-                                            Lankan businesses systematically analyze their cost structures to ensure
-                                            that revenue translates into real, sustainable financial growth.
+                                            <strong>Identify profit leakage and implement practical initiatives to improve gross margin, contribution and overall profitability.</strong> As premier cost management consultants and cost reduction consultants in Sri Lanka, we provide rigorous business financial analysis, operating cost reduction, and business profitability improvement strategies for growing enterprises. High sales volumes do not always guarantee high net profits; we help you systematically optimize cost structures to ensure revenue translates into sustainable financial growth.
                                         </p>
 
                                         <!-- Core 8 Bullet Points from Document -->

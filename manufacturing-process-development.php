@@ -9,18 +9,18 @@
     <?php
     include_once 'seo_helper.php';
     render_seo_tags([
-        'title' => 'Manufacturing Process Development & Cost Reduction | IB Business Consultants',
-        'description' => 'Improve manufacturing productivity, process capability and cost competitiveness through practical operational improvement with IB Consultants in Sri Lanka.',
-        'keywords' => 'Manufacturing Process Development, Cost Reduction, Production mapping, machine utilization, BOM optimization, SME manufacturing Sri Lanka',
+        'title' => 'Manufacturing Consultants Sri Lanka | Factory Cost Reduction & Efficiency',
+        'description' => 'Top manufacturing consultants in Sri Lanka. Expert factory cost reduction, production efficiency improvement, industrial cost optimisation & productivity.',
+        'keywords' => 'Manufacturing Consultants Sri Lanka, Factory cost reduction, Production efficiency improvement, Manufacturing productivity improvement, Industrial cost optimisation, Factory management consultancy',
         'canonical' => 'manufacturing-process-development.php',
         'service' => [
-            'name' => 'Manufacturing Process Development & Cost Reduction',
-            'description' => 'Improve manufacturing productivity, process capability and cost competitiveness through practical operational improvement with IB Consultants in Sri Lanka.'
+            'name' => 'Manufacturing Process Development & Factory Cost Reduction',
+            'description' => 'Manufacturing productivity improvement, production efficiency, factory cost reduction and industrial cost optimisation in Sri Lanka.'
         ],
         'breadcrumbs' => [
             ['name' => 'Home', 'url' => 'index.php'],
             ['name' => 'Consultancy Services', 'url' => 'consultancy-service.php'],
-            ['name' => 'Manufacturing Process Development & Cost Reduction', 'url' => 'manufacturing-process-development.php']
+            ['name' => 'Manufacturing Process Development', 'url' => 'manufacturing-process-development.php']
         ]
     ]);
     ?>
@@ -89,7 +89,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="tj-page-header-content text-center">
-                                    <h1 class="tj-page-title">Manufacturing Process Dev. & Cost Reduction</h1>
+                                    <h1 class="tj-page-title">Manufacturing Consultants Sri Lanka | Factory Cost Reduction</h1>
                                     <div class="tj-page-link">
                                         <span><i class="tji-home"></i></span>
                                         <span><a href="index.php">Home</a></span>
@@ -115,16 +115,10 @@
                                         <img src="assets/images/service/service-manufacturing-process.webp"
                                             alt="Manufacturing Process Development and Cost Reduction by IB Consultants">
                                     </div>
-                                    <h2 class="title title-anim">Improve Productivity, Capability, and Cost
-                                        Competitiveness.</h2>
+                                    <h2 class="title title-anim">Production Efficiency Improvement & Factory Management Consultancy.</h2>
                                     <div class="blog-text">
                                         <p class="wow fadeInUp" data-wow-delay=".3s">
-                                            <strong>Improve manufacturing productivity, process capability and cost
-                                                competitiveness through practical operational improvement.</strong> In
-                                            the manufacturing sector, operational bottlenecks and material wastage
-                                            directly impact your bottom line. Our specialized solutions are designed to
-                                            transform your production floors into highly streamlined, productive
-                                            environments by implementing world-class manufacturing principles.
+                                            <strong>Improve manufacturing productivity, process capability and cost competitiveness through practical operational improvement.</strong> As trusted manufacturing consultants in Sri Lanka, we provide specialized factory management consultancy, factory cost reduction, industrial cost optimisation, and manufacturing productivity improvement. In the manufacturing sector, operational bottlenecks and material wastage directly impact your bottom line. Our solutions transform production floors into streamlined, high-yield environments.
                                         </p>
 
                                         <!-- Core 8 Bullet Points from Document -->

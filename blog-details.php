@@ -125,8 +125,10 @@ $categories_res = $conn->query("SELECT category_slug, category_name, COUNT(*) as
     <meta name="twitter:description" content="<?php echo $meta_desc; ?>">
     <meta name="twitter:image" content="<?php echo $article_image_url; ?>">
 
-    <!-- Favicon -->
+    <!-- Favicon & Mobile Theme -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/logos/logo-2.webp">
+    <link rel="apple-touch-icon" href="assets/images/logos/logo-2.webp">
+    <meta name="theme-color" content="#091a32">
 
     <!-- CSS Dependencies -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">

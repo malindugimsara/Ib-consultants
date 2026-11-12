@@ -10,9 +10,9 @@
     <?php
     include_once 'seo_helper.php';
     render_seo_tags([
-        'title' => 'IB Business Consultants | Top SME & Manufacturing Business Consulting in Sri Lanka',
-        'description' => 'IB Business Consultants provides practical business consulting, profitability improvement, and market development for SMEs and manufacturing businesses in Sri Lanka.',
-        'keywords' => 'management trainee programs in sri lanka, business consulting firms in sri lanka, business consultant sri lanka, SME Consulting, Profit Improvement, Manufacturing Consulting, IB Business Consultants Horana, Colombo',
+        'title' => 'Business Consultancy Sri Lanka | Top SME Business Consultants',
+        'description' => 'IB Business Consultants is a leading business consultancy in Sri Lanka. We offer practical business consulting services, advisory services & SME solutions.',
+        'keywords' => 'Business Consultancy Sri Lanka, Business Consultants in Sri Lanka, Business Consulting Services Sri Lanka, Business Advisory Services Sri Lanka, SME Business Consultants Sri Lanka',
         'canonical' => 'index.php',
         'is_home' => true
     ]);
@@ -294,19 +294,12 @@
                                 data-wow-delay="0.2s">
                                 <div class="about-content">
                                     <div class="sec-heading style-2 mb-4">
-                                        <span class="sub-title">Company Overview</span>
-                                        <h2 class="sec-title title-highlight custom-mobile-title">Your Trusted Partner
-                                            for <br>Sustainable Business Growth.</h2>
+                                        <span class="sub-title">Business Consultancy Sri Lanka</span>
+                                        <h2 class="sec-title title-highlight custom-mobile-title">Premier Business Consultants & Advisory Services in Sri Lanka.</h2>
                                     </div>
 
                                     <p class="overview-text-justify custom-about-text mb-3">
-                                        At IB Consultants, we believe that every business has the potential to grow with
-                                        the right guidance and a clear direction. We work closely with our clients to
-                                        identify challenges, uncover new opportunities, and develop strategies that
-                                        deliver lasting value. By combining practical industry knowledge with a
-                                        personalized approach, we help businesses make informed decisions, improve
-                                        efficiency, and build a strong foundation for sustainable growth in an
-                                        increasingly competitive market.
+                                        At IB Consultants, we are trusted SME business consultants in Sri Lanka offering practical business consulting services and business advisory services. We believe that every business has the potential to grow with the right guidance and a clear direction. We work closely with our clients to identify challenges, uncover new opportunities, and develop strategies that deliver lasting value and sustainable profitability.
                                     </p>
 
                                     <!-- Website Positioning Statement -->

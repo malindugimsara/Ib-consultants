@@ -9,9 +9,9 @@
     <?php
     include_once 'seo_helper.php';
     render_seo_tags([
-        'title' => 'About Us | IB Business Consultants - SME & Manufacturing Experts',
-        'description' => 'Discover IB Business Consultants. We specialize in practical business consulting, profit optimization, and corporate training for SMEs and manufacturing businesses in Sri Lanka.',
-        'keywords' => 'About IB Consultants, SME business consultants Sri Lanka, manufacturing consulting experts, profit improvement advisors, Horana, Colombo',
+        'title' => 'Business Consultancy in Colombo & Sri Lanka | About IB Consultants',
+        'description' => 'Looking for top business consultants in Sri Lanka? IB Business Consultants serves businesses across Colombo, Horana, Kandy, Galle, Kurunegala, Negombo & Gampaha.',
+        'keywords' => 'Business growth consultant near me, Business Consultancy in Colombo, Business Consultants in Kandy, Business Consultants in Galle, Business Consultants in Kurunegala, Business Consultants in Negombo, Business Consultants in Horana, Business Consultants in Gampaha',
         'canonical' => 'about.php',
         'is_about' => true,
         'breadcrumbs' => [
@@ -214,17 +214,13 @@
                                 <div class="about-content-area">
                                     <div class="sec-heading">
                                         <span class="sub-title wow fadeInUp" data-wow-delay=".3s"><i
-                                                class="tji-box"></i>Company Overview</span>
-                                        <h2 class="sec-title title-anim topic-color">Your Trusted Partner for
-                                            Sustainable Corporate
-                                            <span>Growth.</span>
+                                                class="tji-box"></i>Business Consultancy Sri Lanka</span>
+                                        <h2 class="sec-title title-anim topic-color">Your Trusted Business Growth Partner Across
+                                            <span>Sri Lanka.</span>
                                         </h2>
                                     </div>
                                     <p class="text-justify-custom mb-4 wow fadeInUp" data-wow-delay=".4s">
-                                        Established in 2024, IB Consultants is built around a simple philosophy:
-                                        effective consulting must begin with understanding the business. We offer
-                                        practical, result-oriented solutions specifically designed for Sri Lankan SMEs
-                                        and manufacturing businesses to improve profitability and expand markets.
+                                        Established in 2024, IB Consultants is built around a simple philosophy: effective consulting must begin with understanding the business. Whether you are searching for a trusted <strong>business growth consultant near me</strong>, expert <strong>business consultancy in Colombo</strong>, or hands-on business consultants in <strong>Horana, Gampaha, Kandy, Galle, Kurunegala, or Negombo</strong>, we offer practical, result-oriented solutions specifically designed for Sri Lankan SMEs and manufacturing businesses to improve profitability and expand markets.
                                     </p>
                                 </div>
                                 <div class="about-bottom-area">

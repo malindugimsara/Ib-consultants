@@ -45,28 +45,28 @@ $canonical_url = $base_url . "/blog.php";
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- SEO Optimization -->
-    <title>Business Insights &amp; Blog | IB Business Consultants - SME &amp; Manufacturing Experts</title>
+    <title>Business Insights & Practical Guides | IB Business Consultants Blog</title>
     <meta name="description"
-        content="Actionable business insights, profit improvement strategies, manufacturing process optimization, and export expansion guides for Sri Lankan SMEs and factories from IB Business Consultants.">
+        content="Practical business guides for Sri Lankan SMEs: How to increase business profits, reduce factory production costs, increase company sales & find global buyers.">
     <meta name="keywords"
-        content="Sri Lanka business blog, SME consulting insights, manufacturing efficiency Sri Lanka, profit improvement guide, export advisory Horana Colombo">
+        content="How to increase business profits, How to reduce factory production costs, How to increase company sales, How to improve business performance, How to increase manufacturing productivity, How to develop a distributor network, How to find international buyers">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="canonical" href="<?php echo $canonical_url; ?>">
 
     <!-- Open Graph (Facebook, WhatsApp, LinkedIn preview card) -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="IB Business Consultants">
-    <meta property="og:title" content="Business Insights &amp; Blog | IB Business Consultants">
+    <meta property="og:title" content="Business Insights & Practical Guides | IB Business Consultants">
     <meta property="og:description"
-        content="Actionable business insights, profit improvement strategies, manufacturing process optimization, and export expansion guides for Sri Lankan SMEs.">
+        content="Practical business guides for Sri Lankan SMEs: How to increase business profits, reduce factory production costs, increase company sales & find global buyers.">
     <meta property="og:url" content="<?php echo $canonical_url; ?>">
     <meta property="og:image" content="<?php echo $base_url; ?>/assets/images/logos/logo-2.webp">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Business Insights &amp; Blog | IB Business Consultants">
+    <meta name="twitter:title" content="Business Insights & Practical Guides | IB Business Consultants">
     <meta name="twitter:description"
-        content="Actionable business insights, profit improvement strategies, manufacturing process optimization, and export expansion guides for Sri Lankan SMEs.">
+        content="Practical business guides for Sri Lankan SMEs: How to increase business profits, reduce factory production costs, increase company sales & find global buyers.">
     <meta name="twitter:image" content="<?php echo $base_url; ?>/assets/images/logos/logo-2.webp">
 
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/logos/logo-2.webp">
@@ -160,6 +160,9 @@ $canonical_url = $base_url . "/blog.php";
                             <div class="col-lg-12">
                                 <div class="tj-page-header-content text-center">
                                     <h1 class="tj-page-title">Business Insights &amp; Articles</h1>
+                                    <p class="text-white-50 mt-2 mb-3" style="font-size: 15px; max-width: 800px; margin: 0 auto;">
+                                        Actionable guides on how to increase business profits, reduce factory production costs, increase company sales, and improve manufacturing productivity.
+                                    </p>
                                     <div class="tj-page-link">
                                         <span><i class="tji-home"></i></span>
                                         <span><a href="index.php">Home</a></span>

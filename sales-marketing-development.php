@@ -9,13 +9,13 @@
     <?php
     include_once 'seo_helper.php';
     render_seo_tags([
-        'title' => 'Sales & Marketing Development | IB Business Consultants',
-        'description' => 'Build a systematic sales and marketing engine that improves lead generation, conversion, and customer retention with IB Consultants in Sri Lanka.',
-        'keywords' => 'Sales and Marketing Development, Lead Generation, CRM systems, Sales KPIs, Marketing Strategy, Customer Retention, SME Sri Lanka',
+        'title' => 'Marketing & Sales Management Consultants Sri Lanka | Growth Strategies',
+        'description' => 'Top marketing consultants in Sri Lanka. Expert sales management consulting, digital marketing consultancy, sales growth strategies & team development.',
+        'keywords' => 'Marketing Consultants Sri Lanka, Sales Management Consultants Sri Lanka, Digital marketing consultancy, Sales growth strategies, Sales team development, Marketing strategy consultants',
         'canonical' => 'sales-marketing-development.php',
         'service' => [
-            'name' => 'Sales & Marketing Development',
-            'description' => 'Build a systematic sales and marketing engine that improves lead generation, conversion, and customer retention with IB Consultants in Sri Lanka.'
+            'name' => 'Sales & Marketing Development Consultancy',
+            'description' => 'Sales management consulting, digital marketing consultancy, sales growth strategies and sales team development in Sri Lanka.'
         ],
         'breadcrumbs' => [
             ['name' => 'Home', 'url' => 'index.php'],
@@ -89,7 +89,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="tj-page-header-content text-center">
-                                    <h1 class="tj-page-title">Sales & Marketing Development</h1>
+                                    <h1 class="tj-page-title">Marketing & Sales Management Consultants Sri Lanka</h1>
                                     <div class="tj-page-link">
                                         <span><i class="tji-home"></i></span>
                                         <span><a href="index.php">Home</a></span>
@@ -115,15 +115,10 @@
                                         <img src="assets/images/service/service-sales-marketing.webp"
                                             alt="Sales and Marketing Development by IB Consultants">
                                     </div>
-                                    <h2 class="title title-anim">Build a Systematic Sales & Marketing Engine.</h2>
+                                    <h2 class="title title-anim">Sales Growth Strategies, Team Development & Marketing Strategy Consultants.</h2>
                                     <div class="blog-text">
                                         <p class="wow fadeInUp" data-wow-delay=".3s">
-                                            <strong>Build a systematic sales and marketing engine that improves lead
-                                                generation, conversion, customer retention and sales
-                                                productivity.</strong> A great product alone is not enough to drive
-                                            business growth. We help businesses transition from traditional,
-                                            unpredictable selling to a highly structured, data-driven sales and
-                                            marketing approach that consistently generates revenue.
+                                            <strong>Build a systematic sales and marketing engine that improves lead generation, conversion, customer retention and sales productivity.</strong> As recognized marketing consultants and sales management consultants in Sri Lanka, we provide digital marketing consultancy, actionable sales growth strategies, and hands-on sales team development to turn potential leads into sustainable revenue. We help businesses transition from unpredictable selling to a structured, data-driven sales approach.
                                         </p>
 
                                         <!-- Core 8 Bullet Points from Document -->

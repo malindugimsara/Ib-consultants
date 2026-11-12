@@ -9,18 +9,18 @@
     <?php
     include_once 'seo_helper.php';
     render_seo_tags([
-        'title' => 'Export Market Development & International Sales | IB Business Consultants',
-        'description' => 'Support Sri Lankan businesses in developing international markets, finding qualified buyers and building sustainable export channels with IB Consultants.',
-        'keywords' => 'Export Market Development, International Sales, Export readiness Sri Lanka, finding international buyers, export pricing, market entry planning',
+        'title' => 'Export Development Consultants Sri Lanka | International Business',
+        'description' => 'Top export development consultants in Sri Lanka. Expert international business consulting, overseas buyer identification & international market research.',
+        'keywords' => 'Export Development Consultants Sri Lanka, International business consultants, Overseas buyer identification, Export market development, International market research',
         'canonical' => 'export-market-development.php',
         'service' => [
-            'name' => 'Export Market Development & International Sales',
-            'description' => 'Support Sri Lankan businesses in developing international markets, finding qualified buyers and building sustainable export channels with IB Consultants.'
+            'name' => 'Export Market Development Consultancy',
+            'description' => 'International business consulting, overseas buyer identification, export market development and international market research in Sri Lanka.'
         ],
         'breadcrumbs' => [
             ['name' => 'Home', 'url' => 'index.php'],
             ['name' => 'Consultancy Services', 'url' => 'consultancy-service.php'],
-            ['name' => 'Export Market Development & International Sales', 'url' => 'export-market-development.php']
+            ['name' => 'Export Market Development', 'url' => 'export-market-development.php']
         ]
     ]);
     ?>
@@ -88,7 +88,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="tj-page-header-content text-center">
-                                    <h1 class="tj-page-title">Export Market Dev. & International Sales</h1>
+                                    <h1 class="tj-page-title">Export Development Consultants Sri Lanka | International Sales</h1>
                                     <div class="tj-page-link">
                                         <span><i class="tji-home"></i></span>
                                         <span><a href="index.php">Home</a></span>
@@ -114,15 +114,10 @@
                                         <img src="assets/images/service/service-export-market.webp"
                                             alt="Export Market Development and International Sales by IB Consultants">
                                     </div>
-                                    <h2 class="title title-anim">Find Qualified Buyers & Build Export Channels.</h2>
+                                    <h2 class="title title-anim">Overseas Buyer Identification, Export Market Development & International Market Research.</h2>
                                     <div class="blog-text">
                                         <p class="wow fadeInUp" data-wow-delay=".3s">
-                                            <strong>Support Sri Lankan businesses in developing international markets,
-                                                finding qualified buyers and building sustainable export
-                                                channels.</strong> Taking your business global requires more than just a
-                                            good product. We provide end-to-end guidance to prepare your business for
-                                            the international stage, minimizing risks and maximizing global
-                                            opportunities.
+                                            <strong>Support Sri Lankan businesses in developing international markets, finding qualified buyers and building sustainable export channels.</strong> As specialized export development consultants and international business consultants in Sri Lanka, we provide end-to-end guidance in overseas buyer identification, export market development, and international market research to position your products on the global stage. Taking your business global requires minimizing risks and maximizing export opportunities through qualified buyer matching.
                                         </p>
 
                                         <!-- Core 8 Bullet Points from Document -->

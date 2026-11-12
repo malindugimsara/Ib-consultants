@@ -12,9 +12,9 @@ $turnstileSiteKey = (!empty($env['CLOUDFLARE_TURNSTILE_SITE_KEY'])) ? $env['CLOU
     <?php
     include_once 'seo_helper.php';
     render_seo_tags([
-        'title' => 'Contact Us | IB Business Consultants - Schedule a Consultation',
-        'description' => 'Contact IB Business Consultants for practical business and profit improvement consulting for Sri Lankan SMEs and Manufacturing Businesses. Located in Horana, serving nationwide.',
-        'keywords' => 'contact IB consultants, business consultant Horana, SME consultation Sri Lanka, manufacturing consultant contact',
+        'title' => 'Business Consultants in Colombo & Sri Lanka | Contact IB Consultants',
+        'description' => 'Looking for a trusted business growth consultant near me? IB Business Consultants serves businesses across Colombo, Horana, Kandy, Galle, Kurunegala, Negombo & Gampaha.',
+        'keywords' => 'Business growth consultant near me, Business Consultancy in Colombo, Business Consultants in Kandy, Business Consultants in Galle, Business Consultants in Kurunegala, Business Consultants in Negombo, Business Consultants in Horana, Business Consultants in Gampaha',
         'canonical' => 'contact.php',
         'is_contact' => true,
         'breadcrumbs' => [
@@ -274,6 +274,30 @@ $turnstileSiteKey = (!empty($env['CLOUDFLARE_TURNSTILE_SITE_KEY'])) ? $env['CLOU
                                                 <i class="fa-solid fa-arrow-right"></i>
                                             </a>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Areas We Serve (Local SEO Banner) -->
+                        <div class="row mt-4">
+                            <div class="col-12">
+                                <div class="ib-areas-served-card p-4 rounded-3 text-center wow fadeInUp" data-wow-delay=".3s"
+                                    style="background: #ffffff; border: 1px solid #eaedf1; box-shadow: 0 4px 20px rgba(9, 26, 50, 0.05);">
+                                    <h4 style="color: var(--primary-navy); font-size: 18px; font-weight: 700; margin-bottom: 8px;">
+                                        <i class="fa-solid fa-map-location-dot me-2 text-warning"></i>Areas We Serve Across Sri Lanka
+                                    </h4>
+                                    <p class="mb-2 text-muted" style="font-size: 14px; max-width: 850px; margin: 0 auto;">
+                                        Looking for a <strong>business growth consultant near me</strong>? Headquartered in Horana, our consultants actively provide on-site advisory and practical business consulting across:
+                                    </p>
+                                    <div class="d-flex flex-wrap justify-content-center gap-2 mt-2">
+                                        <span class="badge bg-light text-dark border px-3 py-2"><i class="fa-solid fa-location-dot text-danger me-1"></i>Business Consultancy in Colombo</span>
+                                        <span class="badge bg-light text-dark border px-3 py-2"><i class="fa-solid fa-location-dot text-danger me-1"></i>Horana</span>
+                                        <span class="badge bg-light text-dark border px-3 py-2"><i class="fa-solid fa-location-dot text-danger me-1"></i>Gampaha</span>
+                                        <span class="badge bg-light text-dark border px-3 py-2"><i class="fa-solid fa-location-dot text-danger me-1"></i>Kandy</span>
+                                        <span class="badge bg-light text-dark border px-3 py-2"><i class="fa-solid fa-location-dot text-danger me-1"></i>Galle</span>
+                                        <span class="badge bg-light text-dark border px-3 py-2"><i class="fa-solid fa-location-dot text-danger me-1"></i>Kurunegala</span>
+                                        <span class="badge bg-light text-dark border px-3 py-2"><i class="fa-solid fa-location-dot text-danger me-1"></i>Negombo</span>
                                     </div>
                                 </div>
                             </div>

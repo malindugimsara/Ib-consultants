@@ -111,6 +111,8 @@ if (!function_exists('render_seo_tags')) {
 
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/logos/logo-2.webp">
+    <link rel="apple-touch-icon" href="assets/images/logos/logo-2.webp">
+    <meta name="theme-color" content="#091a32">
 
     <!-- Structured Data (JSON-LD) -->
     <?php
@@ -142,8 +144,14 @@ if (!function_exists('render_seo_tags')) {
             'openingHours' => $company['openingHours'],
             'sameAs' => $company['sameAs'],
             'areaServed' => [
-                '@type' => 'Country',
-                'name' => 'Sri Lanka'
+                ['@type' => 'Country', 'name' => 'Sri Lanka'],
+                ['@type' => 'City', 'name' => 'Colombo'],
+                ['@type' => 'City', 'name' => 'Horana'],
+                ['@type' => 'City', 'name' => 'Kandy'],
+                ['@type' => 'City', 'name' => 'Galle'],
+                ['@type' => 'City', 'name' => 'Kurunegala'],
+                ['@type' => 'City', 'name' => 'Negombo'],
+                ['@type' => 'City', 'name' => 'Gampaha']
             ],
             'hasOfferCatalog' => [
                 '@type' => 'OfferCatalog',
@@ -204,8 +212,14 @@ if (!function_exists('render_seo_tags')) {
                 'url' => $company['url']
             ],
             'areaServed' => [
-                '@type' => 'Country',
-                'name' => 'Sri Lanka'
+                ['@type' => 'Country', 'name' => 'Sri Lanka'],
+                ['@type' => 'City', 'name' => 'Colombo'],
+                ['@type' => 'City', 'name' => 'Horana'],
+                ['@type' => 'City', 'name' => 'Kandy'],
+                ['@type' => 'City', 'name' => 'Galle'],
+                ['@type' => 'City', 'name' => 'Kurunegala'],
+                ['@type' => 'City', 'name' => 'Negombo'],
+                ['@type' => 'City', 'name' => 'Gampaha']
             ],
             'url' => $canonical_url
         ];

@@ -9,18 +9,18 @@
     <?php
     include_once 'seo_helper.php';
     render_seo_tags([
-        'title' => 'Business Transformation, KPI & Continuous Improvement | IB Business Consultants',
-        'description' => 'Establish a practical improvement culture with measurable KPIs, management reviews and ongoing implementation support with IB Consultants.',
-        'keywords' => 'Business Transformation, KPI frameworks, Continuous Improvement, Root-cause analysis, Performance dashboards, SME consulting Sri Lanka',
+        'title' => 'Business Turnaround Consultancy Sri Lanka | Transformation & KPIs',
+        'description' => 'Premier business turnaround consultancy in Sri Lanka. Drive business process improvement, actionable KPI frameworks & business restructuring services.',
+        'keywords' => 'Business turnaround consultancy, Business Process Improvement Sri Lanka, Business restructuring services, KPI frameworks, Continuous Improvement Sri Lanka',
         'canonical' => 'business-transformation-kpi.php',
         'service' => [
-            'name' => 'Business Transformation, KPI & Continuous Improvement',
-            'description' => 'Establish a practical improvement culture with measurable KPIs, management reviews and ongoing implementation support with IB Consultants.'
+            'name' => 'Business Transformation & Turnaround Consultancy',
+            'description' => 'Business turnaround consultancy, business process improvement, KPI frameworks and continuous improvement in Sri Lanka.'
         ],
         'breadcrumbs' => [
             ['name' => 'Home', 'url' => 'index.php'],
             ['name' => 'Consultancy Services', 'url' => 'consultancy-service.php'],
-            ['name' => 'Business Transformation, KPI & Continuous Improvement', 'url' => 'business-transformation-kpi.php']
+            ['name' => 'Business Transformation', 'url' => 'business-transformation-kpi.php']
         ]
     ]);
     ?>
@@ -89,7 +89,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="tj-page-header-content text-center">
-                                    <h1 class="tj-page-title">Business Transformation & KPI Advisory</h1>
+                                    <h1 class="tj-page-title">Business Transformation & Turnaround Consultancy Sri Lanka</h1>
                                     <div class="tj-page-link">
                                         <span><i class="tji-home"></i></span>
                                         <span><a href="index.php">Home</a></span>
@@ -115,15 +115,10 @@
                                         <img src="assets/images/service/service-business-kpi.webp"
                                             alt="Business Transformation and KPI Advisory by IB Consultants">
                                     </div>
-                                    <h2 class="title title-anim">Establish a Practical Improvement Culture.</h2>
+                                    <h2 class="title title-anim">Continuous Improvement, KPI Frameworks & Business Restructuring.</h2>
                                     <div class="blog-text">
                                         <p class="wow fadeInUp" data-wow-delay=".3s">
-                                            <strong>Establish a practical improvement culture with measurable KPIs,
-                                                management reviews and ongoing implementation support.</strong> Real
-                                            business transformation does not happen overnight. We partner with your
-                                            organization to instill a culture of continuous improvement, ensuring that
-                                            strategic goals are consistently met through rigorous performance tracking
-                                            and accountability.
+                                            <strong>Establish a practical improvement culture with measurable KPIs, management reviews and ongoing implementation support.</strong> As a specialized business turnaround consultancy in Sri Lanka, we guide organizations through business process improvement and business restructuring services to restore operational efficiency, accountability, and sustainable profitability. Real business transformation happens when strategic goals are tracked with rigorous performance frameworks.
                                         </p>
 
                                         <!-- Core 8 Bullet Points from Document -->

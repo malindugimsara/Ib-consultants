@@ -14,13 +14,13 @@ $core_result = $conn->query($core_query);
     <?php
     include_once 'seo_helper.php';
     render_seo_tags([
-        'title' => 'Core Consultancy Services | IB Business Consultants - SME & Factory Solutions',
-        'description' => 'Practical Business, Profitability, Market Development, and Growth Solutions for Sri Lankan SMEs and Manufacturing Businesses by IB Business Consultants.',
-        'keywords' => 'business consultancy services sri lanka, SME consulting services, manufacturing solutions, factory productivity, profit management consulting',
+        'title' => 'Business Development & Growth Consultants Sri Lanka | IB Services',
+        'description' => 'Looking for top business growth consultants in Sri Lanka? IB Consultants is your premier business development, management and improvement consultancy.',
+        'keywords' => 'Business Development Consultancy, Business Growth Consultants Sri Lanka, Business Improvement Consultancy, Business Management Consultants Sri Lanka',
         'canonical' => 'consultancy-service.php',
         'service' => [
-            'name' => 'Core SME & Manufacturing Consultancy Services',
-            'description' => 'Comprehensive business, financial, manufacturing, and operational advisory for growing Sri Lankan enterprises.'
+            'name' => 'Business Development & Management Consultancy',
+            'description' => 'Comprehensive business development, business growth consulting, operational improvement, and management advisory for Sri Lankan enterprises.'
         ],
         'breadcrumbs' => [
             ['name' => 'Home', 'url' => 'index.php'],
@@ -97,7 +97,7 @@ $core_result = $conn->query($core_query);
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="tj-page-header-content text-center">
-                                    <h1 class="tj-page-title text-white">Consultancy Services</h1>
+                                    <h1 class="tj-page-title text-white">Business Development & Growth Consultancy</h1>
                                     <div class="tj-page-link">
                                         <span><i class="tji-home"></i></span>
                                         <span>
@@ -123,10 +123,9 @@ $core_result = $conn->query($core_query);
                             <div class="col-lg-4">
                                 <div class="content-wrap slidebar-stickiy">
                                     <div class="sec-heading style-2">
-                                        <span class="sub-title wow fadeInUp" data-wow-delay=".3s">Core
-                                            Services</span>
-                                        <h2 class="sec-title text-white text-anim">Select a Solution for Your
-                                            <span>Business.</span>
+                                        <span class="sub-title wow fadeInUp" data-wow-delay=".3s">Business Improvement Consultancy</span>
+                                        <h2 class="sec-title text-white text-anim">Business Growth & Management 
+                                            <span>Consultants Sri Lanka.</span>
                                         </h2>
                                     </div>
                                     <!-- Button changed to Contact since user is already on Services page -->

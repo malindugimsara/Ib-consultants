@@ -44,7 +44,7 @@
           </div>
           <div class="contact-item">
             <span class="subtitle"><i class="fa-solid fa-envelope me-1" style="color: #d4af37;"></i> Email</span>
-            <a class="contact-link" href="mailto:dammikasbandara86@gmail.com">dammikasbandara86@gmail.com</a>
+            <a class="contact-link" href="mailto:info@businessconsultant.lk">info@businessconsultant.lk</a>
           </div>
           <div class="contact-item">
             <span class="subtitle"><i class="fa-solid fa-location-dot me-1" style="color: #d4af37;"></i> Location</span>
@@ -117,7 +117,7 @@
           </div>
           <div class="contact-item">
             <span class="subtitle">Email</span>
-            <a class="contact-link" href="mailto:dammikasbandara86@gmail.com">dammikasbandara86@gmail.com</a>
+            <a class="contact-link" href="mailto:info@businessconsultant.lk">info@businessconsultant.lk</a>
           </div>
           <div class="contact-item">
             <span class="subtitle">Location</span>

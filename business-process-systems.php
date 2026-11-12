@@ -9,18 +9,18 @@
     <?php
     include_once 'seo_helper.php';
     render_seo_tags([
-        'title' => 'Business Process, Systems & Management Dev. | IB Business Consultants',
-        'description' => 'Create clear processes, responsibilities and management systems that improve operational control and organizational effectiveness with IB Consultants.',
-        'keywords' => 'Business Process, Systems Development, Management Systems, SOP development, KPI dashboards, organizational structure Sri Lanka',
+        'title' => 'Business Process Improvement Sri Lanka | Systems & Management Dev.',
+        'description' => 'Top business process improvement in Sri Lanka. Expert business restructuring services, SOP development, and management systems to improve operational control.',
+        'keywords' => 'Business Process Improvement Sri Lanka, Business restructuring services, Business turnaround consultancy, SOP development, Management Systems Sri Lanka',
         'canonical' => 'business-process-systems.php',
         'service' => [
-            'name' => 'Business Process, Systems & Management Development',
-            'description' => 'Create clear processes, responsibilities and management systems that improve operational control and organizational effectiveness with IB Consultants.'
+            'name' => 'Business Process Improvement & Systems Development',
+            'description' => 'Business process improvement, business restructuring services, SOP development and management systems in Sri Lanka.'
         ],
         'breadcrumbs' => [
             ['name' => 'Home', 'url' => 'index.php'],
             ['name' => 'Consultancy Services', 'url' => 'consultancy-service.php'],
-            ['name' => 'Business Process, Systems & Management Development', 'url' => 'business-process-systems.php']
+            ['name' => 'Business Process Systems', 'url' => 'business-process-systems.php']
         ]
     ]);
     ?>
@@ -88,7 +88,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="tj-page-header-content text-center">
-                                    <h1 class="tj-page-title">Business Process, Systems & Mgt. Dev.</h1>
+                                    <h1 class="tj-page-title">Business Process Improvement & Systems Development Sri Lanka</h1>
                                     <div class="tj-page-link">
                                         <span><i class="tji-home"></i></span>
                                         <span><a href="index.php">Home</a></span>
@@ -114,15 +114,10 @@
                                         <img src="assets/images/service/service-business-systems.webp"
                                             alt="Business Process and Systems Development by IB Consultants">
                                     </div>
-                                    <h2 class="title title-anim">Create Clear Processes & Management Systems.</h2>
+                                    <h2 class="title title-anim">Business Restructuring Services & Standardized Management Systems.</h2>
                                     <div class="blog-text">
                                         <p class="wow fadeInUp" data-wow-delay=".3s">
-                                            <strong>Create clear processes, responsibilities and management systems that
-                                                improve operational control and organizational effectiveness.</strong>
-                                            As a business grows, informal methods of management eventually fail. We help
-                                            organizations transition into professionally managed entities by
-                                            establishing structured operational guidelines, eliminating confusion, and
-                                            enhancing overall accountability.
+                                            <strong>Create clear processes, responsibilities and management systems that improve operational control and organizational effectiveness.</strong> As specialists in business process improvement in Sri Lanka and business restructuring services, we assist companies through operational reorganization, SOP development, and management systems that establish lasting operational control and efficiency.
                                         </p>
 
                                         <!-- Core 8 Bullet Points from Document -->

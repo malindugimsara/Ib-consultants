@@ -9,18 +9,18 @@
     <?php
     include_once 'seo_helper.php';
     render_seo_tags([
-        'title' => 'Strategic Business Advisory & Growth Mgt. | IB Business Consultants',
-        'description' => 'Provide management with practical strategic direction for sustainable growth, expansion and better decision-making with IB Consultants.',
-        'keywords' => 'Strategic Business Advisory, Growth Management, Corporate Strategy, Annual Business Planning, Expansion strategies Sri Lanka',
+        'title' => 'Strategic Business Planning Sri Lanka | Business Strategy Consulting',
+        'description' => 'Top strategic business planning in Sri Lanka. Expert business strategy consulting and business growth consultants for sustainable expansion & decision-making.',
+        'keywords' => 'Strategic Business Planning Sri Lanka, Business Strategy Consulting Sri Lanka, Business Growth Consultants Sri Lanka',
         'canonical' => 'strategic-business-advisory.php',
         'service' => [
-            'name' => 'Strategic Business Advisory & Growth Management',
-            'description' => 'Provide management with practical strategic direction for sustainable growth, expansion and better decision-making with IB Consultants.'
+            'name' => 'Strategic Business Planning & Consulting',
+            'description' => 'Strategic business planning, business strategy consulting and growth management in Sri Lanka.'
         ],
         'breadcrumbs' => [
             ['name' => 'Home', 'url' => 'index.php'],
             ['name' => 'Consultancy Services', 'url' => 'consultancy-service.php'],
-            ['name' => 'Strategic Business Advisory & Growth Management', 'url' => 'strategic-business-advisory.php']
+            ['name' => 'Strategic Business Advisory', 'url' => 'strategic-business-advisory.php']
         ]
     ]);
     ?>
@@ -89,7 +89,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="tj-page-header-content text-center">
-                                    <h1 class="tj-page-title">Strategic Business Advisory & Growth Mgt.</h1>
+                                    <h1 class="tj-page-title">Strategic Business Planning & Strategy Consulting Sri Lanka</h1>
                                     <div class="tj-page-link">
                                         <span><i class="tji-home"></i></span>
                                         <span><a href="index.php">Home</a></span>
@@ -115,16 +115,10 @@
                                         <img src="assets/images/service/service-strategic-advisory.webp"
                                             alt="Strategic Business Advisory by IB Consultants">
                                     </div>
-                                    <h2 class="title title-anim">Practical Strategic Direction for Sustainable Growth.
-                                    </h2>
+                                    <h2 class="title title-anim">Business Strategy Consulting & Business Growth Consultants Sri Lanka.</h2>
                                     <div class="blog-text">
                                         <p class="wow fadeInUp" data-wow-delay=".3s">
-                                            <strong>Provide management with practical strategic direction for
-                                                sustainable growth, expansion and better decision-making.</strong>
-                                            Navigating a business through competitive markets requires more than
-                                            intuition. We work closely with business owners and directors to provide
-                                            clear, data-driven strategic direction that ensures long-term viability and
-                                            controlled expansion.
+                                            <strong>Provide management with practical strategic direction for sustainable growth, expansion and better decision-making.</strong> As leading business growth consultants in Sri Lanka specializing in strategic business planning and business strategy consulting, we work closely with company leaders to chart viable roadmaps, unlock market opportunities, and manage expansion with clarity. Navigating competitive markets requires rigorous data-driven strategic direction.
                                         </p>
 
                                         <!-- Core 8 Bullet Points from Document -->

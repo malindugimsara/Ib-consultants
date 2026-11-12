@@ -1,8 +1,12 @@
 <?php
-$servername = "127.0.0.1";
-$username = "root"; 
-$password = ""; 
-$dbname = "ib_consultants"; 
+// Load database configurations from .env with local defaults fallback
+$env_file = __DIR__ . '/.env';
+$env = file_exists($env_file) ? @parse_ini_file($env_file) : [];
+
+$servername = !empty($env['DB_HOST']) ? $env['DB_HOST'] : "127.0.0.1";
+$username   = isset($env['DB_USER']) ? $env['DB_USER'] : "root"; 
+$password   = isset($env['DB_PASS']) ? $env['DB_PASS'] : ""; 
+$dbname     = !empty($env['DB_NAME']) ? $env['DB_NAME'] : "ib_consultants"; 
 
 // connecting to database with timeout protection
 $conn = mysqli_init();

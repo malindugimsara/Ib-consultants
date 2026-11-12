@@ -9,18 +9,18 @@
     <?php
     include_once 'seo_helper.php';
     render_seo_tags([
-        'title' => 'Domestic Market Dev. & Distributor Management | IB Business Consultants',
-        'description' => 'Develop stronger domestic sales channels and build a structured, performance-driven distributor and dealer network with IB Consultants in Sri Lanka.',
-        'keywords' => 'Domestic Market Development, Distributor Management, Sales Channels, Dealer network, Territory allocation, SME sales Sri Lanka',
+        'title' => 'Distributor Management Consultancy | Distributor Network Development',
+        'description' => 'Top distributor management consultancy in Sri Lanka. Drive sales growth strategies through structured distributor network development and dealer systems.',
+        'keywords' => 'Distributor Management Consultancy, Distributor network development, Sales growth strategies, Dealer Network Sri Lanka',
         'canonical' => 'domestic-market-development.php',
         'service' => [
-            'name' => 'Domestic Market Development & Distributor Management',
-            'description' => 'Develop stronger domestic sales channels and build a structured, performance-driven distributor and dealer network with IB Consultants in Sri Lanka.'
+            'name' => 'Distributor Management Consultancy & Network Development',
+            'description' => 'Distributor management consultancy, distributor network development and local sales growth strategies in Sri Lanka.'
         ],
         'breadcrumbs' => [
             ['name' => 'Home', 'url' => 'index.php'],
             ['name' => 'Consultancy Services', 'url' => 'consultancy-service.php'],
-            ['name' => 'Domestic Market Development & Distributor Management', 'url' => 'domestic-market-development.php']
+            ['name' => 'Distributor Management', 'url' => 'domestic-market-development.php']
         ]
     ]);
     ?>
@@ -89,7 +89,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="tj-page-header-content text-center">
-                                    <h1 class="tj-page-title">Domestic Market Dev. & Distributor Mgt</h1>
+                                    <h1 class="tj-page-title">Distributor Management Consultancy & Network Development</h1>
                                     <div class="tj-page-link">
                                         <span><i class="tji-home"></i></span>
                                         <span><a href="index.php">Home</a></span>
@@ -115,16 +115,10 @@
                                         <img src="assets/images/service/service-domestic-market.webp"
                                             alt="Domestic Market Development and Distributor Management by IB Consultants">
                                     </div>
-                                    <h2 class="title title-anim">Build Structured & Performance-Driven Sales Channels.
-                                    </h2>
+                                    <h2 class="title title-anim">Distributor Network Development & Local Sales Growth Strategies.</h2>
                                     <div class="blog-text">
                                         <p class="wow fadeInUp" data-wow-delay=".3s">
-                                            <strong>Develop stronger domestic sales channels and build a structured,
-                                                performance-driven distributor and dealer network.</strong> Relying on
-                                            ad-hoc sales strategies is no longer enough to scale in a competitive
-                                            environment. We help Sri Lankan businesses systematically map their domestic
-                                            market, identify the right channel partners, and establish distribution
-                                            networks that actively drive revenue.
+                                            <strong>Develop stronger domestic sales channels and build a structured, performance-driven distributor and dealer network.</strong> As an experienced distributor management consultancy in Sri Lanka, we help businesses implement distributor network development and proven sales growth strategies to capture market share across retail, wholesale, and dealer channels. Relying on ad-hoc selling is no longer enough to scale in a competitive environment; we establish distribution networks that actively drive revenue.
                                         </p>
 
                                         <!-- Core 8 Bullet Points from Document -->

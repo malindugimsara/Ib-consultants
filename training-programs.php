@@ -30,9 +30,9 @@ $dip_result = $conn->query($dip_query);
     <?php
     include_once 'seo_helper.php';
     render_seo_tags([
-        'title' => 'Training & Programs | Business Workshops & Certificates | IB Consultants',
-        'description' => 'Enroll in practical business workshops, certificate programs, and diploma courses for SME owners, managers, and professionals with IB Consultants in Sri Lanka.',
-        'keywords' => 'Business Training Sri Lanka, Corporate Workshops, Certificate in Business Management, SME Training, Digital Marketing Course, Manufacturing Training, Diplomas',
+        'title' => 'Business Workshops & Corporate Training Sri Lanka | Certificates & Diplomas',
+        'description' => 'Top corporate training and business workshops in Sri Lanka. Expert business management training, leadership training, SME management training & diplomas.',
+        'keywords' => 'Business Workshops Sri Lanka, Business management training Sri Lanka, Corporate Training Sri Lanka, Leadership Training Sri Lanka, SME Management Training, Certificate in Business Management, Diploma in Business Administration, Cost Reduction Workshops, Digital Marketing Workshops, AI for Business Workshops',
         'canonical' => 'training-programs.php',
         'is_training' => true,
         'breadcrumbs' => [
@@ -112,7 +112,7 @@ $dip_result = $conn->query($dip_query);
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="tj-page-header-content text-center">
-                                    <h1 class="tj-page-title text-white">Training & Programs</h1>
+                                    <h1 class="tj-page-title text-white">Business Workshops & Corporate Training in Sri Lanka</h1>
                                     <div class="tj-page-link">
                                         <span><i class="tji-home"></i></span>
                                         <span>
@@ -152,16 +152,10 @@ $dip_result = $conn->query($dip_query);
                                             <i class="tji-box"></i>Our Philosophy
                                         </span>
                                         <h2 class="sec-title ib-philosophy-title wow fadeInUp" data-wow-delay=".4s">
-                                            Practical Business Education for <span>Professionals.</span>
+                                            Corporate Training, Leadership & SME Management Training in <span>Sri Lanka.</span>
                                         </h2>
                                         <p class="desc ib-philosophy-desc wow fadeInUp" data-wow-delay=".5s">
-                                            We provide practical business education for SME owners, managers,
-                                            executives,
-                                            entrepreneurs, and professionals. Our programmes are designed to combine
-                                            business knowledge with practical tools, real business examples, hands-on
-                                            exercises, case studies, and implementation activities so you can apply what
-                                            you
-                                            learn immediately.
+                                            We provide practical business management training, leadership training, and SME management training in Sri Lanka. From specialized Cost Reduction Workshops, Digital Marketing Workshops, and AI for Business Workshops to Certificate in Business Management and Diploma in Business Administration programs, our curriculum is designed for immediate operational impact.
                                         </p>
                                         <div class="wow fadeInUp" data-wow-delay=".6s">
                                             <a href="https://wa.me/94742112767" target="_blank"

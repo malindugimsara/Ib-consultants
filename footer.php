@@ -154,7 +154,7 @@
             <div
               class="copyright-content-area d-flex flex-column flex-md-row justify-content-md-between align-items-center text-center text-md-start gap-3">
               <div class="copyright-text">
-                <p class="mb-0">&copy; <span>2026</span> <a href="index.php" class="text-decoration-none">IB Business
+                <p class="mb-0">&copy; <span><?= date('Y'); ?></span> <a href="index.php" class="text-decoration-none">IB Business
                     Consultants</a>. All rights reserved.</p>
               </div>
               <div class="social-links style-3">
