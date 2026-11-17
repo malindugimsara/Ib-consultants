@@ -1,0 +1,4 @@
+# Environment files containing sensitive passwords and keys
+.env
+.env.local
+.env.*.local
