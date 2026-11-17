@@ -215,9 +215,12 @@ $turnstileSiteKey = (!empty($env['CLOUDFLARE_TURNSTILE_SITE_KEY'])) ? $env['CLOU
                                         <div class="ib-contact-info-list">
                                             <a href="mailto:info@businessconsultant.lk"
                                                 class="ib-contact-highlight">info@businessconsultant.lk</a>
-                                            <a href="mailto:dhammika@businessconsultant.lk"
+                                            <a href="mailto:dhammika@businessconsultant.lk "
                                                 class="ib-contact-sub">dhammika@businessconsultant.lk</a>
                                         </div>
+
+
+
 
                                         <!-- Email Response Promise -->
                                         <div class="ib-contact-hours">
@@ -806,13 +809,13 @@ $turnstileSiteKey = (!empty($env['CLOUDFLARE_TURNSTILE_SITE_KEY'])) ? $env['CLOU
         </div>
     </div>
 
-        <script>
-        document.addEventListener('DOMContentLoaded', function () {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
             const contactForm = document.getElementById('ib-contact-form');
 
             if (contactForm) {
-                contactForm.addEventListener('submit', function (e) {
-                    e.preventDefault(); 
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
 
                     const submitBtn = contactForm.querySelector('button[type="submit"]');
                     const originalBtnText = submitBtn.innerHTML;
@@ -836,7 +839,7 @@ $turnstileSiteKey = (!empty($env['CLOUDFLARE_TURNSTILE_SITE_KEY'])) ? $env['CLOU
                             toastIcon.className = 'fa-solid fa-shield-halved';
                             toastMsg.innerHTML = '<strong>Security Verification Required</strong><br>Please complete the Cloudflare security verification.';
 
-                            setTimeout(function () {
+                            setTimeout(function() {
                                 toast.classList.remove('show');
                             }, 5000);
                             return;
@@ -844,9 +847,9 @@ $turnstileSiteKey = (!empty($env['CLOUDFLARE_TURNSTILE_SITE_KEY'])) ? $env['CLOU
                     }
 
                     fetch('process_contact.php', {
-                        method: 'POST',
-                        body: formData
-                    })
+                            method: 'POST',
+                            body: formData
+                        })
                         .then(response => {
                             if (!response.ok) {
                                 throw new Error('Network response was not ok');
@@ -878,7 +881,7 @@ $turnstileSiteKey = (!empty($env['CLOUDFLARE_TURNSTILE_SITE_KEY'])) ? $env['CLOU
                                 window.turnstile.reset();
                             }
 
-                            setTimeout(function () {
+                            setTimeout(function() {
                                 toast.classList.remove('show');
                             }, 5000);
                         })
@@ -900,7 +903,7 @@ $turnstileSiteKey = (!empty($env['CLOUDFLARE_TURNSTILE_SITE_KEY'])) ? $env['CLOU
                                 window.turnstile.reset();
                             }
 
-                            setTimeout(function () {
+                            setTimeout(function() {
                                 toast.classList.remove('show');
                             }, 5000);
                         });
@@ -916,9 +919,11 @@ $turnstileSiteKey = (!empty($env['CLOUDFLARE_TURNSTILE_SITE_KEY'])) ? $env['CLOU
 
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
-        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-        (function () {
-            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+        var Tawk_API = Tawk_API || {},
+            Tawk_LoadStart = new Date();
+        (function() {
+            var s1 = document.createElement("script"),
+                s0 = document.getElementsByTagName("script")[0];
             s1.async = true;
             s1.src = 'https://embed.tawk.to/6aeacdb2ec5abc3c3737ebd2/1k6ij70ga';
             s1.charset = 'UTF-8';

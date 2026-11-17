@@ -61,7 +61,7 @@ $article_image_url = !empty($article['image_path']) ? $base_url . "/" . ltrim($a
 $page_title = htmlspecialchars($article['title']) . " | IB Business Consultants";
 $meta_desc = !empty($article['excerpt']) ? htmlspecialchars(mb_substr(strip_tags($article['excerpt']), 0, 160)) : "Actionable business insights, profit improvement strategies, manufacturing process optimization from IB Business Consultants.";
 $meta_keywords = !empty($article['keywords']) ? htmlspecialchars($article['keywords']) . ", IB Consultants, Sri Lanka business advisory" : "Sri Lanka business blog, SME consulting, profit improvement, export advisory";
-$author_name = !empty($article['author_name']) ? htmlspecialchars($article['author_name']) : "Dammika Bandara";
+$author_name = !empty($article['author_name']) ? htmlspecialchars($article['author_name']) : "Dhammika Bandara";
 
 // 3. Fetch Related Articles (from same category or recent, excluding current)
 $related_articles = [];
@@ -145,76 +145,74 @@ $categories_res = $conn->query("SELECT category_slug, category_name, COUNT(*) as
 
     <!-- Structured Data (Schema.org JSON-LD for BlogPosting & Breadcrumbs) -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
         {
-          "@type": "BlogPosting",
-          "@id": "<?php echo $canonical_url; ?>#article",
-          "isPartOf": {
-            "@type": "WebPage",
-            "@id": "<?php echo $canonical_url; ?>",
-            "url": "<?php echo $canonical_url; ?>",
-            "name": "<?php echo htmlspecialchars($article['title']); ?>",
-            "headline": "<?php echo htmlspecialchars($article['title']); ?>"
-          },
-          "headline": "<?php echo htmlspecialchars($article['title']); ?>",
-          "description": "<?php echo $meta_desc; ?>",
-          "image": "<?php echo $article_image_url; ?>",
-          "datePublished": "<?php echo date('c', strtotime($article['created_at'])); ?>",
-          "dateModified": "<?php echo date('c', strtotime($article['created_at'])); ?>",
-          "author": {
-            "@type": "Person",
-            "name": "<?php echo $author_name; ?>",
-            "jobTitle": "Lead Business Consultant",
-            "url": "<?php echo $base_url; ?>/about.php"
-          },
-          "publisher": {
-            "@type": "Organization",
-            "name": "IB Business Consultants",
-            "url": "<?php echo $base_url; ?>/index.php",
-            "logo": {
-              "@type": "ImageObject",
-              "url": "<?php echo $base_url; ?>/assets/images/logos/logo-2.webp"
-            }
-          },
-          "articleSection": "<?php echo htmlspecialchars($article['category_name']); ?>",
-          "keywords": "<?php echo $meta_keywords; ?>"
-        },
-        {
-          "@type": "BreadcrumbList",
-          "@id": "<?php echo $canonical_url; ?>#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "<?php echo $base_url; ?>/index.php"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Business Insights Blog",
-              "item": "<?php echo $base_url; ?>/blog.php"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "<?php echo htmlspecialchars($article['category_name']); ?>",
-              "item": "<?php echo $base_url; ?>/blog.php?category=<?php echo urlencode($article['category_slug']); ?>"
-            },
-            {
-              "@type": "ListItem",
-              "position": 4,
-              "name": "<?php echo htmlspecialchars($article['title']); ?>"
-            }
-          ]
+            "@context": "https://schema.org",
+            "@graph": [{
+                    "@type": "BlogPosting",
+                    "@id": "<?php echo $canonical_url; ?>#article",
+                    "isPartOf": {
+                        "@type": "WebPage",
+                        "@id": "<?php echo $canonical_url; ?>",
+                        "url": "<?php echo $canonical_url; ?>",
+                        "name": "<?php echo htmlspecialchars($article['title']); ?>",
+                        "headline": "<?php echo htmlspecialchars($article['title']); ?>"
+                    },
+                    "headline": "<?php echo htmlspecialchars($article['title']); ?>",
+                    "description": "<?php echo $meta_desc; ?>",
+                    "image": "<?php echo $article_image_url; ?>",
+                    "datePublished": "<?php echo date('c', strtotime($article['created_at'])); ?>",
+                    "dateModified": "<?php echo date('c', strtotime($article['created_at'])); ?>",
+                    "author": {
+                        "@type": "Person",
+                        "name": "<?php echo $author_name; ?>",
+                        "jobTitle": "Lead Business Consultant",
+                        "url": "<?php echo $base_url; ?>/about.php"
+                    },
+                    "publisher": {
+                        "@type": "Organization",
+                        "name": "IB Business Consultants",
+                        "url": "<?php echo $base_url; ?>/index.php",
+                        "logo": {
+                            "@type": "ImageObject",
+                            "url": "<?php echo $base_url; ?>/assets/images/logos/logo-2.webp"
+                        }
+                    },
+                    "articleSection": "<?php echo htmlspecialchars($article['category_name']); ?>",
+                    "keywords": "<?php echo $meta_keywords; ?>"
+                },
+                {
+                    "@type": "BreadcrumbList",
+                    "@id": "<?php echo $canonical_url; ?>#breadcrumb",
+                    "itemListElement": [{
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "Home",
+                            "item": "<?php echo $base_url; ?>/index.php"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": "Business Insights Blog",
+                            "item": "<?php echo $base_url; ?>/blog.php"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 3,
+                            "name": "<?php echo htmlspecialchars($article['category_name']); ?>",
+                            "item": "<?php echo $base_url; ?>/blog.php?category=<?php echo urlencode($article['category_slug']); ?>"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 4,
+                            "name": "<?php echo htmlspecialchars($article['title']); ?>"
+                        }
+                    ]
+                }
+            ]
         }
-      ]
-    }
     </script>
 
-    </head>
+</head>
 
 <body>
     <!-- Top Reading Progress Fill -->
@@ -315,7 +313,7 @@ $categories_res = $conn->query("SELECT category_slug, category_name, COUNT(*) as
                                     <!-- Author Bio Bar -->
                                     <div class="ib-article-author-row">
                                         <div class="ib-author-card">
-                                            <img src="assets/images/service/Founder.webp" alt="Dammika Bandara"
+                                            <img src="assets/images/service/Founder.webp" alt="Dhammika Bandara"
                                                 class="ib-author-img">
                                             <div class="ib-author-info">
                                                 <div class="ib-author-name"><?php echo $author_name; ?></div>
@@ -456,7 +454,7 @@ $categories_res = $conn->query("SELECT category_slug, category_name, COUNT(*) as
                                             <?php foreach ($related_articles as $rel):
                                                 $rel_slug = !empty($rel['slug']) ? $rel['slug'] : slugify($rel['title']);
                                                 $rel_url = "blog-details.php?slug=" . urlencode($rel_slug);
-                                                ?>
+                                            ?>
                                                 <div class="col-md-4">
                                                     <div class="ib-blog-card h-100">
                                                         <div class="ib-blog-card-thumb-wrap" style="height: 180px;">
@@ -538,12 +536,12 @@ $categories_res = $conn->query("SELECT category_slug, category_name, COUNT(*) as
                                     <!-- Lead Consultant Profile Widget -->
                                     <div class="ib-sidebar-widget ib-author-widget mb-4"
                                         style="background: #ffffff; border-radius: 14px; padding: 26px 22px; border: 1px solid #eef2f7; text-align: center; box-shadow: 0 4px 15px rgba(10,31,68,0.03);">
-                                        <img src="assets/images/service/Founder.webp" alt="Dammika Bandara"
+                                        <img src="assets/images/service/Founder.webp" alt="Dhammika Bandara"
                                             class="ib-author-avatar-lg"
                                             style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid #d4af37; margin-bottom: 12px;">
                                         <h5
                                             style="color: #0a1f44; font-weight: 800; margin-bottom: 4px; font-size: 17px;">
-                                            Dammika Bandara</h5>
+                                            Dhammika Bandara</h5>
                                         <span class="ib-author-subtitle"
                                             style="color: #b89127; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 12px;">Lead
                                             Business Consultant</span>
@@ -628,7 +626,7 @@ $categories_res = $conn->query("SELECT category_slug, category_name, COUNT(*) as
     <!-- Reading Progress Tracker & Copy Link Script -->
     <script>
         // Reading Progress Bar
-        window.addEventListener('scroll', function () {
+        window.addEventListener('scroll', function() {
             const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (winScroll / height) * 100;
@@ -658,7 +656,7 @@ $categories_res = $conn->query("SELECT category_slug, category_name, COUNT(*) as
             const toast = document.getElementById('ib-copy-toast');
             if (toast) {
                 toast.classList.add('show');
-                setTimeout(function () {
+                setTimeout(function() {
                     toast.classList.remove('show');
                 }, 3000);
             }
@@ -667,9 +665,11 @@ $categories_res = $conn->query("SELECT category_slug, category_name, COUNT(*) as
 
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
-        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-        (function () {
-            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+        var Tawk_API = Tawk_API || {},
+            Tawk_LoadStart = new Date();
+        (function() {
+            var s1 = document.createElement("script"),
+                s0 = document.getElementsByTagName("script")[0];
             s1.async = true;
             s1.src = 'https://embed.tawk.to/6aeacdb2ec5abc3c3737ebd2/1k6ij70ga';
             s1.charset = 'UTF-8';

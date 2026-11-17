@@ -294,14 +294,14 @@
                                 <div class="ib-founder-card">
                                     <div class="ib-founder-img-wrap">
                                         <img src="assets/images/team/Founder.webp"
-                                            alt="Dammika S. Bandara - Founder & Lead Business Consultant"
+                                            alt="Dhammika S. Bandara - Founder & Lead Business Consultant"
                                             class="img-fluid ib-founder-img">
                                         <div class="ib-founder-badge">
                                             <span><i class="fa-solid fa-award"></i> Founder & Lead Consultant</span>
                                         </div>
                                     </div>
                                     <div class="ib-founder-card-body text-center">
-                                        <h3 class="ib-founder-name topic-color">Dammika S. Bandara</h3>
+                                        <h3 class="ib-founder-name topic-color">Dhammika S. Bandara</h3>
                                         <span class="ib-founder-role">Founder & Lead Business Consultant</span>
                                         <div class="ib-founder-contacts">
                                             <!-- Official Email -->
@@ -1628,9 +1628,11 @@
 
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
-        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-        (function () {
-            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+        var Tawk_API = Tawk_API || {},
+            Tawk_LoadStart = new Date();
+        (function() {
+            var s1 = document.createElement("script"),
+                s0 = document.getElementsByTagName("script")[0];
             s1.async = true;
             s1.src = 'https://embed.tawk.to/6aeacdb2ec5abc3c3737ebd2/1k6ij70ga';
             s1.charset = 'UTF-8';

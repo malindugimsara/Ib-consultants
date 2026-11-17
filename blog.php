@@ -73,22 +73,22 @@ $canonical_url = $base_url . "/blog.php";
 
     <!-- Schema.org Blog / CollectionPage JSON-LD -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Blog",
-      "name": "IB Business Consultants Insights Blog",
-      "url": "<?php echo $canonical_url; ?>",
-      "description": "Actionable business insights, profit improvement strategies, manufacturing process optimization, and export expansion guides for Sri Lankan SMEs.",
-      "publisher": {
-        "@type": "Organization",
-        "name": "IB Business Consultants",
-        "url": "<?php echo $base_url; ?>/index.php",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "<?php echo $base_url; ?>/assets/images/logos/logo-2.webp"
+        {
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            "name": "IB Business Consultants Insights Blog",
+            "url": "<?php echo $canonical_url; ?>",
+            "description": "Actionable business insights, profit improvement strategies, manufacturing process optimization, and export expansion guides for Sri Lankan SMEs.",
+            "publisher": {
+                "@type": "Organization",
+                "name": "IB Business Consultants",
+                "url": "<?php echo $base_url; ?>/index.php",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "<?php echo $base_url; ?>/assets/images/logos/logo-2.webp"
+                }
+            }
         }
-      }
-    }
     </script>
 
     <!-- CSS Dependencies -->
@@ -182,7 +182,7 @@ $canonical_url = $base_url . "/blog.php";
 
                         <?php if ($featured_article):
                             $feat_url = "blog-details.php?slug=" . urlencode($featured_article['slug']);
-                            ?>
+                        ?>
                             <!-- Featured Spotlight Article -->
                             <div class="row">
                                 <div class="col-12">
@@ -228,7 +228,7 @@ $canonical_url = $base_url . "/blog.php";
                                                                 class="ib-author-img">
                                                             <div class="ib-author-info">
                                                                 <div class="ib-author-name">
-                                                                    <?php echo htmlspecialchars($featured_article['author_name'] ?? 'Dammika Bandara'); ?>
+                                                                    <?php echo htmlspecialchars($featured_article['author_name'] ?? 'Dhammika Bandara'); ?>
                                                                 </div>
                                                                 <div class="ib-author-role">Lead Business Consultant</div>
                                                             </div>
@@ -282,7 +282,7 @@ $canonical_url = $base_url . "/blog.php";
                                     // Render all article cards dynamically
                                     foreach ($articles as $art):
                                         $art_url = "blog-details.php?slug=" . urlencode($art['slug']);
-                                        ?>
+                                    ?>
                                         <!-- Dynamic Article Card -->
                                         <div class="col-md-6 blog-card-wrapper"
                                             data-category="<?php echo htmlspecialchars($art['category_slug']); ?>"
@@ -319,7 +319,7 @@ $canonical_url = $base_url . "/blog.php";
                                                             <img src="assets/images/service/Founder.webp" alt="Author"
                                                                 class="ib-author-img" style="width: 32px; height: 32px;">
                                                             <span class="ib-author-name"
-                                                                style="font-size: 13px;"><?php echo htmlspecialchars($art['author_name'] ?? 'Dammika B.'); ?></span>
+                                                                style="font-size: 13px;"><?php echo htmlspecialchars($art['author_name'] ?? 'Dhammika B.'); ?></span>
                                                         </div>
                                                         <a href="<?php echo $art_url; ?>" class="ib-read-more-btn">
                                                             Read Article <i class="fa-solid fa-arrow-right-long"></i>
@@ -347,9 +347,9 @@ $canonical_url = $base_url . "/blog.php";
                             <div class="col-lg-4">
                                 <div class="ib-blog-sidebar sticky-top" style="top: 100px;">
                                     <div class="ib-sidebar-widget ib-author-widget wow fadeInUp" data-wow-delay=".2s">
-                                        <img src="assets/images/service/Founder.webp" alt="Dammika Bandara"
+                                        <img src="assets/images/service/Founder.webp" alt="Dhammika Bandara"
                                             class="ib-author-avatar-lg">
-                                        <h5>Dammika Bandara</h5>
+                                        <h5>Dhammika Bandara</h5>
                                         <span class="ib-author-subtitle">Lead Business Consultant</span>
                                         <p>Over 20+ years of commercial, manufacturing, international market
                                             development, shipping coordination, and profit engineering experience
@@ -410,7 +410,7 @@ $canonical_url = $base_url . "/blog.php";
 
     <!-- Filter and Search Logic -->
     <script>
-        $(function () {
+        $(function() {
             let currentFilter = 'all';
             let currentSearch = '';
 
@@ -418,7 +418,7 @@ $canonical_url = $base_url . "/blog.php";
                 let visibleCount = 0;
                 const cards = $('.blog-card-wrapper');
 
-                cards.each(function () {
+                cards.each(function() {
                     const card = $(this);
                     const category = card.data('category');
                     const keywords = (card.data('keywords') + ' ' + card.text()).toLowerCase();
@@ -442,7 +442,7 @@ $canonical_url = $base_url . "/blog.php";
             }
 
             // Category Filter Buttons click
-            $('#category-filters').on('click', '.ib-filter-btn', function () {
+            $('#category-filters').on('click', '.ib-filter-btn', function() {
                 $('#category-filters .ib-filter-btn').removeClass('active');
                 $(this).addClass('active');
                 currentFilter = $(this).data('filter');
@@ -451,17 +451,17 @@ $canonical_url = $base_url . "/blog.php";
 
             // Live Search Input with debouncing
             let searchTimeout;
-            $('#blog-search-input').on('keyup input', function () {
+            $('#blog-search-input').on('keyup input', function() {
                 clearTimeout(searchTimeout);
                 const query = $(this).val().trim().toLowerCase();
-                searchTimeout = setTimeout(function () {
+                searchTimeout = setTimeout(function() {
                     currentSearch = query;
                     applyFilters();
                 }, 150);
             });
 
             // Reset filters
-            window.resetBlogFilters = function () {
+            window.resetBlogFilters = function() {
                 $('#blog-search-input').val('');
                 currentSearch = '';
                 currentFilter = 'all';
@@ -488,9 +488,11 @@ $canonical_url = $base_url . "/blog.php";
 
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
-        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-        (function () {
-            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+        var Tawk_API = Tawk_API || {},
+            Tawk_LoadStart = new Date();
+        (function() {
+            var s1 = document.createElement("script"),
+                s0 = document.getElementsByTagName("script")[0];
             s1.async = true;
             s1.src = 'https://embed.tawk.to/6aeacdb2ec5abc3c3737ebd2/1k6ij70ga';
             s1.charset = 'UTF-8';
